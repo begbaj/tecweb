@@ -1,0 +1,18 @@
+HOMEPAGE -> FAQ e descrizione
+AREA RISERVATA locatario: header in tutte le pagine con messaggistica e riferimenti a profilo utente.
+Ricerca inserzioni contiene la lista delle inserzioni che soddisfano la ricerca e visualizza inserzione porta alla visualizzazione dell’inserzione selezionata. Cliccando su profilo utente si può anche modificare il proprio profilo.
+LOCATORE: gestione inserzioni contiene tutte le inseriosioni inserite da un erto locatore, visualizza inserzione mostra l’insersione selezionata l’header è uguale a quello del locatario. Visualizza richieste mostra tutte le richieste da parte degli altri locatari
+
+- Il login: per identificarsi come locatore o locatario c’è una spunta?
+- Si può vedere il profilo della persona?
+- Chiedere al prof cosa intende per punto uno dei requisiti opzionali
+- Visualizza contratti stipulati
+- Se scade il contratto, l’appartamento torna disponibile?
+- Nel momento in cui un locatario decide di affidare un appartamento, invia un messaggio di opzione al  locatore. Il locatore deve mandare un messaggio indietro per scegliere il locatario a cui conferire l’appartamento?
+- I messaggi possono essere mandati anche non per opzionare?
+- Come funziona il fatto che se ho 4 posti letto in un appartamento, uno viene occupato, gli altri tre posti sono ancora opzionabili? Dobbiamo gestire la possibilità posti disponibili?
+- il canone di affitto è relativo al periodo o giornaliero?
+- Camera singola o doppia
+- servizi con flag?
+- attributi necessari ai fini della stipula del contratto
+- che vuol dire catalogo eventi
