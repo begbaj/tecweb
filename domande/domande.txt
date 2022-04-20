@@ -16,3 +16,5 @@ LOCATORE: gestione inserzioni contiene tutte le inseriosioni inserite da un erto
 - servizi con flag?
 - attributi necessari ai fini della stipula del contratto
 - che vuol dire catalogo eventi
+- ci possono essere diverse insersioni per lo stesso alloggio? Quando scade il tempo di affitto, l'insersione diventa di nuovo opzionabile oppure bisogna crearne una nuova?
+- se voglio essere sia locatore che locatario devo creare due account?
