@@ -1,0 +1,143 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Eliminare profili o post per comportamenti illeciti: \'e8 sottinteso o non \'e8 necessario?\
+
+\f1\b0 Non \'e8 da fare\
+\
+
+\f0\b L\'92amministratore accede al suo profilo tramite una rotta specifica?\
+
+\f1\b0 No, l\'92amministratore \'e8 definito direttamente inserendo us e pass senza meccanismi di gestione del profilo\
+Ci dira lui quale username e password da usare\
+\
+
+\f0\b Riguardo i posti letto per stanza: \
+
+\f1\b0 Per una singola camera o un singolo posto letto. Se il locatario ha piu camere da affittare deve fare piu annunci. \'c8 necessario per tutte le camere specificare quanti posti letto ci sono?\
+Per l\'92offerta di un appartamento vanno specificate SOLO LE COSE SCRITTE NELLE SPECIFICHE.\
+Posti per stanza significa quanti sono i posti letto nella stanza. Non relativo anche agli altri nell\'92appartamento\
+\
+
+\f0\b Le informazioni che possono essere statiche come i contatti, devono essere messe nel db?\
+
+\f1\b0 No\
+\
+
+\f0\b Le fan nel db?\
+
+\f1\b0 Si \
+\
+Chi siamo? Cosa ci mettiamo?\
+Non lorem ipsum, ma una del testo anche stringato consistente con la natura dell\'92applicazione\
+\
+
+\f0\b Nella home delle statistiche?\
+
+\f1\b0 Va bene, anche se non \'e8 da specifica ma solo dopo aver soddisfatto tutte le altre specifiche. Ma non \'e8 valutato n\'e9 nel bene n\'e9 nel male. Ma non \'e8 un errore.\
+\
+
+\f0\b Possiamo creare il db gi\'e0 da ora?\
+
+\f1\b0 SI, ma poi lo importeremo con Migration dentro Laravel\
+\
+
+\f0\b Messaggistica:\
+
+\f1\b0 Per messaggistica interna si intende non modalit\'e0 push come nelle chat ma ogni volta che l\'92utente si identifica vede dei messaggi. I messaggi nuovi li vedr\'e0 nuovamente quando rifar\'e0 il log in.\
+\
+Bootstrap: se non lo conosciamo vediamo altri layout di pagina che conosciamo. Noi nel corso non faremo framework, \'e8 una decisione nostra.\
+\
+Nello schema dei link ci sono da inserire le rotte? No, ma vanno definite perch\'e9 dovremmo implementarle.\
+Ci consiglia di suddividere lo schema dei link per livelli di utenza, ad esempio il link che posta alla faq ce l\'92ha solo admin -> fare 4 pagine senno \'e8 troppo confusionario\
+\
+Account slo locatore o solo locatario\
+\
+Periodo di locazione: libero\
+\
+Cosa \'e8 catalogo eventi: \'e8 un catalogo camere, cio\'e8 catalogo delle offerte\
+\
+\'c8 possibile accedere con la stesso username? No, o locatore o locatario. Per lo username non utilizziamo la mail ma \'e8 una stringa di testo\
+\
+Nel puntini di sospensione, all\'92elenco possiamo aggiungere oppure no? La prima interpretazione, cio\'e8 possiamo aggiungere altri aspetti se vogliamo. \
+\
+Quanto \'e8 netta la separazione tra livello 1 e livello 2? un locatore che inserisce l\'92offerta lo fa in maniera scollegata ad altre inserzioni di altri locatori? \
+Nel sito c\'92\'e8 un elenco di offerte che possono vedere sia locatori che locatari ma la ricerca \'e8 attiva solo per i livello 3, pero gli utenti di livello 2 e 3 vedono entrambi le offerte\
+\
+Diamo per scontato che abbiamo percorsi di backgrade\
+\
+Non impostare tutte le form perch\'e9 ci sar\'e0 uno strumento per farlo\
+\
+Basta l\'92er\
+\
+Scala territoriale delle offerte: decidiamo noi\
+\
+Nel livello 2 c\'92\'e8 un punto dove dice che l\'92offerta \'e8 marmata e non piu opzionabile bisogna memorizzare la data della chiusura del contratto cio\'e8 quando il locatore ha confermato.\
+\
+Anche livello 1 e 4 possono vedere il catalogo delle offerte\
+\
+Se devo acquistare una camera in un determinato periodo, il locatario deve specificare per quanto tempo pu\'f2 essere assegnata? No\
+\
+Chi non fa il login puo vedere tutto ma non pu\'f2 opzionare o ricercare\
+\
+Vedremo come palinare i contenuti di un sito\
+\
+I locatori possono vedere le offerte di altri locatori ma la ricerca \'e8 solo dei locatari\
+\
+L\'92appartamento \'e8 venduto con le stanze? Ci sono due tipi di alloggi appartamenti e pl l\'92\'92appartamento \'e8 in blocco, il posto letto come un singolo. Se una camera ha piu posti letto abbiamo due offerte separate\
+\
+Quando si crea il contratto \'e8 una pagina web che non si scarica, appare e ci sono locatore, locatario con tutti i dati della stipula\
+\
+MESSAGGI NON in modalit\'e0 interativa \
+\
+Elenco dei messaggi ricevuti/spediti, poi se un utente legge un messaggio metto nella tabella un attributo che \'e8 letto o non letto\
+\
+Un locatario pu\'f2 affittare piu di un alloggio\
+\
+Layout!!!!\
+\
+Chat: se sono un locatore e parlo con un locatario. Utente destinatario..\
+Quando sono locatario e voglio effettuare una richiesta, la richiesta \'e8 un messaggio con un testo pre impostato\
+\
+Sul profilo del locatore/locatario dobbiamo aggiungere qualcosa? Non ci sono indicazioni specifiche. Il minimo \'e8 username, password, localit\'e0 di residenza e sesso.\
+\
+Per l\'92insersione: localizzazione decidiamo noi\
+\
+Servizi: possiamo aggiungere\
+\
+Le date in cui un locale \'e8 disponibile: la ricerca del locali \'e8 fatta per data anche, quindi data inizio e fine pu\'f2 sceglierlo il locatario? \'c8 il locatore che definisce il periodo di affitto\
+\
+Quando parliamo di locatario che marca un offerta, il locatore riceve il messaggio e decide se accettare o meno e metter\'e0 come non disponibile l\'92offerta -> bottone \'93opziona offerta\'94\
+Inoltro di una richiesta ATTRAVERSO LA MESSAGGISTICA\
+\
+FAQ: preferisce che le FAQ siano relative al sito, il link della pagina FAQ va inserito ho nell\'92header o nel footer, deve essere quindi accessibile a tutti i livelli\
+\
+Appartamento: affitto l\'92appartamento con 3 posti letto NON DIVISIBILI, oppure AFFITTO UN POSTO LETTO\
+\
+Per la messaggistica: non \'e8 push, ha senso per\'f2 dividerla come se fosse per utenti? Dal lato del locatore sarebbe opportuno che chiunque guarda nella casella di posta li vede raggruppate per utente.\
+\
+C\'92\'e8 una verifica particolare per locatore/locatario? No\
+\
+Visualizzazione no ma solo modifica\
+\
+Non posso opzionare un annuncio che \'e8 scaduto\
+\
+Possono interagire come voglio \
+\
+Catalogo dell\'92offerta \'e8 pubblico\
+\
+Il catalogo delle offerte \'e8 visionarie a tutti: si pu\'f2 inserire una citt\'e0 di interesse nel momento del login in modo che vengano visionati gli annunci? Non consiglia un filtro ma consiglia di mettere le offerte relative alla citt\'e0 di interesse in prima fila\
+\
+Possibilita di visualizzare profili locatori/locatari. Quando il locatario manda un messaggio di offerta al locatore, ci devono essere i dettagli \
+\
+No conferma del locatario all\'92assegnazione\
+\
+Utente non autorizzato non ha accesso alla messaggistica\
+\
+\
+\
+}
