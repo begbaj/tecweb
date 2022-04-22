@@ -1,0 +1,25 @@
+Tutto quello che viene specificato nell.
+e specifiche é TUTTO e SOLO quello che bisogna implementare.
+
+
+Le faq nel database?
+database, si.
+
+I dati possono essere fittizzi?
+ovviamente, si.
+
+per messaggistica si intende NON istantanea.
+
+locatore e locatari -> son DIVERSI e non possono essere messi insieme
+
+per lo username NON USIAMO le EMAIL ma una semplice stringa di testo.
+
+
+se vogliamo possiamo aggiungere altri aspetti...
+
+ENTRAMBI I LIVELLI VEDONO LE OFFERTE
+
+
+è il locatore che decide il periodo di affitto.
+
+opzionare -> mandare un messaggio.
