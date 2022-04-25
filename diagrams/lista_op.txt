@@ -1,0 +1,22 @@
+inserisci alloggio
+modifica alloggio
+elimina alloggio
+
+crea utente locatario
+crea utente locatore
+ricerca alloggio
+opzionare offerta
+inserisci FAQ
+rimuovi FAQ
+modifica FAQ
+visualizza alloggio
+invia messaggio
+ricevi messaggi
+visualizza messaggi di un utente
+marcare alloggio come opzionato
+
+visualizza elenco delle richieste con i dettagli dell'utente
+modifica profilo utente
+
+
+
