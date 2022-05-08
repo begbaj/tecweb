@@ -9,11 +9,12 @@
    id="svg5"
    sodipodi:docname="kumuuzag.svg"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
-   inkscape:export-filename="/home/began/Workspace/tecweb/img/brand/logo.png"
+   inkscape:export-filename="/home/began/Workspace/tecweb/img/brand/logo-colored.png"
    inkscape:export-xdpi="187.5"
    inkscape:export-ydpi="187.5"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -76,7 +77,29 @@
        enabled="false" />
   </sodipodi:namedview>
   <defs
-     id="defs2" />
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6066">
+      <stop
+         style="stop-color:#fe89ba;stop-opacity:1"
+         offset="0"
+         id="stop6062" />
+      <stop
+         style="stop-color:#006a66;stop-opacity:1"
+         offset="1"
+         id="stop6064" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6066"
+       id="linearGradient6068"
+       x1="48.026794"
+       y1="195.18283"
+       x2="155.88251"
+       y2="94.850388"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <g
      inkscape:groupmode="layer"
      id="layer3"
@@ -84,9 +107,9 @@
      style="opacity:1">
     <path
        id="path4091"
-       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:url(#linearGradient6068);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
        d="m 155.88251,94.850386 v 60.000004 m -90.000001,-30 30,-30.000004 m 60.000001,0 h -30 m 0,60.000004 30,-30 m -30,-30.000004 -15,15.000004 m -15.000001,75 30.000001,-30 H 95.882509 v -30 m 0,60 -30,-27 m 0,0 30,-33 m 30.000001,0 30,-30.000004 M 65.882509,184.85039 v -60 h 60.000001 v 60 H 65.882509"
-       inkscape:export-filename="/home/began/Workspace/tecweb/img/brand/logo-inverted.png"
+       inkscape:export-filename="/home/began/Workspace/tecweb/img/brand/logo-colored.png"
        inkscape:export-xdpi="187.5"
        inkscape:export-ydpi="187.5" />
   </g>
