@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="kumuuzag.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   inkscape:export-filename="/home/began/Workspace/tecweb/img/brand/logo.png"
+   inkscape:export-xdpi="187.5"
+   inkscape:export-ydpi="187.5"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="mm"
+     showgrid="true"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:lockguides="true"
+     inkscape:zoom="1.622695"
+     inkscape:cx="409.19582"
+     inkscape:cy="577.12633"
+     inkscape:window-width="1920"
+     inkscape:window-height="1020"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3"
+     showborder="false">
+    <sodipodi:guide
+       position="57.557283,162.48227"
+       orientation="0,-1"
+       id="guide1055"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="57.557282,162.48227"
+       orientation="1,0"
+       id="guide1057"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="117.72339,162.48227"
+       orientation="1,0"
+       id="guide1059"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="117.72339,194.44043"
+       orientation="0,-1"
+       id="guide1061"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="146.90967,194.44043"
+       orientation="1,0"
+       id="guide1063"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="149.68155,194.44044"
+       orientation="1,0"
+       id="guide1762" />
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid2076"
+       gridanglex="0"
+       gridanglez="45"
+       enabled="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     style="opacity:1">
+    <path
+       id="path4091"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 155.88251,94.850386 v 60.000004 m -90.000001,-30 30,-30.000004 m 60.000001,0 h -30 m 0,60.000004 30,-30 m -30,-30.000004 -15,15.000004 m -15.000001,75 30.000001,-30 H 95.882509 v -30 m 0,60 -30,-27 m 0,0 30,-33 m 30.000001,0 30,-30.000004 M 65.882509,184.85039 v -60 h 60.000001 v 60 H 65.882509"
+       inkscape:export-filename="/home/began/Workspace/tecweb/img/brand/logo-inverted.png"
+       inkscape:export-xdpi="187.5"
+       inkscape:export-ydpi="187.5" />
+  </g>
+</svg>
