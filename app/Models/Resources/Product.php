@@ -20,7 +20,7 @@ class Product extends Model {
             $price = round($price - $discount, 2);
         }
         return $price;
-    }
+    } // Inseriamo nel Model una funzione che produce un DATO
 
     // Realazione One-To-One con Category
     public function prodCat() {
