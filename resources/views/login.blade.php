@@ -34,7 +34,7 @@
                 <button class="btn btn-primary mb-3 mt-2" type="button">Login</button>
             </div>
             <div class="text-center mt-3">
-                <p><small>Non sei ancora registrato? <a href="login.html">Registrati ora!</a></small></p>
+                <p><small>Non sei ancora registrato? <a href="{{ route('signin') }}">Registrati ora!</a></small></p>
             </div>
         </div>
       </div>    

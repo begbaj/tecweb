@@ -1,6 +1,6 @@
 <head> 
     @include('components/_meta')
-    <title> @yield('title') </title>
+    <title> Kumuuzag - @yield('title') </title>
 </head>
 <body>
     <!-- HEADER -->

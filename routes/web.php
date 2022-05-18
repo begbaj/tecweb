@@ -27,6 +27,9 @@ Route::get('/faq', "PublicController@Faq")
 Route::view('/login', "login")
     ->name('login');
 
+Route::view('/signin', "signin")
+    ->name('signin');
+
 Route::view('/who', 'public/who')
     ->name('who');
 

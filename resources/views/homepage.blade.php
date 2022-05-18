@@ -45,7 +45,7 @@
         @endforeach 
     @endisset()
     </div>
-    <a href="homepage.html" style="text-decoration: none;"> <p class="text-center mt-2 fs-2">Vai al catalogo</p></a>
+    <a href="{{ route('publicCatalog') }}" style="text-decoration: none;"> <p class="text-center mt-2 fs-2">Vai al catalogo</p></a>
 </div>
 <!-- Registrati -->
 <div class="container">
