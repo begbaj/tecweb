@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar <?php if(!isset($hideLoginForm)){echo 'fixed-top'; }?> navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('homepage') }}"> <img src="/img/brand/logo-colored.png" height="50"></a>
         <div class="collapse navbar-collapse" id="mynavbar">
@@ -13,15 +13,15 @@
                     <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
                 </li>
             </ul>
-            <form class="d-flex">
             @if (isset($hideLoginForm))
             @else
+            <form class="form-inline d-flex mt-3">
                 <input class="form-control me-2" type="username" placeholder="username">
                 <input class="form-control me-2" type="password" placeholder="password">
                 <button class="btn btn-primary me-2" type="button">Accedi</button>
                 <a class="btn btn-primary me-2" href="{{ route('signin') }}" >Registrati</a>
-            @endif
             </form>
+            @endif
         </div>
     </div>
 </nav>

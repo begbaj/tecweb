@@ -21,7 +21,7 @@ class PublicController extends Controller {
     }
 
     public function faq() {
-        return view('404');
+        return view('errors.404');
     }
 
     public function catalog() {
