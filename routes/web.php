@@ -13,3 +13,6 @@
 
 Route::get('/', "PublicController@Homepage")
     ->name("homepage");
+
+Route::view('/who', 'who')
+    ->name('who');
