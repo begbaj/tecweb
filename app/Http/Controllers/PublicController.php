@@ -19,4 +19,14 @@ class PublicController extends Controller {
         return view('homepage')
             ->with("accomodations", $accomodations);
     }
+
+    public function faq() {
+        return view('404');
+    }
+
+    public function catalog() {
+        $accomodations = $this->_accomodations->getAccomodations();
+        return view('public.publicCatalog')
+            ->with('accomodations', $accomodations);
+    }
 }

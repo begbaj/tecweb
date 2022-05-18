@@ -41,9 +41,10 @@
     <div class="row overflow-hidden d-flex flex-row flex-nowrap">
     @isset($accomodations)
         @foreach ($accomodations as $accomodation)
-            @include('layouts/accomodationCard', [ 'accomodations' => $accomodation ] )
+            @include('components/accomodationCard', [ 'accomodations' => $accomodation ] )
         @endforeach 
     @endisset()
+    </div>
     <a href="homepage.html" style="text-decoration: none;"> <p class="text-center mt-2 fs-2">Vai al catalogo</p></a>
 </div>
 <!-- Registrati -->
@@ -76,12 +77,12 @@
                 <p class="fs-1">Hai delle domande?</p>
             </div>
             <div class="row" style="margin-top: 10em;">
-                <a href="faq.html" class="col align-self-end btn btn-primary mt-1 me-2 ms-2">Vai alle FAQs</a>
+                <a href="{{ route('faq') }}" class="col align-self-end btn btn-primary mt-1 me-2 ms-2">Vai alle FAQs</a>
                 <a href="mailto:s1093394@studenti.univpm.it?Subject=Help%20request" target="_top" class="col mt-1 align-self-end btn btn-primary me-2 ms-2">Contattaci</a>
             </div>
         </div>
         <div class="col w-50 align-self-center">
-                <img src="img/brand/logo.png" class="ms-5 img-fluid p-5" width="350">
+                <img src="/img/brand/logo.png" class="ms-5 img-fluid p-5" width="350">
         </div>
     </div>
 </div>

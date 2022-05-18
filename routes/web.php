@@ -21,9 +21,17 @@
 Route::get('/', "PublicController@Homepage")
     ->name("homepage");
 
-Route::view('/who', 'who')
+Route::get('/faq', "PublicController@Faq")
+    ->name('faq');
+
+Route::view('/login', "login")
+    ->name('login');
+
+Route::view('/who', 'public/who')
     ->name('who');
 
+Route::get('/catalog', "PublicController@catalog")
+    ->name('publicCatalog');
 
 /*
 |--------------------------------------------------------------------------
