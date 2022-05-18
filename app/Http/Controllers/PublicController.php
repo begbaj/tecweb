@@ -10,10 +10,13 @@ class PublicController extends Controller {
 
     public function __construct() {
         $this->_accomodations = new Accomodations;
+
     }
 
     public function homepage() {
+        $accomodations = $this->_accomodations->getAccomodations();
+
         return view('homepage')
-            ->with("accomodations", $this->_accomodations);
+            ->with("accomodations", $accomodations);
     }
 }
