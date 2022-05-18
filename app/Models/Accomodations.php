@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-class Catalogo{
+class Accomodations{
 
     const DESCPROD = '<p>Appartamento bello bello</p>';
 
-    protected $_appartamento, $_postoletto;
+    protected $_accomodations;
 
     public function __construct() {
-        $this->_appartamento = collect(
+        $this->_accomodations = collect(
                 array(
                     (object) array(
                         'appId' => '1',
@@ -30,10 +30,6 @@ class Catalogo{
                         'posti_letto' => '4',
                         'tipologia' => 'app'
                     ),
-                )
-        );
-
-        $this->_postoletto = collect(
                 (object) array(
                         'appId' => '2',
                         'titolo' => 'PostoLetto2',
@@ -53,14 +49,10 @@ class Catalogo{
                         'posti_letto' => '1',
                         'tipologia' => 'pl'
                     )
+            )
         );
     }
-
-    public function getAppartamento() {
-        return $this->_appartamento;
-    }
-
-    public function getPostoLetto() {
-        return $this->_postoletto;
+    public function getAccomodations() {
+        return $this->_accomodations;
     }
 }

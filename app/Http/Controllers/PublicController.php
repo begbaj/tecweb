@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
+use App\Models\Accomodations;
 
-class PublicController extends Controlelr {
+class PublicController extends Controller {
     
-    protected $_catalogModel;
+    protected $_accomodations;
 
     public function __construct() {
-        $this->_catalogModel = new Catalog;
+        $this->_accomodations = new Accomodations;
     }
 
-    public function showCatalogDummy() {
-        $insertion = $this->catalogModel->dummyData();
-        return view('catalog')
-            ->with('data', $insertion);
+    public function homepage() {
+        return view('homepage')
+            ->with("accomodations", $this->_accomodations);
     }
 }
