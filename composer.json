@@ -12,7 +12,10 @@
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
+<<<<<<< HEAD
         "laravel/ui": "^1",
+=======
+>>>>>>> site-laravel
         "laravelcollective/html": "^6.3"
     },
     "require-dev": {

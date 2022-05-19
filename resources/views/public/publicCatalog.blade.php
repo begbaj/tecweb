@@ -6,8 +6,8 @@
   <section class="py-5 container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-dark">Catalogo</h1>
-        <p class="lead text-muted"> <a id="registrazione" href="#"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
+        <h1 class="fw-dark text-center">Catalogo</h1>
+        <p class="lead text-muted text-center"> <a id="registrazione" href="#"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
       </div>
     </div>
 
