@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accomodations;
+use App\Models\Faq;
 
 class PublicController extends Controller {
     
     protected $_accomodations;
+    protected $_faq;
 
     public function __construct() {
         $this->_accomodations = new Accomodations;
+        $this->_faq = new Faq;
 
     }
 
@@ -21,7 +24,8 @@ class PublicController extends Controller {
     }
 
     public function faq() {
-        return view('errors.404');
+        $faq = $this->_faq->getFaq();
+        return view('faq')->with('faq', $faq);
     }
 
     public function catalog() {
