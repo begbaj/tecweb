@@ -4,8 +4,10 @@
 @isset($faq)
 @php $count=0; @endphp
 @foreach ($faq as $faq)
-<p class="text-black text-align"> @php echo ++$count; @endphp {{ $faq->domanda }} </p>
-<p class="text-grey-darker text-align"> {{ $faq->risposta }} </p>
+<div class="container text-center">
+<p class= "text-dark"> @php echo ++$count; @endphp {{ $faq->domanda }} </p>
+<p class="text-secondary">{{ $faq->risposta }} </p>
+</div>
 @endforeach
 @endisset()
 @endsection
