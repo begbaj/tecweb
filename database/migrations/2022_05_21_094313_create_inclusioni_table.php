@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFaqTable extends Migration
+class CreateInclusioniTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateFaqTable extends Migration
      */
     public function up()
     {
-        Schema::create('faq', function (Blueprint $table) {
-            $table->bigIncrements('id')->index();
-            $table->string('domanda', 500);
-            $table->string('risposta', 500);
-            $table->integer('ordine')->unsigned()->unique();
+        Schema::create('inclusioni', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateFaqTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faq');
+        Schema::dropIfExists('inclusioni');
     }
 }
