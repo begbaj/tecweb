@@ -11,6 +11,7 @@ class PublicController extends Controller {
     protected $_faq;
 
     public function __construct() {
+        $this->middleware('guest');
     }
 
     public function homepage() {
