@@ -1,0 +1,97 @@
+@extends('layouts.public', ['hideLoginForm' => True])
+
+@section('title', 'Login')
+
+@section('content')
+<div class="container-fluid bg-body">
+    <div class="jumbotron bg-cover rounded ml-5 mr-5" style="background-image: linear-gradient(to bottom, rgba(3,169,244,0.7) 0%, rgba(0,0,0,0.6) 100%), url(https://placeimg.com/1000/480/nature); background-size: cover">    
+      <div class="container text-light">  
+        <div class="container bg-transparent mt-5 mb-4 pb-3 pt-5 text-center ">
+            <div class="text-center mb-1">
+                <img src="img/brand/logo-colored.png" style="width: 80px;" alt="logo-coloured">
+            </div>
+            <h2 class="jumbotron-heading jumbotron-fluid">Benvenuto su Kumuuzag!</h2>
+            <h2 class="lead">Registrati!</h2>
+            {{ Form::open(array('route' => 'signin', 'id' => 'signin-form', 'files' => false)) }}
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('firstname', 'Nome', ['class' => 'col-sm-2 col-form-label', 'for'=>'firstname' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::text('firstname','', ['value' => old("firstname"), 'placeholder'=> 'Nome', 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('lastname', 'Cognome', ['class' => 'col-sm-2 col-form-label', 'for'=>'lastname' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::text('lastname','', ['value' => old("lastname"), 'placeholder'=> 'Cognome', 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('birthday', 'Data di nascita', ['class' => 'col-sm-2 col-form-label', 'for'=>'birthday' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::date('birthday', \Carbon\Carbon::now() , ['value' => old("birthday"), 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('gender', 'Genere', ['class' => 'col-sm-2 col-form-label', 'for'=>'gender' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::select('gender', ['m' => "Maschio", 'f' => "Femmina", 'b' => "Non Binario"] , ['value' => old("gender"), 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('username', 'Nome Utente*', ['class' => 'col-sm-2 col-form-label', 'for'=>'username' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::text('username', '', ['value' => old("username"), 'placeholder' => 'Nome Utente', 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('password', 'Password*', ['class' => 'col-sm-2 col-form-label', 'for'=>'password' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::password('password', ['value' => old("password"), 'placeholder' => 'Password', 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-4 mt-3 w-50 ">
+                        <label class="col-sm-2" for="password"><strong>Conferma Password</Strong></label>
+                        <div class="col-sm-7 ps-3">
+                            <input type="password" id="password" class="form-control ms-5" placeholder="Password"/>
+                        </div>
+                    </div>
+                </div>    
+
+                <div class= "d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-2 mt-4 w-50">
+                        {{ Form::label('role', 'Ruolo', ['class' => 'col-sm-2 col-form-label', 'for'=>'role' ] ) }}
+                        <div class=" col-sm-7 ps-3">
+                        {{ Form::select('role', ['1' => "Locatore", '2' => "Locatario"] , ['value' => old("role"), 'class' => 'form-control ms-5']) }}
+                        </div>
+                    </div>
+                </div>
+            <div class="text-center">
+                {{ Form::submit('Registrati', ['class' => 'btn btn-primary mb-3 mt-2']) }}
+            </div>
+            {{ Form::close() }}
+            <div class="text-center mt-3">
+                <p><small>Hai già un account? <a href="{{ route('login') }}">Accedi!</a> </small></p>
+            </div>
+        </div>
+      </div>    
+    </div>
+</div>
+@endsection

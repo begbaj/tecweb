@@ -4,6 +4,6 @@
     <div class="card-body">
         <h5 class="card-title"> {{ $accomodation->titolo  }}</h5>
         <p class="card-text"> {{ $accomodation->desc }} </p>
-        <a href="{{ route('publicCatalog') }}" class="btn btn-primary">Vedi dettagli</a>
+        <a href="{{ route('catalog') }}" class="btn btn-primary">Vedi dettagli</a>
     </div>
 </div>
