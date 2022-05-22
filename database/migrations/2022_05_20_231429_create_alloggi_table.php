@@ -15,6 +15,7 @@ class CreateAlloggiTable extends Migration
     {
         Schema::create('alloggi', function (Blueprint $table) {
 		$table->bigIncrements('id')->index();
+		$table->bigInteger('id_locatore')->unsigned();
 		$table->string('titolo', 50);
 		$table->string('descrizione', 3000);
 		$table->integer('eta_min');
@@ -32,6 +33,8 @@ class CreateAlloggiTable extends Migration
 		$table->integer('posti_letto');
 		$table->integer('camere');
 		$table->timestamps();
+		
+		$table->foreign('id_locatore')->references('id')->on('users');
         });
     }
 
