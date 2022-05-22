@@ -14,14 +14,14 @@ class CreateInclusioniTable extends Migration
     public function up()
     {
         Schema::create('inclusioni', function (Blueprint $table) {
-            $table->bigInteger('id_alloggio');
-	    $table->bigInteger('id_servizio');
+            $table->bigInteger('id_alloggio')->unsigned();
+	    $table->bigInteger('id_servizio')->unsigned();
             $table->timestamps();
-
-	    $table->primary(['id_alloggio', 'id_servizio']);
 
 	    $table->foreign('id_alloggio')->references('id')->on('alloggi');
 	    $table->foreign('id_servizio')->references('id')->on('servizi');
+
+	    $table->primary(['id_alloggio', 'id_servizio']);
         });
     }
 

@@ -23,11 +23,11 @@ class CreateMessaggiTable extends Migration
 	    $table->dateTime('data_conferma_opzione')->nullable();
 	    $table->timestamps();
 
-	    $table->unique(['id_destinario', 'id_mittente', 'id alloggio']);
+	    $table->unique(['id_destinatario', 'id_mittente', 'id_alloggio']);
 
-	    $table->foreign('id_destinatario')->references('utenti')->on('id');
-	    $table->foreign('id_mittente')->references('utenti')->on('id');
-	    $table->foreign('id_alloggio')->references('alloggi')->on('id');
+	    $table->foreign('id_destinatario')->references('id')->on('users');
+	    $table->foreign('id_mittente')->references('id')->on('users');
+	    $table->foreign('id_alloggio')->references('id')->on('alloggi');
         });
     }
 
