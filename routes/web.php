@@ -18,23 +18,21 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', "PublicController@Homepage")
-    ->name("homepage");
 
-Route::get('/faq', "PublicController@Faq")
+Route::get('/faq', "PublicController@faq")
     ->name('faq');
 
-Route::view('/login', "login")
+Route::get('/login', "PublicController@login")
     ->name('login');
 
-Route::view('/signin', "signin")
+Route::get('/signin', "PublicController@signin")
     ->name('signin');
 
-Route::view('/who', 'public/who')
+Route::get('/who', 'PublicController@who')
     ->name('who');
 
-Route::get('/catalog', "PublicController@catalog")
-    ->name('publicCatalog');
+Route::get('/home', 'PublicController@homepage')
+    ->name('home');
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +45,12 @@ Route::get('/catalog', "PublicController@catalog")
 */
 
 Route::get('/sitemap', "DynamicController@Sitemap");
+
+Route::get('/catalog', "PublicController@catalog")
+    ->name('catalog');
+
+Route::get('/', "PublicController@homepage")
+    ->name("homepage");
 
 /*
 |--------------------------------------------------------------------------
@@ -65,5 +69,6 @@ Route::get('/sitemap', "DynamicController@Sitemap");
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+
 
 
