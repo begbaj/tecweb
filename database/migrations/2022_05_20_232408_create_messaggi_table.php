@@ -15,13 +15,19 @@ class CreateMessaggiTable extends Migration
     {
         Schema::create('messaggi', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
-            $table->bigInteger('destinatario')->unsigned();
-            $table->bigInteger('mittente')->unsigned();
-            $table->string('testo');
+            $table->bigInteger('id_mittente')->unsigned();
+            $table->bigInteger('id_destinatario')->unsigned();
+            $table->string('testo', 5000);
+	    $table->dateTime('timestamp');
+            $table->bigInteger('id_alloggio')->unsigned()->nullable();
+	    $table->dateTime('data_conferma_opzione')->nullable();
 	    $table->timestamps();
-		
-	    $table->foreign('destinatario')->references('utenti')->on('id');
-	    $table->foreign('mittente')->references('utenti')->on('id');
+
+	    $table->unique(['id_destinatario', 'id_mittente', 'id_alloggio']);
+
+	    $table->foreign('id_destinatario')->references('id')->on('users');
+	    $table->foreign('id_mittente')->references('id')->on('users');
+	    $table->foreign('id_alloggio')->references('id')->on('alloggi');
         });
     }
 
