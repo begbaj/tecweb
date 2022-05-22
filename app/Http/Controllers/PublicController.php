@@ -9,6 +9,7 @@ class PublicController extends Controller {
     
     protected $_accomodations;
     protected $_faq;
+    protected $_role;
 
     public function __construct() {
         $this->middleware('guest');
@@ -39,7 +40,7 @@ class PublicController extends Controller {
             ->with('accomodations', $accomodations);
     }
 
-    public function signin() {
+    public function signin($_role=false) {
         return view('auth.signin');
     }
 
