@@ -42,8 +42,8 @@
                 <div class= "d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-2 w-50 align-items-center">
                         {{ Form::label('gender', 'Genere', ['class' => 'col-sm-2 col-form-label ', 'for'=>'gender' ] ) }}
-                        <div class="d-flex col-7 flex-column ms-5 ps-3">
-                        {{ Form::select('gender', ['m' => "Maschio", 'f' => "Femmina", 'b' => "Non Binario"] , ['value' => old("gender"), 'class' => 'form-control ms-5']) }}
+                        <div class="d-flex col-7 flex-column ps-3">
+                        {{ Form::select('gender', ['m' => "Maschio", 'f' => "Femmina", 'b' => "Non Binario"], old("gender") , ['class' => 'form-control ms-5']) }}
                         </div>
                     </div>
                 </div>
@@ -78,8 +78,12 @@
                 <div class= "d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-1 w-50 align-items-center">
                         {{ Form::label('role', 'Ruolo', ['class' => 'col-sm-2 col-form-label', 'for'=>'role' ] ) }}
-                        <div class="d-flex col-7 flex-column ms-5 ps-3">
-                        {{ Form::select('role', ['1' => "Locatore", '2' => "Locatario"] , ['value' => old("role"), 'class' => 'form-control ms-5 pb-5']) }}
+                        <div class="d-flex col-7 flex-column">
+                        @if (isset($_GET['type']))    
+                            {{ Form::select('role', ['1' => "Locatore", '2' => "Locatario"] , $_GET['type'], ['class' => 'form-control ms-5']) }}
+                        @else
+                            {{ Form::select('role', ['1' => "Locatore", '2' => "Locatario"] , old("role"), ['class' => 'form-control ms-5']) }}
+                        @endif
                         </div>
                     </div>
                 </div>
