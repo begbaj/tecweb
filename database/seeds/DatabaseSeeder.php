@@ -103,10 +103,8 @@ class DatabaseSeeder extends Seeder
                     [[
 			'id_mittente' => $faker->randomElement($locatari),
 			'id_destinatario' => $faker->randomElement($locatori),
-			'text' => $faker->text,
-			'created_at' => $faker->dateTime,
-
-
+			'testo' => $faker->text,
+			'created_at' => $faker->dateTime
                     ]]
             	);
 
@@ -114,5 +112,23 @@ class DatabaseSeeder extends Seeder
             }
         }
  
+	for ($i = 0; $i < 50; $i++) { 
+            try {    
+
+		//$alloggi = User::all()->pluck('id')->toArray();
+		
+		DB::table('messaggi')->insert(
+                    [[
+			'id_mittente' => $faker->randomElement($locatari),
+			'id_destinatario' => $faker->randomElement($locatori),
+			'testo' => $faker->text,
+			'id_alloggio' => $faker->randomElement($alloggi),
+			'created_at' => $faker->dateTime,
+                    ]]
+            	);
+
+            } catch (Exception $e) {
+            }
+        }
     }
 }
