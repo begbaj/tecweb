@@ -50,13 +50,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'birthday' => ['required', 'datetime', 'min:8', 'confirmed'],
-            'gender' => ['required', 'datetime', 'min:8', 'confirmed'],
-            'username' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string', 'min:8', 'confirmed'],
+            'firstname' => ['required', 'string', 'min:1' ,'max:30'],
+            'lastname' => ['required', 'string', 'min:1' ,'max:30'],
+            'birthday' => ['required', 'datetime'],
+            'gender' => ['required', 'string', 'min:1', 'max:10'],
+            'username' => ['required', 'string','min:5', 'max:30','unique:users'],
+            'password' => ['required', 'string', 'min:8', 'max:128', 'confirmed'],
+            'role' => ['required', 'string'],
         ]);
     }
 
@@ -69,9 +69,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'nome' => $data['firstname'],
+            'cognome' => $data['lastname'],
+            'data_nascita' => $data['birthday'],
+            'genere' => $data['gender'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'ruolo' => $data['role'],            
         ]);
     }
 }
