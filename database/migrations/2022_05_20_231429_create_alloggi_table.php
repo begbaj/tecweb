@@ -15,12 +15,12 @@ class CreateAlloggiTable extends Migration
     {
         Schema::create('alloggi', function (Blueprint $table) {
 		$table->bigIncrements('id')->index();
-		$table->bigInteger('id_locatore')->unsigned();
+		$table->unsignedbigInteger('id_locatore');
 		$table->string('titolo', 50);
 		$table->string('descrizione', 3000);
-		$table->integer('eta_min');
-		$table->integer('eta_max');
-		$table->string('sesso', 20);
+		$table->integer('eta_min')->nullable();
+		$table->integer('eta_max')->nullable();
+		$table->string('sesso', 20)->nullable();
 		$table->float('prezzo');
 		$table->integer('superficie');
 		$table->dateTime('data_min');
@@ -29,7 +29,7 @@ class CreateAlloggiTable extends Migration
 		$table->string('provincia', 50);
 		$table->string('citta', 50);
 		$table->string('indirizzo', 100);
-		$table->string('cap', 6);
+		$table->string('cap', 5);
 		$table->integer('posti_letto');
 		$table->integer('camere');
 		$table->timestamps();
