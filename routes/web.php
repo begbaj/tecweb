@@ -18,6 +18,10 @@
 |--------------------------------------------------------------------------
 */
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', 'PublicController@homepage')
+        ->name('publichomepage');
+});
 
 Route::get('/faq', "PublicController@faq")
     ->name('faq');
