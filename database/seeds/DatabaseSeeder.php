@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
                     ]]
             );
         }
-<<<<<<< HEAD
         
         DB::table('users')->insert([
             ['nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
@@ -41,8 +40,6 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('Niphwpog'), 'ruolo' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")]
         ]);
-=======
->>>>>>> 4c8927e2dcedc3863a14b83f41a339faf8f03bc6
 
         // $this->call(UsersTableSeeder::class);
 	
