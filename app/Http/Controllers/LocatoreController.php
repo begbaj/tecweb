@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class LocatoreController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('can:isLocatore');
     }
 
     public function index() {
