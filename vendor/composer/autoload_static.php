@@ -153,8 +153,8 @@ class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Whoops\\' => 
         array (
@@ -442,6 +442,7 @@ class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DynamicController' => __DIR__ . '/../..' . '/app/Http/Controllers/DynamicController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\LocatarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocatarioController.php',
         'App\\Http\\Controllers\\LocatoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocatoreController.php',
@@ -454,7 +455,6 @@ class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Http\\Requests\\NewUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewUserRequest.php',
         'App\\Models\\Accomodations' => __DIR__ . '/../..' . '/app/Models/Accomodations.php',
         'App\\Models\\Faq' => __DIR__ . '/../..' . '/app/Models/Faq.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

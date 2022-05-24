@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accomodations;
 use App\Models\Faq;
+use Illuminate\Support\Facades\Log;
 
 class PublicController extends Controller {
     
@@ -12,6 +13,7 @@ class PublicController extends Controller {
     protected $_role;
     
     public function __construct() {
+        Log::debug('CONTROLLER_CALL: PublicController called');
         $this->middleware('guest')->except(redirect()->route('homepage'));
     }
     

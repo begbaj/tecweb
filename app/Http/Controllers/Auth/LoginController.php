@@ -53,6 +53,7 @@ class LoginController extends Controller
     
     public function __construct()
     {
+        Log::debug('CONTROLLER_CALL: LoginController called');
         $this->middleware('guest')->except('logout');
     }
 }
