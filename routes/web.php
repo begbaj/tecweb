@@ -32,7 +32,7 @@ Route::get('/login', "PublicController@login")
 Route::get('/who', 'PublicController@who')
     ->name('who');
 
-Route::get('/', "DynamicController@homepage")
+Route::get('/', "PublicController@homepage")
     ->name("homepage");
 
 /*

@@ -31,4 +31,11 @@ class PublicController extends Controller {
         return view('public.catalog')
             ->with('accomodations', $accomodations);
     }
+    public function homepage() {
+        $this->_accomodations = new Accomodations;
+        $accomodations = $this->_accomodations->getAccomodations();
+
+        return view('homepage')
+            ->with("accomodations", $accomodations);
+    }
 }
