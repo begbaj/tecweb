@@ -14,8 +14,8 @@ class CreateInclusioniTable extends Migration
     public function up()
     {
         Schema::create('inclusioni', function (Blueprint $table) {
-            $table->bigInteger('id_alloggio')->unsigned();
-	    $table->bigInteger('id_servizio')->unsigned();
+            $table->unsignedBigInteger('id_alloggio');
+	    $table->unsignedBigInteger('id_servizio');
             $table->timestamps();
 
 	    $table->foreign('id_alloggio')->references('id')->on('alloggi');

@@ -15,11 +15,10 @@ class CreateMessaggiTable extends Migration
     {
         Schema::create('messaggi', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
-            $table->bigInteger('id_mittente')->unsigned();
-            $table->bigInteger('id_destinatario')->unsigned();
+            $table->unsignedBigInteger('id_mittente');
+            $table->unsignedBigInteger('id_destinatario');
             $table->string('testo', 5000);
-	    $table->dateTime('timestamp');
-            $table->bigInteger('id_alloggio')->unsigned()->nullable();
+            $table->unsignedBigInteger('id_alloggio')->nullable();
 	    $table->dateTime('data_conferma_opzione')->nullable();
 	    $table->timestamps();
 
