@@ -7,3 +7,4 @@
     <p>Area Admin</p>
     <p>Benvenuto {{ Auth::user()->nome }} {{ Auth::user()->cognome }}</p>
 </div>
+@endsection

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\Accomodations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
+    use AuthenticatesUsers;
     /**
      * Create a new controller instance.
      *
@@ -14,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        Log::debug('CONTROLLER_CALL: HomeController called');
     }
 
     /**
@@ -24,6 +26,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('homepage');
+        if (\Illuminate\Support\Facades\Auth::check()){
+            $role = auth()->user()->ruolo;
+            switch ($role) {
+                case 'admin': return redirect()->route('admin');
+                    break;
+                case 'locatore': return redirect()->route('locatore');
+                    break;
+                case 'locatario': return redirect()->route('locatario');
+                default:
+                    $accomodations = new Accomodations;
+                    return view('homepage')->with("accomodations", $accomodations->getAccomodations());
+            }
+        }else{
+            $accomodations = new Accomodations;
+            return view('homepage')->with("accomodations", $accomodations->getAccomodations());
+        }
     }
 }

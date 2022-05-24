@@ -1,7 +1,7 @@
 
 <div class="col">
   <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-      <img src="/img/brand/logo.png" height="100">
+      <img src="img/brand/logo.png" height="100">
   </a>
   <p class="text-muted">© 2021</p>
 </div>
@@ -14,10 +14,9 @@
   <h5>Section</h5>
   <ul class="nav flex-column">
     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+    <li class="nav-item mb-2"><a href="{{route('priv')}}" class="nav-link p-0 text-muted">Privacy and Terms</a></li>
+    <li class="nav-item mb-2"><a href="{{route('faq')}}" class="nav-link p-0 text-muted">FAQs</a></li>
+    <li class="nav-item mb-2"><a href="{{route('who')}}" class="nav-link p-0 text-muted">About</a></li>
   </ul>
 </div>
 

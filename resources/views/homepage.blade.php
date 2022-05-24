@@ -51,7 +51,7 @@
 <div class="container">
     <p class="fs-1 text-center"> Registrati! </p>
     <div class="row align-items-start">    
-        <a href="{{ route('register', ['type' => '1']) }}" class="col btn btn-secondary mt-2 me-2">
+        <a href="{{ route('register', ['type' => 'locatore']) }}" class="col btn btn-secondary mt-2 me-2">
             <p class="fs-2">Locatore </p> 
             <ul>
                 <li>Metti in affito il tuo alloggio</li>
@@ -60,7 +60,7 @@
             </ul>
         </a>
    
-        <a href="{{ route('register',['type' => '2']) }}" class="col btn btn-secondary mt-2 me-2">
+        <a href="{{ route('register',['type' => 'locatario']) }}" class="col btn btn-secondary mt-2 me-2">
             <p class="fs-2">Locatario</p>
             <ul>
                 <li>Trova l'alloggio che fa al caso tuo</li>
@@ -79,11 +79,11 @@
             </div>
             <div class="row" style="margin-top: 10em;">
                 <a href="{{ route('faq') }}" class="col align-self-end btn btn-primary mt-1 me-2 ms-2">Vai alle FAQs</a>
-                <a href="mailto:s1093394@studenti.univpm.it?Subject=Help%20request" target="_top" class="col mt-1 align-self-end btn btn-primary me-2 ms-2">Contattaci</a>
+                <a href="mailto:kumuuzag@gmail.com?Subject=Help%20request" target="_top" class="col mt-1 align-self-end btn btn-primary me-2 ms-2">Contattaci</a>
             </div>
         </div>
         <div class="col w-50 align-self-center">
-                <img src="/img/brand/logo.png" class="ms-5 img-fluid p-5" width="350">
+                <img src="img/brand/logo.png" class="ms-5 img-fluid p-5" width="350">
         </div>
     </div>
 </div>
