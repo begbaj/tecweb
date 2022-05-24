@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
+class ComposerStaticInitfc8553a8aa46a988c71b08c4d64cede1
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -442,6 +442,7 @@ class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DynamicController' => __DIR__ . '/../..' . '/app/Http/Controllers/DynamicController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\LocatarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocatarioController.php',
         'App\\Http\\Controllers\\LocatoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocatoreController.php',
@@ -454,7 +455,6 @@ class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Http\\Requests\\NewUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewUserRequest.php',
         'App\\Models\\Accomodations' => __DIR__ . '/../..' . '/app/Models/Accomodations.php',
         'App\\Models\\Faq' => __DIR__ . '/../..' . '/app/Models/Faq.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -4899,10 +4899,10 @@ class ComposerStaticInit6c440fb132a97e794c62b27c13b22edf
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6c440fb132a97e794c62b27c13b22edf::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6c440fb132a97e794c62b27c13b22edf::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6c440fb132a97e794c62b27c13b22edf::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6c440fb132a97e794c62b27c13b22edf::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfc8553a8aa46a988c71b08c4d64cede1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfc8553a8aa46a988c71b08c4d64cede1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitfc8553a8aa46a988c71b08c4d64cede1::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitfc8553a8aa46a988c71b08c4d64cede1::$classMap;
 
         }, null, ClassLoader::class);
     }

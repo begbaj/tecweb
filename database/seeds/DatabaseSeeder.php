@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use App\User;
+use App\Models\Resources\Alloggio;
+use App\Models\Resources\Servizio;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,7 +30,7 @@ class DatabaseSeeder extends Seeder
                         'created_at' => $faker->dateTime
                     ]]
             );
-        }
+	}
         
         DB::table('users')->insert([
             ['nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
@@ -39,43 +42,43 @@ class DatabaseSeeder extends Seeder
             ['nome' => 'Admin', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'adminadmin',
                 'password' => Hash::make('Niphwpog'), 'ruolo' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")]
-        ]);
-
+	]);
+	 
         // $this->call(UsersTableSeeder::class);
 	
+	$locatori = User::all()->filter(function ($item) {return ($item->getAttributeValue('ruolo')=='locatore');})->pluck('id')->toArray();
+	$locatari = User::all()->filter(function ($item) {return ($item->getAttributeValue('ruolo')=='locatario');})->pluck('id')->toArray();
+
 	for ($i = 0; $i < 100; $i++) { 
             try {    
-
-		//$locatori = User::all()->pluck('id')->toArray();
-		//$locatari = User::all()->pluck('id')->toArray();
 		
                 DB::table('faq')->insert(
                     [[
-                        'domanda' => $faker->text,
-                        'risposta' => $faker->text,
-                        'created_at' => $faker->dateTime
+                        'domanda' => $faker->text(500),
+                        'risposta' => $faker->text(500),
+                        'created_at' => $faker->dateTime,
+			'ordine' => $i
                     ]]
 		);
 
-		db::table('servizi')->insert(
-                    [[
-                        'nome' => $faker->text,
-                        'icona' => $faker->text,
-                        'tipo' => $faker->text,
+		DB::table('servizi')->insert( [[
+                        'nome' => $faker->text(50),
+                        'icona' => $faker->text(50),
+                        'tipo' => $faker->text(12),
                         'created_at' => $faker->dateTime
                     ]]
 		);
 
 		DB::table('alloggi')->insert(
                     [[
-                        'titolo' => $faker->text,
-                        'descrizione' => $faker->text,
+                        'titolo' => $faker->text(100),
+                        'descrizione' => $faker->text(300),
                         'eta_min' => $faker->numberBetween(20,40),
                         'eta_max' => $faker->numberBetween(20,40),
-                        'prezzo' => $faker->randomFloat,
-                        'genere' => $faker->randomElement(['m','f','b']),
+                        'prezzo' => $faker->randomFloat($nbMaxDecimals=2, $min=100, $max=600),
+                        'sesso' => $faker->randomElement(['m','f','b']),
                         'superficie' => $faker->numberBetween(10,1000),
-                        'opzionato' => $faker->boolean, //dovrei mette false
+                        'opzionato' => $faker->boolean,
                         'data_min' => $faker->date,
                         'data_max' => $faker->date,
                         'tipo' => $faker->randomElement(['appartamento','posto_letto']),
@@ -84,21 +87,24 @@ class DatabaseSeeder extends Seeder
                         'indirizzo' => $faker->address,
                         'cap' => $faker->postcode,
                         'posti_letto' => $faker->numberBetween(1,5),
-                        'camere' => $faker->dateTime,
+                        'camere' => $faker->numberBetween(1,5),
 			'id_locatore' => $faker->randomElement($locatori),
                         'created_at' => $faker->dateTime
                     ]]
-            	);
+		);
 
             } catch (Exception $e) {
+		    echo 'Message: ' .$e->getMessage();
             }
         }
+	
 
+	$alloggi = Alloggio::all()->pluck('id')->toArray();
+	$servizi = Servizio::all()->pluck('id')->toArray();
+	
 	for ($i = 0; $i < 100; $i++) { 
             try {    
 
-		//$alloggi = User::all()->pluck('id')->toArray();
-		//$servizi = User::all()->pluck('id')->toArray();
 		
                 DB::table('inclusioni')->insert(
                     [[
@@ -123,9 +129,6 @@ class DatabaseSeeder extends Seeder
  
 	for ($i = 0; $i < 50; $i++) { 
             try {    
-
-		//$alloggi = User::all()->pluck('id')->toArray();
-		
 		DB::table('messaggi')->insert(
                     [[
 			'id_mittente' => $faker->randomElement($locatari),
