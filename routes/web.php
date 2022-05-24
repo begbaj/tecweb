@@ -28,8 +28,8 @@ Route::get('/login', "PublicController@login")
 Route::get('/who', 'PublicController@who')
     ->name('who');
 
-Route::get('/home', 'PublicController@homepage')
-    ->name('home');
+Route::get('/', "DynamicController@homepage")
+    ->name("homepage");
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +46,7 @@ Route::get('/sitemap', "DynamicController@Sitemap");
 Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
 
-Route::get('/', "PublicController@homepage")
-    ->name("homepage");
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +55,7 @@ Route::get('/', "PublicController@homepage")
 */
 
 Route::get('/locatore', 'LocatoreController@index')
-        ->name('locatore')->middleware('can:isLocatore');
+        ->name('locatore');
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +64,7 @@ Route::get('/locatore', 'LocatoreController@index')
 */
 
 Route::get('/locatario', 'LocatarioController@index')
-        ->name('locatario')->middleware('can:isLocatario');
+        ->name('locatario');
 
 /*
 |--------------------------------------------------------------------------
