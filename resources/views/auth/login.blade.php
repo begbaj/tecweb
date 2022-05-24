@@ -45,7 +45,7 @@
                 {{ Form::submit('Login', ['class' => 'btn btn-primary mb-3 mt-2']) }}                
             </div>
             <div class="text-center mt-3">
-                <p><small>Non sei ancora registrato? <a href="{{ route('signin') }}">Registrati ora!</a></small></p>
+                <p><small>Non sei ancora registrato? <a href="{{ route('register') }}">Registrati ora!</a></small></p>
             </div>
             {{ Form::close() }}
         </div>

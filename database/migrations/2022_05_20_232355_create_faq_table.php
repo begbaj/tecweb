@@ -17,7 +17,7 @@ class CreateFaqTable extends Migration
             $table->bigIncrements('id')->index();
             $table->string('domanda', 5000);
             $table->string('risposta', 5000);
-            $table->increments('ordine')->unique();
+            $table->integer('ordine')->unique();
             $table->timestamps();
         });
     }

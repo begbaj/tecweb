@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\Accomodations;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    use AuthenticatesUsers;
     /**
      * Create a new controller instance.
      *
@@ -14,7 +15,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -24,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (\Illuminate\Support\Facades\Auth::check()){
+            $role = auth()->user()->ruolo;
+            switch ($role) {
+                case 'admin': return redirect()->route('admin');
+                    break;
+                case 'locatore': return redirect()->route('locatore');
+                    break;
+                case 'locatario':return redirect()->route('locatario');
+            default: return view('homepage');};
+        }else{
+            return view('homepage');
+        }
     }
 }

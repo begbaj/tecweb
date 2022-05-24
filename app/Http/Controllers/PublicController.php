@@ -10,19 +10,11 @@ class PublicController extends Controller {
     protected $_accomodations;
     protected $_faq;
     protected $_role;
-
+    
     public function __construct() {
-        $this->middleware('guest');
+        $this->middleware('guest')->except(redirect()->route('homepage'));
     }
-
-    public function homepage() {
-        $this->_accomodations = new Accomodations;
-        $accomodations = $this->_accomodations->getAccomodations();
-
-        return view('homepage')
-            ->with("accomodations", $accomodations);
-    }
-
+    
     public function faq() {
         $this->_faq = new Faq;
         $faq = $this->_faq->getFaq();
@@ -38,5 +30,11 @@ class PublicController extends Controller {
         $accomodations = $this->_accomodations->getAccomodations();
         return view('public.catalog')
             ->with('accomodations', $accomodations);
+    }
+    public function homepage() {
+        $this->_accomodations = new Accomodations;
+        $accomodations = $this->_accomodations->getAccomodations();
+        return view('homepage')
+            ->with("accomodations", $accomodations);
     }
 }

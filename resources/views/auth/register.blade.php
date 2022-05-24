@@ -143,9 +143,9 @@
                         {{ Form::label('role', 'Ruolo', ['class' => 'col-sm-2 col-form-label', 'for'=>'role' ] ) }}
                         <div class="d-flex col-7 flex-column">
                         @if (isset($_GET['type']))    
-                            {{ Form::select('role', ['1' => "Locatore", '2' => "Locatario"] , $_GET['type'], ['class' => 'form-control ms-5']) }}
+                            {{ Form::select('role', ['locatore' => "Locatore", 'locatario' => "Locatario"] , $_GET['type'], ['class' => 'form-control ms-5']) }}
                         @else
-                            {{ Form::select('role', ['1' => "Locatore", '2' => "Locatario"] , old("role"), ['class' => 'form-control ms-5']) }}
+                            {{ Form::select('role', ['locatore' => "Locatore", 'locatario' => "Locatario"] , old("role"), ['class' => 'form-control ms-5']) }}
                         @endif
                         @if ($errors->first('role'))
                         <div class="d-flex justify-content-center">

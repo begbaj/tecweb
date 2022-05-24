@@ -18,6 +18,10 @@
 |--------------------------------------------------------------------------
 */
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', 'PublicController@homepage')
+        ->name('publichomepage');
+});
 
 Route::get('/faq', "PublicController@faq")
     ->name('faq');
@@ -28,8 +32,9 @@ Route::get('/login', "PublicController@login")
 Route::get('/who', 'PublicController@who')
     ->name('who');
 
-Route::get('/home', 'PublicController@homepage')
-    ->name('home');
+Route::get('/', 'HomeController@index')
+    ->name("homepage");
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +46,11 @@ Route::get('/home', 'PublicController@homepage')
 |
 */
 
-Route::get('/sitemap', "DynamicController@Sitemap");
 
 Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
 
-Route::get('/', "PublicController@homepage")
-    ->name("homepage");
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +59,7 @@ Route::get('/', "PublicController@homepage")
 */
 
 Route::get('/locatore', 'LocatoreController@index')
-        ->name('locatore')->middleware('can:isLocatore');
+        ->name('locatore');
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +68,7 @@ Route::get('/locatore', 'LocatoreController@index')
 */
 
 Route::get('/locatario', 'LocatarioController@index')
-        ->name('locatario')->middleware('can:isLocatario');
+        ->name('locatario');
 
 /*
 |--------------------------------------------------------------------------
@@ -78,16 +81,16 @@ Route::get('/admin', "AdminController@index")
 
 
 // Rotte per l'autenticazione
-Route::get('login', 'Auth\LoginController@showLoginForm')
+Route::get('/login', 'Auth\LoginController@showLoginForm')
         ->name('login');
 
-Route::post('login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@login');
 
-Route::post('logout', 'Auth\LoginController@logout')
+Route::post('/logout', 'Auth\LoginController@logout')
         ->name('logout');
 
 // Rotte per la registrazione
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')
         ->name('register');
 
-Route::post('register', 'Auth\RegisterController@register');
+Route::post('/register', 'Auth\RegisterController@register');
