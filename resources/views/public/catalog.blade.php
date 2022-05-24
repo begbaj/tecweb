@@ -7,7 +7,9 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-dark text-center">Catalogo</h1>
+        @if (!auth()->user('admin'))
         <p class="lead text-muted text-center"> <a id="registrazione" href="#"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
+        @endif
       </div>
     </div>
 

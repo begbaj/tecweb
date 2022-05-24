@@ -4,8 +4,13 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admcat') }}">Catalogo</a>
+                </li>
+            @if (!auth()->user('admin'))
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo</a>
                 </li>
+            @endif                 
             @if (!auth()->user('admin'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('who') }}">About us</a>
