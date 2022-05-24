@@ -51,7 +51,7 @@
 <div class="container">
     <p class="fs-1 text-center"> Registrati! </p>
     <div class="row align-items-start">    
-        <a href="{{ route('register', ['type' => '1']) }}" class="col btn btn-secondary mt-2 me-2">
+        <a href="{{ route('register', ['type' => 'locatore']) }}" class="col btn btn-secondary mt-2 me-2">
             <p class="fs-2">Locatore </p> 
             <ul>
                 <li>Metti in affito il tuo alloggio</li>
@@ -60,7 +60,7 @@
             </ul>
         </a>
    
-        <a href="{{ route('register',['type' => '2']) }}" class="col btn btn-secondary mt-2 me-2">
+        <a href="{{ route('register',['type' => 'locatario']) }}" class="col btn btn-secondary mt-2 me-2">
             <p class="fs-2">Locatario</p>
             <ul>
                 <li>Trova l'alloggio che fa al caso tuo</li>
