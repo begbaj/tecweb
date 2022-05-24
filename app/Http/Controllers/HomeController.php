@@ -33,10 +33,14 @@ class HomeController extends Controller
                     break;
                 case 'locatore': return redirect()->route('locatore');
                     break;
-                case 'locatario':return redirect()->route('locatario');
-            default: return view('homepage');};
+                case 'locatario': return redirect()->route('locatario');
+                default:
+                    $accomodations = new Accomodations;
+                    return view('homepage')->with("accomodations", $accomodations->getAccomodations());
+            }
         }else{
-            return view('homepage');
+            $accomodations = new Accomodations;
+            return view('homepage')->with("accomodations", $accomodations->getAccomodations());
         }
     }
 }
