@@ -39,4 +39,8 @@ class PublicController extends Controller {
         return view('homepage')
             ->with("accomodations", $accomodations);
     }
+
+    public function priv() {
+        return view('priv');
+    }    
 }
