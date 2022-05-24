@@ -32,8 +32,12 @@ Route::get('/login', "PublicController@login")
 Route::get('/who', 'PublicController@who')
     ->name('who');
 
+Route::get('/priv', 'PublicController@priv')
+    ->name('priv');
+
 Route::get('/', 'HomeController@index')
     ->name("homepage");
+
 
 
 /*
