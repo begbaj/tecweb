@@ -37,12 +37,12 @@ class User extends Authenticatable
         'data_nascita' => 'date',
     ];
 
-    public function hasRole($role){
-        $role = (array)$role;
-        return in_array($this->role, $role);
+    public function hasRole($ruolo){
+        $ruolo = (array)$ruolo;
+        return in_array($this->ruolo, $ruolo);
     }
     
     public function role(){
-        return $this->role;
+        return $this->ruolo;
     }
 }
