@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Models\Accomodations;
+use App\Models\Resources\Alloggio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -35,12 +35,12 @@ class HomeController extends Controller
                     break;
                 case 'locatario': return redirect()->route('locatario');
                 default:
-                    $accomodations = new Accomodations;
-                    return view('homepage')->with("accomodations", $accomodations->getAccomodations());
+                    $accomodations = new Alloggio;
+                    return view('homepage')->with("accomodations", $accomodations->all());
             }
         }else{
-            $accomodations = new Accomodations;
-            return view('homepage')->with("accomodations", $accomodations->getAccomodations());
+            $accomodations = new Alloggio;
+            return view('homepage')->with("accomodations", $accomodations->all());
         }
     }
 }

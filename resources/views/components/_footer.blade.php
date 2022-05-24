@@ -34,7 +34,7 @@
 <div class="col">
   <h5>Social</h5>
   <ul class="nav flex-column">
-    <li><a href="https://www.instagram.com/kumuuzag/" title="Contattaci su instagram">Instagram</a></li>
-    <li><a href="mailto:kumuuzag@gmail.com" title="Mandaci un messaggio">Contattaci</a></li>
+    <li><a href="https://www.instagram.com/kumuuzag/" title="Contattaci su instagram">Instagram: @kumuuzag</a></li>
+    <li><a href="mailto:kumuuzag@gmail.com" title="Mandaci un messaggio">Contattaci: kumuuzag@gmail.com</a></li>
   </ul>
 </div>
