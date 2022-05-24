@@ -39,12 +39,4 @@ class PublicController extends Controller {
         return view('public.catalog')
             ->with('accomodations', $accomodations);
     }
-
-    public function signin($_role=false) {
-        return view('auth.signin');
-    }
-
-    public function login() {
-        return view('auth.login');
-    }
 }

@@ -33,7 +33,7 @@ class LoginController extends Controller
         switch ($role) {
             case 'admin': return '/admin';
                 break;
-            case 'locatore': return '/locatario';
+            case 'locatore': return '/locatore';
                 break;
             case 'locatario':return '/locatario';
         default: return '/';};

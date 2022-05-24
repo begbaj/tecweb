@@ -1,4 +1,4 @@
-<nav class="navbar @if(!isset($hideLoginForm)) fixed-top @endif navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar @if (!isset($hideLoginForm)) fixed-top @endif navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('homepage') }}"> <img src="/img/brand/logo-colored.png" height="50"></a>
         <div class="collapse navbar-collapse" id="mynavbar">
@@ -22,7 +22,7 @@
                 {{ Form::text('username','', ['placeholder'=> 'username', 'class' => 'form-control me-2']) }}
                 {{ Form::password('password', ['placeholder' => 'password', 'class' => 'form-control me-2']) }}
                 {{ Form::submit('Accedi', ['class' => 'btn btn-primary me-2']) }}
-                <a class="btn btn-primary me-2" href="{{ route('signin') }}" >Registrati</a>
+                <a class="btn btn-primary me-2" href="{{ route('register') }}" >Registrati</a>
             {{ Form::close() }}
             @endif
         </div>

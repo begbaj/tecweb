@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'username', 'password', 'birthday', 'gender', 'role',
+        'nome', 'cognome', 'username', 'password', 'data_nascita', 'genere', 'ruolo',
     ];
 
     /**
@@ -34,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'birthday' => 'datetime',
+        'data_nascita' => 'date',
     ];
 
     public function hasRole($role){
