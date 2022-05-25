@@ -8,7 +8,7 @@
       <div class="container text-light">  
         <div class="container bg-transparent mt-5 mb-4 pb-0 pt-5 text-center ">
             <div class="text-center mb-3">
-                <img src="img/brand/logo-colored.png" style="width: 80px;" alt="logo-coloured">
+                <img src="{{ URL::asset('img/brand/logo-colored.png') }}" style="width: 80px;" alt="logo-coloured">
             </div>
             <h2 class="jumbotron-heading jumbotron-fluid"> Benvenuto su Kumuuzag!</h2>
             <h2 class="lead"> Effettua il login.</h2>

@@ -8,11 +8,11 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-dark text-center">Catalogo</h1>
         @if (!auth()->user('admin'))
-        <p class="lead text-muted text-center"> <a id="registrazione" href="#"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
+        <p class="lead text-muted text-center"> <a id="registrazione" href="{{ route('register') }}"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
         @endif
       </div>
     </div>
-
+<!--
 <div class="container row align-items-center">
     <div class="input-group rounded col">
         <input type="search" class="form-control rounded" placeholder="Luogo" aria-label="Search" />
@@ -47,6 +47,7 @@
       </div>
      </div>
 </div>
+-->
 </section> 
 <div class="album py-5 bg-light">
     <div class="container">

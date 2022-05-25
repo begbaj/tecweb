@@ -1,6 +1,6 @@
 
 <div class="col">
-  <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+  <a href="{{ route('homepage') }}" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
       <img src="{{ URL::asset('img/brand/logo.png') }}" height="100">
   </a>
   <p class="text-muted">© 2021</p>
