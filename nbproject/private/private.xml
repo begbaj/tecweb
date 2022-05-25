@@ -7,9 +7,7 @@
             <file>file:////wsl$/Ubuntu/opt/lampp/htdocs/tecweb/resources/views/components/navbar.blade.php</file>
             <file>file:////wsl$/Ubuntu/opt/lampp/htdocs/tecweb/resources/views/locatario.blade.php</file>
             <file>file:////wsl$/Ubuntu/opt/lampp/htdocs/tecweb/resources/views/auth/login.blade.php</file>
-            <file>file:////wsl$/Ubuntu/opt/lampp/htdocs/tecweb/resources/views/layouts/locatario.blade.php</file>
             <file>file:////wsl$/Ubuntu/opt/lampp/htdocs/tecweb/resources/views/public/catalog.blade.php</file>
-            <file>file:////wsl$/Ubuntu/opt/lampp/htdocs/tecweb/resources/views/public/who.blade.php</file>
         </group>
     </open-files>
 </project-private>
