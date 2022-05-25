@@ -16,34 +16,38 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('it_IT');
-
-        for ($i = 0; $i < 1000; $i++) { 
-                DB::table('users')->insert(
-                    [[
-                        'nome' => $faker->firstName,
-                        'cognome' => $faker->lastName,
-                        'data_nascita' => $faker->date,
-                        'genere' => $faker->randomElement(['m','f','b']),
-                        'username' => $faker->unique()->userName,
-                        'password' => Hash::make($faker->password),
-                        'ruolo' => $faker->randomElement(['locatore','locatario']),
-                        'created_at' => $faker->dateTime
-                    ]]
-            );
-	}
+	
+	try {
+		for ($i = 0; $i < 1000; $i++) { 
+			DB::table('users')->insert(
+			    [[
+				'nome' => $faker->firstName,
+				'cognome' => $faker->lastName,
+				'data_nascita' => $faker->date,
+				'genere' => $faker->randomElement(['m','f','b']),
+				'username' => $faker->unique()->userName,
+				'password' => Hash::make($faker->password),
+				'ruolo' => $faker->randomElement(['locatore','locatario']),
+				'created_at' => $faker->dateTime
+			    ]]
+		    );
+		}
         
-        DB::table('users')->insert([
-            ['nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
-                'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatore','created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")],
-            ['nome' => 'Locatario', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'f', 'username' => 'lariolario',
-                'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")],
-            ['nome' => 'Admin', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'adminadmin',
-                'password' => Hash::make('Niphwpog'), 'ruolo' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")]
-	]);
-	 
+		DB::table('users')->insert([
+		    ['nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
+			'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatore','created_at' => date("Y-m-d H:i:s"),
+			'updated_at' => date("Y-m-d H:i:s")],
+		    ['nome' => 'Locatario', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'f', 'username' => 'lariolario',
+			'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
+			'updated_at' => date("Y-m-d H:i:s")],
+		    ['nome' => 'Admin', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'adminadmin',
+			'password' => Hash::make('Niphwpog'), 'ruolo' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
+			'updated_at' => date("Y-m-d H:i:s")]
+		]);
+   	} catch (Exception $e) {
+	    echo 'Message: ' .$e->getMessage();
+    	}
+
         // $this->call(UsersTableSeeder::class);
 	
 	$locatori = User::all()->filter(function ($item) {return ($item->getAttributeValue('ruolo')=='locatore');})->pluck('id')->toArray();
@@ -54,29 +58,29 @@ class DatabaseSeeder extends Seeder
 		
                 DB::table('faq')->insert(
                     [[
-                        'domanda' => $faker->text(500),
-                        'risposta' => $faker->text(500),
+                        'domanda' => $faker->text(100),
+                        'risposta' => $faker->text(100),
                         'created_at' => $faker->dateTime,
 			'ordine' => $i
                     ]]
 		);
 
 		DB::table('servizi')->insert( [[
-                        'nome' => $faker->text(50),
-                        'icona' => $faker->text(50),
-                        'tipo' => $faker->text(12),
+                        'nome' => $faker->sentence($ndWords=3),
+                        'icona' => $faker->word,
+                        'tipo' => $faker->randomelement(['appartamento','posto_letto']),
                         'created_at' => $faker->dateTime
                     ]]
 		);
 
 		DB::table('alloggi')->insert(
                     [[
-                        'titolo' => $faker->text(100),
+                        'titolo' => $faker->sentence($nbWords=5),
                         'descrizione' => $faker->text(300),
                         'eta_min' => $faker->numberBetween(20,40),
-                        'eta_max' => $faker->numberBetween(20,40),
+                        'eta_max' => $faker->numberBetween(20,50),
                         'prezzo' => $faker->randomFloat($nbMaxDecimals=2, $min=100, $max=600),
-                        'sesso' => $faker->randomElement(['m','f','b']),
+                        'sesso' => $faker->randomelement(['m','f','b']),
                         'superficie' => $faker->numberBetween(10,1000),
                         'opzionato' => $faker->boolean,
                         'data_min' => $faker->date,
@@ -118,28 +122,33 @@ class DatabaseSeeder extends Seeder
                     [[
 			'id_mittente' => $faker->randomElement($locatari),
 			'id_destinatario' => $faker->randomElement($locatori),
-			'testo' => $faker->text,
+			'testo' => $faker->sentence($nbWords=10),
 			'created_at' => $faker->dateTime
                     ]]
             	);
 
             } catch (Exception $e) {
+		    echo 'Message: ' .$e->getMessage();
             }
         }
- 
-	for ($i = 0; $i < 50; $i++) { 
+ 	
+	$alloggi_opzionati=Alloggio::all()->filter(function ($item) {return ($item->getAttributeValue('opzionato')==true);})->pluck('id')->toArray();
+
+	foreach($alloggi_opzionati as $alloggio) { 
             try {    
 		DB::table('messaggi')->insert(
                     [[
 			'id_mittente' => $faker->randomElement($locatari),
 			'id_destinatario' => $faker->randomElement($locatori),
-			'testo' => $faker->text,
-			'id_alloggio' => $faker->randomElement($alloggi),
+			'testo' => $faker->sentence($nbWords=10),
+			'id_alloggio' => $alloggio,
+			'data_conferma_opzione' => $faker->dateTime,
 			'created_at' => $faker->dateTime,
                     ]]
             	);
 
             } catch (Exception $e) {
+		    echo 'Message: ' .$e->getMessage();
             }
         }
     }
