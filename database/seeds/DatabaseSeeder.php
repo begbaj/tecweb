@@ -5,6 +5,7 @@ use Faker\Factory as Faker;
 use App\User;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Servizio;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
 	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
 	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
 
+         
 	for ($i = 0; $i < 100; $i++) { 
             try {    
 		
@@ -73,6 +75,7 @@ class DatabaseSeeder extends Seeder
                     ]]
 		);
 
+                
 		DB::table('alloggi')->insert(
                     [[
                         'titolo' => $faker->sentence($nbWords=5),

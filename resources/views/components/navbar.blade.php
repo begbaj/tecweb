@@ -7,11 +7,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admcat') }}">Catalogo</a>
                 </li>
-
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admcat') }}">Catalogo Pubblico</a>
+                </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admcat') }}">Ricerca</a>
+                </li>
             @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo</a>
