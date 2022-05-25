@@ -10,7 +10,7 @@
     'locale' => 'it',
     'fallback_locale' => 'en',
     'faker_locale' => 'it_IT',
-    'key' => 'base64:kNnI8aiLXkzG3TPkqDAhVKZ16hynjkUp3ggW4vXOy5s=',
+    'key' => 'base64:BM3+liOK2x3OPPZ08piITixvrD8uv5XZbJmj5CadZSA=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -175,7 +175,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/opt/lampp/htdocs/tecweb/storage/framework/cache/data',
+        'path' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -221,14 +221,6 @@
     'default' => 'mysql',
     'connections' => 
     array (
-      'sqlite' => 
-      array (
-        'driver' => 'sqlite',
-        'url' => NULL,
-        'database' => 'laravel',
-        'prefix' => '',
-        'foreign_key_constraints' => true,
-      ),
       'mysql' => 
       array (
         'driver' => 'mysql',
@@ -248,34 +240,6 @@
         'options' => 
         array (
         ),
-      ),
-      'pgsql' => 
-      array (
-        'driver' => 'pgsql',
-        'url' => NULL,
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'laravel',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'prefix_indexes' => true,
-        'schema' => 'public',
-        'sslmode' => 'prefer',
-      ),
-      'sqlsrv' => 
-      array (
-        'driver' => 'sqlsrv',
-        'url' => NULL,
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'laravel',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'prefix_indexes' => true,
       ),
     ),
     'migrations' => 'migrations',
@@ -314,12 +278,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/opt/lampp/htdocs/tecweb/storage/app',
+        'root' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/opt/lampp/htdocs/tecweb/storage/app/public',
+        'root' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -366,13 +330,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/opt/lampp/htdocs/tecweb/storage/logs/laravel.log',
+        'path' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/opt/lampp/htdocs/tecweb/storage/logs/laravel.log',
+        'path' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -422,7 +386,7 @@
       ),
       'emergency' => 
       array (
-        'path' => '/opt/lampp/htdocs/tecweb/storage/logs/laravel.log',
+        'path' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/logs/laravel.log',
       ),
     ),
   ),
@@ -445,7 +409,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/opt/lampp/htdocs/tecweb/resources/views/vendor/mail',
+        0 => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/resources/views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -524,7 +488,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/opt/lampp/htdocs/tecweb/storage/framework/sessions',
+    'files' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -544,9 +508,9 @@
   array (
     'paths' => 
     array (
-      0 => '/opt/lampp/htdocs/tecweb/resources/views',
+      0 => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/resources/views',
     ),
-    'compiled' => '/opt/lampp/htdocs/tecweb/storage/framework/views',
+    'compiled' => '/Applications/XAMPP/xamppfiles/htdocs/tecweb/storage/framework/views',
   ),
   'flare' => 
   array (
