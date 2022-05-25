@@ -50,8 +50,8 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UsersTableSeeder::class);
 	
-	$locatori = User::all()->filter(function ($item) {return ($item->getAttributeValue('ruolo')=='locatore');})->pluck('id')->toArray();
-	$locatari = User::all()->filter(function ($item) {return ($item->getAttributeValue('ruolo')=='locatario');})->pluck('id')->toArray();
+	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
+	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
 
 	for ($i = 0; $i < 100; $i++) { 
             try {    
@@ -132,7 +132,7 @@ class DatabaseSeeder extends Seeder
             }
         }
  	
-	$alloggi_opzionati=Alloggio::all()->filter(function ($item) {return ($item->getAttributeValue('opzionato')==true);})->pluck('id')->toArray();
+	$alloggi_opzionati=Alloggio::where('opzionato', '=', true)->pluck('id')->toArray();
 
 	foreach($alloggi_opzionati as $alloggio) { 
             try {    
