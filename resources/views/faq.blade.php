@@ -11,8 +11,8 @@
 <p class= "text-dark"> @php echo ++$count; @endphp {{ $faq->domanda }} </p>
 <p class="text-secondary">{{ $faq->risposta }} </p>
 </div>
-</div>
 
 @endforeach
 @endisset()
+</div>
 @endsection
