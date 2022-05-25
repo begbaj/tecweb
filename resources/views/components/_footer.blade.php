@@ -11,9 +11,9 @@
 </div>
 
 <div class="col">
-  <h5>Section</h5>
+  <h5>Kumuuzag</h5>
   <ul class="nav flex-column">
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+    <li class="nav-item mb-2"><a href="{{route('homepage')}}" class="nav-link p-0 text-muted">Home</a></li>
     <li class="nav-item mb-2"><a href="{{route('priv')}}" class="nav-link p-0 text-muted">Privacy and Terms</a></li>
     <li class="nav-item mb-2"><a href="{{route('faq')}}" class="nav-link p-0 text-muted">FAQs</a></li>
     <li class="nav-item mb-2"><a href="{{route('who')}}" class="nav-link p-0 text-muted">About</a></li>
@@ -21,20 +21,9 @@
 </div>
 
 <div class="col">
-  <h5>Section</h5>
-  <ul class="nav flex-column">
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-  </ul>
-</div>
-
-<div class="col">
   <h5>Social</h5>
   <ul class="nav flex-column">
-    <li><a href="https://www.instagram.com/kumuuzag/" title="Contattaci su instagram">Instagram: @kumuuzag</a></li>
-    <li><a href="mailto:kumuuzag@gmail.com" title="Mandaci un messaggio">Contattaci: kumuuzag@gmail.com</a></li>
+    <li><a href="https://www.instagram.com/kumuuzag/" title="Contattaci su instagram">Scrivici su Instagram</a></li>
+    <li><a href="mailto:kumuuzag@gmail.com" title="Mandaci un messaggio">Mandaci una mail</a></li>
   </ul>
 </div>

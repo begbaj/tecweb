@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accomodations;
-use App\Models\Faq;
+use App\Models\Resources\Faq;
 use App\Models\Resources\Alloggio;
-use Illuminate\Support\Facades\Log;
 
 class PublicController extends Controller {
     
@@ -14,13 +13,12 @@ class PublicController extends Controller {
     protected $_role;
     
     public function __construct() {
-        Log::debug('CONTROLLER_CALL: PublicController called');
         $this->middleware('guest')->except(redirect()->route('homepage'));
     }
     
     public function faq() {
         $this->_faq = new Faq;
-        $faq = $this->_faq->getFaq();
+        $faq = $this->_faq->all();
         return view('faq')->with('faq', $faq);
     }
 

@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -39,7 +38,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        Log::debug('CONTROLLER_CALL: RegisterController called');
         $this->middleware('guest');
     }
 
