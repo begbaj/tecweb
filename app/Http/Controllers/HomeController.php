@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Models\Accomodations;
+use App\Models\Resources\Alloggio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        Log::debug('CONTROLLER_CALL: HomeController called');
     }
 
     /**
@@ -31,10 +33,14 @@ class HomeController extends Controller
                     break;
                 case 'locatore': return redirect()->route('locatore');
                     break;
-                case 'locatario':return redirect()->route('locatario');
-            default: return view('homepage');};
+                case 'locatario': return redirect()->route('locatario');
+                default:
+                    $accomodations = new Alloggio;
+                    return view('homepage')->with("accomodations", $accomodations->all());
+            }
         }else{
-            return view('homepage');
+            $accomodations = new Alloggio;
+            return view('homepage')->with("accomodations", $accomodations->all());
         }
     }
 }

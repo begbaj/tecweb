@@ -32,8 +32,12 @@ Route::get('/login', "PublicController@login")
 Route::get('/who', 'PublicController@who')
     ->name('who');
 
+Route::get('/priv', 'PublicController@priv')
+    ->name('priv');
+
 Route::get('/', 'HomeController@index')
     ->name("homepage");
+
 
 
 /*
@@ -94,3 +98,5 @@ Route::get('/register', 'Auth\RegisterController@showRegistrationForm')
         ->name('register');
 
 Route::post('/register', 'Auth\RegisterController@register');
+
+Route::get('/admcat','AdminController@catalog')->name('admcat');

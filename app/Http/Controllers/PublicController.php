@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Accomodations;
 use App\Models\Faq;
+use App\Models\Resources\Alloggio;
+use Illuminate\Support\Facades\Log;
 
 class PublicController extends Controller {
     
@@ -12,6 +14,7 @@ class PublicController extends Controller {
     protected $_role;
     
     public function __construct() {
+        Log::debug('CONTROLLER_CALL: PublicController called');
         $this->middleware('guest')->except(redirect()->route('homepage'));
     }
     
@@ -26,15 +29,19 @@ class PublicController extends Controller {
     }
 
     public function catalog() {
-        $this->_accomodations = new Accomodations;
-        $accomodations = $this->_accomodations->getAccomodations();
+        $this->_accomodations = new Alloggio;
+        $accomodations = $this->_accomodations->all();
         return view('public.catalog')
             ->with('accomodations', $accomodations);
     }
     public function homepage() {
-        $this->_accomodations = new Accomodations;
-        $accomodations = $this->_accomodations->getAccomodations();
+        $this->_accomodations = new Alloggio;
+        $accomodations = $this->_accomodations->all();
         return view('homepage')
             ->with("accomodations", $accomodations);
     }
+
+    public function priv() {
+        return view('priv');
+    }    
 }
