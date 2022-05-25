@@ -7,7 +7,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admcat') }}">Catalogo</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admcat') }}">Gestisci FAQs</a>
+                </li>                
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
 
             @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
