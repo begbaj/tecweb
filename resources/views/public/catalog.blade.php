@@ -13,40 +13,35 @@
       </div>
     </div>
 
-<div class="container row align-items-center">
-    <div class="input-group rounded col">
-        <input type="search" class="form-control rounded" placeholder="Luogo" aria-label="Search" />
-    </div>
-    <div class="col w-25">
-    <label> inzio</label>
-    </div>
-     <div class="form-group col">
-      <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar">
-         </i>
+{{Form::open(array('id' => 'filter-form', 'files' => false )) }}
+    <div class='d-flex justify-content-center'>
+        <div class="container d-flex justify-content-center border row border-secondary rounded align-items-center mt-5 pe-5">
+            <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
+                {{ Form::label('location', 'Località', ['class' => 'col-sm-2 col-form-label', 'for' => 'location']) }}
+                <div class="col-sm-10 ps-3">
+                {{ Form::text('location', '', ['value' => old("location"), 'placeholder'=> 'Località', 'class' => 'form-control ms-4']) }}
+                </div>
+            </div>
+            
+            <div class="form-outline row ms-5 mb-4 mt-4 w-25">
+                {{ Form::label('start-date', 'Inizio', ['class' => 'col-sm-2 col-form-label', 'for' => 'start-date']) }}
+                <div class="col-sm-9 ps-3">
+                {{ Form::date('start-date', \Carbon\Carbon::now(), ['value' => old('start-date'), 'class' => 'form-control ms-4']) }}
+                </div>
+            </div>
+
+            <div class="form-outline row ms-5 mb-4 mt-4 pe-3 w-25">
+                {{ Form::label('end-date', 'Fine', ['class' => 'col-sm-2 col-form-label', 'for' => 'end-date']) }}
+                <div class="col-sm-9 ps-3">
+                {{ Form::date('end-date', \Carbon\Carbon::now(), ['value' => old('end-date'), 'class' => 'form-control ms-4']) }}
+                </div>
+            </div>
+            
+            <div class="text-center col pt-2 ps-4">
+                {{ Form::submit('Cerca', ['class' => 'btn btn-primary mb-3 mt-2']) }}
+            </div>
         </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-       </div>
-      </div>
-     </div>
-    
-<div class="col">
-    <label> fine</label>
-</div>
-<div class="form-group col">
-      <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar">
-         </i>
-        </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-       </div>
-      </div>
-     </div>
-</div>
+    </div>
 </section> 
 <div class="album py-5 bg-light">
     <div class="container">
