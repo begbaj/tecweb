@@ -6,7 +6,7 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-dark text-center">Catalogo</h1>
         <?php if(!auth()->user('admin')): ?>
-        <p class="lead text-muted text-center"> <a id="registrazione" href="#"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
+        <p class="lead text-muted text-center"> <a id="registrazione" href="<?php echo e(route('register')); ?>"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
         <?php endif; ?>
       </div>
     </div>

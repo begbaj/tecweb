@@ -12,44 +12,6 @@
         @endif
       </div>
     </div>
-<<<<<<< HEAD
-<!--
-<div class="container row align-items-center">
-    <div class="input-group rounded col">
-        <input type="search" class="form-control rounded" placeholder="Luogo" aria-label="Search" />
-    </div>
-    <div class="col w-25">
-    <label> inzio</label>
-    </div>
-     <div class="form-group col">
-      <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar">
-         </i>
-        </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-       </div>
-      </div>
-     </div>
-    
-<div class="col">
-    <label> fine</label>
-</div>
-<div class="form-group col">
-      <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar">
-         </i>
-        </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-       </div>
-      </div>
-     </div>
-</div>
--->
-=======
 
 {{Form::open(array('id' => 'filter-form', 'files' => false )) }}
     <div class='d-flex justify-content-center'>
@@ -80,7 +42,6 @@
             </div>
         </div>
     </div>
->>>>>>> 92002df145571feaa892cfac05c786738b37ee43
 </section> 
 <div class="album py-5 bg-light">
     <div class="container">
