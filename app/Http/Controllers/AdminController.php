@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Models\Resources\Alloggio;
 
 
@@ -11,7 +10,7 @@ class AdminController extends Controller
     protected $_accomodations;
  
     public function __construct() {
-        Log::debug('CONTROLLER_CALL: AdminController called');
+        // Log::debug('CONTROLLER_CALL: AdminController called');
         $this->middleware('can:isAdmin');
     }
 
