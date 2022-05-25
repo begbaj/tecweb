@@ -3,22 +3,25 @@
         <a class="navbar-brand" href="{{ route('homepage') }}"> <img src="img/brand/logo-colored.png" height="50"></a>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
+            @if (Auth::check() && auth()->user()->hasRole('admin'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admcat') }}">Catalogo</a>
                 </li>
-            @if (!auth()->user('admin'))
+            @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
+
+            @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
+
+            @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo</a>
                 </li>
-            @endif                 
-            @if (!auth()->user('admin'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('who') }}">About us</a>
                 </li>
-            @endif    
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
                 </li>
+            @endif    
             </ul>
             @if (Auth::check())
             {{ Form::open(array('route' => 'logout', 'id' => 'navbar-logout', 'files' => false, 'class'=> 'form-inline d-flex mt-3')) }}

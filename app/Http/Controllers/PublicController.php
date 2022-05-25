@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accomodations;
-use App\Models\Faq;
+use App\Models\Resources\Faq;
 use App\Models\Resources\Alloggio;
 
 class PublicController extends Controller {
@@ -18,7 +18,7 @@ class PublicController extends Controller {
     
     public function faq() {
         $this->_faq = new Faq;
-        $faq = $this->_faq->getFaq();
+        $faq = $this->_faq->all();
         return view('faq')->with('faq', $faq);
     }
 
