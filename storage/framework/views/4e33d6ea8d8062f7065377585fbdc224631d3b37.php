@@ -1,24 +1,28 @@
 <nav class="navbar <?php if(!isset($hideLoginForm)): ?> fixed-top <?php endif; ?> navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<?php echo e(route('homepage')); ?>"> <img src="img/brand/logo-colored.png" height="50"></a>
+        <a class="navbar-brand" href="<?php echo e(route('homepage')); ?>"> <img src="<?php echo e(URL::asset('img/brand/logo-colored.png')); ?>" height="50"></a>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
+            <?php if(Auth::check() && auth()->user()->hasRole('admin')): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('admcat')); ?>">Catalogo</a>
                 </li>
-            <?php if(auth()->user('admin')): ?>
+
+            <?php elseif(Auth::check() && auth()->user()->hasRole('locatore')): ?>
+
+            <?php elseif(Auth::check() && auth()->user()->hasRole('locatario')): ?>
+
+            <?php else: ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('catalog')); ?>">Catalogo</a>
                 </li>
-            <?php endif; ?>                 
-            <?php if(!auth()->user('admin')): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('who')); ?>">About us</a>
                 </li>
-            <?php endif; ?>    
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('faq')); ?>">FAQs</a>
                 </li>
+            <?php endif; ?>    
             </ul>
             
              
