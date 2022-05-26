@@ -13,4 +13,12 @@ class Alloggio extends Model
 
 	public $timestamps = true;
 
+
+
+public function make_stats($tipo, $data_inizio, $data_fine){
+    $get_filtered = Alloggio::whereRaw('tipo = "' . $tipo .'" and created_at between DATE('. $data_inizio. ') and DATE('.$data_fine .');')->get();
+    return $get_filtered;
+}
+
+
 }

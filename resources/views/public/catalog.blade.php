@@ -44,13 +44,13 @@
  @endif
 
 @if (auth()->user('admin'))
-{{Form::open(array('id' => 'filter-form', 'files' => false )) }}
+{{Form::open(array('route' => 'stats', 'id' => 'filter-form', 'files' => false, 'method'=>'GET' )) }}
     <div class='d-flex justify-content-center align-center'>
         <div class="container d-flex justify-content-center border row border-secondary rounded align-center mt-5 pe-5 align-items-center">
             <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
                 {{ Form::label('type', 'Tipologia', ['class' => 'col-sm-2 col-form-label', 'for'=>'type']) }}
                 <div class="col-sm-10 ps-3">
-                {{ Form::select('type', ['appartamento' => "Appartamento", 'posto-letto' => "Posto Letto"], old("type"), ['class' => 'form-control ms-5']) }}
+                {{ Form::select('type', ['appartamento' => "appartamento", 'posto-letto' => "posto letto"], old("type"), ['class' => 'form-control ms-5']) }}
                 </div>
             </div>
             
@@ -71,7 +71,13 @@
                 {{ Form::submit('Cerca', ['class' => 'btn btn-primary mb-3 mt-2 ms-5']) }}
             </div>
         </div>
-    </div>        
+    </div> 
+    {{Form::close()}}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach( $accomodations as $accomodation)    
+                @include('components.card', [ 'accomodation' => $accomodation ] )
+            @endforeach 
+        </div>
 @endif
   
     

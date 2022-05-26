@@ -83,6 +83,9 @@ Route::get('/locatario', 'LocatarioController@index')
 Route::get('/admin', "AdminController@index")
         ->name('admin');
 
+Route::get('/stats', "AdminController@stats")
+        ->name('stats');
+
 
 // Rotte per l'autenticazione
 Route::get('/login', 'Auth\LoginController@showLoginForm')
