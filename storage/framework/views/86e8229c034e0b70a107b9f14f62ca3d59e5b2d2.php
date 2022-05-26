@@ -51,6 +51,83 @@
             </div>
         </div>
     </div>
+    
+    <div class="d-flex row border border-secondary rounded justify-content-start mt-3 ms-0" style="width: 35%">
+        <div class="container">
+            <div class="form-outline d-flex row align-items-center justify-content-center pt-3 me-1">
+                <?php echo e(Form::label('type', 'Tipologia', ['class' => 'col-sm-2 col-form-label', 'for'=>'type'])); ?>
+
+                <div class="d-flex col-7 ms-3">
+                <?php echo e(Form::select('type', ['appartamento' => "Appartamento", 'posto-letto' => "Posto Letto"], old("type"), ['class' => 'form-control ms-4'])); ?>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="form-outline d-flex row align-items-center justify-content-center pt-3 me-1">
+                <?php echo e(Form::label('min-price', 'Prezzo Min', ['class' => 'col-sm-2 col-form-label', 'for' => 'min-price'])); ?>
+
+                 <div class="d-flex col-7 ms-3">
+                <?php echo e(Form::text('min-price', '', ['value' => old("min-price"), 'placeholder' => 'prezzo minimo', 'class' => 'form-control ms-4'])); ?>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="form-outline d-flex row align-items-center justify-content-center pt-2 me-1">
+                <?php echo e(Form::label('max-price', 'Prezzo Max', ['class' => 'col-sm-2 col-form-label', 'for' => 'max-price'])); ?>
+
+                 <div class="d-flex col-7 ms-3">
+                <?php echo e(Form::text('max-price', '', ['value' => old("max-price"), 'placeholder' => 'prezzo massimo', 'class' => 'form-control ms-4'])); ?>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="form-outline d-flex row align-items-center justify-content-center pt-3 me-1">
+                <?php echo e(Form::label('dimension', 'Dimensione', ['class' => 'col-sm-2 col-form-label', 'for' => 'dimension'])); ?>
+
+                 <div class="d-flex col-7 ms-3">
+                <?php echo e(Form::text('dimension', '', ['value' => old("dimension"), 'placeholder' => 'dimensione', 'class' => 'form-control ms-4'])); ?>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div  class="form-outline d-flex row align-items-center justify-content-center pt-3 me-1">
+                <?php echo e(Form::label('n-rooms', 'Numero Camere', ['class' => 'col-sm-2 col-form-label', 'for'=> 'n-rooms'])); ?>
+
+                <div class="d-flex col-7 ms-3">
+                <?php echo e(Form::number('n-rooms', '0', ['value'=> old("n-rooms"), 'class' => 'form-control ms-4'])); ?>   
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div  class="form-outline d-flex row align-items-center justify-content-center pt-2 pb-2 me-1">
+                <?php echo e(Form::label('n-beds', 'Posti Letto', ['class' => 'col-sm-2 col-form-label', 'for'=> 'n-beds'])); ?>
+
+                <div class="d-flex col-7 ms-3">
+                <?php echo e(Form::number('n-beds', '0', ['value'=> old("n-beds"), 'class' => 'form-control ms-4'])); ?>   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="d-flex row border border-secondary rounded justify-content-start mt-3 ms-0" style="width: 35%">
+        <div class="d-flex row justify-content-center">
+            <?php echo e(Form::checkbox('name', 'value', null)); ?>
+
+            <?php echo e(Form::checkbox('cucina', 'Cucina')); ?>
+
+            <?php echo e(Form::checkbox('cucina', 'Cucina')); ?>
+
+        </div> 
+    </div>    
 </section>
 <?php $__env->stopSection(); ?>
 

@@ -1,6 +1,6 @@
 @extends('layouts.public', ['hideLoginForm' => True])
 
-@section('title', 'Login')
+@section('title', 'Registrati')
 
 @section('content')
 <div class="container-fluid bg-light">
