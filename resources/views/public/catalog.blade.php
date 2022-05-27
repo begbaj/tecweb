@@ -49,20 +49,20 @@
             @endforeach 
         </div>
 @endif
-  
+</section>
+
 @if (!auth()->user('admin'))    
-</section> 
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            @foreach( $accomodations as $accomodation)    
+<div class="container-fluid">
+@foreach($accomodations->chunk(3) as $chunk)
+	<div class="card-group">
+            @foreach($chunk as $accomodation)    
                 @include('components.card', [ 'accomodation' => $accomodation ] )
             @endforeach 
-        </div>
-    </div>
+	</div>
+@endforeach 
 </div>
 
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mt-5">
 	{{$accomodations->onEachSide(2)->links()}}
 </div>
 @endif
