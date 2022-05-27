@@ -12,4 +12,9 @@ class LocatarioController extends Controller
 
     public function index() {
         return view('locatario');
-    }}
+    }
+    
+    public function profile(){
+       return view('user.profileLocatario');
+    }
+}

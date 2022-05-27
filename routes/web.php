@@ -36,9 +36,7 @@ Route::get('/priv', 'PublicController@priv')
     ->name('priv');
 
 Route::get('/', 'HomeController@index')
-    ->name("homepage");
-
-
+    ->name('homepage');
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +71,9 @@ Route::get('/locatore', 'LocatoreController@index')
 
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario');
+
+Route::get('/profile', 'LocatarioController@profile')
+        ->name('profile');
 
 /*
 |--------------------------------------------------------------------------

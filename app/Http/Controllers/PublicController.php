@@ -41,5 +41,5 @@ class PublicController extends Controller {
 
     public function priv() {
         return view('priv');
-    }    
+    } 
 }
