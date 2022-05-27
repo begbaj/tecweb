@@ -50,14 +50,9 @@ class DatabaseSeeder extends Seeder
     	}
 
         // $this->call(UsersTableSeeder::class);
-	
-	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
-	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
 
-         
-	for ($i = 0; $i < 100; $i++) { 
+	for ($i = 0; $i < 15; $i++) { 
             try {    
-		
                 DB::table('faq')->insert(
                     [[
                         'domanda' => $faker->text(100),
@@ -70,12 +65,20 @@ class DatabaseSeeder extends Seeder
 		DB::table('servizi')->insert( [[
                         'nome' => $faker->sentence($ndWords=3),
                         'icona' => $faker->word,
-                        'tipo' => $faker->randomelement(['appartamento','posto_letto']),
+                        'tipo' => $faker->randomelement(['appartamento','posto_letto', null]),
                         'created_at' => $faker->dateTime
                     ]]
 		);
+            } catch (Exception $e) {
+		    echo 'Message: ' .$e->getMessage();
+            }
+	}
 
-                
+	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
+	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
+
+	for ($i = 0; $i < 300; $i++) { 
+            try {    
 		DB::table('alloggi')->insert(
                     [[
                         'titolo' => $faker->sentence($nbWords=5),
