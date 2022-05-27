@@ -13,7 +13,7 @@ class Alloggio extends Model
 	public $timestamps = true;
 
 	public function getAlloggiByDate(){
-		$accomodations = Alloggio::orderby('created_at')->paginate(15);
+		$accomodations = Alloggio::orderby('created_at', 'desc')->paginate(15);
 		return $accomodations;
 	}
 

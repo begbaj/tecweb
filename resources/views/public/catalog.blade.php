@@ -62,10 +62,8 @@
     </div>
 </div>
 
-<div class="py-5 text-center container">  
-	<div class="container d-flex justify-content-center">
-		{{$accomodations->links()}}
-	</div>
+<div class="container d-flex justify-content-center">
+	{{$accomodations->onEachSide(2)->links()}}
 </div>
 
 @endsection
