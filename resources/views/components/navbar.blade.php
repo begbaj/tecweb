@@ -16,7 +16,7 @@
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admcat') }}">Ricerca</a>
+                    <a class="nav-link" href="{{ route('locatario') }}">Ricerca</a>
                 </li>
             @else
                 <li class="nav-item">
