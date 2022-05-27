@@ -50,7 +50,7 @@
         </div>
 @endif
   
-    
+@if (!auth()->user('admin'))    
 </section> 
 <div class="album py-5 bg-light">
     <div class="container">
@@ -67,5 +67,5 @@
 		{{$accomodations->links()}}
 	</div>
 </div>
-
+@endif
 @endsection
