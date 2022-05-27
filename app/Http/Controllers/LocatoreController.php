@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resources\Alloggio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LocatoreController extends Controller
 {
@@ -12,5 +14,12 @@ class LocatoreController extends Controller
     }
 
     public function index() {
-        return view('locatore');
-    }}
+        $accoms = Alloggio::where('id_locatore', Auth::user()->id);
+        return view('locatore')->with('accoms', $accoms);
+    }
+
+    public function newaccom() {
+        return view('locatore.make_alloggio');
+    }
+
+}

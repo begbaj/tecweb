@@ -7,14 +7,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('admcat')); ?>">Catalogo</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('faq')); ?>">FAQs</a>
-                </li>
-           
             <?php elseif(Auth::check() && auth()->user()->hasRole('locatore')): ?>
-               
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo e(route('catalog')); ?>">Catalogo Pubblico</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo e(route('newaccom')); ?>">Inserisci Alloggio</a>
+                </li>
             <?php elseif(Auth::check() && auth()->user()->hasRole('locatario')): ?>
-            
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo e(route('admcat')); ?>">Ricerca</a>
+                </li>
             <?php else: ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('catalog')); ?>">Catalogo</a>

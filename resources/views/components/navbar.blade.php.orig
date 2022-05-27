@@ -7,17 +7,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admcat') }}">Catalogo</a>
                 </li>
+<<<<<<< HEAD
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('catalog') }}">Catalogo Pubblico</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('newaccom') }}">Inserisci Alloggio</a>
+                    <a class="nav-link" href="{{ route('admcat') }}">Catalogo Pubblico</a>
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admcat') }}">Ricerca</a>
                 </li>
+=======
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admcat') }}">Gestisci FAQs</a>
+                </li>                
+            @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
+               
+            @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
+            
+>>>>>>> 63060649691115ba72c9273fcb3ad36069700999
             @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo</a>
