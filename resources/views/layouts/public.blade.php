@@ -7,7 +7,7 @@
                     cards = document.getElementsByClassName('card-text');
 
                     for(i=0; i< cards.length; i++){
-                            cards[i].innerHTML = truncateText(cards[i].innerHTML, 50);
+                            cards[i].innerHTML = truncateText(cards[i].innerHTML, 120);
                     }
             }
 
@@ -15,7 +15,7 @@
                     if(text.length <= max_char){
                             return text;
                     }
-                    return  text.slice(0,max_char-3) + '...';
+                    return  text.slice(0,max_char-2) + '...';
             }
     </script>
     <title> Kumuuzag - @yield('title') </title>
