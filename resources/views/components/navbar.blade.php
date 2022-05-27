@@ -5,7 +5,7 @@
             <ul class="navbar-nav me-auto">
             @if (Auth::check() && auth()->user()->hasRole('admin'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admcat') }}">Catalogo</a>
+                    <a class="nav-link" href="{{ route('stats') }}">Catalogo</a>
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
                 <li class="nav-item">
