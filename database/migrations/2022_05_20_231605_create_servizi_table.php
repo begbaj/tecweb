@@ -14,10 +14,10 @@ class CreateServiziTable extends Migration
     public function up()
     {
         Schema::create('servizi', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->index();
 	    $table->string('nome', 50);
 	    $table->string('icona', 50);
-	    $table->string('tipo', 12);
+	    $table->string('tipo', 12)->nullable();
             $table->timestamps();
         });
     }

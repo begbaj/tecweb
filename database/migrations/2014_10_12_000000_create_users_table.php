@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome', 30);
             $table->string('cognome', 30);
-            $table->dateTime('data_nascita');
+            $table->date('data_nascita');
 	    $table->string('genere', 20);
             $table->string('username', 30)->unique();
             $table->string('password', 128);
