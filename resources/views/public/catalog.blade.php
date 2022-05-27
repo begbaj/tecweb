@@ -1,5 +1,25 @@
 @extends('layouts.public')
 
+@push('head')
+<script type="text/javascript" src="src/jquery.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+        	cards = document.getElementsByClassName('card-text');
+
+		for(i=0; i< cards.length; i++){
+			cards[i].innerHTML = truncateText(cards[i].innerHTML, 50);
+		}
+	}
+
+	function truncateText(text, max_char){
+		if(text.length <= max_char){
+			return text;
+		}
+		return  text.slice(0,max_char-3) + '...';
+	}
+</script>
+@endpush
+
 @section('title', 'Catalogo')
 
 @section('content') 
