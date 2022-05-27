@@ -36,9 +36,7 @@ Route::get('/priv', 'PublicController@priv')
     ->name('priv');
 
 Route::get('/', 'HomeController@index')
-    ->name("homepage");
-
-
+    ->name('homepage');
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +74,9 @@ Route::get('/lore/newaccom', 'LocatoreController@newaccom')
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario');
 
+Route::get('/profile', 'LocatarioController@profile')
+        ->name('profile');
+
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -84,6 +85,9 @@ Route::get('/locatario', 'LocatarioController@index')
 
 Route::get('/admin', "AdminController@index")
         ->name('admin');
+
+Route::get('/stats', "AdminController@stats")
+        ->name('stats');
 
 
 // Rotte per l'autenticazione
