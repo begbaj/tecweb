@@ -60,8 +60,8 @@ Route::get('/catalog', "PublicController@catalog")
 |--------------------------------------------------------------------------
 */
 
-Route::get('/lore', 'LocatoreController@index')
-        ->name('lore');
+Route::get('/locatore', 'LocatoreController@index')
+        ->name('locatore');
 
 Route::get('/lore/newaccom', 'LocatoreController@newaccom')
         ->name('newaccom');
