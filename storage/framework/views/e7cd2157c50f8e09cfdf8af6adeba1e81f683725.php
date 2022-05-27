@@ -1,0 +1,1 @@
+<?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/locatore/make_alloggio.blade.php ENDPATH**/ ?>

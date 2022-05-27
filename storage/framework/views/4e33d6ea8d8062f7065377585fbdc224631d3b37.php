@@ -9,14 +9,10 @@
                 </li>
             <?php elseif(Auth::check() && auth()->user()->hasRole('locatore')): ?>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" href="<?php echo e(route('catalog')); ?>">Catalogo Pubblico</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('newaccom')); ?>">Inserisci Alloggio</a>
-=======
-                    <a class="nav-link" href="<?php echo e(route('admcat')); ?>">Catalogo Pubblico</a>
->>>>>>> 807c03d6125ccfd7625cd6a15586bcb4fe9eb061
                 </li>
             <?php elseif(Auth::check() && auth()->user()->hasRole('locatario')): ?>
                 <li class="nav-item">
@@ -37,8 +33,10 @@
             
              
             <?php if(Auth::check()): ?>
-                <?php if(!auth()->user()->hasRole('admin')): ?>
-                    <a class="me-4" href="<?php echo e(route('profile')); ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/></svg></a>
+                <?php if(auth()->user()->hasRole('locatario')): ?>
+                    <a class="me-4" href="<?php echo e(route('profileLocatario')); ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/></svg></a>
+                <?php elseif(auth()->user()->hasRole('locatore')): ?>
+                    <a class="me-4" href="<?php echo e(route('profileLocatore')); ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/></svg></a>
                 <?php endif; ?>
             <?php echo e(Form::open(array('route' => 'logout', 'id' => 'navbar-logout', 'files' => false, 'class'=> 'form-inline d-flex mt-3'))); ?>
 

@@ -21,5 +21,9 @@ class LocatoreController extends Controller
     public function newaccom() {
         return view('locatore.make_alloggio');
     }
+    
+    public function profileLocatore(){
+       return view('user.profileInfo');
+    }
 
 }
