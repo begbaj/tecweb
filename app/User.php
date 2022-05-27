@@ -37,12 +37,14 @@ class User extends Authenticatable
         'data_nascita' => 'date',
     ];
 
+    /**
+     * Check if user has the given role
+     * 
+     * @var role
+     */
     public function hasRole($ruolo){
         $ruolo = (array)$ruolo;
         return in_array($this->ruolo, $ruolo);
-    }
-    
-    public function role(){
-        return $this->ruolo;
-    }
+    }    
+
 }
