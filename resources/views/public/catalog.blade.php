@@ -63,7 +63,9 @@
 </div>
 
 <div class="py-5 text-center container">  
-   <a href="{{ route('login') }}"> Altri Risultati </a>
+	<div class="container d-flex justify-content-center">
+		{{$accomodations->links()}}
+	</div>
 </div>
 
 @endsection
