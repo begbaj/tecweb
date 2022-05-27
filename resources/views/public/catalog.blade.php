@@ -57,14 +57,14 @@
             <div class="form-outline row ms-5 mb-4 mt-4 w-25">
                 {{ Form::label('start-date', 'Inizio', ['class' => 'col-sm-3 col-form-label', 'for' => 'start-date']) }}
                 <div class="col-sm-9 ps-3">
-                {{ Form::date('start-date', \Carbon\Carbon::now(), ['value' => old('start-date'), 'class' => 'form-control ms-6']) }}
+                {{ Form::date('start-date', "", ['value' => old('start-date'), 'class' => 'form-control ms-6']) }}
                 </div>
             </div>
 
             <div class="form-outline row ms-3 mb-4 mt-4 w-25">
                 {{ Form::label('end-date', 'Fine', ['class' => 'col-sm-3 col-form-label', 'for' => 'end-date']) }}
                 <div class="col-sm-9 ps-3">
-                {{ Form::date('end-date', \Carbon\Carbon::now(), ['value' => old('end-date'), 'class' => 'form-control ms-6']) }}
+                {{ Form::date('end-date', "", ['value' => old('end-date'), 'class' => 'form-control ms-6']) }}
                 </div>
             </div>
             <div class="text-center col pt-2 ps-4">
