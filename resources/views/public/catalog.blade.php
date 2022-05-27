@@ -50,7 +50,7 @@
         </div>
 @endif
   
-    
+@if (!auth()->user('admin'))    
 </section> 
 <div class="album py-5 bg-light">
     <div class="container">
@@ -65,5 +65,5 @@
 <div class="container d-flex justify-content-center">
 	{{$accomodations->onEachSide(2)->links()}}
 </div>
-
+@endif
 @endsection
