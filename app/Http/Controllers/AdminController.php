@@ -30,7 +30,6 @@ class AdminController extends Controller
     }
     
     public function stats(Request $request){
-
         $this->_accomodations = new Alloggio;
         $tipo = $request->input('type');
         $data_inizio = $request->input('start-date');
