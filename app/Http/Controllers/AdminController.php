@@ -37,12 +37,14 @@ class AdminController extends Controller
         //$this->messages = new Rented;
         $tipo = $request->input('type');
         $data_inizio = $request->input('start-date');
-        $data_fine = $request->input('end-date','');
+        $data_fine = $request->input('end-date');
+        if ($data_fine!=null and $data_inizio!=null){
+        $validator_start = $request->validate([
+            'start-date' => 'date_format:Y-m-d',
+            'end-date' => 'date_format:Y-m-d|after:start-date'
+        ]);}       
         $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
         $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
-        Log::debug("cr = " . $count_rent);
-        Log::debug("df = " . $data_fine);
-
         //$count_assigned = $this->messages->make_stats2($tipo, $data_inizio, $data_fine);
         return view('statistics')->with('count_rent',$count_rent)->with('count_request',$count_request);
     }

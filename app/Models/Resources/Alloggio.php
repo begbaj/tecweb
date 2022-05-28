@@ -2,6 +2,7 @@
 
 namespace App\Models\Resources;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Alloggio extends Model
 {
@@ -20,8 +21,8 @@ class Alloggio extends Model
 	public function make_stats($tipo, $data_inizio, $data_fine){
 		$this->_accomodations = new Alloggio;
 		$this->data_inizio = date("Y-m-d",strtotime($this->data_inizio));
-		$this->data_fine = date("Y-m-d",strtotime($this->data_fine));
-		if((($this->data_inizio)=="")&&($this->data_fine=""))
+		$this->data_fine = date("Y-m-d",strtotime($this->data_fine));      
+		if((($this->data_inizio)==null)&&($this->data_fine=null))
 		{            
 		    $get_filtered = Alloggio::whereRaw('tipo like "%' . $tipo . '%"')->count();
 		}
@@ -36,7 +37,7 @@ class Alloggio extends Model
 		$this->_accomodations = new Alloggio;
 		$this->data_inizio = date("Y-m-d",strtotime($this->data_inizio));
 		$this->data_fine = date("Y-m-d",strtotime($this->data_fine));
-		if((($this->data_inizio)=="")&&($this->data_fine=""))
+		if((($this->data_inizio)==null)&&($this->data_fine=null))
 		{            
 		    $get_filtered = Alloggio::whereRaw('tipo like "%' . $tipo . '%" and opzionato = 1')->count();
 		}
