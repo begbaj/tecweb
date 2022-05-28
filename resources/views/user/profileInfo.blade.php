@@ -54,7 +54,7 @@
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Data di Nascita:</h5>
                     <div class="ps-4 lead d-flex align-items-center pb-1">
-                    {{Auth::user()->data_nascita}}
+                    {{Auth::user()->data_nascita->toDateString()}}
                     </div>
                 </div>
                 
