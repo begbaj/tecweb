@@ -80,6 +80,9 @@ Route::get('/locatario', 'LocatarioController@index')
 Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
         ->name('profileLocatario');
 
+
+Route::get('/chat', 'LocatarioController@chatLocatario')
+        ->name('chatLocatario');
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
