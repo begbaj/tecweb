@@ -38,7 +38,7 @@
 </section>
 <!-- Array -->
 <div class="container py-2 bg-light">
-    <div class="row overflow-hidden d-flex flex-row flex-nowrap">
+    <div class="d-flex flex-nowrap overflow-hidden">
     @isset($accomodations)
         @foreach ($accomodations as $accomodation)
             @include('components/accomodationCard', [ 'accomodations' => $accomodation ] )

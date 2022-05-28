@@ -34,11 +34,11 @@ class HomeController extends Controller
                 case 'locatario': return redirect()->route('locatario');
                 default:
                     $accomodations = new Alloggio;
-                    return view('homepage')->with("accomodations", $accomodations->all());
+                    return view('homepage')->with("accomodations", $accomodations->getAlloggiByDate(5));
             }
         }else{
             $accomodations = new Alloggio;
-            return view('homepage')->with("accomodations", $accomodations->all());
+            return view('homepage')->with("accomodations", $accomodations->getAlloggiByDate(5));
         }
     }
 }
