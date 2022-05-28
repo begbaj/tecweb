@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Resources\Alloggio;
 
 class LocatarioController extends Controller
 {
@@ -11,7 +12,10 @@ class LocatarioController extends Controller
     }
 
     public function index() {
-        return view('locatario');
+        $this->_accomodations = new Alloggio;
+        $accomodations = $this->_accomodations->getAlloggiByDate();
+        return view('locatario')
+            ->with('accomodations', $accomodations);
     }
     
     public function profileLocatario(){
