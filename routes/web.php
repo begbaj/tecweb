@@ -69,7 +69,7 @@ Route::get('/lore/newaccom', 'LocatoreController@newaccom')
 Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
         ->name('profileLocatore');
 
-Route::get('/chatLocatore', 'LocatoreController@chatLocatore')
+Route::get('/chat/locatore', 'LocatoreController@chatLocatore')
         ->name('chatLocatore');
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
         ->name('profileLocatario');
 
 
-Route::get('/chatLocatario', 'LocatarioController@chatLocatario')
+Route::get('/chat/locatario', 'LocatarioController@chatLocatario')
         ->name('chatLocatario');
 /*
 |--------------------------------------------------------------------------
