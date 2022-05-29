@@ -98,6 +98,9 @@ Route::get('/admin', "AdminController@index")
 Route::get('/stats', "AdminController@stats")
         ->name('stats');
 
+Route::get('/statistics', "AdminController@statistics")
+        ->name('statistics');
+
 
 // Rotte per l'autenticazione
 Route::get('/login', 'Auth\LoginController@showLoginForm')

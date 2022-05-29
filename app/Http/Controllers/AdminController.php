@@ -38,9 +38,7 @@ class AdminController extends Controller
         $this->requested = new Rented;
         $tipo = $request->input('type');
         $data_inizio = $request->input('start-date');
-        $data_fine = $request->input('end-date');  
-        Log::debug("datain =".gettype($data_inizio));
-        Log::debug("datafin =".$data_fine);
+        $data_fine = $request->input('end-date');
         if (!is_null($data_fine) and !is_null($data_inizio)){
         $validator_start = $request->validate([
             'start-date' => 'date_format:Y-m-d|before:today',
@@ -56,5 +54,13 @@ class AdminController extends Controller
             $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);
         }
         return view('statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
+    }
+    
+    public function statistics()
+    {
+        $tipo = 0;
+        $data_inizio = 0;
+        $data_fine = 0;
+        return view('statistics');
     }
 }

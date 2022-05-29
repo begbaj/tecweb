@@ -55,23 +55,28 @@
     <div class='d-flex justify-content-center align-center'>
         <div class="container d-flex justify-content-center border row border-secondary rounded align-center mt-5 pe-5 align-items-center">
             <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
-                <p> Alloggi per data </p>
+                <p> Offerte di Alloggio </p>
                 <div class="col-sm-10 ps-3">
-                {{$count_rent}}
-                
+                    @if(Route::is('stats'))                    
+                    {{$count_rent}}
+                    @endif
                 </div>
             </div>
             
             <div class="form-outline row ms-5 mb-4 mt-4 w-25">
-                <p> Alloggi 2 </p>
+                <p> Offerte di Locazione </p>
                 <div class="col-sm-9 ps-3">
-                {{$count_request}}
+                    @if(Route::is('stats'))
+                    {{$count_request}}
+                    @endif
                 </div>    
             </div>
             <div class="form-outline row ms-5 mb-4 mt-4 w-25">
-                <p> Alloggi 3 </p>
+                <p> Alloggi Locati </p>
                 <div class="col-sm-9 ps-3">
-                {{$count_assigned}}
+                    @if(Route::is('stats'))                    
+                    {{$count_assigned}}
+                    @endif
                 </div>    
             </div>
         </div>
