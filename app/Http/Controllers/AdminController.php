@@ -63,4 +63,8 @@ class AdminController extends Controller
         $data_fine = 0;
         return view('statistics');
     }
+    
+    public function faqs(){
+        return view('admfaqs');
+    }
 }
