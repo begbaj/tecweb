@@ -63,9 +63,15 @@
             </div>
             
             <div class="form-outline row ms-5 mb-4 mt-4 w-25">
-                <p> Alloggi per data </p>
+                <p> Alloggi 2 </p>
                 <div class="col-sm-9 ps-3">
                 {{$count_request}}
+                </div>    
+            </div>
+            <div class="form-outline row ms-5 mb-4 mt-4 w-25">
+                <p> Alloggi 3 </p>
+                <div class="col-sm-9 ps-3">
+                {{$count_assigned}}
                 </div>    
             </div>
         </div>
