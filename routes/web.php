@@ -68,6 +68,9 @@ Route::get('/lore/newaccom', 'LocatoreController@newaccom')
 
 Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
         ->name('profileLocatore');
+
+Route::get('/chat/locatore', 'LocatoreController@chatLocatore')
+        ->name('chatLocatore');
 /*
 |--------------------------------------------------------------------------
 | Level 3 Routes
@@ -80,6 +83,9 @@ Route::get('/locatario', 'LocatarioController@index')
 Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
         ->name('profileLocatario');
 
+
+Route::get('/chat/locatario', 'LocatarioController@chatLocatario')
+        ->name('chatLocatario');
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -92,7 +98,11 @@ Route::get('/admin', "AdminController@index")
 Route::get('/stats', "AdminController@stats")
         ->name('stats');
 
+Route::get('/statistics', "AdminController@statistics")
+        ->name('statistics');
 
+Route::get('/gestionefaqs', 'AdminController@faqs')
+        ->name('gestionefaqs');
 // Rotte per l'autenticazione
 Route::get('/login', 'Auth\LoginController@showLoginForm')
         ->name('login');

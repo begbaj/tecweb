@@ -21,4 +21,8 @@ class LocatarioController extends Controller
     public function profileLocatario(){
        return view('user.profileInfo');
     }
+    
+    public function chatLocatario(){
+       return view('user.chat');
+    }
 }

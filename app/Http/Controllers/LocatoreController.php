@@ -26,4 +26,7 @@ class LocatoreController extends Controller
        return view('user.profileInfo');
     }
 
+    public function chatLocatore(){
+       return view('user.chat');
+    }
 }
