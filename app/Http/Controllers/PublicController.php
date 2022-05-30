@@ -13,7 +13,6 @@ class PublicController extends Controller {
     protected $_role;
     
     public function __construct() {
-        $this->middleware('guest')->except(redirect()->route('homepage'));
     }
     
     public function faq() {
@@ -33,6 +32,7 @@ class PublicController extends Controller {
             ->with('accomodations', $accomodations);
     }
     public function homepage() {
+        $this->middleware('guest')->except(redirect()->route('homepage'));
         $this->_accomodations = new Alloggio;
         $accomodations = $this->_accomodations->all();
         return view('homepage')

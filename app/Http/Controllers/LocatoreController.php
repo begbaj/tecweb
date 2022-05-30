@@ -15,7 +15,7 @@ class LocatoreController extends Controller
     }
 
     public function index() {
-        $accoms = Alloggio::where('id_locatore', Auth::user()->id);
+        $accoms = Alloggio::where('id_locatore', Auth::user()->id)->get();
         return view('locatore')->with('accoms', $accoms);
     }
 
