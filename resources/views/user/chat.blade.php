@@ -11,6 +11,18 @@
 <div class="page-header py-3 m-8 mx-auto">
 	<h1 class="fw-dark text-center">Chat</h1>
 </div>
+@if(count($data['rubrica'])==0)
+	@if(auth()->user()->hasRole('locatore'))
+		<h4 class="text-center">Al momento nessun locatario ha opzionato un tuo alloggio, torna piu' tardi!</h4>
+		<h4 class="text-center">Se non ne hai gia' inserito uno, <a href="{{ route('newaccom') }}">perchè non farlo ora!</a></h4>
+	@endif
+	@if(auth()->user()->hasRole('locatario'))
+		<h4 class="text-center">
+		Nessun contatto, controlla <a href="{{ route('locatario') }}">il nostro catalogo</a>, li potrai avviare una conversazione con
+		un locatore, o opzionare uno degli alloggi presenti!
+		</h4>
+	@endif
+@else
 <div class="d-flex h-50">
 	<div class="deck-columns h-100 overflow-auto">
 	@foreach($data['rubrica'] as $user)
@@ -42,4 +54,5 @@
 	</div>
 	</div>
 </div>
+@endif
 @endsection

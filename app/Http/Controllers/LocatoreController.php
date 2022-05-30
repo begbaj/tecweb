@@ -47,7 +47,11 @@ class LocatoreController extends Controller
 	$chat = new Chat;
 	$rubrica = $chat->getRubric(Auth::user()->id);
 	if(is_null($chatId)){
-		$messaggi=$chat->getChat(Auth::user()->id, $rubrica[0]->id);
+		if(count($rubrica)>0){
+			$messaggi=$chat->getChat(Auth::user()->id, $rubrica[0]->id);
+		}else{
+			$messaggi=$chat->getChat(Auth::user()->id, null);
+		}
 	}else{
 		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
 	}
