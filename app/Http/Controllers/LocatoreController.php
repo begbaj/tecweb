@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resources\Alloggio;
+use App\Models\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,14 @@ class LocatoreController extends Controller
        return view('user.profileInfo');
     }
 
-    public function chatLocatore(){
-       return view('user.chat');
+    public function chatLocatore($chatId=null){
+	$chat = new Chat;
+	$rubrica = $chat->getRubric(Auth::user()->id);
+	if(is_null($chatId)){
+		$messaggi=$chat->getChat(Auth::user()->id, $rubrica[0]->id);
+	}else{
+		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
+	}
+       return view('user.chat')->with('data', ['rubrica'=>$rubrica, 'messaggi'=>$messaggi, 'userid'=>Auth::user()->id, 'chatId'=>$chatId]);
     }
 }
