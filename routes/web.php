@@ -63,14 +63,18 @@ Route::get('/catalog', "PublicController@catalog")
 Route::get('/locatore', 'LocatoreController@index')
         ->name('locatore');
 
-Route::get('/lore/newaccom', 'LocatoreController@newaccom')
+Route::get('/newaccom', 'LocatoreController@newaccom')
         ->name('newaccom');
+
+Route::post('/newaccom', "LocatoreController@insertNewAccom")
+        ->name('insertaccom');
 
 Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
         ->name('profileLocatore');
 
 Route::get('/chat/locatore/{chatId?}', 'LocatoreController@chatLocatore')
         ->name('chatLocatore');
+
 /*
 |--------------------------------------------------------------------------
 | Level 3 Routes

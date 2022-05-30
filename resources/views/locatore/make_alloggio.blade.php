@@ -4,7 +4,7 @@
 
 @section('content')
 
-{{ Form::open(['route' => 'newaccom', 'id' => 'newaccom-form', 'files' => true]) }}
+{{ Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true]) }}
 
     <div class="mb-3">
         {{ Form::label('titolo', 'Titolo', ['class' => 'col-sm-2 col-form-label',  'for'=>'titolo']) }}
