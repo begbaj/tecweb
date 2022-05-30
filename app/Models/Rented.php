@@ -1,28 +1,28 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Messaggio;
+use Illuminate\Support\Facades\Log;
 
 
 class Rented
 {
+    protected $_rented;
     public function make_stats2($tipo, $data_inizio, $data_fine){
-		$this->_accomodations = new Alloggio;
-                $this->_rented = new Messaggio;
-		$this->data_inizio = date("Y-m-d",strtotime($this->data_inizio));
-		$this->data_fine = date("Y-m-d",strtotime($this->data_fine));
-                $this->_accomodations = Alloggio::find(['id']);
-		if((($this->data_inizio)=="")&&($this->data_fine=""))
-		{            
-                    $this->_rented = Messaggio::find(['id_alloggio'],$this->_accomodations);
-		}
+		$_accomodations = new Alloggio;
+                $messages = new Messaggio;
+		if((is_null($data_inizio)) and is_null($data_fine))
+                {  
+                    $_rented = Alloggio::join('messaggi', 'messaggi.id_alloggio','=','alloggi.id')->count();
+		}    
 		else
 		{
-                    $this->_rented = Messaggio::find(['id_alloggio'],$this->_accomodations)->whereRaw('tipo like "%'. $tipo .'%" and created_at between "'. $data_inizio. '" and "'.$data_fine .'" and opzionato = 1')->count();
-
+                    $data_inizio = date("Y-m-d",strtotime($data_inizio));
+                    $data_fine = date("Y-m-d",strtotime($data_fine));
+                    $_rented = Alloggio::join('messaggi', 'messaggi.id_alloggio','=','alloggi.id')->whereRaw(' tipo like "%'. $tipo .'%" and alloggi.created_at between "'. $data_inizio. '" and "'.$data_fine .'" and opzionato = 1')->count();
 		}
-		return $this->_rented;
+                return $_rented;
 	}
 }

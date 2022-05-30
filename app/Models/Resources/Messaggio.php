@@ -13,3 +13,4 @@ class Messaggio extends Model
 
 	public $timestamps = true;
 }
+

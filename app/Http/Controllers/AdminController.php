@@ -5,11 +5,12 @@ use Illuminate\Http\Request;
 use App\Models\Resources\Alloggio;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
+use App\Models\Rented;
 
 class AdminController extends Controller
 {       
     protected $_accomodations;
-    protected $messages;
+    protected $requested;
 
 
     public function __construct(Request $request) {
@@ -34,16 +35,36 @@ class AdminController extends Controller
     
     public function stats(Request $request){
         $this->_accomodations = new Alloggio;
-        //$this->messages = new Rented;
+        $this->requested = new Rented;
         $tipo = $request->input('type');
         $data_inizio = $request->input('start-date');
-        $data_fine = $request->input('end-date','');
-        $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
-        $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
-        Log::debug("cr = " . $count_rent);
-        Log::debug("df = " . $data_fine);
-
-        //$count_assigned = $this->messages->make_stats2($tipo, $data_inizio, $data_fine);
-        return view('statistics')->with('count_rent',$count_rent)->with('count_request',$count_request);
+        $data_fine = $request->input('end-date');
+        if (!is_null($data_fine) and !is_null($data_inizio)){
+        $validator_start = $request->validate([
+            'start-date' => 'date_format:Y-m-d|before:today',
+            'end-date' => 'date_format:Y-m-d|after:start-date'  
+        ]);
+            $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
+            $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
+            $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);            
+        }
+        else{
+            $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
+            $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
+            $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);
+        }
+        return view('statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
+    }
+    
+    public function statistics()
+    {
+        $tipo = 0;
+        $data_inizio = 0;
+        $data_fine = 0;
+        return view('statistics');
+    }
+    
+    public function faqs(){
+        return view('admfaqs');
     }
 }

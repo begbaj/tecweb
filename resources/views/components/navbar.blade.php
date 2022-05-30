@@ -5,7 +5,10 @@
             <ul class="navbar-nav me-auto">
             @if (Auth::check() && auth()->user()->hasRole('admin'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('stats') }}">Catalogo</a>
+                    <a class="nav-link" href="{{ route('statistics') }}">Statistiche</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('gestionefaqs') }}">Gestione FAQ</a>
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
                 <li class="nav-item">
