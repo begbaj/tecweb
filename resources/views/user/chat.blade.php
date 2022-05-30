@@ -34,8 +34,9 @@
 		@endforeach 
 	</div>
 	<div>
-        {{ Form::open(array('route' => 'chatLocatario', 'id' => 'chat-invio', 'files' => false, 'class'=> 'form-inline d-flex mt-3')) }}
-		{{ Form::text('Testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1']) }}
+	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
+		$data['chatId'] ?? $data['rubrica'][0]->id), 'id' => 'sendMessage', 'id_destinatario' => $data['chatId'],'files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
+		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1']) }}
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
         {{ Form::close() }}
 	</div>
