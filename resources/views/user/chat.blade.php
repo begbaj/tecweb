@@ -11,14 +11,14 @@
 <div class="page-header py-3 m-8 mx-auto">
 	<h1 class="fw-dark text-center">Chat</h1>
 </div>
-<div class="d-flex h-50 overflow-hidden">
+<div class="d-flex h-50">
 	<div class="deck-columns h-100 overflow-auto">
 	@foreach($data['rubrica'] as $user)
         	@include('components.rubricCard', [ '$user' => $user] )
 	@endforeach 
 	</div>
 	<div class="vr"></div>
-	<div class="container h-100 overflow-hidden">
+	<div class="container h-100">
 		<h5 class="h-20">
 		@if($data['chatId']!=null)
 			{{$data['rubrica']->where('id', $data['chatId'])->first()->nome." ".
