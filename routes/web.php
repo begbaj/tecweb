@@ -66,7 +66,7 @@ Route::get('/locatore', 'LocatoreController@index')
 Route::get('/newaccom', 'LocatoreController@newaccom')
         ->name('newaccom');
 
-Route::post('/newaccom', "LocatoreController@insertNewAccom")
+Route::post('/newaccom/submit', "LocatoreController@insertNewAccom")
         ->name('insertaccom');
 
 Route::get('/profile/locatore', 'LocatoreController@profileLocatore')

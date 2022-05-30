@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Messaggio;
 use App\Models\Chat;
 use App\Http\Requests\NewMessageRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class LocatoreController extends Controller
 {
@@ -23,11 +24,19 @@ class LocatoreController extends Controller
     }
 
     public function newaccom() {
+        Log::debug('Pagina Inserimento caricata');
         return view('locatore.make_alloggio');
     }
 
-    public function insertNewAccom() {
-        return view('locatore.make_alloggio');
+    public function insertNewAccom(NewAccomodationRequest $request) {
+        Log::debug('Inserimento Alloggio: iniziato');
+        $accom = new Alloggio;
+        $accom->id_locatore = Auth::user()->id;
+        $accom->created_at = Carbon::now()->toDateTimeString();
+        $accom->fill($request->validated());
+        $accom->save();
+
+        return redirect()->route('homepage', [$accom->title]);
     }
     
     public function profileLocatore(){
