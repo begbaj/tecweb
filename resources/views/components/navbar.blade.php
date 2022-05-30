@@ -37,7 +37,7 @@
              
             @if (Auth::check())
                 @if(auth()->user()->hasRole('locatario'))
-		    <a class="me-4" href="{{ route('chatLocatario') }}">
+		    <a class="me-4" href="{{ route('chatLocatario')}}">
 			<img src="{{ asset('img/message-square.svg') }}">
 		    </a>
 		    <a class="me-4" href="{{ route('profileLocatario') }}">

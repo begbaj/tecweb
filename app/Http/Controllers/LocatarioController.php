@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resources\Alloggio;
+use App\Models\Chat;
+use Illuminate\Support\Facades\Auth;
 
 class LocatarioController extends Controller
 {
@@ -22,7 +24,14 @@ class LocatarioController extends Controller
        return view('user.profileInfo');
     }
     
-    public function chatLocatario(){
-       return view('user.chat');
+    public function chatLocatario($chatId=null){
+	$chat = new Chat;
+	$rubrica = $chat->getRubric(Auth::user()->id);
+	if(is_null($chatId)){
+		$messaggi=$chat->getChat(Auth::user()->id, $rubrica[0]->id);
+	}else{
+		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
+	}
+       return view('user.chat')->with('data', ['rubrica'=>$rubrica, 'messaggi'=>$messaggi, 'userid'=>Auth::user()->id, 'chatId'=>$chatId]);
     }
 }
