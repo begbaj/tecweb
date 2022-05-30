@@ -14,7 +14,7 @@
 <p class="lead text-muted text-center"> <a id="registrazione" href="{{ route('register') }}"> Registrati</a> per utilizzare i filtri di ricerca ed opzionare gli alloggi </p>
  </div>
 </div> 
- @endguest
+@endguest
 
 @if (!auth()->user('admin'))    
 <div class="container-fluid">
