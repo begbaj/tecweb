@@ -71,6 +71,10 @@ Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
 
 Route::get('/chat/locatore/{chatId?}', 'LocatoreController@chatLocatore')
         ->name('chatLocatore');
+
+Route::post('/chat/locatore/send/{chatId}', 'LocatoreController@sendMessage')
+	->name('chatLocatore.send');
+
 /*
 |--------------------------------------------------------------------------
 | Level 3 Routes
@@ -86,6 +90,10 @@ Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
 
 Route::get('/chat/locatario/{chatId?}', 'LocatarioController@chatLocatario')
         ->name('chatLocatario');
+
+Route::post('/chat/locatario/send/{chatId}', 'LocatarioController@sendMessage')
+	->name('chatLocatario.send');
+	
 /*
 |--------------------------------------------------------------------------
 | Admin Routes

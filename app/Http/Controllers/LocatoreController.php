@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\Messaggio;
 use App\Models\Chat;
+use App\Http\Requests\NewMessageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class LocatoreController extends Controller
 {
@@ -36,5 +39,16 @@ class LocatoreController extends Controller
 		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
 	}
        return view('user.chat')->with('data', ['rubrica'=>$rubrica, 'messaggi'=>$messaggi, 'userid'=>Auth::user()->id, 'chatId'=>$chatId]);
+    }
+
+    public function sendMessage(NewMessageRequest $request, $chatId){
+		$message = new Messaggio;
+		$message->id_mittente=Auth::user()->id;
+		$message->id_destinatario=$chatId;
+		$message->created_at= Carbon::now()->toDateTimeString();
+		$message->fill($request->validated());
+		$message->save();
+
+		return redirect()->route('chatLocatore', [$message->id_destinatario]);
     }
 }
