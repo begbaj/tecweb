@@ -69,7 +69,7 @@ class LocatoreController extends Controller
 		return redirect()->route('chatLocatore', [$message->id_destinatario]);
     }
     
-    public function detailsLocatore(){
+    public function detailsLocatore($accomId){
         return view('details');
     }
 }

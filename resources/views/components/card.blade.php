@@ -8,11 +8,11 @@
     <div class="card-footer d-flex justify-content-between align-items-center">
         @if (Auth::check() && auth()->user()->hasRole('locatario'))
             <div class="btn-group">
-                <a class="btn btn-primary" href="{{ route('detailsLocatario') }}"> Vedi dettagli</a>
+                <a class="btn btn-primary" href="{{ route('detailsLocatario', [$accomodation->id]) }}"> Vedi dettagli</a>
             </div>
         @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
             <div class="btn-group">
-                <a class="btn btn-primary" href="{{ route('detailsLocatore') }}"> Vedi dettagli</a>
+                <a class="btn btn-primary" href="{{ route('detailsLocatore', [$accomodation->id]) }}"> Vedi dettagli</a>
             </div>
         @else    
             <div class="btn-group">

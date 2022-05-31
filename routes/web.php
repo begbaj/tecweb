@@ -78,7 +78,7 @@ Route::get('/chat/locatore/{chatId?}', 'LocatoreController@chatLocatore')
 Route::post('/chat/locatore/send/{chatId}', 'LocatoreController@sendMessage')
 	->name('chatLocatore.send');
 
-Route::get('/details/locatore', 'LocatoreController@detailsLocatore')
+Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
         ->name('detailsLocatore');
 
 /*
@@ -100,7 +100,7 @@ Route::get('/chat/locatario/{chatId?}', 'LocatarioController@chatLocatario')
 Route::post('/chat/locatario/send/{chatId}', 'LocatarioController@sendMessage')
 	->name('chatLocatario.send');
 
-Route::get('/details/locatario', 'LocatarioController@detailsLocatario')
+Route::get('/details/locatario/{accomId}', 'LocatarioController@detailsLocatario')
         ->name('detailsLocatario');
 	
 /*
