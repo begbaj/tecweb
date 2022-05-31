@@ -6,9 +6,19 @@
         <p class="card-text"> {{ $accomodation->descrizione }} </p>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
+        @if (Auth::check() && auth()->user()->hasRole('locatario'))
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{{ route('detailsLocatario') }}"> Vedi dettagli</a>
+            </div>
+        @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{{ route('detailsLocatore') }}"> Vedi dettagli</a>
+            </div>
+        @else    
             <div class="btn-group">
                 <a class="btn btn-primary" href="{{ route('login') }}"> Vedi dettagli </a>
             </div>
+        @endif
             <small class="text-muted">{{ $accomodation->created_at }}</small>
     </div>
   </div>

@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="form-outline d-flex row align-items-center justify-content-center pt-3 ">
+                    <div class="form-outline d-flex row align-items-center justify-content-center pt-2 ">
                         {{ Form::label('min-price', 'Prezzo Min', ['class' => 'col-sm-2 col-form-label', 'for' => 'min-price']) }}
                          <div class="d-flex col-7 ms-3">
                         {{ Form::text('min-price', '', ['value' => old("min-price"), 'placeholder' => 'prezzo minimo', 'class' => 'form-control ms-4']) }}
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="form-outline d-flex row align-items-center justify-content-center pt-2 ">
+                    <div class="form-outline d-flex row align-items-center justify-content-center pt-0 ">
                         {{ Form::label('max-price', 'Prezzo Max', ['class' => 'col-sm-2 col-form-label', 'for' => 'max-price']) }}
                          <div class="d-flex col-7 ms-3">
                         {{ Form::text('max-price', '', ['value' => old("max-price"), 'placeholder' => 'prezzo massimo', 'class' => 'form-control ms-4']) }}
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="form-outline d-flex row align-items-center justify-content-center pt-3 ">
+                    <div class="form-outline d-flex row align-items-center justify-content-center pt-2 ">
                         {{ Form::label('dimension', 'Dimensione', ['class' => 'col-sm-2 col-form-label', 'for' => 'dimension']) }}
                          <div class="d-flex col-7 ms-3">
                         {{ Form::text('dimension', '', ['value' => old("dimension"), 'placeholder' => 'dimensione', 'class' => 'form-control ms-4']) }}
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="container">
-                    <div  class="form-outline d-flex row align-items-center justify-content-center pt-3 ">
+                    <div  class="form-outline d-flex row align-items-center justify-content-center pt-2 ">
                         {{ Form::label('n-rooms', 'Numero Camere', ['class' => 'col-sm-2 col-form-label', 'for'=> 'n-rooms']) }}
                         <div class="d-flex col-7 ms-3">
                         {{ Form::number('n-rooms', '0', ['value'=> old("n-rooms"), 'class' => 'form-control ms-4']) }}   
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="container">
-                    <div  class="form-outline d-flex row align-items-center justify-content-center pt-2 pb-2 ">
+                    <div  class="form-outline d-flex row align-items-center justify-content-center pt-0 pb-2 ">
                         {{ Form::label('n-beds', 'Posti Letto', ['class' => 'col-sm-2 col-form-label', 'for'=> 'n-beds']) }}
                         <div class="d-flex col-7 ms-3">
                         {{ Form::number('n-beds', '0', ['value'=> old("n-beds"), 'class' => 'form-control ms-4']) }}   
