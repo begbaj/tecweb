@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class Catalog extends Model
 {
-    public function getAll(){
-        $alloggi = Alloggio::all();
+    public function getAll($number=0){
+        $alloggi = new Alloggio;
     }
 }
