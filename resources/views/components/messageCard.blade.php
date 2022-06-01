@@ -13,7 +13,11 @@
 		<div class="card m-2 mw-25 shadow-sm" data-mdb-ripple-color="light">
 		@else
 		<div class="card m-2 mw-25 shadow-sm bg-success text-white" data-mdb-ripple-color="light">
-			<div class="card-header">Opzionamento per l'alloggio <a href="/" class="link-warning">{{$messaggio->id_alloggio}}</a></div>
+			@if(auth()->user()->hasRole('locatario'))
+			<div class="card-header">Opzionamento per l'alloggio <a href="{{ route('detailsLocatario', [$messaggio->id_alloggio]) }}" class="link-warning">{{$messaggio->id_alloggio}}</a></div>
+			@elseif(auth()->user()->hasRole('locatore'))
+			<div class="card-header">Opzionamento per l'alloggio <a href="{{ route('detailsLocatore', [$messaggio->id_alloggio]) }}" class="link-warning">{{$messaggio->id_alloggio}}</a></div>
+			@endif
 		@endif
 	@endif
 			<div class="card-body" data-mdb-ripple-color="light">

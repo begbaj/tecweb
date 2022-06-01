@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Messaggio;
 use App\Models\Chat;
+use App\Models\Catalog;
 use App\Http\Requests\NewMessageRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -39,7 +40,7 @@ class LocatarioController extends Controller
 	}else{
 		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
 	}
-       return view('user.chat')->with('data', ['rubrica'=>$rubrica, 'messaggi'=>$messaggi, 'userid'=>Auth::user()->id, 'chatId'=>$chatId]);
+       return view('user.chat')->with('rubrica', $rubrica)->with('messaggi', $messaggi)->with('userid',Auth::user()->id)->with('chatId', $chatId);
     }
 
     public function sendMessage(NewMessageRequest $request, $chatId){
@@ -54,6 +55,9 @@ class LocatarioController extends Controller
     }
     
     public function detailsLocatario($accomId){
-        return view('details');
+        $catalog = new Catalog;
+	$alloggio = Alloggio::where('id', $accomId)->get();
+	$servizi = $catalog->getServiziAlloggio($accomId);
+        return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
 }
