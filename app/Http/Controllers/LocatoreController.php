@@ -75,7 +75,7 @@ class LocatoreController extends Controller
 	}else{
 		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
 	}
-       return view('user.chat')->with('data', ['rubrica'=>$rubrica, 'messaggi'=>$messaggi, 'userid'=>Auth::user()->id, 'chatId'=>$chatId]);
+       return view('user.chat')->with('rubrica', $rubrica)->with('messaggi', $messaggi)->with('userid',Auth::user()->id)->with('chatId', $chatId);
     }
 
     public function sendMessage(NewMessageRequest $request, $chatId){
@@ -93,6 +93,6 @@ class LocatoreController extends Controller
 	$catalog = new Catalog;
 	$alloggio = Alloggio::where('id', $accomId)->get();
 	$servizi = $catalog->getServiziAlloggio($accomId);
-        return view('details')->with('alloggio', $alloggio)->with('servizi', $servizi);
+        return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
 }

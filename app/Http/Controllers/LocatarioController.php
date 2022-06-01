@@ -39,7 +39,7 @@ class LocatarioController extends Controller
 	}else{
 		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
 	}
-       return view('user.chat')->with('data', ['rubrica'=>$rubrica, 'messaggi'=>$messaggi, 'userid'=>Auth::user()->id, 'chatId'=>$chatId]);
+       return view('user.chat')->with('rubrica', $rubrica)->with('messaggi', $messaggi)->with('userid',Auth::user()->id)->with('chatId', $chatId);
     }
 
     public function sendMessage(NewMessageRequest $request, $chatId){
