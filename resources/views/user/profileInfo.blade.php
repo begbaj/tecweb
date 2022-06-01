@@ -7,7 +7,7 @@
 <div class="container-fluid bd-light">
     <div class="container row">
         <div class="container mt-3">
-            <h4>Area Profilo Utente</h4>  
+            <h4 class="display-4">Area Profilo Utente</h4>  
         </div>
         <div class="container  lead">
             <p> In questa area puoi visualizzare e modificare i tuoi dati personali</p>
