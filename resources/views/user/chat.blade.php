@@ -14,12 +14,13 @@
 @if(count($data['rubrica'])==0)
 	@if(auth()->user()->hasRole('locatore'))
 		<h4 class="text-center">Al momento nessun locatario ha opzionato un tuo alloggio, torna piu' tardi!</h4>
-		<h4 class="text-center">Se non ne hai gia' inserito uno, <a href="{{ route('newaccom') }}">perchè non farlo ora!</a></h4>
+		<h4 class="text-center">Per aumentare le tue chances, <a href="{{ route('newaccom') }}">inseriscine uno!</a></h4>
 	@endif
 	@if(auth()->user()->hasRole('locatario'))
 		<h4 class="text-center">
-		Nessun contatto, controlla <a href="{{ route('locatario') }}">il nostro catalogo</a>, li potrai avviare una conversazione con
-		un locatore, o opzionare uno degli alloggi presenti!
+		Nessuna conversazione passata, opziona un alloggio nel <a href="{{ route('locatario') }}">nostro catalogo!</a>
+		<br/>
+		Se hai delle domande da porre al locatore potrai avviare una conversazione con lui!
 		</h4>
 	@endif
 @else
