@@ -11,7 +11,7 @@
 <div class="page-header py-3 m-8 mx-auto">
 	<h1 class="fw-dark text-center">Chat</h1>
 </div>
-@if(count($data['rubrica'])==0)
+@if(count($rubrica)==0)
 	@if(auth()->user()->hasRole('locatore'))
 		<h4 class="text-center">Al momento nessun locatario ha opzionato un tuo alloggio, torna piu' tardi!</h4>
 		<h4 class="text-center">Per aumentare le tue chances, <a href="{{ route('newaccom') }}">inseriscine uno!</a></h4>
@@ -26,29 +26,29 @@
 @else
 <div class="d-flex h-50">
 	<div class="deck-columns h-100 overflow-auto">
-	@foreach($data['rubrica'] as $user)
+	@foreach($rubrica as $user)
         	@include('components.rubricCard', [ '$user' => $user] )
 	@endforeach 
 	</div>
 	<div class="vr"></div>
 	<div class="container h-100">
 		<h5 class="h-20">
-		@if($data['chatId']!=null)
-			{{$data['rubrica']->where('id', $data['chatId'])->first()->nome." ".
-					$data['rubrica']->where('id', $data['chatId'])->first()->cognome}}
+		@if($chatId!=null)
+			{{$rubrica->where('id', $chatId)->first()->nome." ".
+					$rubrica->where('id', $chatId)->first()->cognome}}
 		@else
-			{{$data['rubrica'][0]->nome." ".$data['rubrica'][0]->cognome}}
+			{{$rubrica->first()->nome." ".$rubrica->first()->cognome}}
 		@endif
 		</h5>
 		<hr/>
 	<div class="container h-75 overflow-auto">
-		@foreach($data['messaggi'] as $messaggio)
+		@foreach($messaggi as $messaggio)
 			@include('components.messageCard', [ '$messaggio' => $messaggio])
 		@endforeach 
 	</div>
 	<div>
 	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
-		$data['chatId'] ?? $data['rubrica'][0]->id), 'id' => 'sendMessage', 'id_destinatario' => $data['chatId'],'files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
+		$data['chatId'] ?? $rubrica->first()->id), 'id' => 'sendMessage', 'id_destinatario' => $chatId,'files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
 		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1']) }}
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
         {{ Form::close() }}

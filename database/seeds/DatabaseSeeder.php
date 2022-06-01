@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
                         'descrizione' => $faker->text(300),
                         'eta_min' => $faker->numberBetween(20,40),
                         'eta_max' => $faker->numberBetween(20,50),
-                        'prezzo' => $faker->randomFloat($nbMaxDecimals=2, $min=100, $max=600),
+                        'prezzo' => $faker->randomFloat(2, 100, 600),
                         'sesso' => $faker->randomelement(['m','f','b']),
                         'superficie' => $faker->numberBetween(10,1000),
                         'opzionato' => $faker->boolean,
