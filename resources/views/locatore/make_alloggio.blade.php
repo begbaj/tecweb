@@ -4,7 +4,7 @@
 
 @section('content')
 
-{{ Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => false]) }}
+{{ Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true]) }}
 
     <div class="mb-3">
         {{ Form::label('titolo', 'Titolo', ['class' => 'col-sm-2 col-form-label',  'for'=>'titolo']) }}
@@ -204,12 +204,39 @@
     </div>
 
     <div class="mb-3">
+        {{ Form::label('posti_letto', 'Posti Letto', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms']) }}
+        {{ Form::number('posti_letto', '1', ['class' => 'form-control'] ) }}
+        @if ($errors->first('posti_letto'))
+        <div class="d-flex justify-content-center">
+            <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+            @foreach ($errors->get('posti_letto') as $message)
+            <div class="d-flex justify-content-center">{{ $message }}</div>
+            @endforeach
+            </div>
+        </div>     
+        @endif
+    </div>
+
+    <div class="mb-3">
         {{ Form::label('camere', 'Camere', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms']) }}
         {{ Form::number('camere', '1', ['class' => 'form-control'] ) }}
         @if ($errors->first('camere'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
             @foreach ($errors->get('camere') as $message)
+            <div class="d-flex justify-content-center">{{ $message }}</div>
+            @endforeach
+            </div>
+        </div>     
+        @endif
+    </div>
+    <div class="mb-3">
+        {{ Form::label('foto', '', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms']) }}
+        {{ Form::file('image') }}
+        @if ($errors->first('image'))
+        <div class="d-flex justify-content-center">
+            <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+            @foreach ($errors->get('image') as $message)
             <div class="d-flex justify-content-center">{{ $message }}</div>
             @endforeach
             </div>
