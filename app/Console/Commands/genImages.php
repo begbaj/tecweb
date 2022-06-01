@@ -54,9 +54,11 @@ class genImages extends Command
                     file_put_contents($alldir.'/thumbnail', file_get_contents('https://loremflickr.com/320/240/house,home'));
                 }
              */
+
             echo 'moving images for ' . $alldir . "\n";
-            $stocks = public_path('img/stock-images/*');
-            $file = glob($stocks);
+
+            $stocks = public_path('img/stock-images/*'); // the '*' at the end is used by the glob function below to pattern match
+            $file = glob($stocks); //returns all the files in img/stock-images
             shuffle($file);
             for ($i = 0; $i < $num; $i++) {
                 copy($file[0], $alldir . "/thumbnail");

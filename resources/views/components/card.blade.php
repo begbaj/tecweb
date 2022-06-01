@@ -1,6 +1,6 @@
+{{-- CARD: basic accomodation card --}}
 <div class="card m-2 shadow-sm">
-
-    <img class="card-img-top" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
+    <img class="card-img-top" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
         <p class="card-text"> {{ $accomodation->descrizione }} </p>
@@ -14,6 +14,7 @@
             <div class="btn-group">
                 <a class="btn btn-primary" href="{{ route('detailsLocatore', [$accomodation->id]) }}"> Vedi dettagli</a>
             </div>
+                {{-- catalog detials should be handled by a controller, this method leads to unreachable details from locatore --}}
         @else    
             <div class="btn-group">
                 <a class="btn btn-primary" href="{{ route('login') }}"> Vedi dettagli </a>
