@@ -43,7 +43,7 @@
     </div>
     
     <div class="container">
-        <div class="d-flex justify-content-center border border-secondary mt-3 pb-2 rounded row">
+        <div class="d-flex justify-content-center border border-secondary mt-3 pb-4 rounded row">
             <div class="d-flex row mt-3" style="width: 350px">
                 <div class="container">
                     <div class="form-outline d-flex row align-items-center justify-content-center pt-1">
@@ -100,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="d-flex row mt-3" style="width: 350px; height: 250px">
+            <div class="d-flex row mt-3 " style="width: 350px; height: 250px">
                 <div class="text-center pt-2">
                     <h5>Servizi</h5>
                 </div>
@@ -135,7 +135,17 @@
                         <div class="d-flex align-items-center pt-1">
                         {{ Form::checkbox('fumatori', 'Fumatori', null) }}
                         {{ Form::label('fumatori', 'Fumatori', ['class' => 'col-sm-2 col-form-label ps-2', 'for' => 'fumatori']) }}
-                        </div>   
+                        </div>  
+                        
+                        <div class="d-flex align-items-center pt-1">
+                        {{ Form::checkbox('palestra', 'Palestra', null) }}
+                        {{ Form::label('palestra', 'Palestra', ['class' => 'col-sm-2 col-form-label ps-2', 'for' => 'palestra']) }}
+                        </div>
+                        
+                        <div class="d-flex align-items-center pt-1">
+                        {{ Form::checkbox('servizio_in_camera', 'Servizio in Camera', null) }}
+                        {{ Form::label('servizio_in_camera', 'Servizio in Camera', ['class' => 'col-sm-auto col-form-label ps-2', 'for' => 'servizio_in_camera']) }}
+                        </div>
                     </div>
 
                     <div class="row ps-4">
@@ -167,7 +177,12 @@
                         <div class="d-flex align-items-center pt-1">
                         {{ Form::checkbox('tv', 'TV', null) }}
                         {{ Form::label('tv', 'TV', ['class' => 'col-sm-2 col-form-label ps-2', 'for' => 'tv']) }}
-                        </div>   
+                        </div>
+                        
+                        <div class="d-flex align-items-center pt-1">
+                        {{ Form::checkbox('garage', 'Garage', null) }}
+                        {{ Form::label('garage', 'Garage', ['class' => 'col-sm-2 col-form-label ps-2', 'for' => 'garage']) }}
+                        </div>
                     </div>
                 </div>
             </div>
