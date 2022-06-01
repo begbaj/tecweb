@@ -48,9 +48,18 @@ class genImages extends Command
             if ( !file_exists( $alldir ) && !is_dir( $alldir ) ) {
                 mkdir($alldir, 0775); 
             } 
-            echo 'downloading images for ' . $alldir . '\n';
+            /* old method, download images from loremflickr
+                echo 'downloading images for ' . $alldir . '\n';
+                for ($i = 0; $i < $num; $i++) {
+                    file_put_contents($alldir.'/thumbnail', file_get_contents('https://loremflickr.com/320/240/house,home'));
+                }
+             */
+            echo 'moving images for ' . $alldir . "\n";
+            $stocks = public_path('img/stock-images/*');
+            $file = glob($stocks);
+            shuffle($file);
             for ($i = 0; $i < $num; $i++) {
-                file_put_contents($alldir.'/thumbnail', file_get_contents('https://loremflickr.com/320/240/house,home'));
+                copy($file[0], $alldir . "/thumbnail");
             }
         }
     }

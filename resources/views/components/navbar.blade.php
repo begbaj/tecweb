@@ -36,14 +36,15 @@
             
              
             @if (Auth::check())
-                @if(auth()->user()->hasRole('locatario'))
+
+                @if (auth()->user()->hasRole('locatario'))
 		    <a class="me-4" href="{{ route('chatLocatario')}}">
 			<img src="{{ asset('img/message-square.svg') }}">
 		    </a>
 		    <a class="me-4" href="{{ route('profileLocatario') }}">
 			<img src="{{ asset('img/user.svg') }}">
 		    </a>
-                @elseif(auth()->user()->hasRole('locatore'))
+                @elseif (auth()->user()->hasRole('locatore'))
 		    <a class="me-4" href="{{ route('chatLocatore') }}">
 			<img src="{{ asset('img/message-square.svg') }}">
 		    </a>
@@ -51,14 +52,22 @@
 			<img src="{{ asset('img/user.svg') }}">
 		    </a>
                 @endif
+
             {{ Form::open(array('route' => 'logout', 'id' => 'navbar-logout', 'files' => false, 'class'=> 'form-inline d-flex mt-3')) }}
                 {{ Form::submit('Logout', ['class' => 'btn btn-primary me-2']) }}
             {{ Form::close() }}
+
             @elseif (!isset($hideLoginForm))
+
             {{ Form::open(array('route' => 'login', 'id' => 'navbar-login', 'files' => false, 'class'=> 'form-inline d-flex mt-3')) }}
                 {{ Form::text('username','', ['placeholder'=> 'username', 'class' => 'form-control me-2']) }}
                 {{ Form::password('password', ['placeholder' => 'password', 'class' => 'form-control me-2']) }}
-                {{ Form::submit('Accedi', ['class' => 'btn btn-primary me-2']) }}
+                @if ($errors->first('password') or $errors->first('username'))
+                    {{ Form::submit('Accedi', ['class' => 'btn btn-danger me-2']) }}
+                    {{-- idea: ajax to redirect user to the login page if authentication goes wrong --}} 
+                @else
+                    {{ Form::submit('Accedi', ['class' => 'btn btn-primary me-2']) }}
+                @endif
                 <a class="btn btn-primary me-2" href="{{ route('register') }}" >Registrati</a>
             {{ Form::close() }}
             @endif

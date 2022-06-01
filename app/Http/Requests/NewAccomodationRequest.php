@@ -24,22 +24,22 @@ class NewAccomodationRequest extends FormRequest
     public function rules()
     {
         return [
-            'titolo' => 'required|min:4|max:25',
+            'titolo' => 'required|min:4|max:100',
             'descrizione' => 'required|max:5000',
             'tipo' => 'required',
-            'eta_min' => 'required',
-            'eta_max' => 'required',
-            'sesso' => 'required',
-            'prezzo' => 'required',
-            'superficie' => 'required',
-            'data_min' => 'required',
-            'data_max' => 'required',
-            'provincia' => 'required',
-            'citta' => 'required',
-            'indirizzo' => 'required',
-            'cap' => 'required',
-            'posti_letto' => 'required',
-            'camere' => 'required'
+            'eta_min' => '',
+            'eta_max' => '',
+            'sesso' => '',
+            'prezzo' => 'required|integer',
+            'superficie' => 'required|integer',
+            'data_min' => 'required|date',
+            'data_max' => 'required|date',
+            'provincia' => 'required|max:50',
+            'citta' => 'required|max:50',
+            'indirizzo' => 'required|max:100',
+            'cap' => 'required|max:5',
+            'posti_letto' => 'required|integer',
+            'camere' => 'required|integer'
         ];
     }
 }

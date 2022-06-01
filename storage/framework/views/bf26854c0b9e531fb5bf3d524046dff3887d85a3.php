@@ -6,9 +6,7 @@
         <div class="container mt-3">
             <h4>Dettagli Annuncio</h4>    
         </div>
-        <div class="container mt-3 lead">
-            <strong><?php echo e($alloggio->titolo); ?></strong>
-        </div>    
+        <p class="lead"></p>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
