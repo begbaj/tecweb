@@ -1,6 +1,6 @@
 <div class="card m-2 shadow-sm">
 
-    <img class="card-img-top" src="<?php echo e(URL::asset('assets/' . $accomodation->id . '/1.jpg')); ?>">
+    <img class="card-img-top" src="<?php echo e(asset('assets/'. $accomodation->id . '/thumbnail')); ?> ">
     <div class="card-body">
         <h5 class="card-title text-truncate"><?php echo e($accomodation->titolo); ?></h5>
         <p class="card-text"> <?php echo e($accomodation->descrizione); ?> </p>

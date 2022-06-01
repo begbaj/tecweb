@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 
-<?php echo e(Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => false])); ?>
+<?php echo e(Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true])); ?>
 
 
     <div class="mb-3">
@@ -231,6 +231,22 @@
     </div>
 
     <div class="mb-3">
+        <?php echo e(Form::label('posti_letto', 'Posti Letto', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms'])); ?>
+
+        <?php echo e(Form::number('posti_letto', '1', ['class' => 'form-control'] )); ?>
+
+        <?php if($errors->first('posti_letto')): ?>
+        <div class="d-flex justify-content-center">
+            <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+            <?php $__currentLoopData = $errors->get('posti_letto'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="d-flex justify-content-center"><?php echo e($message); ?></div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+        </div>     
+        <?php endif; ?>
+    </div>
+
+    <div class="mb-3">
         <?php echo e(Form::label('camere', 'Camere', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms'])); ?>
 
         <?php echo e(Form::number('camere', '1', ['class' => 'form-control'] )); ?>
@@ -239,6 +255,21 @@
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
             <?php $__currentLoopData = $errors->get('camere'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="d-flex justify-content-center"><?php echo e($message); ?></div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+        </div>     
+        <?php endif; ?>
+    </div>
+    <div class="mb-3">
+        <?php echo e(Form::label('foto', '', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms'])); ?>
+
+        <?php echo e(Form::file('image')); ?>
+
+        <?php if($errors->first('image')): ?>
+        <div class="d-flex justify-content-center">
+            <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+            <?php $__currentLoopData = $errors->get('image'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="d-flex justify-content-center"><?php echo e($message); ?></div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
