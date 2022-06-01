@@ -5,6 +5,7 @@ use Faker\Factory as Faker;
 use App\User;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Servizio;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
@@ -52,21 +53,26 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         $servs =
             [ 
-                'appartamento' => [ 'cucina', 'locale_ricreativo', 'angolo_studio'],
-                'posto_letto' => [ '' ],
-                'null' => ['box_doccia', 'condizionatore', 'asciugatrice', 'area_fumatori', 'vasca', 'wifi', 'lavatrice',
-                    'riscaldamento', 'tv']
+                'appartamento' => [ 'cucina', 'locale_ricreativo', 'angolo_studio', 'garage'],
+                'posto_letto' => ['servizio_in_camera'],
+                'null' => ['box_doccia', 'condizionatore', 'asciugatrice', 'area_fumatori', 'palestra',
+                'vasca', 'wifi', 'lavatrice', 'riscaldamento', 'tv', 'vicino_palestra',
+                'vicino_facolta', 'vicino_supermercato', 'vicino_fermata_metro', 'vicino_centro',
+                'vicino_stazione', 'vicino_mensa', 'vicino_fermata_bus']
             ];
+        $i = 0;
+        $keys = array_keys($servs);
         foreach ($servs as $tipo) {
            foreach ($tipo as $serv) {       
                 DB::table('servizi')->insert( [[
                         'nome' => $serv,
                         'icona' => $faker->word,
-                        'tipo' => key($tipo) == 'null' ? null : key($tipo),
+                        'tipo' => $keys[$i] == 'null' ? null : $keys[$i],
                         'created_at' => $faker->dateTime
                     ]]
                 );
            } 
+            $i++;
         }
 	for ($i = 0; $i < 15; $i++) { 
             try {    
