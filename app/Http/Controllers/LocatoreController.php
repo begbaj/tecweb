@@ -40,7 +40,7 @@ class LocatoreController extends Controller
         $_dir_ = public_path('assets/'.(string)$accom->id);
 
         Log::debug($_dir_);
-        mkdir($_dir_);
+        if(!file_exists($_dir_)) mkdir($_dir_);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -51,7 +51,7 @@ class LocatoreController extends Controller
 
         if (!is_null($imageName)) {
             $destinationPath = $_dir_ ; 
-            $image->move($destinationPath, 'thumbnail'. $image->getClientOriginalExtension());
+            $image->move($destinationPath, 'thumbnail');
         };
 
 

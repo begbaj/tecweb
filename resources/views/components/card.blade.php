@@ -1,20 +1,6 @@
 <div class="card m-2 shadow-sm">
 
-    <img class="card-img-top" src="@php
-    try{
-        $allFiles = Storage::get('public/assets/'.$accomodation->id .'/');
-
-        $matchingFiles = preg_grep('/^1\./', $allFiles);
-        if (count($matchingFiles) > 0){
-            echo Storage::get($matchingFiles[0]);
-        }else{
-            echo 'not_found';
-        }
-    }catch (Exception $e) {
-        echo 'error';
-    }
-    @endphp
-    ">
+    <img class="card-img-top" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
         <p class="card-text"> {{ $accomodation->descrizione }} </p>
