@@ -6,6 +6,7 @@ use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Messaggio;
 use App\Models\Chat;
+use App\Models\Catalog;
 use App\Http\Requests\NewMessageRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -89,6 +90,9 @@ class LocatoreController extends Controller
     }
     
     public function detailsLocatore($accomId){
-        return view('details');
+	$catalog = new Catalog;
+	$alloggio = Alloggio::where('id', $accomId)->get();
+	$servizi = $catalog->getServiziAlloggio($accomId);
+        return view('details')->with('alloggio', $alloggio)->with('servizi', $servizi);
     }
 }

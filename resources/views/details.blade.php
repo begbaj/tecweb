@@ -3,6 +3,8 @@
 @section('title', 'Dettagli Annuncio')
 
 @section('content')
-
+{{$alloggio}}
+<br/>
+{{$servizi}}
 @endsection
 
