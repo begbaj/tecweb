@@ -50,7 +50,7 @@ class genImages extends Command
             } 
             echo 'downloading images for ' . $alldir . '\n';
             for ($i = 0; $i < $num; $i++) {
-                file_put_contents($alldir.'/'.$i.'.jpg', file_get_contents('https://loremflickr.com/320/240/house,home'));
+                file_put_contents($alldir.'/thumbnail', file_get_contents('https://loremflickr.com/320/240/house,home'));
             }
         }
     }

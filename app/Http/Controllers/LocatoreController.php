@@ -30,11 +30,30 @@ class LocatoreController extends Controller
 
     public function insertNewAccom(NewAccomodationRequest $request) {
         Log::debug('Inserimento Alloggio: iniziato');
+
         $accom = new Alloggio;
         $accom->id_locatore = Auth::user()->id;
+        $accom->opzionato = false;
         $accom->created_at = Carbon::now()->toDateTimeString();
         $accom->fill($request->validated());
         $accom->save();
+        $_dir_ = public_path('assets/'.(string)$accom->id);
+
+        Log::debug($_dir_);
+        if(!file_exists($_dir_)) mkdir($_dir_);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+        } else {
+            $imageName = NULL;
+        }
+
+        if (!is_null($imageName)) {
+            $destinationPath = $_dir_ ; 
+            $image->move($destinationPath, 'thumbnail');
+        };
+
 
         return redirect()->route('homepage', [$accom->title]);
     }
@@ -67,5 +86,9 @@ class LocatoreController extends Controller
 		$message->save();
 
 		return redirect()->route('chatLocatore', [$message->id_destinatario]);
+    }
+    
+    public function detailsLocatore($accomId){
+        return view('details');
     }
 }

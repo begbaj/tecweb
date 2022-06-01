@@ -52,4 +52,8 @@ class LocatarioController extends Controller
 
 		return redirect()->route('chatLocatario', [$message->id_destinatario]);
     }
+    
+    public function detailsLocatario($accomId){
+        return view('details');
+    }
 }

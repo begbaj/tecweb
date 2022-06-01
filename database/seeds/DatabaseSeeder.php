@@ -50,7 +50,24 @@ class DatabaseSeeder extends Seeder
     	}
 
         // $this->call(UsersTableSeeder::class);
-
+        $servs =
+            [ 
+                'appartamento' => [ 'cucina', 'locale_ricreativo', 'angolo_studio'],
+                'posto_letto' => [ '' ],
+                'null' => ['box_doccia', 'condizionatore', 'asciugatrice', 'area_fumatori', 'vasca', 'wifi', 'lavatrice',
+                    'riscaldamento', 'tv']
+            ];
+        foreach ($servs as $tipo) {
+           foreach ($tipo as $serv) {       
+                DB::table('servizi')->insert( [[
+                        'nome' => $serv,
+                        'icona' => $faker->word,
+                        'tipo' => key($tipo) == 'null' ? null : key($tipo),
+                        'created_at' => $faker->dateTime
+                    ]]
+                );
+           } 
+        }
 	for ($i = 0; $i < 15; $i++) { 
             try {    
                 DB::table('faq')->insert(
@@ -59,14 +76,6 @@ class DatabaseSeeder extends Seeder
                         'risposta' => $faker->text(100),
                         'created_at' => $faker->dateTime,
 			'ordine' => $i
-                    ]]
-		);
-
-		DB::table('servizi')->insert( [[
-                        'nome' => $faker->sentence($ndWords=3),
-                        'icona' => $faker->word,
-                        'tipo' => $faker->randomelement(['appartamento','posto_letto', null]),
-                        'created_at' => $faker->dateTime
                     ]]
 		);
             } catch (Exception $e) {

@@ -34,6 +34,7 @@ class NewAccomodationRequest extends FormRequest
             'superficie' => 'required',
             'data_min' => 'required',
             'data_max' => 'required',
+            'provincia' => 'required',
             'citta' => 'required',
             'indirizzo' => 'required',
             'cap' => 'required',
