@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Resources\Servizio;
 use Illuminate\Http\Request;
 
 /*
