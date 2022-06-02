@@ -24,7 +24,7 @@
     </div>
     
     <div class="container-fluid border-top border-dark mt-2 pt-3">
-        <h4><strong>Informazione che possono interessarti...</strong></h4> 
+        <h4><strong>Informazioni che possono interessarti...</strong></h4> 
         
         <div class="row d-flex align-items-center">
             <div class="d-flex row mt-4 align-items-center" style="width: 450px">
@@ -78,9 +78,9 @@
                     <img src="{{ asset('img/calendar-range.svg') }}" style="width: 35px; height:35px"> 
                 </div>
                 <div class="col-sm-10 lead">
-                    Data Inizio Disponibilità: {{$alloggio->data_min}}
+                    Data Inizio Disponibilità: {{substr($alloggio->data_min, 0, -8)}}
                     <br>
-                    Data Fine Disponibilità: {{$alloggio->data_max}}
+                    Data Fine Disponibilità: {{substr($alloggio->data_max, 0, -8)}}
                 </div>
             </div>
             
@@ -116,6 +116,65 @@
                 </div>
             </div>
         </div>
+        
+        <div class="d-flex row mt-5 align-items-center">
+            <div class="d-flex row  align-items-center">
+                <div class="col-sm-1">
+                    <img src="{{ asset('img/building.svg') }}" style="width: 45px; height: 45px">
+                </div>
+                
+                <div class="col-sm-2">
+                    <h4><strong>Servizi</strong></h4> 
+                </div>     
+            </div>
+            
+            <div class="lead mt-3">
+                @foreach($servizi as $servizio)
+                    @if($servizio->id < 16)
+                    <div class="d-flex row align-items-center mt-2" style="width: 450px">
+                        <div class="col-sm-1">
+                            <img src="" style="width: 25px; height:25px">
+                        </div>
+                        
+                        <div class="col-sm-auto lead ms-3">
+                        {{ucwords(str_replace("_", " ",$servizio->nome))}}    
+                        </div>    
+                    </div>
+                    @endif
+                @endforeach 
+            </div>
+        </div>
+        
+        <div class="d-flex row align-items-center mt-5">
+            <div class="col-sm-1">
+                <img src="{{ asset('img/globe.svg') }}" style="width: 45px; height: 45px">
+            </div>
+                
+            <div class="col-sm-2">
+                <h4><strong>Vicino a...</strong></h4>
+            </div>
+                
+            <div class="lead mt-3">
+                @foreach($servizi as $servizio)
+                    @if($servizio->id >= 16)
+                    <div class="d-flex row align-items-center mt-2" style="width: 450px">
+                        <div class="col-sm-1">
+                            <img src="" style="width: 25px; height: 25px">
+                        </div>
+                        
+                        <div class="col-sm-auto lead ms-3">
+                        {{substr(ucwords(str_replace("_", " ", $servizio->nome)), 7)}}    
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+    
+    <div class="container d-flex justify-content-end mt-3">
+        <a class="btn btn-primary me-2" href="">Invia Messaggio</a>
+        <a class="btn btn-success me-2 ms-3" href="">Opziona l'Alloggio</a>
     </div>
 </div>
 @endsection
