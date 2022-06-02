@@ -3,7 +3,15 @@
     <img class="card-img-top" style="height: 300px" src="<?php echo e(asset('assets/'. $accomodation->id . '/thumbnail')); ?> ">
     <div class="card-body">
         <h5 class="card-title text-truncate"><?php echo e($accomodation->titolo); ?></h5>
-        <p class="card-text"> <?php echo e($accomodation->descrizione); ?> </p>
+        <p class="card-text"><?php echo e($accomodation->descrizione); ?></p>
+	<p class="card-text text-muted float-start mw-50">
+	<?php if($accomodation->tipo=='appartamento'): ?>
+	Appartamento
+	<?php else: ?>
+	Posto Letto
+	<?php endif; ?>
+	</p>
+	<p class="card-text text-muted float-end"><?php echo e($accomodation->citta); ?></p>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
         <?php if(Auth::check() && auth()->user()->hasRole('locatario')): ?>

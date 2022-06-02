@@ -23,13 +23,13 @@
 	<?php endif; ?>
 <?php else: ?>
 <div class="d-flex h-50">
-	<div class="deck-columns h-100 overflow-auto">
+	<div class="deck-columns h-100 overflow-auto" style="max-width:20%">
 	<?php $__currentLoopData = $rubrica; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         	<?php echo $__env->make('components.rubricCard', [ '$user' => $user] , \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 	</div>
 	<div class="vr"></div>
-	<div class="container h-100">
+	<div class="container h-100" style="max-width:80%">
 		<h5 class="h-20">
 		<?php if($chatId!=null): ?>
 			<?php echo e($rubrica->where('id', $chatId)->first()->nome." ".

@@ -5,6 +5,7 @@
 @section('content')
 
 {{ Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true]) }}
+{{ Form::token() }}
 <div class='row'>
     <div class="col mb-3">
         {{ Form::label('titolo', 'Titolo', ['class' => 'col-sm-2 col-form-label',  'for'=>'titolo']) }}
@@ -244,12 +245,13 @@
         </div>     
         @endif
     </div>
-    <!--
+
     <div class="col mb-3">
         {{ Form::label('servizi', 'Servizi', ['class' => 'col-sm-2 col-form-label',  'for'=>'services']) }}
-        <!-- TODO: servizi
+        <div id="servizi">
+        </div>
     </div>
-    -->
+
     <div class="col mb-3">
         {{ Form::label('descrizione', 'Descrizione', ['class' => 'col-sm-2 col-form-label',  'for'=>'desc']) }}
         {{ Form::textarea('descrizione', '', ['class' => 'form-control'] )}}

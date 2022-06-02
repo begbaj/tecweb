@@ -24,7 +24,7 @@ class NewMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'testo' => 'required|min:1',
+            'testo' => 'required|min:1|max:5000',
         ];
     }
 }

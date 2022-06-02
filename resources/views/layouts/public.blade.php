@@ -1,6 +1,8 @@
 <head> 
+    {{-- TODO: This layout should be named BASE --}}
+    <title> Kumuuzag - @yield('title') </title>
     @include('components/_meta')
-    @yield('extra-head')
+    @section('scripts')
     <script type="text/javascript" src="src/jquery.js"></script>
     <script type="text/javascript">
             window.onload = function () {
@@ -8,6 +10,12 @@
 
                     for(i=0; i< cards.length; i++){
                             cards[i].innerHTML = truncateText(cards[i].innerHTML, 120);
+                    }
+
+		    cards = document.getElementsByClassName('card-text text-muted float-end')
+
+                    for(i=0; i< cards.length; i++){
+                            cards[i].innerHTML = truncateText(cards[i].innerHTML, 30);
                     }
             }
 
@@ -18,7 +26,9 @@
                     return  text.slice(0,max_char-2) + '...';
             }
     </script>
-    <title> Kumuuzag - @yield('title') </title>
+    @show
+    {{-- extra-head: other stuff to add in the header --}}
+    @yield('extra-head')
 </head>
 <body>
     <!-- HEADER -->

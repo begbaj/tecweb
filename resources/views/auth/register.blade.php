@@ -13,6 +13,7 @@
             <h2 class="jumbotron-heading jumbotron-fluid">Benvenuto su Kumuuzag!</h2>
             <h2 class="lead">Registrati!</h2>
             {{ Form::open(array('route' => 'register', 'id' => 'signin-form', 'files' => false)) }}
+            {{ Form::token() }}
                 <div class= "d-flex justify-content-center pe-5 align-items-center">
                     <div class="form-outline row mb-3 mt-3 w-50">
                         {{ Form::label('firstname', 'Nome', ['class' => 'col-sm-2 col-form-label', 'for'=>'firstname' ] ) }}
