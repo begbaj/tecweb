@@ -6,7 +6,6 @@
         <div class="container mt-3 pb-4">
             <h2><strong>Dettagli dell'Annuncio</strong></h2>    
         </div>
-<<<<<<< HEAD
         <h6 class="lead"><strong><?php echo e($alloggio->titolo); ?></strong></h6>
     </div>
     
@@ -14,9 +13,6 @@
         <div class="border border-secondary pt-2 pb-2 ps-2 pe-2">
             <img src="<?php echo e(asset('assets/'. $alloggio->id . '/thumbnail')); ?>" style="width: 450px; height: 350px">
         </div>    
-=======
-        <p class="lead"></p>
->>>>>>> ca61b0d423128a84efd55f961f5db09d442aaed8
     </div>
     
     <div class="container-fluid border-top border-dark mt-5 pt-2">
