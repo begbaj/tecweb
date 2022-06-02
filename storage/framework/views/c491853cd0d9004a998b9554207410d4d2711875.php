@@ -12,6 +12,8 @@
             <h2 class="lead"> Effettua il login.</h2>
             <?php echo e(Form::open(array('route' => 'login', 'class' => 'contact-form'))); ?>
 
+            <?php echo e(Form::token()); ?>
+
                 <div class= "d-flex justify-content-center">
                     <div class="form-outline row mb-2 mt-4 w-50">
                         <?php echo e(Form::label('username', 'Nome Utente', ['class' => 'label-input'])); ?>
@@ -68,4 +70,4 @@
 </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.public', ['hideLoginForm' => True], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/auth/login.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.base', ['hideLoginForm' => True], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/auth/login.blade.php ENDPATH**/ ?>

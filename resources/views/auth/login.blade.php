@@ -1,4 +1,4 @@
-@extends('layouts.public', ['hideLoginForm' => True])
+@extends('layouts.base', ['hideLoginForm' => True])
 
 @section('title', 'Login')
 

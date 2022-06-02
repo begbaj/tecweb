@@ -1,4 +1,4 @@
-@extends('layouts.chat')
+@extends('layouts.base')
 
 @push('head')
 @endpush

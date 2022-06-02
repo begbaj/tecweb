@@ -1,4 +1,4 @@
-@extends('layouts.locatario')
+@extends('layouts.base')
 
 @section('title', 'Area Locatario')
 

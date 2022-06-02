@@ -29,9 +29,9 @@ class HomeController extends Controller
             switch ($role) {
                 case 'admin': return redirect()->route('admin');
                     break;
-                case 'locatore': return redirect()->route('locatore');
+                case 'locatore': return redirect()->route('lore');
                     break;
-                case 'locatario': return redirect()->route('locatario');
+                case 'locatario': return redirect()->route('lario');
                 default:
                     $accomodations = new Alloggio;
                     return view('homepage')->with("accomodations", $accomodations->getAlloggiByDate(5));

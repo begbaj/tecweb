@@ -47,7 +47,7 @@
 		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 	</div>
 	<div>
-	<?php echo e(Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
+	<?php echo e(Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chat.send' : 'chat.send', 
 		$chatId ?? $rubrica->first()->id), 'id' => 'sendMessage', 'id_destinatario' => $chatId,'files' => false, 'class'=> 'form-inline d-flex mt-2'))); ?>
 
 		<?php echo e(Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1'])); ?>
@@ -62,4 +62,4 @@
 <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.chat', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/user/chat.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/user/chat.blade.php ENDPATH**/ ?>

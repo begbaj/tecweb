@@ -1,4 +1,4 @@
-@extends ('layouts.profile')
+@extends ('layouts.base')
 
 @section('title', 'Area Profilo Personale')
 

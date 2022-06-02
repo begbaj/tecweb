@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.base')
 
 @push('head')
 @endpush

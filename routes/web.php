@@ -77,10 +77,6 @@ Route::get('/lore/accom/{accomId}', 'LocatoreController@detailsLocatore')
         ->name('lore.accom');
 
 
-//Route::get('/chat/locatore/{chatId?}', 'LocatoreController@chatLocatore')
-//       ->name('chatLocatore');
-//Route::post('/chat/locatore/send/{chatId}', 'LocatoreController@sendMessage')
-//	 ->name('chatLocatore.send');
 
 // OBSOLETE
 Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
@@ -89,8 +85,8 @@ Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
 Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
         ->name('detailsLocatore');
 // OBSOLETE
-Route::get('/locatore', 'LocatoreController@index')
-        ->name('locatore');
+//Route::get('/locatore', 'LocatoreController@index')
+//        ->name('locatore');
 // OBSOLETE
 Route::get('/newaccom', 'LocatoreController@newaccom')
         ->name('newaccom');
@@ -104,18 +100,18 @@ Route::post('/newaccom/submit', "LocatoreController@insertNewAccom")
 |--------------------------------------------------------------------------
 */
 
+Route::get('/lario', 'LocatarioController@index')
+        ->name('lario');
+Route::get('/lario/me', 'LocatarioController@profileLocatario')
+        ->name('lario.me');
+Route::get('/lario/accom/{accomId}', 'LocatarioController@detailsLocatario')
+        ->name('lario.accom');
+
+//OBSOLETE ROUTES:
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario');
-
 Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
         ->name('profileLocatario');
-
-Route::get('/chat/locatario/{chatId?}', 'LocatarioController@chatLocatario')
-        ->name('chatLocatario');
-
-Route::post('/chat/locatario/send/{chatId}', 'LocatarioController@sendMessage')
-	->name('chatLocatario.send');
-
 Route::get('/details/locatario/{accomId}', 'LocatarioController@detailsLocatario')
         ->name('detailsLocatario');
 	
