@@ -36,6 +36,7 @@
             
              
             <?php if(Auth::check()): ?>
+
                 <?php if(auth()->user()->hasRole('locatario')): ?>
 		    <a class="me-4" href="<?php echo e(route('chatLocatario')); ?>">
 			<img src="<?php echo e(asset('img/message-square.svg')); ?>">
@@ -51,21 +52,30 @@
 			<img src="<?php echo e(asset('img/user.svg')); ?>">
 		    </a>
                 <?php endif; ?>
+
             <?php echo e(Form::open(array('route' => 'logout', 'id' => 'navbar-logout', 'files' => false, 'class'=> 'form-inline d-flex mt-3'))); ?>
 
                 <?php echo e(Form::submit('Logout', ['class' => 'btn btn-primary me-2'])); ?>
 
             <?php echo e(Form::close()); ?>
 
+
             <?php elseif(!isset($hideLoginForm)): ?>
+
             <?php echo e(Form::open(array('route' => 'login', 'id' => 'navbar-login', 'files' => false, 'class'=> 'form-inline d-flex mt-3'))); ?>
 
                 <?php echo e(Form::text('username','', ['placeholder'=> 'username', 'class' => 'form-control me-2'])); ?>
 
                 <?php echo e(Form::password('password', ['placeholder' => 'password', 'class' => 'form-control me-2'])); ?>
 
-                <?php echo e(Form::submit('Accedi', ['class' => 'btn btn-primary me-2'])); ?>
+                <?php if($errors->first('password') or $errors->first('username')): ?>
+                    <?php echo e(Form::submit('Accedi', ['class' => 'btn btn-danger me-2'])); ?>
 
+                     
+                <?php else: ?>
+                    <?php echo e(Form::submit('Accedi', ['class' => 'btn btn-primary me-2'])); ?>
+
+                <?php endif; ?>
                 <a class="btn btn-primary me-2" href="<?php echo e(route('register')); ?>" >Registrati</a>
             <?php echo e(Form::close()); ?>
 

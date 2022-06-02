@@ -35,8 +35,6 @@ Route::get('/who', 'PublicController@who')
 Route::get('/priv', 'PublicController@priv')
     ->name('priv');
 
-Route::get('/', 'HomeController@index')
-    ->name('homepage');
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +50,8 @@ Route::get('/', 'HomeController@index')
 Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
 
+Route::get('/', 'HomeController@index')
+    ->name('homepage');
 
 
 /*
@@ -93,7 +93,6 @@ Route::get('/locatario', 'LocatarioController@index')
 Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
         ->name('profileLocatario');
 
-
 Route::get('/chat/locatario/{chatId?}', 'LocatarioController@chatLocatario')
         ->name('chatLocatario');
 
@@ -120,7 +119,18 @@ Route::get('/statistics', "AdminController@statistics")
 
 Route::get('/gestionefaqs', 'AdminController@faqs')
         ->name('gestionefaqs');
-// Rotte per l'autenticazione
+
+Route::post('/addfaqs', 'AdminController@addfaq')
+        ->name('addfaq');
+
+Route::get('/admcat','AdminController@catalog')->name('admcat');
+
+/*
+|--------------------------------------------------------------------------
+| Authentication Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/login', 'Auth\LoginController@showLoginForm')
         ->name('login');
 
@@ -129,10 +139,9 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::post('/logout', 'Auth\LoginController@logout')
         ->name('logout');
 
-// Rotte per la registrazione
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')
         ->name('register');
 
 Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/admcat','AdminController@catalog')->name('admcat');
+

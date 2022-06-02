@@ -19,6 +19,9 @@ class LocatoreController extends Controller
         $this->middleware('can:isLocatore');
     }
 
+    /**
+     * Redirection to locatore homepage
+     */
     public function index() {
         $accoms = Alloggio::where('id_locatore', Auth::user()->id)->get();
         return view('locatore')->with('accoms', $accoms);
@@ -28,6 +31,7 @@ class LocatoreController extends Controller
         Log::debug('Pagina Inserimento caricata');
         return view('locatore.make_alloggio');
     }
+    
 
     public function insertNewAccom(NewAccomodationRequest $request) {
         Log::debug('Inserimento Alloggio: iniziato');
@@ -62,7 +66,11 @@ class LocatoreController extends Controller
     public function profileLocatore(){
        return view('user.profileInfo');
     }
-
+    
+   /**
+    * Redirection to Locatore chats 
+    *
+    */
     public function chatLocatore($chatId=null){
 	$chat = new Chat;
 	$rubrica = $chat->getRubric(Auth::user()->id);
@@ -78,6 +86,10 @@ class LocatoreController extends Controller
        return view('user.chat')->with('rubrica', $rubrica)->with('messaggi', $messaggi)->with('userid',Auth::user()->id)->with('chatId', $chatId);
     }
 
+   /**
+    * Send message to $chatId 
+    *
+    */
     public function sendMessage(NewMessageRequest $request, $chatId){
 		$message = new Messaggio;
 		$message->id_mittente=Auth::user()->id;
@@ -88,7 +100,10 @@ class LocatoreController extends Controller
 
 		return redirect()->route('chatLocatore', [$message->id_destinatario]);
     }
-    
+
+    /**
+     * Redirect to accomodation details page
+     */    
     public function detailsLocatore($accomId){
 	$catalog = new Catalog;
 	$alloggio = Alloggio::where('id', $accomId)->get();
