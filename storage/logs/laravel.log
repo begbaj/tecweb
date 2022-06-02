@@ -2614,6 +2614,7 @@
 #41 {main}
 >>>>>>> 5c1524ee7ade9bcd16fa3de0c165e7de2d0becbd
 "} 
+<<<<<<< HEAD
 [2022-06-02 11:06:37] local.ERROR: SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `alloggi`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Connection refused (SQL: select * from `alloggi`) at /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php:669)
 [stacktrace]
 #0 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(743): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
@@ -2918,3 +2919,6 @@
 #53 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
 #54 {main}
 "} 
+=======
+[2022-06-02 10:57:57] local.DEBUG: Pagina Inserimento caricata  
+>>>>>>> ca61b0d423128a84efd55f961f5db09d442aaed8
