@@ -3,7 +3,15 @@
     <img class="card-img-top" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
-        <p class="card-text"> {{ $accomodation->descrizione }} </p>
+        <p class="card-text">{{$accomodation->descrizione }}</p>
+	<p class="card-text text-muted float-start mw-50">
+	@if($accomodation->tipo=='appartamento')
+	Appartamento
+	@else
+	Posto Letto
+	@endif
+	</p>
+	<p class="card-text text-muted float-end">{{$accomodation->citta}}</p>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
         @if (Auth::check() && auth()->user()->hasRole('locatario'))

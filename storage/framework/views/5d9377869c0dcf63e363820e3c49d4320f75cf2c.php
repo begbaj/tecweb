@@ -1,4 +1,3 @@
-
 <div class="card ms-2 me-2" style="width: 18rem;">
     <img src="<?php echo e(URL::asset('assets/' . $accomodation->id . '/thumbnail')); ?>" class="card-img-top" alt="Immagine Prova">
     <div class="card-body">
