@@ -25,13 +25,13 @@
 	@endif
 @else
 <div class="d-flex h-50">
-	<div class="deck-columns h-100 overflow-auto">
+	<div class="deck-columns h-100 overflow-auto" style="max-width:20%">
 	@foreach($rubrica as $user)
         	@include('components.rubricCard', [ '$user' => $user] )
 	@endforeach 
 	</div>
 	<div class="vr"></div>
-	<div class="container h-100">
+	<div class="container h-100" style="max-width:80%">
 		<h5 class="h-20">
 		@if($chatId!=null)
 			{{$rubrica->where('id', $chatId)->first()->nome." ".

@@ -11,6 +11,12 @@
                     for(i=0; i< cards.length; i++){
                             cards[i].innerHTML = truncateText(cards[i].innerHTML, 120);
                     }
+
+		    cards = document.getElementsByClassName('card-text text-muted float-end')
+
+                    for(i=0; i< cards.length; i++){
+                            cards[i].innerHTML = truncateText(cards[i].innerHTML, 30);
+                    }
             }
 
             function truncateText(text, max_char){
