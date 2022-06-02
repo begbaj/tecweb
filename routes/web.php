@@ -121,8 +121,10 @@ Route::get('/statistics', "AdminController@statistics")
 Route::get('/gestionefaqs', 'AdminController@faqs')
         ->name('gestionefaqs');
 
-Route::get('/admcat','AdminController@catalog')->name('admcat');
+Route::post('/addfaqs', 'AdminController@addfaq')
+        ->name('addfaq');
 
+Route::get('/admcat','AdminController@catalog')->name('admcat');
 
 /*
 |--------------------------------------------------------------------------

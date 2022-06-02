@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\Faq;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use App\Models\Rented;
@@ -11,6 +12,7 @@ class AdminController extends Controller
 {       
     protected $_accomodations;
     protected $requested;
+    protected $faq;
 
 
     public function __construct(Request $request) {
@@ -65,6 +67,22 @@ class AdminController extends Controller
     }
     
     public function faqs(){
-        return view('admfaqs');
+        $this->faq = new Faq;
+        $faq = $this->faq->all();
+        return view('admfaqs')->with('faq',$faq);
+    }
+    
+    public function addfaq(Request $request)
+    {
+        $this->faq = new Faq;
+        $domanda = $request->input('domanda');
+        $risposta = $request->input('risposta');
+        $validator_start = $request->validate([
+            'domanda' => 'required',
+            'risposta' => 'required'  
+        ]);
+        $faqs = $this->faq->insert_faq($domanda, $risposta);
+        $faq = $this->faq->all();
+        return view('admfaqs')->with('faq',$faq);        
     }
 }
