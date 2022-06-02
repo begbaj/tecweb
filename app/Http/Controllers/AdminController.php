@@ -72,8 +72,17 @@ class AdminController extends Controller
         return view('admfaqs')->with('faq',$faq);
     }
     
-    public function addfaq()
+    public function addfaq(Request $request)
     {
-        return view('addfaq');
+        $this->faq = new Faq;
+        $domanda = $request->input('domanda');
+        $risposta = $request->input('risposta');
+        $validator_start = $request->validate([
+            'domanda' => 'required',
+            'risposta' => 'required'  
+        ]);
+        $faqs = $this->faq->insert_faq($domanda, $risposta);
+        $faq = $this->faq->all();
+        return view('admfaqs')->with('faq',$faq);        
     }
 }
