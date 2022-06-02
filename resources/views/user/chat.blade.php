@@ -11,12 +11,12 @@
 <div class="page-header py-3 m-8 mx-auto">
 	<h1 class="fw-dark text-center">Chat</h1>
 </div>
-@if(count($rubrica)==0)
-	@if(auth()->user()->hasRole('locatore'))
+@if (count($rubrica)==0)
+	@if (auth()->user()->hasRole('locatore'))
 		<h4 class="text-center">Al momento nessun locatario ha opzionato un tuo alloggio, torna piu' tardi!</h4>
 		<h4 class="text-center">Per aumentare le tue chances, <a href="{{ route('newaccom') }}">inseriscine uno!</a></h4>
 	@endif
-	@if(auth()->user()->hasRole('locatario'))
+	@if (auth()->user()->hasRole('locatario'))
 		<h4 class="text-center">
 		Nessuna conversazione passata, opziona un alloggio nel <a href="{{ route('locatario') }}">nostro catalogo!</a>
 		<br/>
@@ -26,8 +26,8 @@
 @else
 <div class="d-flex h-50">
 	<div class="deck-columns h-100 overflow-auto" style="max-width:20%">
-	@foreach($rubrica as $user)
-        	@include('components.rubricCard', [ '$user' => $user] )
+	@foreach ($rubrica as $user)
+        	@include ('components.rubricCard', [ '$user' => $user] )
 	@endforeach 
 	</div>
 	<div class="vr"></div>
@@ -42,12 +42,12 @@
 		</h5>
 		<hr/>
 	<div class="container h-75 overflow-auto">
-		@foreach($messaggi as $messaggio)
-			@include('components.messageCard', [ '$messaggio' => $messaggio])
+		@foreach ($messaggi as $messaggio)
+			@include ('components.messageCard', [ '$messaggio' => $messaggio])
 		@endforeach 
 	</div>
 	<div>
-	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
+	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chat.send' : 'chat.send', 
 		$data['chatId'] ?? $rubrica->first()->id), 'id' => 'sendMessage', 'id_destinatario' => $chatId,'files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
 		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1']) }}
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}

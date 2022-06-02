@@ -1,4 +1,4 @@
-@extends('layouts.locatore')
+@extends('layouts.public')
 
 @section('title', 'Area Locatore')
 

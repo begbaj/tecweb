@@ -3,6 +3,7 @@
     <title> Kumuuzag - @yield('title') </title>
     @include('components/_meta')
     @section('scripts')
+    <script type="text/javascript" src="{{ asset('js/functions.js') }}"></script>
     <script type="text/javascript" src="src/jquery.js"></script>
     <script type="text/javascript">
             window.onload = function () {

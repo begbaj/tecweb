@@ -1,9 +1,26 @@
-@extends('layouts.locatore')
+@extends('layouts.public')
 
 @section('title', 'Nuovo Alloggio')
 
-@section('content')
+@section('scripts')
+@parent
+<script>
+$(function () {
+    var actionUrl = "{{ route('insertaccom') }}";
+    var formId = 'newacocm-form';
+    $(":input").on('blur', function(event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, actionUrl, formId);
+    });
+    $("#insertaccom").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(actionUrl, formId);
+    });
+});
+</script>
+@endsection
 
+@section('content')
 {{ Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true]) }}
 {{ Form::token() }}
 <div class='row'>

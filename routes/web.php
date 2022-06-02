@@ -53,6 +53,10 @@ Route::get('/catalog', "PublicController@catalog")
 Route::get('/', 'HomeController@index')
     ->name('homepage');
 
+Route::get('/chat/v2/{chatId?}', 'ChatController@getChat')
+        ->name('chat');
+Route::post('/chat/v2/{chatId}/send', 'ChatController@sendMessage')
+	->name('chat.send');
 
 /*
 |--------------------------------------------------------------------------
@@ -60,26 +64,39 @@ Route::get('/', 'HomeController@index')
 |--------------------------------------------------------------------------
 */
 
-Route::get('/locatore', 'LocatoreController@index')
-        ->name('locatore');
 
-Route::get('/newaccom', 'LocatoreController@newaccom')
-        ->name('newaccom');
+Route::get('/lore', 'LocatoreController@index')
+        ->name('lore');
+Route::get('/lore/new', 'LocatoreController@newaccom')
+        ->name('lore.new');
+Route::post('/lore/new/submit', "LocatoreController@insertNewAccom")
+        ->name('lore.new.submit');
+Route::get('/lore/me', 'LocatoreController@profileLocatore')
+        ->name('lore.me');
+Route::get('/lore/accom/{accomId}', 'LocatoreController@detailsLocatore')
+        ->name('lore.accom');
 
-Route::post('/newaccom/submit', "LocatoreController@insertNewAccom")
-        ->name('insertaccom');
 
+//Route::get('/chat/locatore/{chatId?}', 'LocatoreController@chatLocatore')
+//       ->name('chatLocatore');
+//Route::post('/chat/locatore/send/{chatId}', 'LocatoreController@sendMessage')
+//	 ->name('chatLocatore.send');
+
+// OBSOLETE
 Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
         ->name('profileLocatore');
-
-Route::get('/chat/locatore/{chatId?}', 'LocatoreController@chatLocatore')
-        ->name('chatLocatore');
-
-Route::post('/chat/locatore/send/{chatId}', 'LocatoreController@sendMessage')
-	->name('chatLocatore.send');
-
+// OBSOLETE
 Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
         ->name('detailsLocatore');
+// OBSOLETE
+Route::get('/locatore', 'LocatoreController@index')
+        ->name('locatore');
+// OBSOLETE
+Route::get('/newaccom', 'LocatoreController@newaccom')
+        ->name('newaccom');
+//OBSOLETE
+Route::post('/newaccom/submit', "LocatoreController@insertNewAccom")
+        ->name('insertaccom');
 
 /*
 |--------------------------------------------------------------------------

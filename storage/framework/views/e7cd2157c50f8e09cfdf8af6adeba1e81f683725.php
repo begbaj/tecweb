@@ -1,8 +1,27 @@
 <?php $__env->startSection('title', 'Nuovo Alloggio'); ?>
 
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('scripts'); ?>
+<?php echo \Illuminate\View\Factory::parentPlaceholder('scripts'); ?>
+<script>
+$(function () {
+    var actionUrl = "<?php echo e(route('insertaccom')); ?>";
+    var formId = 'newacocm-form';
+    $(":input").on('blur', function(event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, actionUrl, formId);
+    });
+    $("#insertaccom").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(actionUrl, formId);
+    });
+});
+</script>
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('content'); ?>
 <?php echo e(Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true])); ?>
+
+<?php echo e(Form::token()); ?>
 
 <div class='row'>
     <div class="col mb-3">
@@ -275,13 +294,14 @@
         </div>     
         <?php endif; ?>
     </div>
-    <!--
+
     <div class="col mb-3">
         <?php echo e(Form::label('servizi', 'Servizi', ['class' => 'col-sm-2 col-form-label',  'for'=>'services'])); ?>
 
-        <!-- TODO: servizi
+        <div id="servizi">
+        </div>
     </div>
-    -->
+
     <div class="col mb-3">
         <?php echo e(Form::label('descrizione', 'Descrizione', ['class' => 'col-sm-2 col-form-label',  'for'=>'desc'])); ?>
 
@@ -308,4 +328,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.locatore', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/locatore/make_alloggio.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.public', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/locatore/make_alloggio.blade.php ENDPATH**/ ?>

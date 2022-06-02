@@ -38,14 +38,14 @@
             <?php if(Auth::check()): ?>
 
                 <?php if(auth()->user()->hasRole('locatario')): ?>
-		    <a class="me-4" href="<?php echo e(route('chatLocatario')); ?>">
+		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
 			<img src="<?php echo e(asset('img/message-square.svg')); ?>">
 		    </a>
 		    <a class="me-4" href="<?php echo e(route('profileLocatario')); ?>">
 			<img src="<?php echo e(asset('img/user.svg')); ?>">
 		    </a>
                 <?php elseif(auth()->user()->hasRole('locatore')): ?>
-		    <a class="me-4" href="<?php echo e(route('chatLocatore')); ?>">
+		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
 			<img src="<?php echo e(asset('img/message-square.svg')); ?>">
 		    </a>
 		    <a class="me-4" href="<?php echo e(route('profileLocatore')); ?>">
