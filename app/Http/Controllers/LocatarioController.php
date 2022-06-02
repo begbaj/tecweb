@@ -56,7 +56,7 @@ class LocatarioController extends Controller
     public function detailsLocatario($accomId){
         $catalog = new Catalog;
 	$alloggio = Alloggio::where('id', $accomId)->get();
-	$servizi = $catalog->getServiziAlloggio($accomId);
+	$servizi = $catalog->getServiziAlloggio($accomId);     
         return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
 }

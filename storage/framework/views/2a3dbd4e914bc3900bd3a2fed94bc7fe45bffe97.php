@@ -3,7 +3,10 @@
     <title> Kumuuzag - <?php echo $__env->yieldContent('title'); ?> </title>
     <?php echo $__env->make('components/_meta', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php $__env->startSection('scripts'); ?>
+<<<<<<< HEAD
     <script type="text/javascript" src="<?php echo e(asset('js/functions.js')); ?>"></script>
+=======
+>>>>>>> 16eba0e403824177effe5d54e3e68a8cda862041
     <script type="text/javascript" src="src/jquery.js"></script>
     <script type="text/javascript">
             window.onload = function () {
