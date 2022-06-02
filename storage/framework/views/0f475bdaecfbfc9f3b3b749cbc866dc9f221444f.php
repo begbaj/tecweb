@@ -48,7 +48,7 @@
 	</div>
 	<div>
 	<?php echo e(Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
-		$data['chatId'] ?? $rubrica->first()->id), 'id' => 'sendMessage', 'id_destinatario' => $chatId,'files' => false, 'class'=> 'form-inline d-flex mt-2'))); ?>
+		$chatId ?? $rubrica->first()->id), 'id' => 'sendMessage', 'id_destinatario' => $chatId,'files' => false, 'class'=> 'form-inline d-flex mt-2'))); ?>
 
 		<?php echo e(Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1'])); ?>
 

@@ -177,11 +177,23 @@
             </div>
         </div>
     </div>
-    
+    <?php if(auth()->user()->hasRole('locatario')): ?>
     <div class="container d-flex justify-content-end mt-3">
         <a class="btn btn-primary me-2" href="">Invia Messaggio</a>
         <a class="btn btn-success me-2 ms-3" href="">Opziona l'Alloggio</a>
     </div>
+    <div class="container d-flex mt-3 visually-hidden">
+	<?php echo e(Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
+		 $alloggio->id_locatore), 'id' => 'sendMessage', 'id_destinatario' => $alloggio->id_locatore,'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100'))); ?>
+
+		<?php echo e(Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100'])); ?>
+
+		<?php echo e(Form::submit('Invia', ['class' => 'btn btn-primary m-1'])); ?>
+
+        <?php echo e(Form::close()); ?>
+
+    </div>
+    <?php endif; ?>
 </div>
 <?php $__env->stopSection(); ?>
 
