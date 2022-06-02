@@ -136,6 +136,8 @@ Route::get('/gestionefaqs', 'AdminController@faqs')
 Route::post('/addfaqs', 'AdminController@addfaq')
         ->name('addfaq');
 
+Route::get('/deletefaq/{id}', 'AdminController@deletefaq');
+
 Route::get('/admcat','AdminController@catalog')->name('admcat');
 
 /*

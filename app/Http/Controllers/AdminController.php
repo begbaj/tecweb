@@ -78,11 +78,18 @@ class AdminController extends Controller
         $domanda = $request->input('domanda');
         $risposta = $request->input('risposta');
         $validator_start = $request->validate([
-            'domanda' => 'required',
-            'risposta' => 'required'  
+        'domanda' => 'required',
+        'risposta' => 'required'  
         ]);
         $faqs = $this->faq->insert_faq($domanda, $risposta);
         $faq = $this->faq->all();
-        return view('admfaqs')->with('faq',$faq);        
+        return view('admfaqs')->with('faq',$faq); 
+    }
+    
+    public function deletefaq($id)
+    {
+        $this->faq = new Faq;
+        $deleted = $this->faq->delete_faq($id);
+        return redirect('/gestionefaqs')->with('success', 'Eliminazione avvenuta correttamente');        
     }
 }
