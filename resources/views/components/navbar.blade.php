@@ -37,18 +37,11 @@
              
             @if (Auth::check())
 
-                @if (auth()->user()->hasRole('locatario'))
+                @if (auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore'))
 		    <a class="me-4" href="{{ route('chat')}}">
 			<img src="{{ asset('img/message-square.svg') }}">
 		    </a>
-		    <a class="me-4" href="{{ route('lario.me') }}">
-			<img src="{{ asset('img/user.svg') }}">
-		    </a>
-                @elseif (auth()->user()->hasRole('locatore'))
-		    <a class="me-4" href="{{ route('chat') }}">
-			<img src="{{ asset('img/message-square.svg') }}">
-		    </a>
-		    <a class="me-4" href="{{ route('lore.me') }}">
+		    <a class="me-4" href="{{ route('profile.me') }}">
 			<img src="{{ asset('img/user.svg') }}">
 		    </a>
                 @endif
