@@ -29,7 +29,7 @@ class AdminController extends Controller
     
     public function catalog(){
         $this->_accomodations = new Alloggio;
-        $accomodations = $this->_accomodations->all();
+        $accomodations = $this->_accomodations->getAlloggiByDate();
             return view('public.catalog')
             ->with('accomodations', $accomodations);    
     }
