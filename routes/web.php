@@ -73,7 +73,7 @@ Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 Route::get('/locatore', 'LocatoreController@index')
         ->name('lore');
 
-Route::get('/locatore/accom/new', 'LocatoreController@newaccom')
+Route::get('/locatore/accom/new', 'LocatoreController@viewMakeAccom')
         ->name('lore.accom.new');
 
 Route::post('/locatore/accom/new/submit', "LocatoreController@insertNewAccom")
