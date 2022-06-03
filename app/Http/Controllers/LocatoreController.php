@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
-use App\Models\Resources\Messaggio;
-use App\Models\Chat;
 use App\Models\Catalog;
-use App\Http\Requests\NewMessageRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
