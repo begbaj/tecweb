@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Resources;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,8 @@ public function insert_faq($question,$answer){
     $faq = new Faq;
     $faq->domanda = $question;
     $faq->risposta = $answer;
+    Log::debug("domanda Faq: ". $question);
+    Log::debug("risposta Faq: ". $answer);
     $faq->ordine = $this->count_faq();
     $faq->save();
     $allfaqs = $faq->all();
@@ -31,13 +34,11 @@ public function count_faq()
     return $faq;
 }
 
-public function delete_faq(){
-    
+public function delete_faq($id)
+{
+    $faq = new Faq;
+    $deleted = Faq::where('id', '=', $id)->delete();
+    $allfaqs = $faq->all();
+    return $allfaqs;
 }
-
-public function modify_faq(){
-    
-}
-        
-        
-}        
+}       
