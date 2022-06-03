@@ -4,7 +4,7 @@
 
 @section('content')
 @if (auth()->user('admin'))
-{{Form::open(array('route' => 'stats', 'id' => 'filter-form', 'files' => false, 'method'=>'GET' )) }}
+{{Form::open(array('route' => 'admin.stats.search', 'id' => 'filter-form', 'files' => false, 'method'=>'GET' )) }}
     <div class='d-flex justify-content-center align-center'>
         <div class="container d-flex justify-content-center border row border-secondary rounded align-center mt-5 pe-5 align-items-center">
             <div class ="form-outline row ms-2 mb-4 mt-4 w-25">

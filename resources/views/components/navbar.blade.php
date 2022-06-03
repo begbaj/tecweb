@@ -5,21 +5,21 @@
             <ul class="navbar-nav me-auto">
             @if (Auth::check() && auth()->user()->hasRole('admin'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('statistics') }}">Statistiche</a>
+                    <a class="nav-link" href="{{ route('admin.stats') }}">Statistiche</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('gestionefaqs') }}">Gestione FAQ</a>
+                    <a class="nav-link" href="{{ route('admin.faq') }}">Gestione FAQ</a>
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo Pubblico</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('newaccom') }}">Inserisci Alloggio</a>
+                    <a class="nav-link" href="{{ route('lore.accom.new') }}">Inserisci Alloggio</a>
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('locatario') }}">Ricerca</a>
+                    <a class="nav-link" href="{{ route('lario') }}">Ricerca</a>
                 </li>
             @else
                 <li class="nav-item">
@@ -41,14 +41,14 @@
 		    <a class="me-4" href="{{ route('chat')}}">
 			<img src="{{ asset('img/message-square.svg') }}">
 		    </a>
-		    <a class="me-4" href="{{ route('profileLocatario') }}">
+		    <a class="me-4" href="{{ route('lario.me') }}">
 			<img src="{{ asset('img/user.svg') }}">
 		    </a>
                 @elseif (auth()->user()->hasRole('locatore'))
 		    <a class="me-4" href="{{ route('chat') }}">
 			<img src="{{ asset('img/message-square.svg') }}">
 		    </a>
-		    <a class="me-4" href="{{ route('profileLocatore') }}">
+		    <a class="me-4" href="{{ route('lore.me') }}">
 			<img src="{{ asset('img/user.svg') }}">
 		    </a>
                 @endif

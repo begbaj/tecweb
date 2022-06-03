@@ -22,28 +22,17 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Redirect user to '/', the view will be handled by the HomeController.
      *
      * @var string
      */
     protected $redirectTo = '/';
-    
-    protected function redirectTo(){
-        $role = auth()->user()->ruolo;
-        switch ($role) {
-            case 'admin': return '/admin';
-                break;
-            case 'locatore': return '/locatore';
-                break;
-            case 'locatario':return '/locatario';
-        default: return '/';};
-    }
-        /**
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    
     public function username()
     {
         return 'username';

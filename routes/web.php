@@ -32,7 +32,7 @@ Route::get('/login', "PublicController@login")
 Route::get('/who', 'PublicController@who')
     ->name('who');
 
-Route::get('/priv', 'PublicController@priv')
+Route::get('/privacy', 'PublicController@priv')
     ->name('priv');
 
 
@@ -46,13 +46,10 @@ Route::get('/priv', 'PublicController@priv')
 |
 */
 
-
 Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
-
 Route::get('/', 'HomeController@index')
     ->name('homepage');
-
 Route::get('/chat/v2/{chatId?}', 'ChatController@getChat')
         ->name('chat');
 Route::post('/chat/v2/{chatId}/send', 'ChatController@sendMessage')
@@ -67,14 +64,16 @@ Route::post('/chat/v2/{chatId}/send', 'ChatController@sendMessage')
 
 Route::get('/lore', 'LocatoreController@index')
         ->name('lore');
-Route::get('/lore/new', 'LocatoreController@newaccom')
-        ->name('lore.new');
-Route::post('/lore/new/submit', "LocatoreController@insertNewAccom")
-        ->name('lore.new.submit');
 Route::get('/lore/me', 'LocatoreController@profileLocatore')
         ->name('lore.me');
-Route::get('/lore/accom/{accomId}', 'LocatoreController@detailsLocatore')
-        ->name('lore.accom');
+
+Route::get('/lore/accom/details/{accomId}', 'LocatoreController@detailsLocatore')
+        ->name('lore.accom.details');
+
+Route::get('/lore/accom/new', 'LocatoreController@newaccom')
+        ->name('lore.accom.new');
+Route::post('/lore/accom/new/submit', "LocatoreController@insertNewAccom")
+        ->name('lore.accom.new.submit');
 
 
 
@@ -84,15 +83,6 @@ Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
 // OBSOLETE
 Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
         ->name('detailsLocatore');
-// OBSOLETE
-//Route::get('/locatore', 'LocatoreController@index')
-//        ->name('locatore');
-// OBSOLETE
-Route::get('/newaccom', 'LocatoreController@newaccom')
-        ->name('newaccom');
-//OBSOLETE
-Route::post('/newaccom/submit', "LocatoreController@insertNewAccom")
-        ->name('insertaccom');
 
 /*
 |--------------------------------------------------------------------------
@@ -104,17 +94,9 @@ Route::get('/lario', 'LocatarioController@index')
         ->name('lario');
 Route::get('/lario/me', 'LocatarioController@profileLocatario')
         ->name('lario.me');
-Route::get('/lario/accom/{accomId}', 'LocatarioController@detailsLocatario')
-        ->name('lario.accom');
+Route::get('/lario/accom/details/{accomId}', 'LocatarioController@detailsLocatario')
+        ->name('lario.accom.details');
 
-//OBSOLETE ROUTES:
-Route::get('/locatario', 'LocatarioController@index')
-        ->name('locatario');
-Route::get('/profile/locatario', 'LocatarioController@profileLocatario')
-        ->name('profileLocatario');
-Route::get('/details/locatario/{accomId}', 'LocatarioController@detailsLocatario')
-        ->name('detailsLocatario');
-	
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -124,19 +106,29 @@ Route::get('/details/locatario/{accomId}', 'LocatarioController@detailsLocatario
 Route::get('/admin', "AdminController@index")
         ->name('admin');
 
-Route::get('/stats', "AdminController@stats")
-        ->name('stats');
+Route::get('/admin/stats', "AdminController@statistics")
+        ->name('admin.stats');
 
-Route::get('/statistics', "AdminController@statistics")
-        ->name('statistics');
+Route::get('/admin/stats/search', "AdminController@stats")
+        ->name('admin.stats.search');
 
-Route::get('/gestionefaqs', 'AdminController@faqs')
-        ->name('gestionefaqs');
 
-Route::post('/addfaqs', 'AdminController@addfaq')
-        ->name('addfaq');
+Route::get('/admin/catalog','AdminController@catalog')
+        ->name('admin.catalog');
 
-Route::get('/admcat','AdminController@catalog')->name('admcat');
+Route::get('/admin/faq', 'AdminController@faqs')
+        ->name('admin.faq');
+
+Route::post('/admin/faq/add', 'AdminController@addfaq')
+        ->name('admin.faq.add');
+
+// TOGLIERE COMMENTI QUANDO SARANNO PRONTI I METODI
+//Route::post('/admin/faq/remove', 'AdminController@removefaq')
+//        ->name('admin.faq.remove');
+
+//Route::post('/admin/faq/edit', 'AdminController@editfaq')
+//        ->name('admin.faq.edit');
+
 
 /*
 |--------------------------------------------------------------------------

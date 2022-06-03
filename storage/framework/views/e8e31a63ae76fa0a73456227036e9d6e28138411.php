@@ -10,11 +10,11 @@
     <div class="card-footer d-flex justify-content-between align-items-center">
         <?php if(Auth::check() && auth()->user()->hasRole('locatario')): ?>
             <div class="btn-group">
-                <a class="btn btn-primary" href="<?php echo e(route('detailsLocatario', [$accomodation->id])); ?>"> Vedi dettagli</a>
+                <a class="btn btn-primary" href="<?php echo e(route('lario.accom.details', [$accomodation->id])); ?>"> Vedi dettagli</a>
             </div>
         <?php elseif(Auth::check() && auth()->user()->hasRole('locatore')): ?>
             <div class="btn-group">
-                <a class="btn btn-primary" href="<?php echo e(route('detailsLocatore', [$accomodation->id])); ?>"> Vedi dettagli</a>
+                <a class="btn btn-primary" href="<?php echo e(route('lore.accom.details', [$accomodation->id])); ?>"> Vedi dettagli</a>
             </div>
                 
         <?php else: ?>    

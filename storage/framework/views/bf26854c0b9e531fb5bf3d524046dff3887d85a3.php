@@ -198,4 +198,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layouts.details', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/details.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/details.blade.php ENDPATH**/ ?>

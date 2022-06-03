@@ -18,7 +18,7 @@
       </div>
 
 <div class="modal-body">
-{{ Form::open(['route' => 'addfaq']) }}
+{{ Form::open(['route' => 'admin.faq.add']) }}
 <div class='col'>
     <div class="col mb-3">
         {{ Form::label('domanda', 'Domanda', ['class' => 'col-sm-2 col-form-label',  'for'=>'domanda']) }}

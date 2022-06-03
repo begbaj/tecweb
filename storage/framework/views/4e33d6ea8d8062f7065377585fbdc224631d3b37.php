@@ -5,21 +5,21 @@
             <ul class="navbar-nav me-auto">
             <?php if(Auth::check() && auth()->user()->hasRole('admin')): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('statistics')); ?>">Statistiche</a>
+                    <a class="nav-link" href="<?php echo e(route('admin.stats')); ?>">Statistiche</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('gestionefaqs')); ?>">Gestione FAQ</a>
+                    <a class="nav-link" href="<?php echo e(route('admin.faq')); ?>">Gestione FAQ</a>
                 </li>
             <?php elseif(Auth::check() && auth()->user()->hasRole('locatore')): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('catalog')); ?>">Catalogo Pubblico</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('newaccom')); ?>">Inserisci Alloggio</a>
+                    <a class="nav-link" href="<?php echo e(route('lore.accom.new')); ?>">Inserisci Alloggio</a>
                 </li>
             <?php elseif(Auth::check() && auth()->user()->hasRole('locatario')): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('locatario')); ?>">Ricerca</a>
+                    <a class="nav-link" href="<?php echo e(route('lario')); ?>">Ricerca</a>
                 </li>
             <?php else: ?>
                 <li class="nav-item">
@@ -41,14 +41,14 @@
 		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
 			<img src="<?php echo e(asset('img/message-square.svg')); ?>">
 		    </a>
-		    <a class="me-4" href="<?php echo e(route('profileLocatario')); ?>">
+		    <a class="me-4" href="<?php echo e(route('lario.me')); ?>">
 			<img src="<?php echo e(asset('img/user.svg')); ?>">
 		    </a>
                 <?php elseif(auth()->user()->hasRole('locatore')): ?>
 		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
 			<img src="<?php echo e(asset('img/message-square.svg')); ?>">
 		    </a>
-		    <a class="me-4" href="<?php echo e(route('profileLocatore')); ?>">
+		    <a class="me-4" href="<?php echo e(route('lore.me')); ?>">
 			<img src="<?php echo e(asset('img/user.svg')); ?>">
 		    </a>
                 <?php endif; ?>
