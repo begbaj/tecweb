@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
 use App\Models\Catalog;
+use App\Models\Resources\Inclusione;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -32,13 +33,20 @@ class LocatoreController extends Controller
 
     public function insertNewAccom(NewAccomodationRequest $request) {
         Log::debug('Inserimento Alloggio: iniziato');
-
         $accom = new Alloggio;
         $accom->id_locatore = Auth::user()->id;
         $accom->opzionato = false;
         $accom->created_at = Carbon::now()->toDateTimeString();
         $accom->fill($request->validated());
         $accom->save();
+        $accomid = Alloggio::latest()->get()->first()->id; // TODO: MOLTO RISCHIOSA, BISGONA TROVARE UN'ALTRA SOLUZIONE
+        foreach($request->servizi as $serv){
+            $servs = new Inclusione;
+            $servs->id_servizio = $serv;
+            $servs->id_alloggio = $accomid;
+            $servs->save();
+        }
+
         $_dir_ = public_path('assets/'.(string)$accom->id);
 
         Log::debug($_dir_);

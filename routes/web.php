@@ -26,9 +26,6 @@ Route::middleware(['guest'])->group(function () {
 Route::get('/faq', "PublicController@faq")
     ->name('faq');
 
-Route::get('/login', "PublicController@login")
-    ->name('login');
-
 Route::get('/who', 'PublicController@who')
     ->name('who');
 

@@ -21,8 +21,25 @@ function updateServs(data){
     $('#servizi').find('input').remove();
     $('#servizi').find('label').remove();
     $('#servizi').find('div').remove();
+    $('#vicino').find('input').remove();
+    $('#vicino').find('label').remove();
+    $('#vicino').find('div').remove();
     $.each(data, function (key, val) {
-        $('#servizi').append('<div class="form-check"><input class="form-check-input" type="checkbox" value="' + val.id + '" id="flexCheckDefault"><label class="form-check-label" for="flexCheckDefault">' + val.nome + '</label></div>');
+        if (val.nome.includes('vicino_'))
+        {
+            $('#vicino').append(
+                '<div class="form-check">' +
+                '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '">' +
+                '<label class="form-check-label" for="' + val.id + '">' + val.nome.replace(/vicino_/, '').replace(/_/g, ' ')+ '</label></div>'
+            );
+        } else {
+            $('#servizi').append(
+                '<div class="form-check">' +
+                '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '">' +
+                '<label class="form-check-label" for="' + val.id + '">' +  val.nome.replace(/_/g, ' ') + '</label></div>'
+
+            );
+        }
         console.log(key+': '+val);
     });
 }
@@ -259,6 +276,18 @@ function updateServs(data){
 </div>
 <div class="row">
     <div class="col mb-3">
+        {{ Form::label('servizi', 'Servizi', ['class' => 'col-sm-2 col-form-label',  'for'=>'servizi']) }}
+        <div id="servizi">
+        </div>
+    </div>
+    <div class="col mb-3">
+        {{ Form::label('vicino', 'Vicino A', ['class' => 'col-sm-2 col-form-label',  'for'=>'servizi']) }}
+        <div id="vicino">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mb-3">
         {{ Form::label('foto', '', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms']) }}
         {{ Form::file('image') }}
         @if ($errors->first('image'))
@@ -271,14 +300,6 @@ function updateServs(data){
         </div>     
         @endif
     </div>
-
-    <div class="col mb-3">
-        {{ Form::label('servizi', 'Servizi', ['class' => 'col-sm-2 col-form-label',  'for'=>'services']) }}
-        <div id="servizi">
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col mb-3">
         {{ Form::label('descrizione', 'Descrizione', ['class' => 'col-sm-2 col-form-label',  'for'=>'desc']) }}
         {{ Form::textarea('descrizione', '', ['class' => 'form-control'] )}}

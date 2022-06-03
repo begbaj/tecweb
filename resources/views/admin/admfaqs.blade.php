@@ -2,6 +2,30 @@
 
 @section('title', 'Gestione FAQs')
 
+@section('scripts')
+<script>
+$(function(){
+    $("#domanda").on('input', function (event){
+        if ($("#domanda").val() == '' || $("#risposta").val() == ''){
+            $("#save-btn").prop('disabled', true);
+        } else {
+            $("#save-btn").prop('disabled', false);
+        }
+    });
+    $("#risposta").on('input', function (event){
+        if ($("#domanda").val() == '' || $("#risposta").val() == ''){
+            $("#save-btn").prop('disabled', true);
+        } else {
+            $("#save-btn").prop('disabled', false);
+        }
+    });
+    $("#risposta").trigger('input');
+    $("#domanda").trigger('input');
+});
+</script>
+@endsection
+
+
 @section('content')
 <div class="static">
 <br><center><h1>FAQ</h1></center><br>
@@ -22,7 +46,7 @@
 <div class='col'>
     <div class="col mb-3">
         {{ Form::label('domanda', 'Domanda', ['class' => 'col-sm-2 col-form-label',  'for'=>'domanda']) }}
-        {{ Form::text('domanda', '', ['class' => 'form-control'] )}}
+        {{ Form::text('domanda', '', ['id'=>"domanda", 'class' => 'form-control'] )}}
         @if ($errors->first('domanda'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
@@ -35,7 +59,7 @@
     </div>
     <div class="col mb-3">
         {{ Form::label('risposta', 'Risposta', ['class' => 'col-sm-2 col-form-label',  'for'=>'risposta']) }}
-        {{ Form::text('risposta', '', ['class' => 'form-control'] )}}
+        {{ Form::text('risposta', '', ['id'=>'risposta', 'class' => 'form-control'] )}}
         @if ($errors->first('risposta'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
@@ -49,7 +73,7 @@
 </div>
 </div>       
       <div class="modal-footer">
-        {{ Form::submit("Salva", ['class' => 'btn btn-primary']) }}
+        {{ Form::submit("Salva", ["id"=> 'save-btn','class' => 'btn btn-primary']) }}
 
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulla</button>
       </div>
