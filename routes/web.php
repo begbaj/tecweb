@@ -50,9 +50,9 @@ Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
 Route::get('/', 'HomeController@index')
     ->name('homepage');
-Route::get('/chat/v2/{chatId?}', 'ChatController@getChat')
+Route::get('/chat/{chatId?}', 'ChatController@getChat')
         ->name('chat');
-Route::post('/chat/v2/{chatId}/send', 'ChatController@sendMessage')
+Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 	->name('chat.send');
 
 /*
