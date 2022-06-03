@@ -48,8 +48,10 @@ Route::get('/privacy', 'PublicController@priv')
 
 Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
+
 Route::get('/', 'HomeController@index')
     ->name('homepage');
+
 Route::get('/chat/{chatId?}', 'ChatController@getChat')
         ->name('chat');
 Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
@@ -62,17 +64,17 @@ Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 */
 
 
-Route::get('/lore', 'LocatoreController@index')
+Route::get('/locatore', 'LocatoreController@index')
         ->name('lore');
-Route::get('/lore/me', 'LocatoreController@profileLocatore')
+Route::get('/locatore/me', 'LocatoreController@profileLocatore')
         ->name('lore.me');
 
-Route::get('/lore/accom/details/{accomId}', 'LocatoreController@detailsLocatore')
+Route::get('/locatore/accom/details/{accomId}', 'LocatoreController@detailsLocatore')
         ->name('lore.accom.details');
 
-Route::get('/lore/accom/new', 'LocatoreController@newaccom')
+Route::get('/locatore/accom/new', 'LocatoreController@newaccom')
         ->name('lore.accom.new');
-Route::post('/lore/accom/new/submit', "LocatoreController@insertNewAccom")
+Route::post('/locatore/accom/new/submit', "LocatoreController@insertNewAccom")
         ->name('lore.accom.new.submit');
 
 
@@ -90,11 +92,11 @@ Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
 |--------------------------------------------------------------------------
 */
 
-Route::get('/lario', 'LocatarioController@index')
+Route::get('/locatario', 'LocatarioController@index')
         ->name('lario');
-Route::get('/lario/me', 'LocatarioController@profileLocatario')
+Route::get('/locatario/me', 'LocatarioController@profileLocatario')
         ->name('lario.me');
-Route::get('/lario/accom/details/{accomId}', 'LocatarioController@detailsLocatario')
+Route::get('/locatario/accom/details/{accomId}', 'LocatarioController@detailsLocatario')
         ->name('lario.accom.details');
 
 /*
