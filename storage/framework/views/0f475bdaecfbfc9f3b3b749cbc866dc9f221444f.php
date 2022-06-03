@@ -12,7 +12,7 @@
 <?php if(count($rubrica)==0): ?>
 	<?php if(auth()->user()->hasRole('locatore')): ?>
 		<h4 class="text-center">Al momento nessun locatario ha opzionato un tuo alloggio, torna piu' tardi!</h4>
-		<h4 class="text-center">Per aumentare le tue chances, <a href="<?php echo e(route('newaccom')); ?>">inseriscine uno!</a></h4>
+		<h4 class="text-center">Per aumentare le tue chances, <a href="<?php echo e(route('lore.accom.new')); ?>">inseriscine uno!</a></h4>
 	<?php endif; ?>
 	<?php if(auth()->user()->hasRole('locatario')): ?>
 		<h4 class="text-center">
