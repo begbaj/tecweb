@@ -21,6 +21,25 @@ $(function(){
     });
     $("#risposta").trigger('input');
     $("#domanda").trigger('input');
+    
+    
+    $("#editeddomanda").on('input', function (event){
+        if ($("#editeddomanda").val() == '' || $("#editedrisposta").val() == ''){
+            $("#modify-btn").prop('disabled', true);
+        } else {
+            $("#modify-btn").prop('disabled', false);
+        }
+    });
+    $("#editedrisposta").on('input', function (event){
+        if ($("#editeddomanda").val() == '' || $("#editedrisposta").val() == ''){
+            $("#modify-btn").prop('disabled', true);
+        } else {
+            $("#modify-btn").prop('disabled', false);
+        }
+    });
+    $("#editedrisposta").trigger('input');
+    $("#editeddomanda").trigger('input');
+    
 });
 </script>
 @endsection
@@ -43,6 +62,7 @@ $(function(){
 
 <div class="modal-body">
 {{ Form::open(['route' => 'admin.faq.add']) }}
+{{Form::token()}}
 <div class='col'>
     <div class="col mb-3">
         {{ Form::label('domanda', 'Domanda', ['class' => 'col-sm-2 col-form-label',  'for'=>'domanda']) }}
@@ -74,7 +94,6 @@ $(function(){
 </div>       
       <div class="modal-footer">
         {{ Form::submit("Salva", ["id"=> 'save-btn','class' => 'btn btn-primary']) }}
-
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulla</button>
       </div>
     </div>
@@ -82,14 +101,65 @@ $(function(){
 </div>
 {{ Form::close() }}
 
-
 <br>
 <hr>
 @isset($faq)
 @php $count=0; @endphp
 @foreach ($faq as $fq)
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-primary">Modifica</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifica-{{$fq->id}}"">Modifica</button>
+    <div class="modal fade" id="modifica-{{$fq->id}}" tabindex="-1" aria-labelledby="#EditModal" aria-hidden="true">
+          
+        
+<div class="modal-dialog">
+    <div class="modal-content">
+<div class="modal-header">
+    <h5 class="modal-title" id="EditModal">Modifica FAQ</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+ <div class="modal-body">
+{{  Form::open(array('route' => ['admin.faq.edit', $fq->id])) }}
+{{Form::token()}}
+<div class='col'>
+    <div class="col mb-3">
+        {{ Form::label('domanda', 'Domanda', ['class' => 'col-sm-2 col-form-label',  'for'=>'domanda']) }}
+        {{ Form::text('domanda', $fq->domanda, ['id'=>"editeddomanda", 'class' => 'form-control'] )}}
+        @if ($errors->first('domanda'))
+        <div class="d-flex justify-content-center">
+            <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+            @foreach ($errors->get('domanda') as $message)
+            <div class="d-flex justify-content-center">{{ $message }}</div>
+            @endforeach
+            </div>
+        </div>     
+        @endif
+    </div>
+    <div class="col mb-3">
+        {{ Form::label('risposta', 'Risposta', ['class' => 'col-sm-2 col-form-label',  'for'=>'risposta']) }}
+        {{ Form::text('risposta', $fq->risposta, ['id'=>"editedrisposta", 'class' => 'form-control'] )}}
+        @if ($errors->first('risposta'))
+        <div class="d-flex justify-content-center">
+            <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+            @foreach ($errors->get('risposta') as $message)
+            <div class="d-flex justify-content-center">{{ $message }}</div>
+            @endforeach
+            </div>
+        </div>     
+        @endif
+    </div>
+</div>
+</div>
+                
+<div class="modal-footer">
+        {{ Form::submit("Salva", ["id"=> 'modify-btn','class' => 'btn btn-primary']) }}
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulla</button>
+        </div>
+    </div>
+</div>
+{{Form::close()}}        
+        
+        
+    </div>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{$fq->id}}">Elimina</button>
     <div class="modal fade" id="delete-{{$fq->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
