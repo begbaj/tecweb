@@ -5,6 +5,34 @@
 
 @section('title', 'Catalogo')
 
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/functions.js') }}"></script>
+<script type="text/javascript" src="src/jquery.js"></script>
+<script type="text/javascript">
+        window.onload = function () {
+                cards = document.getElementsByClassName('card-text');
+
+                for(i=0; i< cards.length; i++){
+                        cards[i].innerHTML = truncateText(cards[i].innerHTML, 120);
+                }
+
+                cards = document.getElementsByClassName('card-text text-muted float-end')
+
+                for(i=0; i< cards.length; i++){
+                        cards[i].innerHTML = truncateText(cards[i].innerHTML, 30);
+                }
+        }
+
+        function truncateText(text, max_char){
+                if(text.length <= max_char){
+                        return text;
+                }
+                return  text.slice(0,max_char-2) + '...';
+        }
+</script>
+@endsection
+
+
 @section('content') 
 <section class="py-5 container">
 <div class="row py-lg-5">

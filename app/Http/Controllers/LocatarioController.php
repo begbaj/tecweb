@@ -16,5 +16,4 @@ class LocatarioController extends Controller
         return view('locatario')
             ->with('accomodations', $accomodations);
     }
-    
 }
