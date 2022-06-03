@@ -83,4 +83,4 @@
         </div>
     </div>
 </nav>
-<?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/components/navbar.blade.php ENDPATH**/ ?>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/tecweb/resources/views/components/navbar.blade.php ENDPATH**/ ?>

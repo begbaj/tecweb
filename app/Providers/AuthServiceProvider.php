@@ -37,5 +37,8 @@ class AuthServiceProvider extends ServiceProvider
             return $locatore->hasRole('locatore');
         });        
         
+	Gate::define('isUser', function($user){
+            return ($user->hasRole('locatore') or $user->hasRole('locatario'));
+	});
     }
 }

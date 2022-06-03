@@ -1,6 +1,6 @@
 <nav class="navbar @if (!isset($hideLoginForm)) fixed-top @endif navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('homepage') }}"> <img src="{{ URL::asset('img/brand/logo-colored.png') }}" height="50"></a>
+        <a class="navbar-brand" href="{{ route('homepage') }}"> <img src="{{ asset('img/brand/logo-colored.png') }}" height="50"></a>;
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
             @if (Auth::check() && auth()->user()->hasRole('admin'))
@@ -37,19 +37,12 @@
              
             @if (Auth::check())
 
-                @if (auth()->user()->hasRole('locatario'))
+                @if (auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore'))
 		    <a class="me-4" href="{{ route('chat')}}">
-			<img src="{{ asset('img/message-square.svg') }}">
+			<img src="{{ asset('img/svg/message-square.svg') }}">
 		    </a>
-		    <a class="me-4" href="{{ route('lario.me') }}">
-			<img src="{{ asset('img/user.svg') }}">
-		    </a>
-                @elseif (auth()->user()->hasRole('locatore'))
-		    <a class="me-4" href="{{ route('chat') }}">
-			<img src="{{ asset('img/message-square.svg') }}">
-		    </a>
-		    <a class="me-4" href="{{ route('lore.me') }}">
-			<img src="{{ asset('img/user.svg') }}">
+		    <a class="me-4" href="{{ route('profile.me') }}">
+			<img src="{{ asset('img/svg/user.svg') }}">
 		    </a>
                 @endif
 

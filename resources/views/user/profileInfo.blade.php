@@ -61,7 +61,7 @@
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Genere:</h5>
                     <div class="ps-4 lead d-flex align-items-center pb-1">
-                    {{Auth::user()->genere}}
+                    {{ucwords(Auth::user()->genere)}}
                     </div>
                 </div>
                 
@@ -75,7 +75,7 @@
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Ruolo:</h5>
                     <div class="ps-4 lead d-flex align-items-center pb-2">
-                    {{Auth::user()->ruolo}}
+                    {{ucwords(Auth::user()->ruolo)}}
                     </div>
                 </div>
             </div>

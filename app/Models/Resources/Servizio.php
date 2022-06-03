@@ -12,4 +12,11 @@ class Servizio extends Model
 	protected $guarded = ['id'];
 
 	public $timestamps = true;
+
+        static function getServs($type=null){
+            if ($type!=null)
+                return Servizio::whereRaw('tipo is NULL or tipo = ?', $type)->get();
+            else
+                return Servizio::all();
+        }
 }

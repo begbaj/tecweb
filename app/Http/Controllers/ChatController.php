@@ -11,6 +11,10 @@ use Carbon\Carbon;
 class ChatController extends Controller
 {
 
+    public function __construct() {
+        $this->middleware('can:isUser');
+    }
+
     /**
      * Get chat by $chatId
      *

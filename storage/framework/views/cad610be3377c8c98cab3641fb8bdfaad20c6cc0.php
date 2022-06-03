@@ -28,4 +28,4 @@
     <li><a href="https://github.com/begbaj/tecweb/tree/site-laravel"><i class="fa-brands fa-github-square"></i></a></li>
   </ul>
 </div>
-<?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/components/_footer.blade.php ENDPATH**/ ?>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/tecweb/resources/views/components/_footer.blade.php ENDPATH**/ ?>

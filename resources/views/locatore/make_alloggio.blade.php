@@ -6,17 +6,43 @@
 @parent
 <script>
 $(function () {
-    var actionUrl = "{{ route('lore.accom.new.submit') }}";
-    var formId = 'newacocm-form';
-    $(":input").on('blur', function(event) {
-        var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, actionUrl, formId);
+    $("#tipo").on('change', function(event) {
+       $.ajax({
+           type:'GET',
+           url:'/api/servs/' + $("#tipo").val(),
+           data:'_token = <?php echo csrf_token(); ?>',
+           success:updateServs
+        });
     });
-    $("#insertaccom").on('submit', function (event) {
-        event.preventDefault();
-        doFormValidation(actionUrl, formId);
-    });
+    $('#tipo').change();
 });
+
+function updateServs(data){
+    $('#servizi').find('input').remove();
+    $('#servizi').find('label').remove();
+    $('#servizi').find('div').remove();
+    $('#vicino').find('input').remove();
+    $('#vicino').find('label').remove();
+    $('#vicino').find('div').remove();
+    $.each(data, function (key, val) {
+        if (val.nome.includes('vicino_'))
+        {
+            $('#vicino').append(
+                '<div class="form-check">' +
+                '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '">' +
+                '<label class="form-check-label" for="' + val.id + '">' + val.nome.replace(/vicino_/, '').replace(/_/g, ' ')+ '</label></div>'
+            );
+        } else {
+            $('#servizi').append(
+                '<div class="form-check">' +
+                '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '">' +
+                '<label class="form-check-label" for="' + val.id + '">' +  val.nome.replace(/_/g, ' ') + '</label></div>'
+
+            );
+        }
+        console.log(key+': '+val);
+    });
+}
 </script>
 @endsection
 
@@ -250,6 +276,18 @@ $(function () {
 </div>
 <div class="row">
     <div class="col mb-3">
+        {{ Form::label('servizi', 'Servizi', ['class' => 'col-sm-2 col-form-label',  'for'=>'servizi']) }}
+        <div id="servizi">
+        </div>
+    </div>
+    <div class="col mb-3">
+        {{ Form::label('vicino', 'Vicino A', ['class' => 'col-sm-2 col-form-label',  'for'=>'servizi']) }}
+        <div id="vicino">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mb-3">
         {{ Form::label('foto', '', ['class' => 'col-sm-2 col-form-label',  'for'=>'bedrooms']) }}
         {{ Form::file('image') }}
         @if ($errors->first('image'))
@@ -262,13 +300,6 @@ $(function () {
         </div>     
         @endif
     </div>
-
-    <div class="col mb-3">
-        {{ Form::label('servizi', 'Servizi', ['class' => 'col-sm-2 col-form-label',  'for'=>'services']) }}
-        <div id="servizi">
-        </div>
-    </div>
-
     <div class="col mb-3">
         {{ Form::label('descrizione', 'Descrizione', ['class' => 'col-sm-2 col-form-label',  'for'=>'desc']) }}
         {{ Form::textarea('descrizione', '', ['class' => 'form-control'] )}}
