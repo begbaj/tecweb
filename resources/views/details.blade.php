@@ -120,7 +120,7 @@
         <div class="d-flex row mt-5 align-items-center">
             <div class="d-flex row  align-items-center">
                 <div class="col-sm-1">
-                    <img src="{{ asset('img/svg/building.svg') }}" style="width: 45px; height: 45px">
+                    <img src="{{ asset('img/svg/services.svg') }}" style="width: 45px; height: 45px">
                 </div>
                 
                 <div class="col-sm-2">
