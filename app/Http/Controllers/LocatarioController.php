@@ -27,6 +27,7 @@ class LocatarioController extends Controller
        return view('user.profileInfo');
     }
     
+    
     public function detailsLocatario($accomId){
         $catalog = new Catalog;
 	$alloggio = Alloggio::where('id', $accomId)->get();
