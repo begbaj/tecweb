@@ -177,7 +177,7 @@
         <a class="btn btn-success me-2 ms-3" href="">Opziona l'Alloggio</a>
     </div>
     <div class="container d-flex mt-3 visually-hidden">
-	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
+	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chat.send' : 'chat.send', 
 		 $alloggio->id_locatore), 'id' => 'sendMessage', 'id_destinatario' => $alloggio->id_locatore,'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
 		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100']) }}
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
