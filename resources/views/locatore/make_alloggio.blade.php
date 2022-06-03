@@ -13,10 +13,16 @@ $(function () {
            data:'_token = <?php echo csrf_token(); ?>',
            success:updateServs
         });
+       if ( $("#tipo").val() == "posto_letto" ){
+            $("#camere").prop('disabled', true);
+            $("#camere").val(1);
+       }
+       else{
+            $("#camere").prop('disabled', false);
+       }
     });
     $('#tipo').change();
 });
-
 function updateServs(data){
     $('#servizi').find('input').remove();
     $('#servizi').find('label').remove();
