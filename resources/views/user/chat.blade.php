@@ -14,7 +14,7 @@
 @if (count($rubrica)==0)
 	@if (auth()->user()->hasRole('locatore'))
 		<h4 class="text-center">Al momento nessun locatario ha opzionato un tuo alloggio, torna piu' tardi!</h4>
-		<h4 class="text-center">Per aumentare le tue chances, <a href="{{ route('newaccom') }}">inseriscine uno!</a></h4>
+		<h4 class="text-center">Per aumentare le tue chances, <a href="{{ route('lore.accom.new') }}">inseriscine uno!</a></h4>
 	@endif
 	@if (auth()->user()->hasRole('locatario'))
 		<h4 class="text-center">

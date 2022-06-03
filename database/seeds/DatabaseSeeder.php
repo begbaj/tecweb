@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
 	
 	try {
 		for ($i = 0; $i < 1000; $i++) { 
+
+			echo "Inserting user " . $i ."\n";
 			DB::table('users')->insert(
 			    [[
 				'nome' => $faker->firstName,
@@ -34,7 +36,8 @@ class DatabaseSeeder extends Seeder
 			    ]]
 		    );
 		}
-        
+        	
+		echo "Inserting default users";
 		DB::table('users')->insert([
 		    ['nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
 			'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatore','created_at' => date("Y-m-d H:i:s"),
@@ -51,6 +54,7 @@ class DatabaseSeeder extends Seeder
     	}
 
         // $this->call(UsersTableSeeder::class);
+
         $servs =
             [ 
                 'appartamento' => [ 'cucina', 'locale_ricreativo', 'angolo_studio', 'garage'],
@@ -62,6 +66,7 @@ class DatabaseSeeder extends Seeder
             ];
         $i = 0;
         $keys = array_keys($servs);
+	echo "Inserting default services";
         foreach ($servs as $tipo) {
            foreach ($tipo as $serv) {       
                 DB::table('servizi')->insert( [[
@@ -74,8 +79,10 @@ class DatabaseSeeder extends Seeder
            } 
             $i++;
         }
+
 	for ($i = 0; $i < 15; $i++) { 
             try {    
+		echo "Inserting faq " . $i ."\n";
                 DB::table('faq')->insert(
                     [[
                         'domanda' => $faker->text(100),
@@ -94,6 +101,7 @@ class DatabaseSeeder extends Seeder
 
 	for ($i = 0; $i < 300; $i++) { 
             try {    
+		echo "Inserting alloggio " . $i ."\n";
 		DB::table('alloggi')->insert(
                     [[
                         'titolo' => $faker->sentence($nbWords=5),
@@ -131,6 +139,7 @@ class DatabaseSeeder extends Seeder
             try {    
 
 		
+		echo "Inserting inclusion " . $i ."\n";
                 DB::table('inclusioni')->insert(
                     [[
                         'id_alloggio' => $faker->randomElement($alloggi),
@@ -139,6 +148,7 @@ class DatabaseSeeder extends Seeder
                     ]]
 		);
 
+		echo "Inserting message " . $i ."\n";
 		DB::table('messaggi')->insert(
                     [[
 			'id_mittente' => $faker->randomElement($locatari),
@@ -155,6 +165,7 @@ class DatabaseSeeder extends Seeder
  	
 	$alloggi_opzionati=Alloggio::where('opzionato', '=', true)->pluck('id')->toArray();
 
+	echo "Inserting options for relational constraint purposes";
 	foreach($alloggi_opzionati as $alloggio) { 
             try {    
 		DB::table('messaggi')->insert(
