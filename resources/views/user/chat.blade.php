@@ -5,6 +5,15 @@
 
 @section('title', 'Chat')
 
+@section('scripts')
+<script>
+$(function (){
+    var objDiv = document.getElementById("chat-container");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+</script>
+@endsection
+
 @section('content')
 <section class="py-5 container">
 
@@ -41,7 +50,7 @@
 		@endif
 		</h5>
 		<hr/>
-	<div class="container h-75 overflow-auto">
+	<div id="chat-container" class="container h-75 overflow-auto">
 		@foreach ($messaggi as $messaggio)
 			@include ('components.messageCard', [ '$messaggio' => $messaggio])
 		@endforeach 
