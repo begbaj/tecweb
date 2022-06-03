@@ -81,9 +81,9 @@ class AdminController extends Controller
         'domanda' => 'required',
         'risposta' => 'required'  
         ]);
-        $faqs = $this->faq->insert_faq($domanda, $risposta);
+        $this->faq->insert_faq($domanda, $risposta);
         $faq = $this->faq->all();
-        return view('admin.admfaqs')->with('faq',$faq); 
+        return redirect()->route('admin.faq'); //view('admin.admfaqs')->with('faq',$faq); 
     }
     
     public function deletefaq($id)
