@@ -14,7 +14,6 @@ class AdminController extends Controller
     protected $requested;
     protected $faq;
 
-
     public function __construct(Request $request) {
         // Log::debug('CONTROLLER_CALL: AdminController called');
         $this->request = $request;
@@ -24,13 +23,13 @@ class AdminController extends Controller
     public function index() {
         $this->_accomodations = new Alloggio;
         $accomodations = $this->_accomodations->getAlloggiByDate();
-        return view('admin.admin')
+        return view('public.catalog')
             ->with('accomodations', $accomodations);
     }
     
     public function catalog(){
         $this->_accomodations = new Alloggio;
-        $accomodations = $this->_accomodations->getAlloggiByDate();
+        $accomodations = $this->_accomodations->all();
             return view('public.catalog')
             ->with('accomodations', $accomodations);    
     }

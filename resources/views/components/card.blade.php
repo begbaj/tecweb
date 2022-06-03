@@ -8,15 +8,10 @@
 	<p class="card-text text-muted float-end">{{$accomodation->citta}}</p>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
-        @if (Auth::check() && auth()->user()->hasRole('locatario'))
+        @if (Auth::check() && (auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore')))
             <div class="btn-group">
-                <a class="btn btn-primary" href="{{ route('lario.accom.details', [$accomodation->id]) }}"> Vedi dettagli</a>
+                <a class="btn btn-primary" href="{{ route('catalog.accom.details', [$accomodation->id]) }}"> Vedi dettagli</a>
             </div>
-        @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
-            <div class="btn-group">
-                <a class="btn btn-primary" href="{{ route('lore.accom.details', [$accomodation->id]) }}"> Vedi dettagli</a>
-            </div>
-                {{-- catalog detials should be handled by a controller, this method leads to unreachable details from locatore --}}
         @else    
             <div class="btn-group">
                 <a class="btn btn-primary" href="{{ route('login') }}"> Vedi dettagli </a>

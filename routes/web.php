@@ -46,11 +46,18 @@ Route::get('/privacy', 'PublicController@priv')
 Route::get('/catalog', "PublicController@catalog")
     ->name('catalog');
 
+Route::get('/catalog/accom/{accomId}', "UserController@accomDetails")
+    ->name('catalog.accom.details');
+
+Route::get('/user/me', 'UserController@profile')
+    ->name('profile.me');
+
 Route::get('/', 'HomeController@index')
     ->name('homepage');
 
 Route::get('/chat/{chatId?}', 'ChatController@getChat')
         ->name('chat');
+
 Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 	->name('chat.send');
 
@@ -60,28 +67,14 @@ Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 |--------------------------------------------------------------------------
 */
 
-
 Route::get('/locatore', 'LocatoreController@index')
         ->name('lore');
-Route::get('/locatore/me', 'LocatoreController@profileLocatore')
-        ->name('lore.me');
-
-Route::get('/locatore/accom/details/{accomId}', 'LocatoreController@detailsLocatore')
-        ->name('lore.accom.details');
 
 Route::get('/locatore/accom/new', 'LocatoreController@newaccom')
         ->name('lore.accom.new');
+
 Route::post('/locatore/accom/new/submit', "LocatoreController@insertNewAccom")
         ->name('lore.accom.new.submit');
-
-
-
-// OBSOLETE
-Route::get('/profile/locatore', 'LocatoreController@profileLocatore')
-        ->name('profileLocatore');
-// OBSOLETE
-Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
-        ->name('detailsLocatore');
 
 /*
 |--------------------------------------------------------------------------
@@ -91,10 +84,6 @@ Route::get('/details/locatore/{accomId}', 'LocatoreController@detailsLocatore')
 
 Route::get('/locatario', 'LocatarioController@index')
         ->name('lario');
-Route::get('/locatario/me', 'LocatarioController@profileLocatario')
-        ->name('lario.me');
-Route::get('/locatario/accom/details/{accomId}', 'LocatarioController@detailsLocatario')
-        ->name('lario.accom.details');
 
 /*
 |--------------------------------------------------------------------------
@@ -110,9 +99,6 @@ Route::get('/admin/stats', "AdminController@statistics")
 
 Route::get('/admin/stats/search', "AdminController@stats")
         ->name('admin.stats.search');
-
-Route::get('/admin/catalog','AdminController@catalog')
-        ->name('admin.catalog');
 
 Route::get('/admin/faq', 'AdminController@faqs')
         ->name('admin.faq');

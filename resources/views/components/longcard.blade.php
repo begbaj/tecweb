@@ -2,7 +2,7 @@
 {{-- Long Card: long card used to show a list of accomodations--}}
 
 <div class="card bg-dark text-dark" >
-    <a href="{{ route('detailsLocatore', [$accomodation->id]) }}">
+    <a href="{{ route('catalog.accom.details', [$accomodation->id]) }}">
       <img class="card-img w-100" style="height: 200px;" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} " alt="">
       <div class="card-img-overlay">
         <h5 class="card-title bg-white"> {{ $accomodation->titolo }} </h5>

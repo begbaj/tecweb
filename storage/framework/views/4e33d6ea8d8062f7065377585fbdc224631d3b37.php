@@ -37,18 +37,11 @@
              
             <?php if(Auth::check()): ?>
 
-                <?php if(auth()->user()->hasRole('locatario')): ?>
+                <?php if(auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore')): ?>
 		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
 			<img src="<?php echo e(asset('img/svg/message-square.svg')); ?>">
 		    </a>
-		    <a class="me-4" href="<?php echo e(route('lario.me')); ?>">
-			<img src="<?php echo e(asset('img/svg/user.svg')); ?>">
-		    </a>
-                <?php elseif(auth()->user()->hasRole('locatore')): ?>
-		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
-			<img src="<?php echo e(asset('img/svg/message-square.svg')); ?>">
-		    </a>
-		    <a class="me-4" href="<?php echo e(route('lore.me')); ?>">
+		    <a class="me-4" href="<?php echo e(route('profile.me')); ?>">
 			<img src="<?php echo e(asset('img/svg/user.svg')); ?>">
 		    </a>
                 <?php endif; ?>
