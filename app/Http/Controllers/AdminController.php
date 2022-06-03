@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function index() {
         $this->_accomodations = new Alloggio;
         $accomodations = $this->_accomodations->all();
-        return view('admin')
+        return view('admin.admin')
             ->with('accomodations', $accomodations);
     }
     
@@ -55,7 +55,7 @@ class AdminController extends Controller
             $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
             $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);
         }
-        return view('statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
+        return view('admin.statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
     }
     
     public function statistics()
@@ -63,13 +63,13 @@ class AdminController extends Controller
         $tipo = 0;
         $data_inizio = 0;
         $data_fine = 0;
-        return view('statistics');
+        return view('admin.statistics');
     }
     
     public function faqs(){
         $this->faq = new Faq;
         $faq = $this->faq->all();
-        return view('admfaqs')->with('faq',$faq);
+        return view('admin.admfaqs')->with('faq',$faq);
     }
     
     public function addfaq(Request $request)
@@ -83,13 +83,13 @@ class AdminController extends Controller
         ]);
         $faqs = $this->faq->insert_faq($domanda, $risposta);
         $faq = $this->faq->all();
-        return view('admfaqs')->with('faq',$faq); 
+        return view('admin.admfaqs')->with('faq',$faq); 
     }
     
     public function deletefaq($id)
     {
         $this->faq = new Faq;
-        $deleted = $this->faq->delete_faq($id);
-        return redirect('/gestionefaqs')->with('success', 'Eliminazione avvenuta correttamente');        
+        $this->faq->delete_faq($id);
+        return redirect()->route('admin.faq', ['success' => 'Eliminazione avvenuta correttamente']);        
     }
 }

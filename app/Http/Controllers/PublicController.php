@@ -18,7 +18,7 @@ class PublicController extends Controller {
     public function faq() {
         $this->_faq = new Faq;
         $faq = $this->_faq->all();
-        return view('faq')->with('faq', $faq);
+        return view('public.faq')->with('faq', $faq);
     }
 
     public function who() {
@@ -40,6 +40,6 @@ class PublicController extends Controller {
     }
 
     public function priv() {
-        return view('priv');
+        return view('public.priv');
     } 
 }
