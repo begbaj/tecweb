@@ -42,7 +42,7 @@
 			<img src="<?php echo e(asset('img/svg/message-square.svg')); ?>">
 		    </a>
 		    <a class="me-4" href="<?php echo e(route('profile.me')); ?>">
-			<img src="<?php echo e(asset('img/user.svg')); ?>">
+			<img src="<?php echo e(asset('img/svg/user.svg')); ?>">
 		    </a>
                 <?php endif; ?>
 

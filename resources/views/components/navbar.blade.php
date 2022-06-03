@@ -41,6 +41,8 @@
 		    <a class="me-4" href="{{ route('chat')}}">
 			<img src="{{ asset('img/svg/message-square.svg') }}">
 		    </a>
+		    <a class="me-4" href="{{ route('profile.me') }}">
+			<img src="{{ asset('img/svg/user.svg') }}">
 		    </a>
                 @endif
 
