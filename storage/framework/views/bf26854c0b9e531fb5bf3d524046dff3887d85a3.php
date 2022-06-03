@@ -183,7 +183,7 @@
         <a class="btn btn-success me-2 ms-3" href="">Opziona l'Alloggio</a>
     </div>
     <div class="container d-flex mt-3 visually-hidden">
-	<?php echo e(Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chatLocatario.send' : 'chatLocatore.send', 
+	<?php echo e(Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chat.send' : 'chat.send', 
 		 $alloggio->id_locatore), 'id' => 'sendMessage', 'id_destinatario' => $alloggio->id_locatore,'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100'))); ?>
 
 		<?php echo e(Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100'])); ?>
@@ -198,4 +198,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layouts.details', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/details.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/details.blade.php ENDPATH**/ ?>
