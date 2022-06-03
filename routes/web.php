@@ -112,7 +112,6 @@ Route::get('/admin/stats', "AdminController@statistics")
 Route::get('/admin/stats/search', "AdminController@stats")
         ->name('admin.stats.search');
 
-
 Route::get('/admin/catalog','AdminController@catalog')
         ->name('admin.catalog');
 
@@ -122,9 +121,8 @@ Route::get('/admin/faq', 'AdminController@faqs')
 Route::post('/admin/faq/add', 'AdminController@addfaq')
         ->name('admin.faq.add');
 
-// TOGLIERE COMMENTI QUANDO SARANNO PRONTI I METODI
-//Route::post('/admin/faq/remove', 'AdminController@removefaq')
-//        ->name('admin.faq.remove');
+Route::get('/admin/faq/remove/{id}', 'AdminController@deletefaq')
+        ->name('admin.faq.remove');
 
 //Route::post('/admin/faq/edit', 'AdminController@editfaq')
 //        ->name('admin.faq.edit');
