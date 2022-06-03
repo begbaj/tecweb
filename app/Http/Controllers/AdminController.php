@@ -77,8 +77,8 @@ class AdminController extends Controller
         $domanda = $request->input('domanda');
         $risposta = $request->input('risposta');
         $validator_start = $request->validate([
-        'domanda' => 'required',
-        'risposta' => 'required'  
+            'domanda' => 'required',
+            'risposta' => 'required'  
         ]);
         $this->faq->insert_faq($domanda, $risposta);
         $faq = $this->faq->all();
@@ -90,5 +90,16 @@ class AdminController extends Controller
         $this->faq = new Faq;
         $this->faq->delete_faq($id);
         return redirect()->route('admin.faq', ['success' => 'Eliminazione avvenuta correttamente']);        
+    }
+    
+    public function updateFaq(Request $request, $id)
+    {
+        $this->faq = new Faq;
+        $validatedData = $request->validate([
+            'domanda' => 'required',
+            'risposta' => 'required' 
+        ]);
+        $this->faq->update_faq($id, $validatedData);
+        return redirect()->route('admin.faq');
     }
 }

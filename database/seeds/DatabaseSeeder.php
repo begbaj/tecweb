@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
                         'domanda' => $faker->text(100),
                         'risposta' => $faker->text(100),
                         'created_at' => $faker->dateTime,
-			'ordine' => $i
+			//'ordine' => $i
                     ]]
 		);
             } catch (Exception $e) {
