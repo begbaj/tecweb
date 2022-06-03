@@ -57,7 +57,7 @@
             <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
                 <p> Offerte di Alloggio </p>
                 <div class="col-sm-10 ps-3">
-                    @if(Route::is('stats'))                    
+                    @if(Route::is('admin.stats.search'))                    
                     {{$count_rent}}
                     @endif
                 </div>
@@ -66,7 +66,7 @@
             <div class="form-outline row ms-5 mb-4 mt-4 w-25">
                 <p> Offerte di Locazione </p>
                 <div class="col-sm-9 ps-3">
-                    @if(Route::is('stats'))
+                    @if(Route::is('admin.stats.search'))
                     {{$count_request}}
                     @endif
                 </div>    
@@ -74,7 +74,7 @@
             <div class="form-outline row ms-5 mb-4 mt-4 w-25">
                 <p> Alloggi Locati </p>
                 <div class="col-sm-9 ps-3">
-                    @if(Route::is('stats'))                    
+                    @if(Route::is('admin.stats.search'))                    
                     {{$count_assigned}}
                     @endif
                 </div>    

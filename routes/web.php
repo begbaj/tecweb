@@ -97,7 +97,7 @@ Route::get('/admin', "AdminController@index")
 Route::get('/admin/stats', "AdminController@statistics")
         ->name('admin.stats');
 
-Route::get('/admin/stats/search', "AdminController@stats")
+Route::get('/admin/stats/search', "AdminController@getStats")
         ->name('admin.stats.search');
 
 Route::get('/admin/faq', 'AdminController@faqs')
