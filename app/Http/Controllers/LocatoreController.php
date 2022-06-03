@@ -24,7 +24,7 @@ class LocatoreController extends Controller
         return view('locatore')->with('accoms', $accoms);
     }
 
-    public function newaccom() {
+    public function viewMakeAccom() {
         Log::debug('Pagina Inserimento caricata');
         return view('locatore.make_alloggio');
     }
@@ -68,5 +68,10 @@ class LocatoreController extends Controller
 
 
         return redirect()->route('homepage', [$accom->title]);
+    }
+
+    public function removeAccom($accomId){
+        Alloggio::whereRaw('id = $accomId and id_locatore = ' . Auth::user()->id)->delete();
+        return redirect()->route('homepage');
     }
 }

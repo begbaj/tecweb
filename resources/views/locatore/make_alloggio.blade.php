@@ -36,7 +36,7 @@ function updateServs(data){
             $('#vicino').append(
                 '<div class="form-check">' +
                 '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '">' +
-                '<label class="form-check-label" for="' + val.id + '">' + val.nome.replace(/vicino_/, '').replace(/_/g, ' ')+ '</label></div>'
+                '<label class="form-check-label" for="' + val.id + '">' + val.nome.replace(/vicino_/, '').replace(/_/g, ' ') + '</label></div>'
             );
         } else {
             $('#servizi').append(
