@@ -8,15 +8,10 @@
 	<p class="card-text text-muted float-end"><?php echo e($accomodation->citta); ?></p>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
-        <?php if(Auth::check() && auth()->user()->hasRole('locatario')): ?>
+        <?php if(Auth::check() && (auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore'))): ?>
             <div class="btn-group">
-                <a class="btn btn-primary" href="<?php echo e(route('lario.accom.details', [$accomodation->id])); ?>"> Vedi dettagli</a>
+                <a class="btn btn-primary" href="<?php echo e(route('catalog.accom.details', [$accomodation->id])); ?>"> Vedi dettagli</a>
             </div>
-        <?php elseif(Auth::check() && auth()->user()->hasRole('locatore')): ?>
-            <div class="btn-group">
-                <a class="btn btn-primary" href="<?php echo e(route('lore.accom.details', [$accomodation->id])); ?>"> Vedi dettagli</a>
-            </div>
-                
         <?php else: ?>    
             <div class="btn-group">
                 <a class="btn btn-primary" href="<?php echo e(route('login')); ?>"> Vedi dettagli </a>

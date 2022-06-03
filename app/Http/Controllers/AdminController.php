@@ -92,12 +92,12 @@ class AdminController extends Controller
     
     public function updateFaq(Request $request, $id)
     {
-        $this->faq = new Faq;
-        $validatedData = $request->validate([
+        $request->validate([
             'domanda' => 'required',
-            'risposta' => 'required' 
+            'risposta' => 'required'
         ]);
-        $this->faq->update_faq($id, $validatedData);
+        Faq::where('id',$id)->update(['domanda'=>$request->domanda,
+                                      'risposta'=>$request->risposta]);
         return redirect()->route('admin.faq');
     }
 }

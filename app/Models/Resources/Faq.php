@@ -41,10 +41,4 @@ public function delete_faq($id)
     $allfaqs = $faq->all();
     return $allfaqs;
 }
-
-public function update_faq($id, $validatedData)
-{
-    return Faq::whereId($id)->update($validatedData);
-}
-
 }       
