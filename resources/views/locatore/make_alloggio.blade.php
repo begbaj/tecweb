@@ -6,17 +6,26 @@
 @parent
 <script>
 $(function () {
-    var actionUrl = "{{ route('lore.accom.new.submit') }}";
-    var formId = 'newacocm-form';
-    $(":input").on('blur', function(event) {
-        var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, actionUrl, formId);
+    $("#tipo").on('change', function(event) {
+       $.ajax({
+           type:'GET',
+           url:'/api/servs/' + $("#tipo").val(),
+           data:'_token = <?php echo csrf_token(); ?>',
+           success:updateServs
+        });
     });
-    $("#insertaccom").on('submit', function (event) {
-        event.preventDefault();
-        doFormValidation(actionUrl, formId);
-    });
+    $('#tipo').change();
 });
+
+function updateServs(data){
+    $('#servizi').find('input').remove();
+    $('#servizi').find('label').remove();
+    $('#servizi').find('div').remove();
+    $.each(data, function (key, val) {
+        $('#servizi').append('<div class="form-check"><input class="form-check-input" type="checkbox" value="' + val.id + '" id="flexCheckDefault"><label class="form-check-label" for="flexCheckDefault">' + val.nome + '</label></div>');
+        console.log(key+': '+val);
+    });
+}
 </script>
 @endsection
 
@@ -268,7 +277,8 @@ $(function () {
         <div id="servizi">
         </div>
     </div>
-
+</div>
+<div class="row">
     <div class="col mb-3">
         {{ Form::label('descrizione', 'Descrizione', ['class' => 'col-sm-2 col-form-label',  'for'=>'desc']) }}
         {{ Form::textarea('descrizione', '', ['class' => 'form-control'] )}}

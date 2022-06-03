@@ -1,6 +1,6 @@
 <nav class="navbar <?php if(!isset($hideLoginForm)): ?> fixed-top <?php endif; ?> navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<?php echo e(route('homepage')); ?>"> <img src="<?php echo e(URL::asset('img/brand/logo-colored.png')); ?>" height="50"></a>
+        <a class="navbar-brand" href="<?php echo e(route('homepage')); ?>"> <img src="<?php echo e(asset('img/brand/logo-colored.png')); ?>" height="50"></a>;
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
             <?php if(Auth::check() && auth()->user()->hasRole('admin')): ?>
@@ -39,7 +39,7 @@
 
                 <?php if(auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore')): ?>
 		    <a class="me-4" href="<?php echo e(route('chat')); ?>">
-			<img src="<?php echo e(asset('img/message-square.svg')); ?>">
+			<img src="<?php echo e(asset('img/svg/message-square.svg')); ?>">
 		    </a>
 		    <a class="me-4" href="<?php echo e(route('profile.me')); ?>">
 			<img src="<?php echo e(asset('img/user.svg')); ?>">
