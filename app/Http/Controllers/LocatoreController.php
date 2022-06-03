@@ -66,40 +66,6 @@ class LocatoreController extends Controller
     public function profileLocatore(){
        return view('user.profileInfo');
     }
-    
-   /**
-    * Redirection to Locatore chats 
-    *
-    */
-    public function chatLocatore($chatId=null){
-	$chat = new Chat;
-	$rubrica = $chat->getRubric(Auth::user()->id);
-	if(is_null($chatId)){
-		if(count($rubrica)>0){
-			$messaggi=$chat->getChat(Auth::user()->id, $rubrica[0]->id);
-		}else{
-			$messaggi=$chat->getChat(Auth::user()->id, null);
-		}
-	}else{
-		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
-	}
-       return view('user.chat')->with('rubrica', $rubrica)->with('messaggi', $messaggi)->with('userid',Auth::user()->id)->with('chatId', $chatId);
-    }
-
-   /**
-    * Send message to $chatId 
-    *
-    */
-    public function sendMessage(NewMessageRequest $request, $chatId){
-		$message = new Messaggio;
-		$message->id_mittente=Auth::user()->id;
-		$message->id_destinatario=$chatId;
-		$message->created_at= Carbon::now()->toDateTimeString();
-		$message->fill($request->validated());
-		$message->save();
-
-		return redirect()->route('chatLocatore', [$message->id_destinatario]);
-    }
 
     /**
      * Redirect to accomodation details page
