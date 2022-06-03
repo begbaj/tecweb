@@ -21,7 +21,7 @@ public function insert_faq($question,$answer){
     $faq->risposta = $answer;
     Log::debug("domanda Faq: ". $question);
     Log::debug("risposta Faq: ". $answer);
-    $faq->ordine = $this->count_faq();
+    //$faq->ordine = $this->count_faq();
     $faq->save();
     $allfaqs = $faq->all();
     return $allfaqs;
@@ -41,4 +41,10 @@ public function delete_faq($id)
     $allfaqs = $faq->all();
     return $allfaqs;
 }
+
+public function update_faq($id, $validatedData)
+{
+    return Faq::whereId($id)->update($validatedData);
+}
+
 }       
