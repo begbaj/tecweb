@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Resources\Alloggio;
 use App\Models\Catalog;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -21,5 +24,28 @@ class UserController extends Controller
 	$alloggio = Alloggio::where('id', $accomId)->get();
 	$servizi = $catalog->getServiziAlloggio($accomId);     
         return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
+    }
+    
+    public function editProfile(Request $request, $id){
+        
+        $user = User::findOrFail($id);
+        
+        $user->nome = $request->get('nome');
+        $user->cognome = $request->get('cognome');
+        $user->username = $request->get('username');
+        $user->password = $request->get('password');
+        
+        $user->save();
+        /*$request->validate([
+            'nome' => ['required', 'string', 'min:1', 'max:30'],
+            'cognome' => ['required', 'string', 'min:1' ,'max:30'],
+            'username' => ['required', 'string','min:5', 'max:30','unique:users'],
+            'password' => ['required', 'string', 'min:8', 'max:128', 'confirmed'],
+        ]);
+        User::where('id',$id)->update(['nome'=>$request->nome, 
+                                       'cognome'=>$request->cognome,
+                                       'username'=>$request->username, 
+                                       'password'=>Hash::make($request->password)]);*/
+        return redirect()->route('profile.me');
     }
 }
