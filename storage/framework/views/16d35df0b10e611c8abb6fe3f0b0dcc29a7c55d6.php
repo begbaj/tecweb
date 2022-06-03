@@ -14,4 +14,5 @@
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/admin.blade.php ENDPATH**/ ?>
+
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/admin.blade.php ENDPATH**/ ?>

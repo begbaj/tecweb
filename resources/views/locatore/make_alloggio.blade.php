@@ -6,7 +6,7 @@
 @parent
 <script>
 $(function () {
-    var actionUrl = "{{ route('insertaccom') }}";
+    var actionUrl = "{{ route('lore.accom.new.submit') }}";
     var formId = 'newacocm-form';
     $(":input").on('blur', function(event) {
         var formElementId = $(this).attr('id');
@@ -21,7 +21,7 @@ $(function () {
 @endsection
 
 @section('content')
-{{ Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true]) }}
+{{ Form::open(['route' => 'lore.accom.new.submit', 'id' => 'newaccom-form', 'files' => true]) }}
 {{ Form::token() }}
 <div class='row'>
     <div class="col mb-3">

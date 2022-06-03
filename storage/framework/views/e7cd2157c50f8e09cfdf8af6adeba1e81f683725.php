@@ -4,7 +4,7 @@
 <?php echo \Illuminate\View\Factory::parentPlaceholder('scripts'); ?>
 <script>
 $(function () {
-    var actionUrl = "<?php echo e(route('insertaccom')); ?>";
+    var actionUrl = "<?php echo e(route('lore.accom.new.submit')); ?>";
     var formId = 'newacocm-form';
     $(":input").on('blur', function(event) {
         var formElementId = $(this).attr('id');
@@ -19,7 +19,7 @@ $(function () {
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-<?php echo e(Form::open(['route' => 'insertaccom', 'id' => 'newaccom-form', 'files' => true])); ?>
+<?php echo e(Form::open(['route' => 'lore.accom.new.submit', 'id' => 'newaccom-form', 'files' => true])); ?>
 
 <?php echo e(Form::token()); ?>
 
@@ -328,4 +328,4 @@ $(function () {
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.public', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/locatore/make_alloggio.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/locatore/make_alloggio.blade.php ENDPATH**/ ?>

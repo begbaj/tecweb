@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 <?php if(auth()->user('admin')): ?>
-<?php echo e(Form::open(array('route' => 'stats', 'id' => 'filter-form', 'files' => false, 'method'=>'GET' ))); ?>
+<?php echo e(Form::open(array('route' => 'admin.stats.search', 'id' => 'filter-form', 'files' => false, 'method'=>'GET' ))); ?>
 
     <div class='d-flex justify-content-center align-center'>
         <div class="container d-flex justify-content-center border row border-secondary rounded align-center mt-5 pe-5 align-items-center">
@@ -95,4 +95,4 @@
 <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/statistics.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/tecweb/resources/views/statistics.blade.php ENDPATH**/ ?>

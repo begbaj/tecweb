@@ -12,7 +12,8 @@
         <h4>Benvenuto {{ Auth::user()->nome }} {{ Auth::user()->cognome }} nella tua area personale!</h4>
     </div>
     
-    {{Form::open(array('id' => 'filter-form', 'files' => false )) }}
+    {{ Form::open(array('id' => 'filter-form', 'files' => false )) }}
+    {{ Form::token() }}
     <div class='d-flex justify-content-center'>
         <div class="container d-flex justify-content-center border row border-secondary rounded align-items-center mt-5 pe-5">
             <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
