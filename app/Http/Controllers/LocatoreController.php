@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
-use App\Models\Resources\Messaggio;
-use App\Models\Chat;
-use App\Models\Catalog;
-use App\Http\Requests\NewMessageRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -61,53 +57,5 @@ class LocatoreController extends Controller
 
 
         return redirect()->route('homepage', [$accom->title]);
-    }
-    
-    public function profileLocatore(){
-       return view('user.profileInfo');
-    }
-    
-   /**
-    * Redirection to Locatore chats 
-    *
-    */
-    public function chatLocatore($chatId=null){
-	$chat = new Chat;
-	$rubrica = $chat->getRubric(Auth::user()->id);
-	if(is_null($chatId)){
-		if(count($rubrica)>0){
-			$messaggi=$chat->getChat(Auth::user()->id, $rubrica[0]->id);
-		}else{
-			$messaggi=$chat->getChat(Auth::user()->id, null);
-		}
-	}else{
-		$messaggi=$chat->getChat(Auth::user()->id, $chatId);
-	}
-       return view('user.chat')->with('rubrica', $rubrica)->with('messaggi', $messaggi)->with('userid',Auth::user()->id)->with('chatId', $chatId);
-    }
-
-   /**
-    * Send message to $chatId 
-    *
-    */
-    public function sendMessage(NewMessageRequest $request, $chatId){
-		$message = new Messaggio;
-		$message->id_mittente=Auth::user()->id;
-		$message->id_destinatario=$chatId;
-		$message->created_at= Carbon::now()->toDateTimeString();
-		$message->fill($request->validated());
-		$message->save();
-
-		return redirect()->route('chatLocatore', [$message->id_destinatario]);
-    }
-
-    /**
-     * Redirect to accomodation details page
-     */    
-    public function detailsLocatore($accomId){
-	$catalog = new Catalog;
-	$alloggio = Alloggio::where('id', $accomId)->get();
-	$servizi = $catalog->getServiziAlloggio($accomId);
-        return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
 }
