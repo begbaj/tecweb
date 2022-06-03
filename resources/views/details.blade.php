@@ -29,7 +29,7 @@
         <div class="row d-flex align-items-center">
             <div class="d-flex row mt-4 align-items-center" style="width: 450px">
                 <div class="col">
-                    <img src="{{ asset('img/watch.svg') }}" style="width:35px; height: 35px">
+                    <img src="{{ asset('img/svg/watch.svg') }}" style="width:35px; height: 35px">
                 </div>
                 <div class ="col-sm-10 lead">
                    Età minima consentita: {{$alloggio->eta_min}}
@@ -40,7 +40,7 @@
             
             <div class="d-flex row mt-4 align-items-center ms-4" style="width: 450px">
                 <div class="col">
-                    <img src="{{ asset('img/gender-trans.svg') }}" style="width:35px; height: 35px">
+                    <img src="{{ asset('img/svg/gender-trans.svg') }}" style="width:35px; height: 35px">
                 </div>
                 <div class ="col-sm-10 lead">
                     Genere:
@@ -55,7 +55,7 @@
         <div class="row d-flex align-items-center mt-3">
             <div class="d-flex row mt-4 align-items-center" style="width: 450px">
                 <div class="col">
-                    <img src="{{ asset('img/cash-stack.svg') }}" style="width:35px; height: 35px">
+                    <img src="{{ asset('img/svg/cash-stack.svg') }}" style="width:35px; height: 35px">
                 </div>
                 <div class="col-sm-10 lead">
                     Prezzo: {{($alloggio->prezzo)}} €
@@ -64,7 +64,7 @@
             
             <div class="d-flex row mt-4 align-items-center ms-4" style="width:450px">
                 <div class="col">
-                    <img src="{{ asset('img/aspect-ratio.svg') }}" style="width: 35px; height: 35px">
+                    <img src="{{ asset('img/svg/aspect-ratio.svg') }}" style="width: 35px; height: 35px">
                 </div>
                 <div class="col-sm-10 lead">
                     Dimensione Locale: {{$alloggio->superficie}} Mq.
@@ -75,7 +75,7 @@
         <div class="row d-flex align-items-center mt-3">
             <div class="d-flex row mt-4 align-items-center" style="width: 450px">
                 <div class="col">
-                    <img src="{{ asset('img/calendar-range.svg') }}" style="width: 35px; height:35px"> 
+                    <img src="{{ asset('img/svg/calendar-range.svg') }}" style="width: 35px; height:35px"> 
                 </div>
                 <div class="col-sm-10 lead">
                     Data Inizio Disponibilità: {{substr($alloggio->data_min, 0, -8)}}
@@ -86,7 +86,7 @@
             
             <div class="d-flex row mt-4 align-items-center ms-4" style="width: 450px">
                 <div class="col">
-                    <img src="{{ asset('img/house-door.svg') }}" style="width: 35px; height: 35px">
+                    <img src="{{ asset('img/svg/house-door.svg') }}" style="width: 35px; height: 35px">
                 </div>
                 <div class="col-sm-10 lead">
                     Tipologia Alloggio:
@@ -103,7 +103,7 @@
         <div class="d-flex row mt-4 align-items-center">
             <div class="d-flex row align-items-center" style="width: 850px">
                 <div class="col-sm-1" >
-                    <img src="{{ asset('img/geo-alt.svg') }}" style="width: 35px; height: 35px">
+                    <img src="{{ asset('img/svg/geo-alt.svg') }}" style="width: 35px; height: 35px">
                 </div>
                 <div class="col-sm-auto lead">
                     <div class="d-flex justify-content-start">
@@ -120,7 +120,7 @@
         <div class="d-flex row mt-5 align-items-center">
             <div class="d-flex row  align-items-center">
                 <div class="col-sm-1">
-                    <img src="{{ asset('img/building.svg') }}" style="width: 45px; height: 45px">
+                    <img src="{{ asset('img/svg/services.svg') }}" style="width: 45px; height: 45px">
                 </div>
                 
                 <div class="col-sm-2">
@@ -131,12 +131,12 @@
             <div class="lead mt-3">
                 @foreach($servizi as $servizio)
                     @if($servizio->id < 16)
-                    <div class="d-flex row align-items-center mt-2" style="width: 450px">
+                    <div class="d-flex row align-items-center mt-2 ms-2" style="width: 450px">
                         <div class="col-sm-1">
-                            <img src="" style="width: 25px; height:25px">
+                            <img src="{{asset('img/svg/servs/'.$servizio->nome.'.svg') }}" style="width: 25px; height:25px">
                         </div>
                         
-                        <div class="col-sm-auto lead ms-3">
+                        <div class="col-sm-auto lead ms-2">
                         {{ucwords(str_replace("_", " ",$servizio->nome))}}    
                         </div>    
                     </div>
@@ -147,7 +147,7 @@
         
         <div class="d-flex row align-items-center mt-5">
             <div class="col-sm-1">
-                <img src="{{ asset('img/globe.svg') }}" style="width: 45px; height: 45px">
+                <img src="{{ asset('img/svg/globe.svg') }}" style="width: 45px; height: 45px">
             </div>
                 
             <div class="col-sm-2">
@@ -157,12 +157,12 @@
             <div class="lead mt-3">
                 @foreach($servizi as $servizio)
                     @if($servizio->id >= 16)
-                    <div class="d-flex row align-items-center mt-2" style="width: 450px">
+                    <div class="d-flex row align-items-center mt-2 ms-2" style="width: 450px">
                         <div class="col-sm-1">
-                            <img src="" style="width: 25px; height: 25px">
+                            <img src="{{asset('img/svg/servs/'.$servizio->nome.'.svg') }}" style="width: 25px; height: 25px">
                         </div>
                         
-                        <div class="col-sm-auto lead ms-3">
+                        <div class="col-sm-auto lead ms-2">
                         {{substr(ucwords(str_replace("_", " ", $servizio->nome)), 7)}}    
                         </div>
                     </div>
