@@ -90,6 +90,6 @@ class AdminController extends Controller
     {
         $this->faq = new Faq;
         $this->faq->delete_faq($id);
-        return redirect('/admin/faq')->with('success', 'Eliminazione avvenuta correttamente');        
+        return redirect()->route('admin.faq', ['success' => 'Eliminazione avvenuta correttamente']);        
     }
 }

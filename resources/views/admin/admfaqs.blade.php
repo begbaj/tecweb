@@ -79,7 +79,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <a type="button" href='/admin/faq/remove/{{ $fq->id }}' class="btn btn-primary">Confermo</a>
+                    <a type="button" href='{{ route("admin.faq.remove", ["id" => $fq->id]) }}' class="btn btn-primary">Confermo</a>
                 </div>
             </div>
         </div>
