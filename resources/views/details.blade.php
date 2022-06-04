@@ -183,12 +183,7 @@
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
         {{ Form::close() }}
     </div>
-    @elseif(auth()->user()->hasRole('locatore'))
-    <div class="container d-flex justify-content-end">
-        <a class="btn btn-primary me-2 mt-2" href="">Modifica Annuncio</a>
-    </div>
     @endif
-
 </div>
 @endsection
 

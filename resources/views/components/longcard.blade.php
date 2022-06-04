@@ -18,8 +18,8 @@
         </small></p>
         <div class='row'>
             <button class="btn btn-secondary col mx-2">Modifica</button>
-            <button class="btn btn-danger col mx-2">Elimina</button>
-            <button class="btn btn-primary col mx-2">Visualizza</button>
+            <a class="btn btn-danger col mx-2" href="">Elimina</a>
+            <a class="btn btn-primary col mx-2" href="{{ route('catalog.accom.details', [$accomodation->id]) }}">Visualizza</a>
         </div>
       </div>
     </div>
