@@ -56,16 +56,10 @@ class LocatoreController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = $image->getClientOriginalName();
+            $image->move($_dir_, 'thumbnail');
         } else {
-            $imageName = NULL;
+            link(public_path('img/app/default.png'), $_dir_ . "/thumbnail");
         }
-
-        if (!is_null($imageName)) {
-            $destinationPath = $_dir_ ; 
-            $image->move($destinationPath, 'thumbnail');
-        };
-
 
         return redirect()->route('homepage', [$accom->title]);
     }
