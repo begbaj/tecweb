@@ -24,12 +24,6 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'nullable|string|min:1|max:30',
-            'cognome' => 'nullable|string|min:1|max:30',
-            'username' => 'nullable|string|min:5|max:30|unique:users',
-            'password' => 'nullable|min:8|max:128|confirmed',
-            'data_nascita' => 'nullable|date',
-            'genere' => 'string|min:1|max:10',
         ];
     }
 }

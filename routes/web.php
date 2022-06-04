@@ -50,10 +50,10 @@ Route::get('/catalog/accom/{accomId}', "UserController@accomDetails")
     ->name('catalog.accom.details');
 
 Route::get('/user/me', 'UserController@profile')
-    ->name('profile.me');
+    ->name('user.me');
 
-Route::post('/user/me/edit/{id}', "UserController@editProfile")
-        ->name('profile.me.edit');
+Route::post('/user/me/edit', "UserController@editProfile")
+        ->name('user.me.edit');
 
 Route::get('/', 'HomeController@index')
     ->name('homepage');

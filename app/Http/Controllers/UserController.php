@@ -7,7 +7,8 @@ use App\Models\Resources\Alloggio;
 use App\Models\Catalog;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -27,23 +28,27 @@ class UserController extends Controller
         return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
     
-    public function editProfile(UpdateUserRequest $request, $id){
-        
-        $user = User::findOrFail($id);
-        $request->validate();
-        $user->update($request->all());
-        
-        /*
-        $request->validate([
-            'nome' => ['nullable', 'string', 'min:1', 'max:30'],
-            'cognome' => ['nullable', 'string', 'min:1' ,'max:30'],
-            'username' => ['nullable', 'string','min:5', 'max:30','unique:users'],
-            'password' => ['nullable', 'string', 'min:8', 'max:128', 'confirmed'],
+    public function editProfile(Request $request){
+        $user = User::find($request->id);
+
+        $v = Validator::make($request->all(), [
+            'nome' => 'sometimes|string|min:1|max:30',
+            'cognome' => 'sometimes|string|min:1|max:30',
+            'username' => 'sometimes|string|min:5|max:30',
         ]);
-        User::where('id',$id)->update(['nome'=>$request->nome, 
-                                       'cognome'=>$request->cognome,
-                                       'username'=>$request->username, 
-                                       'password'=>Hash::make($request->password)]);*/
-        return redirect()->route('profile.me');
+        $v->sometimes('password', 'required|min:8|max:128|confirmed', function ($request){
+            return $request->password != '';
+        });
+
+        if ($user != null){
+            $data = $v->validated();
+            if (!empty($data['password']))
+                $data['password'] = Hash::make($request->password);
+            $user->update($data);
+            return view('user.profileInfo');
+        }
+        else{
+            return view('errors.404');
+        }
     }
 }
