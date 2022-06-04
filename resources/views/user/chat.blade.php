@@ -27,7 +27,7 @@ $(function (){
 	@endif
 	@if (auth()->user()->hasRole('locatario'))
 		<h4 class="text-center">
-		Nessuna conversazione passata, opziona un alloggio nel <a href="{{ route('locatario') }}">nostro catalogo!</a>
+		Nessuna conversazione passata, opziona un alloggio nel <a href="{{ route('lario') }}">nostro catalogo!</a>
 		<br/>
 		Se hai delle domande da porre al locatore potrai avviare una conversazione con lui!
 		</h4>
