@@ -52,7 +52,7 @@ Route::get('/catalog/accom/{accomId}', "UserController@accomDetails")
 Route::get('/user/me', 'UserController@profile')
     ->name('profile.me');
 
-Route::post('/user/me/{id}', "UserController@editProfile")
+Route::post('/user/me/edit/{id}', "UserController@editProfile")
         ->name('profile.me.edit');
 
 Route::get('/', 'HomeController@index')

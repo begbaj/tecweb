@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Resources\Alloggio;
 use App\Models\Catalog;
 use App\User;
@@ -26,21 +27,18 @@ class UserController extends Controller
         return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
     
-    public function editProfile(Request $request, $id){
+    public function editProfile(UpdateUserRequest $request, $id){
         
         $user = User::findOrFail($id);
+        $request->validate();
+        $user->update($request->all());
         
-        $user->nome = $request->get('nome');
-        $user->cognome = $request->get('cognome');
-        $user->username = $request->get('username');
-        $user->password = $request->get('password');
-        
-        $user->save();
-        /*$request->validate([
-            'nome' => ['required', 'string', 'min:1', 'max:30'],
-            'cognome' => ['required', 'string', 'min:1' ,'max:30'],
-            'username' => ['required', 'string','min:5', 'max:30','unique:users'],
-            'password' => ['required', 'string', 'min:8', 'max:128', 'confirmed'],
+        /*
+        $request->validate([
+            'nome' => ['nullable', 'string', 'min:1', 'max:30'],
+            'cognome' => ['nullable', 'string', 'min:1' ,'max:30'],
+            'username' => ['nullable', 'string','min:5', 'max:30','unique:users'],
+            'password' => ['nullable', 'string', 'min:8', 'max:128', 'confirmed'],
         ]);
         User::where('id',$id)->update(['nome'=>$request->nome, 
                                        'cognome'=>$request->cognome,
