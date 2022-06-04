@@ -18,7 +18,7 @@ class CreateInclusioniTable extends Migration
 	    $table->unsignedBigInteger('id_servizio');
             $table->timestamps();
 
-	    $table->foreign('id_alloggio')->references('id')->on('alloggi');
+	    $table->foreign('id_alloggio')->references('id')->on('alloggi')->onDelete('cascade');
 	    $table->foreign('id_servizio')->references('id')->on('servizi');
 
 	    $table->primary(['id_alloggio', 'id_servizio']);

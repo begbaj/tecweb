@@ -108,9 +108,8 @@ $(function(){
 @foreach ($faq as $fq)
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifica-{{$fq->id}}"">Modifica</button>
-    <div class="modal fade" id="modifica-{{$fq->id}}" tabindex="-1" aria-labelledby="#EditModal" aria-hidden="true">
-          
-        
+
+<div class="modal fade" id="modifica-{{$fq->id}}" tabindex="-1" aria-labelledby="#EditModal" aria-hidden="true">        
 <div class="modal-dialog">
     <div class="modal-content">
 <div class="modal-header">
@@ -157,9 +156,8 @@ $(function(){
     </div>
 </div>
 {{Form::close()}}        
-        
-        
-    </div>
+</div>
+    
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{$fq->id}}">Elimina</button>
     <div class="modal fade" id="delete-{{$fq->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
