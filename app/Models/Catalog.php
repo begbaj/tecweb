@@ -13,23 +13,4 @@ class Catalog extends Model
 	    $alloggio = Servizio::select('servizi.*')->join('inclusioni', 'servizi.id', '=', 'id_servizio')->where('id_alloggio', $id_alloggio);
 	    return $alloggio->get();
     }
-
-    public function getAlloggiSortedByFilters($filters){
-	    $whereString;
-	    foreach($filters as $filter){
-		    $whereString = $whereString.' AND '.$filter->nome.' '.$filter->operatore.' '.$filter->valore;
-	    }
-	    $risultati = Alloggi::whereRaw($filters);
-	    for($i=count($filters); $i>0; $i++){
-		    foreach(getCombinations($filters, $i) as $combination){
-			    //Trasformazione combinazione di k filtri in un where RAW
-			    $whereString;
-			    foreach($filters as $filter){
-				    $whereString = $whereString.' AND '.$filter->nome.' '.$filter->operatore.' '.$filter->valore;
-			    }
-				    $risultati = $risultati->union(Alloggi::whereRaw($combination));
-		    }
-	    }
-	    return $risultati->get();
-    }
 }
