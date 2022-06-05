@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head> 
     <title> Kumuuzag - @yield('title') </title>
 

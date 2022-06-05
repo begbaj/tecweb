@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Inclusione;
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Log;
+use App\Models\Catalog;
 use App\Models\AlloggiServizi;
+use App\Models\Resources\Servizio;
+use Carbon\Carbon;
+use DateTime;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LocatoreController extends Controller
 {
@@ -40,8 +45,8 @@ class LocatoreController extends Controller
         $accom->created_at = Carbon::now()->toDateTimeString();
         $accom->fill($request->validated());
 
-        $accom->data_min = date("Y-m-d",strtotime($request->data_min));
-        $accom->data_max = date("Y-m-d",strtotime($request->data_max));
+        $accom->data_min = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_min)));
+        $accom->data_max = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_max)));
         $accom->save();
 
         $accomid = Alloggio::latest()->get()->first()->id; // TODO: MOLTO RISCHIOSA, BISGONA TROVARE UN'ALTRA SOLUZIONE
@@ -102,5 +107,46 @@ class LocatoreController extends Controller
         return redirect()->route('homepage');
     }
 
+    public function editAccom($accomId){
+        $catalog = new Catalog;
+        $alloggio = Alloggio::where('id', $accomId)->get()->first();
+        $date = DateTime::createFromFormat('Y-m-d', substr($alloggio->data_min, 0,-9));
+        $alloggio->data_min = $date->format('d-m-Y');
+        $date = DateTime::createFromFormat('Y-m-d', substr($alloggio->data_max, 0,-9));
+        $alloggio->data_max = $date->format('d-m-Y');
+        $alloggio->data_min = str_replace('-', '/',$alloggio->data_min);
+        $alloggio->data_max = str_replace('-', '/',$alloggio->data_max);
+        $servizi = $catalog->getIdServiziAlloggio($accomId);
+        return view('locatore.edit_alloggio')->with('alloggio', $alloggio)->with('servizi', $servizi);
+    }
+    
+    public function confirmEdit(NewAccomodationRequest $request){
+        $accom = Alloggio::find($request->id);
+        $accom->fill($request->validated());
 
+        $accom->data_min = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_min)));
+        $accom->data_max = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_max)));
+
+        $accom->update();
+
+        if (isset($request->servizi))
+            Inclusione::where('id_alloggio', $accom->id)->delete();
+            foreach($request->servizi as $serv){
+                $servs = new Inclusione;
+                $servs->id_servizio = $serv;
+                $servs->id_alloggio = $accom->id;
+                $servs->save();
+            }
+
+        $_dir_ = public_path('assets/'.(string)$accom->id);
+
+        Log::debug($_dir_);
+        if(!file_exists($_dir_)) mkdir($_dir_);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image->move($_dir_, 'thumbnail');
+        }
+        return redirect()->route('homepage', [$accom->title]);
+    } 
 }

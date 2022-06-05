@@ -18,7 +18,7 @@
         </small></p>
 <div class='row'>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-secondary col mx-2">Modifica</button>
+        <a class="btn btn-secondary col mx-2" href="{{ Route('lore.accom.edit', [$accomodation->id])}}">Modifica</a>
         <button type="button" class="btn btn-danger col mx-2" data-bs-toggle="modal" data-bs-target="#delete-{{$accomodation->id}}"">Elimina</button>
 
     <div class="modal fade" id="delete-{{$accomodation->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
