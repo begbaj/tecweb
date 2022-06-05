@@ -20916,3 +20916,26 @@
 #42 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
 #43 {main}
 "} 
+<<<<<<< Updated upstream
+=======
+[2022-06-05 14:46:18] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:46:18] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/325  
+[2022-06-05 14:46:25] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:46:55] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:46:55] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/326  
+[2022-06-05 14:47:05] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:48:24] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:57:34] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:57:52] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:01:44] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:10:16] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:11:19] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:12:44] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:13:11] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:14:18] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 15:14:18] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/327  
+[2022-06-05 16:22:04] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 16:22:23] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 16:24:49] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 16:25:01] local.DEBUG: Pagina Inserimento caricata  
+>>>>>>> Stashed changes
