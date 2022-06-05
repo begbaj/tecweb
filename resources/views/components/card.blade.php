@@ -3,7 +3,7 @@
     <img class="card-img-top" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
-        <p class="card-text">{{$accomodation->descrizione }}</p>
+        <p class="card-text">{{substr($accomodation->descrizione,0 , 150) }}</p>
 	<p class="card-text text-muted float-start mw-50">{{ucwords(str_replace('_', ' ', $accomodation->tipo))}}</p>
 	<p class="card-text text-muted float-end">{{$accomodation->citta}}</p>
     </div>

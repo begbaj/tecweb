@@ -309,24 +309,28 @@ function updateServs(data){
 </div>
 <div class="row">
     <div class="col mb-3">
-        {{ Form::label('foto', '', ['class' => ' col-form-label',  'for'=>'bedrooms']) }}
-        {{ Form::file('image') }}
-        @if ($errors->first('image'))
-        <div class="d-flex justify-content-center">
-            <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
-            @foreach ($errors->get('image') as $message)
-            <div class="d-flex justify-content-center">{{ $message }}</div>
-            @endforeach
+        <div class="rounded m-3">
+            <div class="m-2">
+                {{ Form::label('foto', '', ['class' => 'col-form-label',  'for'=>'bedrooms']) }}
+                {{ Form::file('image', ['class' => 'form-control']) }}
             </div>
-        </div>     
-        @endif
-        <div class="container-fluid d-flex justify-content-center border border-secondary rounded mt-2 pb-2 pt-2 pe-2 ps-2">
-            <img src="{{ URL::asset('assets/'. $alloggio->id . '/thumbnail') }}" style="height: 250px" class="img-fluid w-100">
+            @if ($errors->first('image'))
+            <div class="d-flex justify-content-center">
+                <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
+                @foreach ($errors->get('image') as $message)
+                <div class="d-flex justify-content-center">{{ $message }}</div>
+                @endforeach
+                </div>
+            </div>     
+            @endif
+            <img src="{{ URL::asset('assets/'. $alloggio->id . '/thumbnail') }}" style="max-height: 350px; max-width: 350px" class="img-fluid bg-white shadow rounded p-2">
         </div>
     </div>
     <div class="col mb-3">
+        <div class="m-2">
         {{ Form::label('descrizione', 'Descrizione', ['class' => ' col-form-label',  'for'=>'desc']) }}
         {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'form-control mt-2'] )}}
+        </div>
         @if ($errors->first('descrizione'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">

@@ -7,28 +7,7 @@
 
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-        $(document).ready(function () {
-                cards = document.getElementsByClassName('card-text');
-
-                for(i=0; i< cards.length; i++){
-                        cards[i].innerHTML = truncateText(cards[i].innerHTML, 120);
-                }
-
-                cards = document.getElementsByClassName('card-text text-muted float-end')
-
-                for(i=0; i< cards.length; i++){
-                        cards[i].innerHTML = truncateText(cards[i].innerHTML, 30);
-                }
-        })
-
-        function truncateText(text, max_char){
-                if(text.length <= max_char){
-                        return text;
-                }
-                return  text.slice(0,max_char-2) + '...';
-        }
-</script>
+<script type="text/javascript" src="{{ asset('js/card-truncator.js') }}"> </script>
 @endsection
 
 

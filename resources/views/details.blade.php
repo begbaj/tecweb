@@ -60,18 +60,20 @@ $(document).ready(function () {
 @section('content')
 <div class="container-fluid bd-light">
     <div class="container row">
-        @auth
-            @if(Auth::user()->id == $alloggio->id_locatore )
-                <a href="{{ route('lore.accom.edit', ['id'=>$alloggio->id]) }}"> <button class="btn btn-secondary"> Modifica annuncio</button> </a>
-            @endif
-        @endauth
         <div class="container mt-3 pb-4">
-            <h2><strong>{{$alloggio->titolo}}</strong></h2>
+            <div class="text-wrap text-break">
+                <h2><strong>{{$alloggio->titolo}}</strong></h2>
+            </div>
+            @auth
+                @if(Auth::user()->id == $alloggio->id_locatore )
+                    <a href="{{ route('lore.accom.edit', ['id'=>$alloggio->id]) }}"> <button class="btn btn-secondary"> Modifica annuncio</button> </a>
+                @endif
+            @endauth
         </div>
     </div>
     <div class="row m-5">
             <div class="col mx-1 shadow border border-secondary p-2">
-                <center><img src="{{asset('assets/'. $alloggio->id . '/thumbnail')}}" style="max-width: 800px; max-height: 800px"></center>
+                <center><img src="{{asset('assets/'. $alloggio->id . '/thumbnail')}}" style="max-width: 600px; max-height: 600px"></center>
             </div>    
             <div class="col mx-3">
                 <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
@@ -135,11 +137,9 @@ $(document).ready(function () {
     <div class="container-fluid bg-light bg-gradient mt-2 pt-3">
         <h3><center><strong>Informazioni che possono interessarti...</strong></center></h3> 
         <div class="row">
-            <div class="col bg-white shadow rounded m-3">
-                    <div class="justify-content-center p-2">
-                        <h3>Descrizione</h3>
-                        <p class="lead">{{$alloggio->descrizione}}</p>
-                    </div>
+            <div class="col bg-white shadow rounded m-3" style="max-height: 1000px;">
+                    <h3>Descrizione</h3>
+                    <div class="lead overflow-auto text-break text-wrap px-3" style="max-height: 90%;">{{$alloggio->descrizione}}</div>
             </div>
             <div class="col m-2 p-2">
                 <div class="row">

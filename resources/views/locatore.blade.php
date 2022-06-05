@@ -2,6 +2,9 @@
 
 @section('title', 'Area Locatore')
 
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/card-truncator.js') }}"> </script>
+@endsection
 @section('content')
 <h1> I tuoi annunci </h1>
     @if (!isset($accoms) || count($accoms) < 1)
