@@ -43,7 +43,7 @@ class AdminController extends Controller
 
         if (!is_null($data_fine) and !is_null($data_inizio)){
             $request->validate([
-                'start-date' => 'date_format:Y-m-d|before:today',
+                'start-date' => 'date_format:Y-m-d|before:tomorrow',
                 'end-date' => 'date_format:Y-m-d|after:start-date'  
             ]);
                 $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
