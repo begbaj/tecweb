@@ -21,7 +21,7 @@ class LocatoreController extends Controller
      * Redirection to locatore homepage
      */
     public function index() {
-        $accoms = Alloggio::where('id_locatore', Auth::user()->id)->get();
+        $accoms = Alloggio::where('id_locatore', Auth::user()->id)->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->get();
         return view('locatore')->with('accoms', $accoms);
     }
 
@@ -39,16 +39,19 @@ class LocatoreController extends Controller
         $accom->opzionato = false;
         $accom->created_at = Carbon::now()->toDateTimeString();
         $accom->fill($request->validated());
+
+        $accom->data_min = date("Y-m-d",strtotime($request->data_min));
+        $accom->data_max = date("Y-m-d",strtotime($request->data_max));
         $accom->save();
 
         $accomid = Alloggio::latest()->get()->first()->id; // TODO: MOLTO RISCHIOSA, BISGONA TROVARE UN'ALTRA SOLUZIONE
-
-        foreach($request->servizi as $serv){
-            $servs = new Inclusione;
-            $servs->id_servizio = $serv;
-            $servs->id_alloggio = $accomid;
-            $servs->save();
-        }
+        if (isset($request->servizi))
+            foreach($request->servizi as $serv){
+                $servs = new Inclusione;
+                $servs->id_servizio = $serv;
+                $servs->id_alloggio = $accomid;
+                $servs->save();
+            }
 
         $_dir_ = public_path('assets/'.(string)$accom->id);
 
@@ -65,13 +68,39 @@ class LocatoreController extends Controller
         return redirect()->route('homepage', [$accom->title]);
     }
 
+    private function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return true;
+        }
+
+        if (!is_dir($dir)) {
+            return unlink($dir);
+        }
+
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
+
+            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                return false;
+            }
+
+        }
+
+        return rmdir($dir);
+    }
+
     public function removeAccom($accomId){
         $acc = new Alloggio;
         $inc = new Inclusione;
         $seracc = new AlloggiServizi;
         $inc->delete_inclusione($accomId);
         $acc->delete_alloggio($accomId);
+        $this->deleteDirectory(public_path('assets/' . $accomId));
         //$seracc->delete_service_alloggio($accomId);
         return redirect()->route('homepage');
     }
+
+
 }
