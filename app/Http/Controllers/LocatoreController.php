@@ -8,6 +8,7 @@ use App\Models\Resources\Inclusione;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use App\Models\AlloggiServizi;
 
 class LocatoreController extends Controller
 {
@@ -65,7 +66,12 @@ class LocatoreController extends Controller
     }
 
     public function removeAccom($accomId){
-        Alloggio::whereRaw('id = $accomId and id_locatore = ' . Auth::user()->id)->delete();
+        $acc = new Alloggio;
+        $inc = new Inclusione;
+        $seracc = new AlloggiServizi;
+        $inc->delete_inclusione($accomId);
+        $acc->delete_alloggio($accomId);
+        //$seracc->delete_service_alloggio($accomId);
         return redirect()->route('homepage');
     }
 }
