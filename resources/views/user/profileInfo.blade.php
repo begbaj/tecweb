@@ -39,7 +39,7 @@
        </div>   
     </div>
     
-    {{ Form::open(array('route' => ['profile.me.edit', Auth::user()->id], 'id' => 'edit-form', 'files' => false)) }}
+    {{ Form::open( ['route' => 'user.me.edit', 'id' => 'edit-form', 'files' => false]) }}
     {{ Form::token() }}
     <div class="d-flex row border border-secondary rounded justify-content-start mt-4 ms-4 pb-2" style="width: 60%">
         <div class ="d-flex justify-content-center mt-3 pb-3">
@@ -80,7 +80,7 @@
                 
                 <div id="passForm" class="d-flex align-items-center ps-5 pt-4 visually-hidden">
                     <h5>Nuova Password:</h5>
-                    {{ Form::password('password', ['class' => 'ps-1 lead d-flex align-items-center ms-2']) }}
+                    {{ Form::text('password','', ['class' => 'ps-1 lead d-flex align-items-center ms-2']) }}
                 @if ($errors->first('password'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
@@ -94,7 +94,7 @@
                 
                 <div id="passForm" class="d-flex align-items-center ps-5 pt-4 visually-hidden">
                     <h5>Conferma Password:</h5>
-                    {{ Form::password('password_confirmation', ['class' => 'ps-1 lead d-flex align-items-center ms-2']) }}
+                    {{ Form::text('password_confirmation', ['class' => 'ps-1 lead d-flex align-items-center ms-2 ']) }}
                 @if ($errors->first('password'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-2 pt-0 pb-0">
@@ -113,9 +113,9 @@
         </div>
         
         <div class="d-flex justify-content-end mb-2">
+            <input type = "hidden" name = "id" value = "{{ Auth::user()->id }}" />
             {{ Form::submit('Conferma', ['class' => 'btn btn-success visually-hidden me-2', 'id' => 'editButtons']) }}
-                
-            <a id="editButtons" class="btn btn-danger visually-hidden" href="{{ route('profile.me') }}">Annulla</a>  
+            <a id="editButtons" class="btn btn-danger visually-hidden" href="{{ route('user.me') }}">Annulla</a>  
         </div>
     </div>
     {{ Form::close() }}

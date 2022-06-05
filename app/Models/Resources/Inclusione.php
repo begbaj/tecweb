@@ -12,4 +12,11 @@ class Inclusione extends Model
 	protected $guarded = ['id_alloggio', 'id_servizio'];
 
 	public $timestamps = true;
+
+
+public function delete_inclusione($accomid)
+{
+    $service = new Inclusione;
+    $deleted = Inclusione::where('id_alloggio', '=' , $accomid)->delete();
+}
 }

@@ -17,7 +17,6 @@ class Alloggio extends Model
 
     // Custom functions
     public function getAlloggiByDate($number=15){
-        // in che senso by date?????
         $accomodations = Alloggio::orderby('created_at', 'desc')->paginate($number);
         return $accomodations;
     }
@@ -29,7 +28,6 @@ class Alloggio extends Model
     
     public function get_alloggio()
     {
-        // nome??
         $accomodations = Alloggio::all();
         return $accomodations;
     }
@@ -64,4 +62,12 @@ class Alloggio extends Model
             }
             return $get_filtered;
     }
+    
+    public function delete_alloggio($id)
+    {
+        $acc = new Alloggio;
+        Alloggio::destroy($id);
+        return $acc->all();
+    }
+    
 }

@@ -9,7 +9,7 @@ $(function () {
     $("#tipo").on('change', function(event) {
        $.ajax({
            type:'GET',
-           url:'/api/servs/' + $("#tipo").val(),
+           url: '{{ route("api.servs") }}/' + $("#tipo").val(),
            data:'_token = <?php echo csrf_token(); ?>',
            success:updateServs
         });
@@ -313,7 +313,7 @@ function updateServs(data){
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
             @foreach ($errors->get('descrizione') as $message)
-            <div class="d-flex justify-content-center">{{ $message }}</div>
+                <div class="d-flex justify-content-center">{{ $message }}</div>
             @endforeach
             </div>
         </div>     
