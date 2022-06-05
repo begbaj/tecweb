@@ -37,10 +37,9 @@ $(function () {
         format: "dd/mm/yyyy",
         todayBtn: "linked",
         clearBtn: true,
-        orientation: 'bottom auto',
+        orientation: 'bottom',
         autoclose: true,
-        todayHighlight: true,
-        datesDisabled: ['06/06/2022', '06/21/2022']
+        todayHighlight: true
     });
 });
 
@@ -178,9 +177,9 @@ function updateServs(data){
                 {{ Form::label('range_data', 'Date disponibilità', ['class' => ' col-form-label',  'for'=>'data_min data_max']) }}
                 <div class="input-daterange input-group" id="datepicker">
                     <span class="input-group-text"> dal </span>
-                    {{ Form::text('data_min', substr($alloggio->data_min, 0, -8), ['class' => 'input-sm form-control']) }}
+                    {{ Form::text('data_min', $alloggio->data_min, ['class' => 'input-sm form-control']) }}
                     <span class="input-group-text"> al </span>
-                    {{ Form::text('data_max', substr($alloggio->data_max, 0, -8), ['class' => 'input-sm form-control']) }}
+                    {{ Form::text('data_max', $alloggio->data_max, ['class' => 'input-sm form-control']) }}
                 </div>
             </div> 
         <div class="row"> 
@@ -341,6 +340,7 @@ function updateServs(data){
 </div>
 
 <div class='d-flex justify-content-end'>
+    <input name="id" value='{{ $alloggio->id }}' hidden readonly></input>
     {{ Form::submit("Conferma Modifiche", ['class' => 'btn btn-success']) }}
     <a class="btn btn-danger ms-3" href=" {{ route('lore') }}">Annulla</a>
 </div>

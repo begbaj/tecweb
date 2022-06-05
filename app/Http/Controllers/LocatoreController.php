@@ -7,7 +7,9 @@ use App\Models\Resources\Alloggio;
 use App\Models\Resources\Inclusione;
 use App\Models\Catalog;
 use App\Models\AlloggiServizi;
+use App\Models\Resources\Servizio;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -107,36 +109,44 @@ class LocatoreController extends Controller
 
     public function editAccom($accomId){
         $catalog = new Catalog;
-        $alloggio = Alloggio::where('id', $accomId)->get();
+        $alloggio = Alloggio::where('id', $accomId)->get()->first();
+        $date = DateTime::createFromFormat('Y-m-d', substr($alloggio->data_min, 0,-9));
+        $alloggio->data_min = $date->format('d-m-Y');
+        $date = DateTime::createFromFormat('Y-m-d', substr($alloggio->data_max, 0,-9));
+        $alloggio->data_max = $date->format('d-m-Y');
+        $alloggio->data_min = str_replace('-', '/',$alloggio->data_min);
+        $alloggio->data_max = str_replace('-', '/',$alloggio->data_max);
         $servizi = $catalog->getIdServiziAlloggio($accomId);
-        return view('locatore.edit_alloggio')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
+        return view('locatore.edit_alloggio')->with('alloggio', $alloggio)->with('servizi', $servizi);
     }
     
-    public function confirmEdit(Request $request){
-        $alloggio = Alloggio::find($request->id);
-        
-        $v = Validator::make($request->all(), [
-            'titolo' => 'required|string|min:4|max:100',
-            'descrizione' => 'required|string|min:20|max:5000',
-            'tipo' => 'required',
-            'eta_min' => 'sometimes|numeric|nullable|min:18|max:100',
-            'eta_max' => 'required_with:eta_min|numeric|min:18|max:100|greater_than_field:eta_min',
-            'sesso' => 'sometimes|nullable|string',
-            'prezzo' => 'required|numeric|min:0',
-            'superficie' => 'required|numeric|min:0',
-            'data_min' => 'required|date_format:d/m/Y',
-            'data_max' => 'required|date_format:d/m/Y|after:start-date',
-            'provincia' => 'required|string|max:50',
-            'citta' => 'required|string|max:50',
-            'indirizzo' => 'required|string|max:100',
-            'cap' => 'required|string|size:5',
-            'posti_letto' => 'required|numeric|min:1',
-            'camere' => 'required|numeric|min:1'   
-        ]);
-        $data = $v->validated();
-        $data->data_min = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_min)));
-        $data->data_max = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_max)));
-        $alloggio->update($data);
-        return redirect()->route('lore');
+    public function confirmEdit(NewAccomodationRequest $request){
+        $accom = Alloggio::find($request->id);
+        $accom->fill($request->validated());
+
+        $accom->data_min = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_min)));
+        $accom->data_max = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_max)));
+
+        $accom->update();
+
+        if (isset($request->servizi))
+            Inclusione::where('id_alloggio', $accom->id)->delete();
+            foreach($request->servizi as $serv){
+                $servs = new Inclusione;
+                $servs->id_servizio = $serv;
+                $servs->id_alloggio = $accom->id;
+                $servs->save();
+            }
+
+        $_dir_ = public_path('assets/'.(string)$accom->id);
+
+        Log::debug($_dir_);
+        if(!file_exists($_dir_)) mkdir($_dir_);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image->move($_dir_, 'thumbnail');
+        }
+        return redirect()->route('homepage', [$accom->title]);
     } 
 }
