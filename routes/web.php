@@ -82,6 +82,9 @@ Route::post('/locatore/accom/new/submit', "LocatoreController@insertNewAccom")
 Route::get('/locatore/elimina/{id}', "LocatoreController@removeAccom")
         ->name('lore.accom.delete');
 
+Route::get('/locatore/accom/edit/{id}', "LocatoreController@editAccom")
+        ->name('lore.accom.edit');
+
 /*
 |--------------------------------------------------------------------------
 | Level 3 Routes

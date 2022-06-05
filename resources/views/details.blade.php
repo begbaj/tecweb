@@ -32,9 +32,13 @@
                     <img src="{{ asset('img/svg/watch.svg') }}" style="width:35px; height: 35px">
                 </div>
                 <div class ="col-sm-10 lead">
+                   @if(!isset($alloggio->eta_min)) 
+                   Età: Nessuna preferenza
+                   @else
                    Età minima consentita: {{$alloggio->eta_min}}
                    <br>
                    Età massima consentita: {{$alloggio->eta_max}}
+                   @endif
                 </div>
             </div>
             
@@ -46,7 +50,8 @@
                     Genere:
                     @if ($alloggio->sesso == 'm') Maschio
                     @elseif ($alloggio->sesso == 'f') Femmina 
-                    @else ($alloggio->sesso == 'b') Binario
+                    @elseif ($alloggio->sesso == 'b') Non Binario
+                    @else Nessuna preferenza
                     @endif
                 </div>
             </div>

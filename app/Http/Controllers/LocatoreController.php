@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewAccomodationRequest;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Inclusione;
+use App\Models\Catalog;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -102,5 +103,10 @@ class LocatoreController extends Controller
         return redirect()->route('homepage');
     }
 
-
+    public function editAccom($accomId){
+        $catalog = new Catalog;
+        $alloggio = Alloggio::where('id', $accomId)->get();
+        $servizi = $catalog->getServiziAlloggio($accomId);
+        return view('locatore.edit_alloggio')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
+    }
 }
