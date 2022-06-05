@@ -2,6 +2,61 @@
 
 @section('title', 'Dettagli Annuncio')
 
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$.ajax({
+   type:'GET',
+   url: "{{ route('api.opzione', ['id_alloggio' => $alloggio->id, 'id_locatario' => auth()->user()->id])}}",
+   data:'_token = <?php echo csrf_token(); ?>',
+   success:isOptioned
+});
+
+function isOptioned(opzione){
+	if(Object.keys(opzione).length>0){
+		$('#button-opzione').prop("disabled", true)
+		$('#button-opzione').html("Già opzionato")
+	}
+}
+
+$(document).ready(function () {
+	var buttonMessaggio = $('#button-messaggio')
+	var buttonAnnullaMessaggio = $('#annulla-messaggio')
+	var buttonOpzione = $('#button-opzione')
+	var buttonAnnullaOpzione = $('#annulla-opzione')
+	var containerMessaggio = $('#messaggioContainer')
+	var containerOpzione = $('#opzione-container')
+
+	buttonMessaggio.click(function () {	
+		containerMessaggio.removeClass("visually-hidden")
+		buttonMessaggio.prop("disabled", true)
+		buttonOpzione.prop("disabled", true)
+	});
+	
+	buttonAnnullaMessaggio.click(function(){
+		containerMessaggio.addClass("visually-hidden")
+		buttonMessaggio.prop("disabled", false)
+		buttonOpzione.prop("disabled", false)
+		
+	});
+
+	buttonOpzione.click(function () {
+		containerOpzione.removeClass("visually-hidden")
+		buttonMessaggio.prop("disabled", true)
+		buttonOpzione.prop("disabled", true)
+	});
+
+	buttonAnnullaOpzione.click(function(){
+		containerOpzione.addClass("visually-hidden")
+		buttonMessaggio.prop("disabled", false)
+		buttonOpzione.prop("disabled", false)
+	});
+});
+</script>
+@endsection
+
 @section('content')
 <div class="container-fluid bd-light">
     <div class="container row">
@@ -144,7 +199,6 @@
                 @endforeach 
             </div>
         </div>
-        
         <div class="d-flex row align-items-center mt-5">
             <div class="col-sm-1">
                 <img src="{{ asset('img/svg/globe.svg') }}" style="width: 45px; height: 45px">
@@ -173,15 +227,25 @@
     </div>
     @if(auth()->user()->hasRole('locatario'))
     <div class="container d-flex justify-content-end mt-3">
-        <a class="btn btn-primary me-2" href="">Invia Messaggio</a>
-        <a class="btn btn-success me-2 ms-3" href="">Opziona l'Alloggio</a>
+        <button id='button-messaggio' class="btn btn-primary me-2">Invia Messaggio</button>
+        <button id='button-opzione' class="btn btn-success me-2 ms-3">Opziona l'Alloggio</button>
     </div>
-    <div class="container d-flex mt-3 visually-hidden">
-	{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chat.send' : 'chat.send', 
-		 $alloggio->id_locatore), 'id' => 'sendMessage', 'id_destinatario' => $alloggio->id_locatore,'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
+    <div id="messaggioContainer" class="container d-flex mt-3 visually-hidden">
+	{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore), 
+			'id' => 'sendMessage', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
 		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100']) }}
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
         {{ Form::close() }}
+	<button id="annulla-messaggio" type="button" class="btn btn-danger">Annulla</button>
+    </div>
+    <div id="opzione-container" class="container d-flex mt-3 visually-hidden">
+	{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
+		'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
+		{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e sono interessato a questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
+		{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
+		<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
+        {{ Form::close() }}
+	<button id="annulla-opzione" type="button" class="btn btn-danger">Annulla</button>
     </div>
     @endif
 </div>

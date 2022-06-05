@@ -6,10 +6,9 @@
 @section('title', 'Catalogo')
 
 @section('scripts')
-<script type="text/javascript" src="{{ asset('js/functions.js') }}"></script>
-<script type="text/javascript" src="src/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-        window.onload = function () {
+        $(document).ready(function () {
                 cards = document.getElementsByClassName('card-text');
 
                 for(i=0; i< cards.length; i++){
@@ -21,7 +20,7 @@
                 for(i=0; i< cards.length; i++){
                         cards[i].innerHTML = truncateText(cards[i].innerHTML, 30);
                 }
-        }
+        })
 
         function truncateText(text, max_char){
                 if(text.length <= max_char){
