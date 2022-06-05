@@ -34,7 +34,7 @@ $(function () {
     $("#eta_min").change();
 
     $('#datepicker').datepicker({
-        format: "mm/dd/yyyy",
+        format: "dd/mm/yyyy",
         todayBtn: "linked",
         clearBtn: true,
         orientation: 'bottom auto',
@@ -66,7 +66,7 @@ function updateServs(data){
 @endsection
 
 @section('content')
-{{ Form::open(['route' => 'lore.accom.new.submit', 'id' => 'newaccom-form', 'files' => true]) }}
+{{ Form::open(['route' => 'lore.accom.edit.confirm', 'id' => 'newaccom-form', 'files' => true]) }}
 {{ Form::token() }}
 <div class='row'>
     <div class="col mb-3">
@@ -321,10 +321,13 @@ function updateServs(data){
             </div>
         </div>     
         @endif
+        <div class="container-fluid d-flex justify-content-center border border-secondary rounded mt-2 pb-2 pt-2 pe-2 ps-2">
+            <img src="{{ URL::asset('assets/'. $alloggio->id . '/thumbnail') }}" style="height: 250px" class="img-fluid w-100">
+        </div>
     </div>
     <div class="col mb-3">
         {{ Form::label('descrizione', 'Descrizione', ['class' => ' col-form-label',  'for'=>'desc']) }}
-        {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'form-control'] )}}
+        {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'form-control mt-2'] )}}
         @if ($errors->first('descrizione'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -337,8 +340,9 @@ function updateServs(data){
     </div>
 </div>
 
-<div class='d-flex'>
+<div class='d-flex justify-content-end'>
     {{ Form::submit("Conferma Modifiche", ['class' => 'btn btn-success']) }}
+    <a class="btn btn-danger ms-3" href=" {{ route('lore') }}">Annulla</a>
 </div>
 
 {{ Form::close() }}
