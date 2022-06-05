@@ -69,9 +69,9 @@ $(document).ready(function () {
             <h2><strong>{{$alloggio->titolo}}</strong></h2>
         </div>
     </div>
-    <div class="row">
-            <div class="col mx-1 shadow-lg border border-secondary p-2">
-                <img src="{{asset('assets/'. $alloggio->id . '/thumbnail')}}" style="max-width: 800px; max-height: 800px">
+    <div class="row m-5">
+            <div class="col mx-1 shadow border border-secondary p-2">
+                <center><img src="{{asset('assets/'. $alloggio->id . '/thumbnail')}}" style="max-width: 800px; max-height: 800px"></center>
             </div>    
             <div class="col mx-3">
                 <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
@@ -132,15 +132,16 @@ $(document).ready(function () {
                 </div>
             </div>
     </div>
-    <div class="container-fluid border border-dark mt-2 pt-3">
+    <div class="container-fluid bg-light bg-gradient mt-2 pt-3">
+        <h3><center><strong>Informazioni che possono interessarti...</strong></center></h3> 
         <div class="row">
-            <div class="col border-bottom border-top border-dark m-3 p-2">
-                <div class="justify-content-center mt-2">
-                    <p class="lead">{{$alloggio->descrizione}}</p>
-                </div>
+            <div class="col bg-white shadow rounded m-3">
+                    <div class="justify-content-center p-2">
+                        <h3>Descrizione</h3>
+                        <p class="lead">{{$alloggio->descrizione}}</p>
+                    </div>
             </div>
-            <div class="col">
-                <h3><strong>Informazioni che possono interessarti...</strong></h3> 
+            <div class="col m-2 p-2">
                 <div class="row">
                     <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
                         <div class="col-sm-1 m-2" >
@@ -167,50 +168,51 @@ $(document).ready(function () {
                             @endif
                         </div>
                     </div>
-                </div>
-                <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
-                    <div class="col-sm-1 m-2" >
-                        <img src="{{ asset('img/svg/services.svg') }}" style="width: 45px; height: 45px">
-                    </div>
-                    <div class="col-sm-auto p-2 m-2 lead">
-                        @foreach($servizi as $servizio)
-                            @if($servizio->id < 16)
-                            <div class="row align-items-center m-1"> 
-                                <div class="col-sm-1">
-                                    <img src="{{asset('img/svg/servs/'.$servizio->nome.'.svg') }}" style="width: 25px; height:25px">
+                    <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
+                        <div class="col-sm-1 m-2" >
+                            <img src="{{ asset('img/svg/services.svg') }}" style="width: 45px; height: 45px"><br>
+                            <center><small>Servizi</small></center>
+                        </div>
+                        <div class="col-sm-auto p-2 m-2 lead">
+                            @foreach($servizi as $servizio)
+                                @if($servizio->id < 16)
+                                <div class="row align-items-center m-1"> 
+                                    <div class="col-sm-1">
+                                        <img src="{{asset('img/svg/servs/'.$servizio->nome.'.svg') }}" style="width: 25px; height:25px">
+                                    </div>
+                                    <div class="col-sm-auto lead m-1">
+                                    {{ucwords(str_replace("_", " ",$servizio->nome))}}    
+                                    </div>    
                                 </div>
-                                <div class="col-sm-auto lead m-1">
-                                {{ucwords(str_replace("_", " ",$servizio->nome))}}    
-                                </div>    
-                            </div>
-                            @endif
-                        @endforeach 
+                                @endif
+                            @endforeach 
+                        </div>
                     </div>
-                </div>
-                <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
-                    <div class="col-sm-1 m-2" >
-                            <img src="{{ asset('img/svg/globe.svg') }}" style="width: 45px; height: 45px">
-                    </div>
-                    <div class="col-sm-auto p-2 m-2 lead">
-                        @foreach($servizi as $servizio)
-                            @if($servizio->id >= 16)
-                            <div class="row align-items-center mt-2 ms-2"> 
-                                <div class="col-sm-1">
-                                    <img src="{{asset('img/svg/servs/'.$servizio->nome.'.svg') }}" style="width: 25px; height: 25px">
+                    <div class="my-1 border rounded row shadow align-items-center bg-white" style="max-width: 850px">
+                        <div class="col-sm-1 m-2" >
+                            <img src="{{ asset('img/svg/globe.svg') }}" style="width: 45px; height: 45px"><br>
+                            <center><small>Vicino</small></center>
+                        </div>
+                        <div class="col-sm-auto p-2 m-2 lead">
+                            @foreach($servizi as $servizio)
+                                @if($servizio->id >= 16)
+                                <div class="row align-items-center mt-2 ms-2"> 
+                                    <div class="col-sm-1">
+                                        <img src="{{asset('img/svg/servs/'.$servizio->nome.'.svg') }}" style="width: 25px; height: 25px">
+                                    </div>
+                                    <div class="col-sm-auto lead ms-2">
+                                    {{substr(ucwords(str_replace("_", " ", $servizio->nome)), 7)}}    
+                                    </div>
                                 </div>
-                                <div class="col-sm-auto lead ms-2">
-                                {{substr(ucwords(str_replace("_", " ", $servizio->nome)), 7)}}    
-                                </div>
-                            </div>
-                            @endif
-                        @endforeach
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        
-    @if(auth()->user()->hasRole('locatario'))
+    </div>        
+    @if (auth()->user()->hasRole('locatario'))
     <div class="container d-flex justify-content-end mt-3">
         <button id='button-messaggio' class="btn btn-primary me-2">Invia Messaggio</button>
         <button id='button-opzione' class="btn btn-success me-2 ms-3">Opziona l'Alloggio</button>
