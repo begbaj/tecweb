@@ -20,7 +20,7 @@
        @include('components/navbar')
     </header>
     <!-- CONTENT -->
-    <div class="container-fluid bg-body">
+    <div class="container-fluid bg-body mt-5 ">
         <div class="container bg-light mt-5 mb-5 pb-5 pt-5">
             @yield('content')
         </div>
