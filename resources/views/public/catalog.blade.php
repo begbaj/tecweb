@@ -44,7 +44,7 @@
     </div>
 </div> 
 
-<div class="container-fluid">
+<div class="container align-content-center">
     @foreach ($accomodations->chunk(3) as $chunk)
             <div class="card-group">
                 @foreach ($chunk as $accomodation)    

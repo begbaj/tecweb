@@ -1,5 +1,5 @@
 {{-- CARD: basic accomodation card --}}
-<div class="card m-2 shadow-sm">
+<div class="card m-2 shadow-sm"  style="max-width:32%">
     <img class="card-img-top" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
