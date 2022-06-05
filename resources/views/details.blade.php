@@ -100,6 +100,8 @@
                     Appartamento 
                     <br>
                     N° Camere: {{$alloggio->camere}}
+                    <br>
+                    N° Posti Letto: {{$alloggio->posti_letto}}
                     @endif
                 </div>
             </div>
@@ -116,7 +118,7 @@
                     <br>
                     Città: {{$alloggio->citta}}
                     <br>
-                    Indirizzo: {{$alloggio->indirizzo}}
+                    Indirizzo: {{$alloggio->indirizzo}} {{$alloggio->cap}}
                     </div>
                 </div>
             </div>

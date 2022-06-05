@@ -106,7 +106,7 @@ class LocatoreController extends Controller
     public function editAccom($accomId){
         $catalog = new Catalog;
         $alloggio = Alloggio::where('id', $accomId)->get();
-        $servizi = $catalog->getServiziAlloggio($accomId);
+        $servizi = $catalog->getIdServiziAlloggio($accomId);
         return view('locatore.edit_alloggio')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
 }

@@ -47,11 +47,11 @@ $(function () {
 function updateServs(data){
     $('#servizi').find('*').remove();
     $('#vicino').find('*').remove();
-    var servs = <?php if(null != old('servizi')) print_r(json_encode(old('servizi'))); else echo 'null'; ?>;
+    var servs = <?php if(null != $servizi) print_r(json_encode($servizi)); else echo 'null'; ?>;
     $.each(data, function (key, val) {
         var element = '<div class="form-check">' +
             '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '"';
-        if (servs != null && servs.includes(String(val.id))){
+        if (servs != null && servs.includes(val.id)){
             element += ' checked ';
         }
         element += '><label class="form-check-label" for="' + val.id + '">' + val.nome.replace(/vicino_/, '').replace(/_/g, ' ') + '</label></div>';
@@ -66,7 +66,6 @@ function updateServs(data){
 @endsection
 
 @section('content')
-
 {{ Form::open(['route' => 'lore.accom.new.submit', 'id' => 'newaccom-form', 'files' => true]) }}
 {{ Form::token() }}
 <div class='row'>
@@ -87,7 +86,7 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('tipo', 'Tipo', ['class' => ' col-form-label',  'for'=>'tipo']) }}
-        {{ Form::select('tipo', ['appartamento' => "Appartamento", 'posto_letto' => "Posto Letto"], $alloggio->tipo , ['class' => 'form-control'] )}}
+        {{ Form::select('tipo', ['appartamento' => "Appartamento", 'posto_letto' => "Posto Letto"], $alloggio->tipo, ['class' => 'form-control'] )}}
         @if ($errors->first('tipo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -114,7 +113,7 @@ function updateServs(data){
     </div>
     <div class="col mb-3">
         {{ Form::label('eta_max', 'Età massima', ['class' => ' col-form-label',  'for'=>'etamax']) }}
-        {{ Form::number('eta_max', $alloggio->eta_max, ['class' => 'form-control'] ) }}
+        {{ Form::number('eta_max', $alloggio->eta_max,['class' => 'form-control'] ) }}
         @if ($errors->first('eta_max'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -145,7 +144,12 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('prezzo', 'Canone (€/mese)', ['class' => ' col-form-label',  'for'=>'price']) }}
-        {{ Form::number('prezzo', $alloggio->prezzo, ['class' => 'form-control']) }}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            {{ Form::number('prezzo', $alloggio->prezzo, ['class' => 'form-control']) }}
+        </div>
         @if ($errors->first('prezzo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -173,40 +177,42 @@ function updateServs(data){
             <div class='row'>
                 {{ Form::label('range_data', 'Date disponibilità', ['class' => ' col-form-label',  'for'=>'data_min data_max']) }}
                 <div class="input-daterange input-group" id="datepicker">
-                    {{ Form::text('data_min', substr($alloggio->data_min,0, -8), ['class' => 'input-sm form-control']) }}
-                   <span class="input-group-addon"> a </span>
-                    {{ Form::text('data_max', substr($alloggio->data_max,0, -8), ['class' => 'input-sm form-control']) }}
+                    <span class="input-group-text"> dal </span>
+                    {{ Form::text('data_min', substr($alloggio->data_min, 0, -8), ['class' => 'input-sm form-control']) }}
+                    <span class="input-group-text"> al </span>
+                    {{ Form::text('data_max', substr($alloggio->data_max, 0, -8), ['class' => 'input-sm form-control']) }}
                 </div>
             </div> 
-            <div class="row"> 
-                <div class="col">
-                    @if ($errors->first('data_min'))
-                    <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('data_min') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                        </div>
-                    </div>     
-                    @endif
+        <div class="row"> 
+            <div class="col">
+                @if ($errors->first('data_min'))
+                <div class="d-flex justify-content-center">
+                    <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
+                    @foreach ($errors->get('data_min') as $message)
+                    <div class="justify-content-center">{{ $message }}</div>
+                    @endforeach
+                    </div>
                 </div>     
-                <div class="col">
-                    @if ($errors->first('data_max'))
-                    <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('data_max') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                        </div>
-                    </div>     
-                    @endif
+                @endif
+            </div>     
+            <div class="col">
+                @if ($errors->first('data_max'))
+                <div class="d-flex justify-content-center">
+                    <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
+                    @foreach ($errors->get('data_max') as $message)
+                    <div class="d-flex justify-content-center">{{ $message }}</div>
+                    @endforeach
+                    </div>
                 </div>     
+                @endif
+            </div>     
         </div>
+    </div>
 </div>
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('provincia', 'Provincia', ['class' => ' col-form-label',  'for'=>'province']) }}
-        {{ Form::text('provincia', '', ['class' => 'form-control'] )}}
+        {{ Form::text('provincia', $alloggio->provincia, ['class' => 'form-control'] )}}
         @if ($errors->first('provincia'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -220,7 +226,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('citta', 'Città', ['class' => ' col-form-label',  'for'=>'city']) }}
-        {{ Form::text('citta', '', ['class' => 'form-control'] )}}
+        {{ Form::text('citta', $alloggio->citta, ['class' => 'form-control'] )}}
         @if ($errors->first('citta'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -233,7 +239,7 @@ function updateServs(data){
     </div>
     <div class="col mb-3">
         {{ Form::label('indirizzo', 'Indirizzo', ['class' => ' col-form-label',  'for'=>'address']) }}
-        {{ Form::text('indirizzo', '', ['class' => 'form-control'] )}}
+        {{ Form::text('indirizzo', $alloggio->indirizzo, ['class' => 'form-control'] )}}
         @if ($errors->first('indirizzo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -247,7 +253,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('cap', 'CAP', ['class' => ' col-form-label',  'for'=>'cap']) }}
-        {{ Form::text('cap', '', ['class' => 'form-control'] )}}
+        {{ Form::text('cap', $alloggio->cap, ['class' => 'form-control'] )}}
         @if ($errors->first('cap'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -263,7 +269,7 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('posti_letto', 'Posti Letto', ['class' => ' col-form-label',  'for'=>'bedrooms']) }}
-        {{ Form::number('posti_letto', '1', ['class' => 'form-control'] ) }}
+        {{ Form::number('posti_letto', $alloggio->posti_letto, ['class' => 'form-control'] ) }}
         @if ($errors->first('posti_letto'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -277,7 +283,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('camere', 'Camere', ['class' => ' col-form-label',  'for'=>'bedrooms']) }}
-        {{ Form::number('camere', '1', ['class' => 'form-control'] ) }}
+        {{ Form::number('camere', $alloggio->camere, ['class' => 'form-control'] ) }}
         @if ($errors->first('camere'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -318,7 +324,7 @@ function updateServs(data){
     </div>
     <div class="col mb-3">
         {{ Form::label('descrizione', 'Descrizione', ['class' => ' col-form-label',  'for'=>'desc']) }}
-        {{ Form::textarea('descrizione', '', ['class' => 'form-control'] )}}
+        {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'form-control'] )}}
         @if ($errors->first('descrizione'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -330,6 +336,11 @@ function updateServs(data){
         @endif
     </div>
 </div>
+
+<div class='d-flex'>
+    {{ Form::submit("Conferma Modifiche", ['class' => 'btn btn-success']) }}
+</div>
+
 {{ Form::close() }}
 
 @endsection

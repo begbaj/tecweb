@@ -13,4 +13,9 @@ class Catalog extends Model
 	    $alloggio = Servizio::select('servizi.*')->join('inclusioni', 'servizi.id', '=', 'id_servizio')->where('id_alloggio', $id_alloggio);
 	    return $alloggio->get();
     }
+    
+   public function getIdServiziAlloggio($id_alloggio){
+	    $alloggio = Servizio::select('servizi.id')->join('inclusioni', 'servizi.id', '=', 'id_servizio')->where('id_alloggio', $id_alloggio);
+	    return $alloggio->pluck('id')->toArray();
+    } 
 }
