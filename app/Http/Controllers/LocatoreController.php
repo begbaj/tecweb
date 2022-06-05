@@ -41,8 +41,8 @@ class LocatoreController extends Controller
         $accom->created_at = Carbon::now()->toDateTimeString();
         $accom->fill($request->validated());
 
-        $accom->data_min = date("Y-m-d",strtotime($request->data_min));
-        $accom->data_max = date("Y-m-d",strtotime($request->data_max));
+        $accom->data_min = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_min)));
+        $accom->data_max = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_max)));
         $accom->save();
 
         $accomid = Alloggio::latest()->get()->first()->id; // TODO: MOLTO RISCHIOSA, BISGONA TROVARE UN'ALTRA SOLUZIONE

@@ -34,7 +34,7 @@ $(function () {
     $("#eta_min").change();
 
     $('#datepicker').datepicker({
-        format: "mm/dd/yyyy",
+        format: "dd/mm/yyyy",
         todayBtn: "linked",
         clearBtn: true,
         orientation: 'bottom auto',
@@ -60,9 +60,12 @@ function updateServs(data){
     });
 }
 </script>
+
 @endsection
 @section('style')
+
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+
 @endsection
 @section('content')
 {{ Form::open(['route' => 'lore.accom.new.submit', 'id' => 'newaccom-form', 'files' => true]) }}
@@ -143,7 +146,12 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('prezzo', 'Canone (€/mese)', ['class' => ' col-form-label',  'for'=>'price']) }}
-        {{ Form::number('prezzo', '0', ['class' => 'form-control']) }}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            {{ Form::number('prezzo', '0', ['class' => 'form-control']) }}
+        </div>
         @if ($errors->first('prezzo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -171,35 +179,37 @@ function updateServs(data){
             <div class='row'>
                 {{ Form::label('range_data', 'Date disponibilità', ['class' => ' col-form-label',  'for'=>'data_min data_max']) }}
                 <div class="input-daterange input-group" id="datepicker">
+                    <span class="input-group-text"> dal </span>
                     {{ Form::text('data_min', '', ['class' => 'input-sm form-control']) }}
-                   <span class="input-group-addon"> a </span>
+                    <span class="input-group-text"> al </span>
                     {{ Form::text('data_max', '', ['class' => 'input-sm form-control']) }}
                 </div>
             </div> 
-            <div class="row"> 
-                <div class="col">
-                    @if ($errors->first('data_min'))
-                    <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('data_min') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                        </div>
-                    </div>     
-                    @endif
+        <div class="row"> 
+            <div class="col">
+                @if ($errors->first('data_min'))
+                <div class="d-flex justify-content-center">
+                    <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
+                    @foreach ($errors->get('data_min') as $message)
+                    <div class="justify-content-center">{{ $message }}</div>
+                    @endforeach
+                    </div>
                 </div>     
-                <div class="col">
-                    @if ($errors->first('data_max'))
-                    <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('data_max') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                        </div>
-                    </div>     
-                    @endif
+                @endif
+            </div>     
+            <div class="col">
+                @if ($errors->first('data_max'))
+                <div class="d-flex justify-content-center">
+                    <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
+                    @foreach ($errors->get('data_max') as $message)
+                    <div class="d-flex justify-content-center">{{ $message }}</div>
+                    @endforeach
+                    </div>
                 </div>     
+                @endif
+            </div>     
         </div>
+    </div>
 </div>
 <div class="row">
     <div class="col mb-3">

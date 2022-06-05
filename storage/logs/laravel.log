@@ -15115,6 +15115,7 @@
 #44 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
 #45 {main}
 "} 
+<<<<<<< HEAD
 [2022-06-05 12:44:58] local.DEBUG: Pagina Inserimento caricata  
 [2022-06-05 12:45:55] local.DEBUG: Pagina Inserimento caricata  
 [2022-06-05 14:32:41] local.DEBUG: Pagina Inserimento caricata  
@@ -17737,3 +17738,216 @@
 #48 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
 #49 {main}
 "} 
+=======
+[2022-06-05 14:20:54] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:24:46] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:24:47] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:26:07] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:26:08] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:26:44] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:26:45] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:27:34] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:32:27] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:32:28] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:32:48] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:35:34] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:36:28] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:00] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:01] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:02] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:09] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:39] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:43] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:54] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:55] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:38:59] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:40:28] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:40:42] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:40:45] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:41:03] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:41:24] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:41:27] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:42:14] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:42:14] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/324  
+[2022-06-05 14:42:50] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:43:12] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:43:15] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:43:15] local.ERROR: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '06-08-2022' for column `laravel`.`alloggi`.`data_min` at row 1 (SQL: insert into `alloggi` (`id_locatore`, `opzionato`, `created_at`, `titolo`, `descrizione`, `tipo`, `eta_min`, `sesso`, `prezzo`, `superficie`, `data_min`, `data_max`, `provincia`, `citta`, `indirizzo`, `cap`, `posti_letto`, `camere`, `updated_at`) values (1001, 0, 2022-06-05 14:43:15, Nuovo Appartamento, sdfasdfasdfasdsdfasdfasdfasdf, appartamento, ?, ?, 472, 347, 06-08-2022, 01-01-1970, sdafasdf, asdfasdf, asdfasdf, 60019, 3, 3, 2022-06-05 14:43:15)) {"userId":1001,"exception":"[object] (Illuminate\\Database\\QueryException(code: 22007): SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '06-08-2022' for column `laravel`.`alloggi`.`data_min` at row 1 (SQL: insert into `alloggi` (`id_locatore`, `opzionato`, `created_at`, `titolo`, `descrizione`, `tipo`, `eta_min`, `sesso`, `prezzo`, `superficie`, `data_min`, `data_max`, `provincia`, `citta`, `indirizzo`, `cap`, `posti_letto`, `camere`, `updated_at`) values (1001, 0, 2022-06-05 14:43:15, Nuovo Appartamento, sdfasdfasdfasdsdfasdfasdfasdf, appartamento, ?, ?, 472, 347, 06-08-2022, 01-01-1970, sdafasdf, asdfasdf, asdfasdf, 60019, 3, 3, 2022-06-05 14:43:15)) at /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php:669)
+[stacktrace]
+#0 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(629): Illuminate\\Database\\Connection->runQueryCallback('insert into `al...', Array, Object(Closure))
+#1 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(464): Illuminate\\Database\\Connection->run('insert into `al...', Array, Object(Closure))
+#2 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(416): Illuminate\\Database\\Connection->statement('insert into `al...', Array)
+#3 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `al...', Array)
+#4 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2705): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `al...', Array, 'id')
+#5 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1385): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(840): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(805): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(668): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 /opt/lampp/htdocs/tecweb/app/Http/Controllers/LocatoreController.php(45): Illuminate\\Database\\Eloquent\\Model->save()
+#10 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\LocatoreController->insertNewAccom(Object(App\\Http\\Requests\\NewAccomodationRequest))
+#11 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('insertNewAccom', Array)
+#12 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\LocatoreController), 'insertNewAccom')
+#13 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(176): Illuminate\\Routing\\Route->runController()
+#14 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(681): Illuminate\\Routing\\Route->run()
+#15 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authorize.php(45): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Auth\\Middleware\\Authorize->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'isLocatore')
+#18 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#20 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#32 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#33 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#34 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#35 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#36 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#37 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#45 /opt/lampp/htdocs/tecweb/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#46 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#49 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#50 /opt/lampp/htdocs/tecweb/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#51 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
+#52 {main}
+
+[previous exception] [object] (PDOException(code: 22007): SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '06-08-2022' for column `laravel`.`alloggi`.`data_min` at row 1 at /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php:463)
+[stacktrace]
+#0 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(463): PDOStatement->execute()
+#1 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(662): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `al...', Array)
+#2 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(629): Illuminate\\Database\\Connection->runQueryCallback('insert into `al...', Array, Object(Closure))
+#3 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(464): Illuminate\\Database\\Connection->run('insert into `al...', Array, Object(Closure))
+#4 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Connection.php(416): Illuminate\\Database\\Connection->statement('insert into `al...', Array)
+#5 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `al...', Array)
+#6 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2705): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `al...', Array, 'id')
+#7 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1385): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(840): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(805): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(668): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 /opt/lampp/htdocs/tecweb/app/Http/Controllers/LocatoreController.php(45): Illuminate\\Database\\Eloquent\\Model->save()
+#12 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\LocatoreController->insertNewAccom(Object(App\\Http\\Requests\\NewAccomodationRequest))
+#13 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('insertNewAccom', Array)
+#14 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\LocatoreController), 'insertNewAccom')
+#15 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(176): Illuminate\\Routing\\Route->runController()
+#16 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(681): Illuminate\\Routing\\Route->run()
+#17 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authorize.php(45): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Auth\\Middleware\\Authorize->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'isLocatore')
+#20 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#34 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#35 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#36 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#37 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#38 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#39 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#45 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#46 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 /opt/lampp/htdocs/tecweb/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#49 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#50 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#51 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#52 /opt/lampp/htdocs/tecweb/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#53 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
+#54 {main}
+"} 
+[2022-06-05 14:46:03] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:46:03] local.ERROR: Undefined variable: str_replace {"userId":1001,"exception":"[object] (ErrorException(code: 0): Undefined variable: str_replace at /opt/lampp/htdocs/tecweb/app/Http/Controllers/LocatoreController.php:44)
+[stacktrace]
+#0 /opt/lampp/htdocs/tecweb/app/Http/Controllers/LocatoreController.php(44): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined varia...', '/opt/lampp/htdo...', 44, Array)
+#1 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\LocatoreController->insertNewAccom(Object(App\\Http\\Requests\\NewAccomodationRequest))
+#2 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('insertNewAccom', Array)
+#3 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\LocatoreController), 'insertNewAccom')
+#4 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(176): Illuminate\\Routing\\Route->runController()
+#5 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(681): Illuminate\\Routing\\Route->run()
+#6 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#7 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authorize.php(45): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Auth\\Middleware\\Authorize->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'isLocatore')
+#9 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#10 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#11 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#15 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#23 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#24 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#25 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#26 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#27 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 /opt/lampp/htdocs/tecweb/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 /opt/lampp/htdocs/tecweb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 /opt/lampp/htdocs/tecweb/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 /opt/lampp/htdocs/tecweb/server.php(21): require_once('/opt/lampp/htdo...')
+#43 {main}
+"} 
+[2022-06-05 14:46:18] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:46:18] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/325  
+[2022-06-05 14:46:25] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:46:55] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 14:46:55] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/326  
+[2022-06-05 14:47:05] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:48:24] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:57:34] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 14:57:52] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:01:44] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:10:16] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:11:19] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:12:44] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:13:11] local.DEBUG: Pagina Inserimento caricata  
+[2022-06-05 15:14:18] local.DEBUG: Inserimento Alloggio: iniziato  
+[2022-06-05 15:14:18] local.DEBUG: /opt/lampp/htdocs/tecweb/public/assets/327  
+>>>>>>> f6717daa688e03f21bc947ee8d68dc6f7f2c67d9
