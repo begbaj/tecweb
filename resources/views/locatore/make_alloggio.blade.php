@@ -9,7 +9,7 @@ $(function () {
     $("#tipo").on('change', function(event) {
        $.ajax({
            type:'GET',
-           url:'/api/servs/' + $("#tipo").val(),
+           url: '{{ route("api.servs") }}/' + $("#tipo").val(),
            data:'_token = <?php echo csrf_token(); ?>',
            success:updateServs
         });

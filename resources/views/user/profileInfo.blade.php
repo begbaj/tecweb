@@ -80,7 +80,7 @@
                 
                 <div id="passForm" class="d-flex align-items-center ps-5 pt-4 visually-hidden">
                     <h5>Nuova Password:</h5>
-                    {{ Form::password('password', ['class' => 'ps-1 lead d-flex align-items-center ms-2']) }}
+                    {{ Form::text('password','', ['class' => 'ps-1 lead d-flex align-items-center ms-2']) }}
                 @if ($errors->first('password'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
@@ -94,7 +94,7 @@
                 
                 <div id="passForm" class="d-flex align-items-center ps-5 pt-4 visually-hidden">
                     <h5>Conferma Password:</h5>
-                    {{ Form::password('password_confirmation', ['class' => 'ps-1 lead d-flex align-items-center ms-2']) }}
+                    {{ Form::text('password_confirmation', ['class' => 'ps-1 lead d-flex align-items-center ms-2 ']) }}
                 @if ($errors->first('password'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-2 pt-0 pb-0">

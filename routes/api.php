@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('servs/{type?}', function ($type=null) {
     return Servizio::getServs($type);
-});
+})->name('api.servs');
 
