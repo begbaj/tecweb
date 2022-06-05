@@ -32,8 +32,4 @@ class Catalog extends Model
 	    }
 	    return $risultati->get();
     }
-
-    //Metodo per ottenere le combinazioni dell'array con k elementi
-    private function getCombinations($array, k){
-    }
 }
