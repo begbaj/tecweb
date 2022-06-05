@@ -33,7 +33,7 @@ $(function (){
 		</h4>
 	@endif
 @else
-<div class="d-flex h-50">
+<div class="d-flex h-75">
 	<div class="deck-columns h-100 overflow-auto" style="max-width:20%">
 	@foreach ($rubrica as $user)
         	@include ('components.rubricCard', [ '$user' => $user] )
@@ -50,7 +50,7 @@ $(function (){
 		@endif
 		</h5>
 		<hr/>
-	<div id="chat-container" class="container h-75 overflow-auto">
+	<div id="chat-container" class="container overflow-auto" style="height:80%">
 		@foreach ($messaggi as $messaggio)
 			@include ('components.messageCard', [ '$messaggio' => $messaggio])
 		@endforeach 

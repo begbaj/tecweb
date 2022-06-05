@@ -25,6 +25,7 @@ class NewMessageRequest extends FormRequest
     {
         return [
             'testo' => 'required|min:1|max:5000',
+	    'id_alloggio' => ''
         ];
     }
 }

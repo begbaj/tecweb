@@ -12,5 +12,10 @@ class Messaggio extends Model
 	protected $guarded = ['id'];
 
 	public $timestamps = true;
+
+	static function getOpzione($id_alloggio, $id_locatario){
+		$opzione = Messaggio::whereRaw("id_alloggio = ? AND id_mittente = ? ", [$id_alloggio,$id_locatario]);
+		return $opzione->get();
+	}
 }
 

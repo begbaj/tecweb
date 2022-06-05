@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LocatoreController;
 use App\Models\Resources\Servizio;
+use App\Models\Resources\Messaggio;
 use Illuminate\Http\Request;
 
 /*
@@ -23,3 +24,7 @@ Route::get('servs/{type?}', function ($type=null) {
     return Servizio::getServs($type);
 })->name('api.servs');
 
+
+Route::get('opzione/{id_alloggio}/{id_locatario}', function ($id_alloggio, $id_locatario) {
+    return Messaggio::getOpzione($id_alloggio, $id_locatario);
+})->name('api.opzione');
