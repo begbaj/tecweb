@@ -45,7 +45,7 @@ class UserController extends Controller
             if (!empty($data['password']))
                 $data['password'] = Hash::make($request->password);
             $user->update($data);
-            return view('user.profileInfo');
+            return back();
         }
         else{
             return view('errors.404');
