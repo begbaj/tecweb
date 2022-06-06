@@ -2,7 +2,7 @@
 <div class="card mb-3" style="max-width: 50em;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img class="img-fluid rounded-start card-img" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} " alt="">
+      <img class="img-fluid rounded-start card-img" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} " alt="" style="height: 300px">
     </div>
     <div class="col-md-8">
       <div class="card-body">

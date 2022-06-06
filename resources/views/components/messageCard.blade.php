@@ -18,6 +18,14 @@
 	@endif
 			<div class="card-body" data-mdb-ripple-color="light">
 				<p class="card-text"><small>{{ $messaggio->testo }}</small></p>
+                                @if (Auth::id() == $messaggio->id_mittente AND !is_null($messaggio->id_alloggio))
+                                <div class="mt-2"><p><strong>In attesa di conferma o rifiuto...</strong></a></div>
+                                @elseif(Auth::id() == $messaggio->id_destinatario AND !is_null($messaggio->id_alloggio))
+                                <div class="mt-2">
+                                    <a class="btn btn-success border-light" href="">Conferma Richiesta</a>
+                                    <a class="btn btn-danger border-light ms-2" href="">Rifiuta Richiesta</a>
+                                </div>   
+                                @endif
 			</div>
 			<div class="card-footer text-right">
 				@if (!is_null($messaggio->id_alloggio) OR (is_null($messaggio->id_alloggio) AND Auth::id() == $messaggio->id_mittente))
