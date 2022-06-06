@@ -17,8 +17,13 @@ class UserController extends Controller
         $this->middleware('can:isUser');
     }
 
-    public function profile(){
+    public function myProfile(){
        return view('user.profileInfo');
+    }
+    
+    public function strangerProfile($idProfile){
+        $user = User::where('id', $idProfile)->get();
+        return view('user.profileInfo')->with('user', $user->first());
     }
 
     public function accomDetails($accomId){

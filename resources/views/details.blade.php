@@ -217,22 +217,22 @@ $(document).ready(function () {
         <button id='button-messaggio' class="btn btn-primary me-2">Invia Messaggio</button>
         <button id='button-opzione' class="btn btn-success me-2 ms-3">Opziona l'Alloggio</button>
     </div>
-    <div id="messaggioContainer" class="container d-flex mt-3 visually-hidden">
+    <div id="messaggioContainer" class="container d-flex align-items-center mt-3 visually-hidden">
 	{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore), 
 			'id' => 'sendMessage', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
 		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100']) }}
 		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
         {{ Form::close() }}
-	<button id="annulla-messaggio" type="button" class="btn btn-danger">Annulla</button>
+	<button id="annulla-messaggio" type="button" class="btn btn-danger mt-2">Annulla</button>
     </div>
-    <div id="opzione-container" class="container d-flex mt-3 visually-hidden">
+    <div id="opzione-container" class="container d-flex align-items-center mt-3 visually-hidden">
 	{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
 		'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
 		{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e sono interessato a questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
 		{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
 		<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
         {{ Form::close() }}
-	<button id="annulla-opzione" type="button" class="btn btn-danger">Annulla</button>
+	<button id="annulla-opzione" type="button" class="btn btn-danger mt-2">Annulla</button>
     </div>
     @endif
 </div>

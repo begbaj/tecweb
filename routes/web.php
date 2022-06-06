@@ -49,8 +49,11 @@ Route::get('/catalog', "PublicController@catalog")
 Route::get('/catalog/accom/{accomId}', "UserController@accomDetails")
     ->name('catalog.accom.details');
 
-Route::get('/user/me', 'UserController@profile')
+Route::get('/user/me', 'UserController@myProfile')
     ->name('user.me');
+
+Route::get('/user/profile/{id}', 'UserController@strangerProfile')
+        ->name('user.profile');
 
 Route::post('/user/me/edit', "UserController@editProfile")
         ->name('user.me.edit');

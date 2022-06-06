@@ -1,12 +1,12 @@
 <div class="card m-2 shadow-sm hover-overlay" data-mdb-ripple-color="light">
 
 @if (auth()->user()->hasRole('locatario'))
-    <a class="card-block stretched-link text-decoration-none" href="{{ route('chat', [$user->id]) }}">
+    <a class="card-block text-decoration-none" href="{{ route('chat', [$user->id]) }}">
 @elseif (auth()->user()->hasRole('locatore'))
-    <a class="card-block stretched-link text-decoration-none" href="{{ route('chat', [$user->id]) }}">
+    <a class="card-block text-decoration-none" href="{{ route('chat', [$user->id]) }}">
 @endif
     <div class="card-body hover-overlay" data-mdb-ripple-color="light">
-        <h5 class="card-title text-truncate">{{ $user->nome." ".$user->cognome}}</h5>
+        <h5><a class="card-title" href="{{ route('user.profile', [$user->id]) }}">{{ $user->nome." ".$user->cognome}} </a></h5>
         <p class="card-text text-muted"><small>{{$user->max}}</small></p>
     </div>
 <div class="card-footer text-center p-0">
