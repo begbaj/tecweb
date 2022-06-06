@@ -34,11 +34,14 @@ class Alloggio extends Model
 
     public function make_stats($tipo, $data_inizio, $data_fine){
             $this->_accomodations = new Alloggio;
+            if ($tipo == 'alloggio')
+            {
+                $tipo = '';
+            }
             if((is_null($data_inizio)) and is_null($data_fine))
             {            
                 $get_filtered = Alloggio::whereRaw('tipo like "%' . $tipo . '%"')->count();
             }
-
             else
             {
                 $data_inizio = date("Y-m-d",strtotime($data_inizio));
@@ -50,6 +53,10 @@ class Alloggio extends Model
     
             public function make_stats3($tipo, $data_inizio, $data_fine){
             $this->_accomodations = new Alloggio;
+            if ($tipo == 'alloggio')
+            {
+                $tipo = '';
+            }            
             if((is_null($data_inizio)) and is_null($data_fine))
             {            
                 $get_filtered = Alloggio::whereRaw('tipo like "%' . $tipo . '%" and opzionato = 1')->count();
