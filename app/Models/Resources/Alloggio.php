@@ -56,6 +56,10 @@ class Alloggio extends Model
             if ($tipo == 'alloggio')
             {
                 $tipo = '';
+            }
+            if ($tipo == 'posto letto')
+            {
+                $tipo = 'posto_letto';
             }            
             if((is_null($data_inizio)) and is_null($data_fine))
             {            

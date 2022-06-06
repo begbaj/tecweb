@@ -10,7 +10,7 @@
             <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
                 {{ Form::label('type', 'Tipologia', ['class' => 'col-sm-2 col-form-label', 'for'=>'type']) }}
                 <div class="col-sm-10 ps-3">
-                {{ Form::select('type', ['alloggio' => 'alloggio', 'appartamento' => "appartamento", 'posto-letto' => "posto letto"], old("type"), ['class' => 'form-control ms-5']) }}
+                {{ Form::select('type', ['alloggio' => 'alloggio', 'appartamento' => "appartamento", 'posto_letto' => "posto letto"], old("type"), ['class' => 'form-control ms-5']) }}
                 </div>
             </div>
             

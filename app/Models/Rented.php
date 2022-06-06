@@ -15,7 +15,8 @@ class Rented
             if ($tipo == 'alloggio')
             {
                 $tipo = '';
-            }                
+            }
+            Log::debug('tipo = '. $tipo);
             $messages = new Messaggio;
             if((is_null($data_inizio)) and is_null($data_fine))
             {  
