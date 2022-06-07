@@ -36,19 +36,7 @@
     <div class="d-flex justify-content-start mt-2">
        <div class="d-flex ps-4">
             <div class="container d-flex justify-content-center align-items-center border rounded border-secondary" style="width: 175px; height: 200px">
-                @if(isset($user))
-                    @if ($user->genere = 'maschio')
-                    <img src="{{ asset('img/svg/male-user.svg') }}" height="190" width="165">
-                    @elseif ($user->genere = 'femmina')
-                    <img src="{{ asset('img/svg/female-user.svg') }}" height="190" width="165">
-                    @endif
-                @else
-                    @if (Auth::user()->genere = 'maschio')
-                    <img src="{{ asset('img/svg/male-user.svg') }}" height="190" width="165">
-                    @elseif (Auth::user()->genere = 'femmina')
-                    <img src="{{ asset('img/svg/female-user.svg') }}" height="190" width="165">
-                    @endif
-                @endif
+                <img src="{{ asset('img/svg/male-user.svg') }}" height="190" width="165">
             </div> 
        </div>   
     </div>
@@ -127,7 +115,7 @@
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Genere:</h5>
-                    {{ Form::select('genere', ['m' => "Maschio", 'f' => "Femmina", 'b' => "Non Binario"], ucwords(Auth::user()->genere), ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'gender', 'disabled']) }}
+                    {{ Form::select('genere', ['m' => "Maschio", 'f' => "Femmina", 'b' => "Non Binario"], Auth::user()->genere, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'gender', 'disabled']) }}
                 </div>
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
@@ -135,9 +123,11 @@
                     {{ Form::text('username', Auth::user()->username, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'username', 'disabled']) }}
                 </div>
                 
-                <div class="d-flex align-items-center ps-5 pt-4 pb-2">
+                <div class="d-flex align-items-center justify-content-start ps-5 pt-4 pb-2">
                     <h5>Ruolo:</h5>
-                    {{ Form::select('ruolo', ['locatore' => "Locatore", 'locatario' => "Locatario"], ucwords(Auth::user()->ruolo), ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'disabled']) }}
+                    <div class="ms-3 mb-1 lead border border-dark ps-1 pe-5">
+                    {{ ucwords(Auth::user()->ruolo) }}
+                    </div>
                 </div>
                 
                 <div id="passForm" class="d-flex align-items-center ps-5 pt-4 visually-hidden">
