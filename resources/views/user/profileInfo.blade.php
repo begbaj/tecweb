@@ -73,7 +73,10 @@
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Genere:</h5>
                     <div class=" col lead ms-3 mb-1">
-                        {{ ucwords($user->genere) }}
+                        @if ($user->genere == 'm') Maschio
+                        @elseif ($user->genere == 'f') Femmina
+                        @else Non Binario
+                        @endif
                     </div>
                 </div>   
                 
@@ -125,7 +128,7 @@
                 
                 <div class="d-flex align-items-center justify-content-start ps-5 pt-4 pb-2">
                     <h5>Ruolo:</h5>
-                    <div class="ms-3 mb-1 lead border border-dark ps-1 pe-5">
+                    <div class="ms-3 mb-1 lead text-muted border border-dark ps-1 pe-5">
                     {{ ucwords(Auth::user()->ruolo) }}
                     </div>
                 </div>

@@ -16,6 +16,8 @@ $(function () {
        if ( $("#tipo").val() == "posto_letto" ){
             $("#camere").prop('readonly', true);
             $("#camere").val(1);
+            $("#posti_letto").prop('readonly', true);
+            $("#posti_letto").val(1);
        }
        else{
             $("#camere").prop('readonly', false);
