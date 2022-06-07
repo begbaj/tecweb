@@ -1,6 +1,6 @@
 {{-- CARD: basic accomodation card --}}
 <div class="card m-2 shadow-sm"  style="max-width:32%">
-    <img class="card-img-top" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
+    <img class="card-img-top overflow-hidden" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
         <p class="card-text">{{substr($accomodation->descrizione,0 , 150) }}</p>
