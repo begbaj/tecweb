@@ -67,6 +67,9 @@ Route::get('/chat/{chatId?}', 'ChatController@getChat')
 Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 	->name('chat.send');
 
+Route::get('chat/send/contract/{alloggioId}/{destinatarioId}', 'ChatController@generate_pdf')
+        ->name('chat.contract');
+
 /*
 |--------------------------------------------------------------------------
 | Level 2 Routes

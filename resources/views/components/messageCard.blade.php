@@ -5,7 +5,7 @@
 		<div class="card text-right float-right m-2 shadow-sm bg-primary text-white align-self-end" style="max-width:75%">
 		@else
 		<div class="card text-right float-right m-2 shadow-sm bg-success text-white align-self-end" style="max-width:75%">
-			<div class="card-header">Opzionamento per l'alloggio <a href="{{ route('catalog.accom.details', [$messaggio->id_alloggio]) }}" class="link-warning">{{$messaggio->id_alloggio}}</a></div>
+                    <div class="card-header">Opzionamento per l'alloggio <a href="{{ route('catalog.accom.details', [$messaggio->id_alloggio]) }}" class="link-warning">{{$messaggio->id_alloggio}}</a></div>
 		@endif
 	@else
 	<div class="col-12 d-flex justify-content-start">
@@ -22,7 +22,7 @@
                                 <div class="mt-2"><p><strong>In attesa di conferma o rifiuto...</strong></a></div>
                                 @elseif(Auth::id() == $messaggio->id_destinatario AND !is_null($messaggio->id_alloggio))
                                 <div class="mt-2">
-                                    <a class="btn btn-success border-light" href="">Conferma Richiesta</a>
+                                    <a class="btn btn-success border-light" href="{{route('chat.contract',[$messaggio->id_alloggio, $messaggio->id_mittente])}}">Conferma Richiesta</a>
                                     <a class="btn btn-danger border-light ms-2" href="">Rifiuta Richiesta</a>
                                 </div>   
                                 @endif
