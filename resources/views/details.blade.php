@@ -49,6 +49,24 @@ $(document).ready(function () {
         <div class="container mt-3 pb-4">
             <div class="text-wrap text-break">
                 <h2><strong>{{$alloggio->titolo}}</strong></h2>
+			
+		@if (auth()->user()->hasRole('locatario'))
+			@if ($alloggio->confermato==true AND count($opzioni)>0)
+				<h3 class="text-success"><strong>La tua richiesta e' stata accettata. 
+				<a href="{{route('chat.contract',[$opzioni->first()->id_alloggio, $opzioni->first()->id_mittente])}}">Vedi contratto</a></strong></h3>
+			@elseif ($alloggio->confermato==true AND count($opzioni)==0)
+				<h3 class="text-danger"><strong>Questo alloggio e' gia stato assegnato.</strong></h3>
+			@elseif ($alloggio->confermato==false AND count($opzioni)>0)
+				<h3 class="text-success"><strong>Hai gia opzionato questo alloggio.</strong></h3>
+			@endif
+		@elseif ($alloggio->id_locatore==auth()->user()->id)
+			@if ($alloggio->confermato==true AND count($opzioni)>0)
+				<h3 class="text-success"><strong>Hai gia' assegnato questo alloggio. 
+				<a href="{{route('chat.contract',[$opzioni->first()->id_alloggio, $opzioni->first()->id_mittente])}}">Vedi contratto</a></strong></h3>
+			@elseif ($alloggio->confermato==false AND count($opzioni)>0)
+				<h3>Il tuo alloggio e' stato opzionato, <a href="#opzioni">controlla ora!</a>
+			@endif
+		@endif
             </div>
             @auth
                 @if(Auth::user()->id == $alloggio->id_locatore )
@@ -222,7 +240,7 @@ $(document).ready(function () {
 		    <div id="opzione-container" class="container d-flex align-items-center mt-3 visually-hidden">
 			{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
 				'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
-				{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e sono interessato a questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
+				{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e mi piacerebbe affittare questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
 				{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
 				<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
 			{{ Form::close() }}
@@ -230,8 +248,8 @@ $(document).ready(function () {
 		    </div>
     @endif
     
-    @if (auth()->user()->hasRole('locatore'))
-	<div class="container mt-2 pt-3">
+    @if (auth()->user()->id == $alloggio->id_locatore)
+	<div id="opzioni" class="container mt-2 pt-3">
     	@if ($alloggio->confermato==false)
 		<h3><center><strong>Opzioni ricevute</strong><center></h5>
 		<div class="card-columns">
@@ -240,7 +258,7 @@ $(document).ready(function () {
 		@endforeach
 		<div>
 	@else
-		<h3><center><strong>Opzione Confermata</strong><center></h5>
+		<h3><center><strong>Opzione confermata</strong><center></h5>
 		<div class="card-columns">
 		@include ('components.optionCard', ['messaggio' => $opzioni->first()])
 		<div>

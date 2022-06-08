@@ -50,6 +50,7 @@ $(function (){
 		@else
 			{{$rubrica->first()->nome." ".$rubrica->first()->cognome}}
 		@endif
+		<small><a href="{{ route('user.profile', [$chatId ?? $rubrica->first()->id]) }}">Vedi profilo</a></small>
 		</h5>
 		<hr/>
 		<div id="chat-container" class="container overflow-auto" style="height:37rem">
