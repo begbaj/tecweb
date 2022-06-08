@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
     {
         
         $array_messaggi = ['Salve', 'La sua proposta è interessante', 'La contatterò più tardi', 'Buona Sera!', 'Come va?'];
-        $array_titolo_alloggi = ['Alloggio Bello', 'Alloggio incredibile', 'Alloggio con Vista', 'Letto Comodo', 'Vista mare', 'Alloggio Confortevole',
-             'Alloggio Spazioso', 'Alloggio Areato', 'Alloggio Colorato', 'Letto Morbido', 'Lenzuola Profumate','Cuscino che sprofonda','Materasso'];
+        $array_titolo_alloggi = ['Alloggio Bello', 'Alloggio incredibile', 'Alloggio con Vista Mozzafiato', 'Letto Comodo', 'Vista mare', 'Alloggio Confortevole',
+             'Alloggio Spazioso', 'Alloggio Areato', 'Alloggio Colorato', 'Letto Morbido', 'Lenzuola Profumate','Cuscino che sprofonda','Materasso in memory'];
         $faker = Faker::create('it_IT');
 	
 	try {
@@ -87,7 +87,7 @@ class DatabaseSeeder extends Seeder
 
 
                 DB::table('faq')->insert([
-		    ['domanda' => 'Dove posso trovare i contatti del Kumuuzag manster?', 'risposta' => 'Nella navbar della HomePage.', 'created_at' => $faker->date],
+		    ['domanda' => 'Dove posso trovare i contatti del Kumuuzag master?', 'risposta' => 'Nella navbar della HomePage.', 'created_at' => $faker->date],
 		    ['domanda' => 'Come faccio ad inserire un alloggio?', 'risposta' => 'Diventa Locatore.', 'created_at' => $faker->date],
 		    ['domanda' => 'Posso opzionare un alloggio se non sono loggato?', 'risposta' => 'No, prova a registrarti come locatario.', 'created_at' => $faker->date],
 		    ['domanda' => 'Posso contattare un locatore?', 'risposta' => 'Sì, tramite la messaggistica interna al sito.', 'created_at' => $faker->date],
@@ -99,21 +99,23 @@ class DatabaseSeeder extends Seeder
 	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
 	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
 
-	for ($i = 0; $i < 300; $i++) { 
+	for ($i = 0; $i < 1000; $i++) { 
             try {    
 		echo "Inserting alloggio " . $i ."\n";
-		DB::table('alloggi')->insert(
+		$date_start = $faker->dateTimeBetween('2022-01-01','2022-12-31');
+		$date_end = $faker->dateTimeBetween($date_start, '2023-12-31');
+                DB::table('alloggi')->insert(
                     [[
                         'titolo' => $faker->randomElement($array_titolo_alloggi),
                         'descrizione' => $faker->randomElement($array_titolo_alloggi),
                         'eta_min' => $faker->numberBetween(20,40),
-                        'eta_max' => $faker->numberBetween(20,50),
+                        'eta_max' => $faker->numberBetween(41,60),
                         'prezzo' => $faker->randomFloat(2, 100, 600),
                         'sesso' => $faker->randomelement(['m','f','b']),
                         'superficie' => $faker->numberBetween(10,1000),
                         'confermato' => $faker->boolean,
-                        'data_min' => $faker->date,
-                        'data_max' => $faker->date,
+                        'data_min' => $date_start,
+                        'data_max' => $date_end,
                         'tipo' => $faker->randomElement(['appartamento','posto_letto']),
                         'provincia' => $faker->city,
                         'citta' => $faker->city,
@@ -121,10 +123,10 @@ class DatabaseSeeder extends Seeder
                         'cap' => $faker->postcode,
                         'posti_letto' => $faker->numberBetween(1,5),
                         'camere' => $faker->numberBetween(1,5),
-			'id_locatore' => $faker->randomElement($locatori),
-                        'created_at' => $faker->dateTime
+                        'id_locatore' => $faker->randomElement($locatori),
+                        'created_at' => $faker->dateTimeBetween('2021-01-01', $date_start)
                     ]]
-		);
+                );
 
             } catch (Exception $e) {
 		    echo 'Message: ' .$e->getMessage();
@@ -135,9 +137,8 @@ class DatabaseSeeder extends Seeder
 	$alloggi = Alloggio::all()->pluck('id')->toArray();
 	$servizi = Servizio::all()->pluck('id')->toArray();
 	
-	for ($i = 0; $i < 100; $i++) { 
+	for ($i = 0; $i < 5000; $i++) { 
             try {    
-
 		
 		echo "Inserting inclusion " . $i ."\n";
                 DB::table('inclusioni')->insert(
