@@ -39,6 +39,8 @@ class UserController extends Controller
         $v = Validator::make($request->all(), [
             'nome' => 'sometimes|string|min:1|max:30',
             'cognome' => 'sometimes|string|min:1|max:30',
+            'data_nascita' => 'sometimes|date',
+            'genere' => 'sometimes|string|min:1|max:10',
             'username' => 'sometimes|string|min:5|max:30',
         ]);
         $v->sometimes('password', 'required|min:8|max:128|confirmed', function ($request){

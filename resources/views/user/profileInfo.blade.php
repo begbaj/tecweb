@@ -6,7 +6,7 @@
 <script>
     function editForm(){
         $('#editButtons, #passForm').toggleClass('visually-hidden');
-        $('#firstname, #lastname, #username').prop('disabled', false);
+        $('#firstname, #lastname, #birthday, #gender,  #username').prop('disabled', false);
     }
 </script>
 @endsection
@@ -113,7 +113,7 @@
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Data di Nascita:</h5>
-                    {{ Form::date('data_nascita', Auth::user()->data_nascita, ['class' => 'ps-1 lead d-flex align-items-center ms-2','disabled']) }}
+                    {{ Form::date('data_nascita', Auth::user()->data_nascita, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'birthday', 'disabled']) }}
                 </div>
                 
                 <div class="d-flex align-items-center ps-5 pt-4">

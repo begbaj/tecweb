@@ -21,6 +21,7 @@ $(function () {
        }
        else{
             $("#camere").prop('readonly', false);
+            $("#posti_letto").prop('readonly', false);
        }
     });
     $('#tipo').change();
@@ -51,7 +52,7 @@ function updateServs(data){
     $('#vicino').find('*').remove();
     var servs = <?php if(null != old('servizi')) print_r(json_encode(old('servizi'))); else echo 'null'; ?>;
     $.each(data, function (key, val) {
-        var element = '<div class="form-check">' +
+        var element = '<div class="form-check ps-3">' +
             '<input name="servizi[]" class="form-check-input" type="checkbox" value="' + val.id + '" id="' + val.id + '"';
         if (servs != null && servs.includes(String(val.id))){
             element += ' checked ';
