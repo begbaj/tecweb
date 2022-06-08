@@ -22,7 +22,7 @@
                 </div>
                     @if ($errors->first('start-date'))
                     <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                        <div class="errors alert alert-danger d-flex col-sm-7 justify-content-center mt-3 ms-5">
                         @foreach ($errors->get('start-date') as $message)
                         <div class="d-flex justify-content-center">{{ $message }}</div>
                         @endforeach
@@ -36,16 +36,17 @@
                 <div class="col-sm-9 ps-3">
                 {{ Form::date('end-date', "", ['value' => null, 'class' => 'form-control ms-6']) }}
                 </div>
-            </div>
                   @if ($errors->first('end-date'))
                     <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                        <div class="errors alert alert-danger d-flex col-sm-7 justify-content-center mt-3 ms-5">
                         @foreach ($errors->get('end-date') as $message)
                         <div class="d-flex justify-content-center">{{ $message }}</div>
                         @endforeach
                         </div>
                     </div>    
-                    @endif  
+                    @endif
+            </div>        
+                    
             <div class="text-center col pt-2 ps-4">
                 {{ Form::submit('Cerca', ['class' => 'btn btn-primary mb-3 mt-2 ms-5']) }}
             </div>
