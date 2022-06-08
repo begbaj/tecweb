@@ -13,7 +13,6 @@ $(function (){
         orientation: 'bottom',
         autoclose: true,
         todayHighlight: true,
-        datesDisabled: ['06/06/2022', '06/21/2022']
     });
 });    
 </script>
