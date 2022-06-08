@@ -1,4 +1,4 @@
-<div class="card m-2 shadow-sm hover-overlay" data-mdb-ripple-color="light">
+<div class="card m-2 shadow-sm">
 
 @if (auth()->user()->hasRole('locatario'))
     <a class="card-block text-decoration-none" href="{{ route('chat', [$user->id]) }}">

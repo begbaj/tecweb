@@ -81,4 +81,8 @@ class Alloggio extends Model
         return $acc->all();
     }
     
+    public function isConfirmed($id){
+        $confirmed = Alloggio::whereRaw('id=?',$id)->pluck('confermato')->first();
+	return $confirmed;
+    }
 }

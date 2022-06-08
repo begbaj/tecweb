@@ -22,8 +22,11 @@
                                 <div class="mt-2"><p><strong>In attesa di conferma o rifiuto...</strong></a></div>
                                 @elseif(Auth::id() == $messaggio->id_destinatario AND !is_null($messaggio->id_alloggio))
                                 <div class="mt-2">
-                                    <a class="btn btn-success border-light" href="">Conferma Richiesta</a>
-                                    <a class="btn btn-danger border-light ms-2" href="">Rifiuta Richiesta</a>
+			{{ Form::open(array('route' => array('lore.accom.option.confirm'), 
+				'id' => 'confirmOption','files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
+				{{ Form::submit('Conferma', ['class' => 'btn btn-primary m-1']) }}
+				<input type="hidden" name="id_opzione" value="{{ $messaggio->id }}" readonly="readonly"/>
+			{{ Form::close() }}
                                 </div>   
                                 @endif
 			</div>

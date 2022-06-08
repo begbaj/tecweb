@@ -32,7 +32,7 @@ class CreateAlloggiTable extends Migration
 		$table->string('cap', 5);
 		$table->unsignedInteger('posti_letto');
 		$table->unsignedInteger('camere');
-		$table->boolean('opzionato');
+		$table->boolean('confermato');
 		$table->timestamps();
 		
 		$table->foreign('id_locatore')->references('id')->on('users');
