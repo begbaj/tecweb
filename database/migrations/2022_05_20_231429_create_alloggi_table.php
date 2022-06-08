@@ -21,7 +21,7 @@ class CreateAlloggiTable extends Migration
 		$table->integer('eta_min')->nullable();
 		$table->integer('eta_max')->nullable();
 		$table->string('sesso', 20)->nullable();
-		$table->float('prezzo');
+		$table->float('prezzo', 10, 2);
 		$table->unsignedInteger('superficie');
 		$table->dateTime('data_min');
 		$table->dateTime('data_max');

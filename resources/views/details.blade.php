@@ -260,7 +260,9 @@ $(document).ready(function () {
 	@else
 		<h3><center><strong>Opzione confermata</strong><center></h5>
 		<div class="card-columns">
-		@include ('components.optionCard', ['messaggio' => $opzioni->first()])
+		@if(count($opzioni)!=0)
+			@include ('components.optionCard', ['messaggio' => $opzioni->first()])
+		@endif
 		<div>
 		<h3><center><strong>Altre opzioni</strong><center></h5>
 		<div class="card-columns">

@@ -23,7 +23,7 @@ Gentile {{$nome_locatario}} {{$cognome_locatario}} nato il {{substr($eta_locatar
     @endphp
     n°: {{$alloggio_id}}, titolo: {{substr($alloggio_titolo,1,-1)}} in {{substr($alloggio_indirizzo,1,-1)}}, {{substr($alloggio_citta,1,-1)}}, 
     {{substr($alloggio_provincia,1,-1)}} e di {{substr($alloggio_superficie,1,-1)}} metri quadrati è stata confermata. </p>
-<p> Le ricordo che il canone di affitto è pari a {{substr($alloggio_prezzo,1,-1)}} &euro; al mese e che il suo periodo di permanenza è limitato tra
+<p> Le ricordo che il canone di affitto è pari a {{sprintf("%.2f",substr($alloggio_prezzo,1,-1))}} &euro; al mese e che il suo periodo di permanenza è limitato tra
 il {{substr($alloggio_data_min, 2, -11)}} e il {{substr($alloggio_data_max, 2, -11)}}.</p>
 
 

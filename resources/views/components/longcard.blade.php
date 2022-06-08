@@ -20,6 +20,10 @@
             <a class="d-flex btn btn-primary me-2" href="{{ route('catalog.accom.details', [$accomodation->id]) }}">Visualizza</a>
         </div>
         <div class="col-5">
+            @if ($accomodation->confermato == true)
+            <a class=" btn btn-secondary mx-2 disabled">Modifica</a>
+            <button type="button" class="btn btn-danger mx-2 disabled">Già confermato</button>
+            @else
             <a class=" btn btn-secondary mx-2" href="{{ Route('lore.accom.edit', [$accomodation->id])}}">Modifica</a>
             <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#delete-{{$accomodation->id}}">Elimina</button>
             <div class=" modal fade" id="delete-{{$accomodation->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -37,6 +41,7 @@
                   </div>
                </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
