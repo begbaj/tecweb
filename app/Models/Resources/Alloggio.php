@@ -63,13 +63,13 @@ class Alloggio extends Model
             }            
             if((is_null($data_inizio)) and is_null($data_fine))
             {            
-                $get_filtered = Alloggio::whereRaw('tipo like "%' . $tipo . '%" and opzionato = 1')->count();
+                $get_filtered = Alloggio::whereRaw('tipo like "%' . $tipo . '%" and confermato = 1')->count();
             }
             else
             {
                 $data_inizio = date("Y-m-d",strtotime($data_inizio));
                 $data_fine = date("Y-m-d",strtotime($data_fine));
-                $get_filtered = Alloggio::whereRaw('tipo like "%'. $tipo .'%" and created_at between "'. $data_inizio. '" and "'.$data_fine .'" and opzionato = 1')->count();
+                $get_filtered = Alloggio::whereRaw('tipo like "%'. $tipo .'%" and created_at between "'. $data_inizio. '" and "'.$data_fine .'" and confermato = 1')->count();
             }
             return $get_filtered;
     }
