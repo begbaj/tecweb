@@ -25,6 +25,3 @@ Route::get('servs/{type?}', function ($type=null) {
 })->name('api.servs');
 
 
-Route::get('opzione/{id_alloggio}/{id_locatario}', function ($id_alloggio, $id_locatario) {
-    return Messaggio::getOpzione($id_alloggio, $id_locatario);
-})->name('api.opzione');

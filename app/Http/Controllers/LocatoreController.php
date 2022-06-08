@@ -159,6 +159,12 @@ class LocatoreController extends Controller
 		$option->update();
 		$accom->confermato=true;
 		$accom->update();
+		$messaggio = new Messaggio;
+		$messaggio->id_mittente=$option->id_destinatario;
+		$messaggio->id_destinatario=$option->id_mittente;
+		$messaggio->testo="La tua richiesta per l'alloggio $accom->id e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.";
+		$messaggio->freshTimestamp();
+		$messaggio->save();
 	}
 	return redirect()->route('catalog.accom.details', [$option->id_alloggio]);
     }

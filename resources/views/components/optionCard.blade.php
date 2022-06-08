@@ -1,6 +1,6 @@
-<div class="card m-2 shadow-sm">
+<div class="card m-2 shadow">
 	<div class="card-header">
-		Opzionamento dell'utente <a href="">#{{$messaggio->id_mittente}}</a>
+		Opzione dell'utente <a href="{{route('user.profile', [$messaggio->id_mittente])}}">#{{$messaggio->id_mittente}}</a>
 	</div>
 	<div class="card-body">
 		<p class="card-text">{{$messaggio->testo}}</p>
@@ -10,6 +10,8 @@
 			{{ Form::submit('Conferma', ['class' => 'btn btn-primary m-1']) }}
 			<input type="hidden" name="id_opzione" value="{{ $messaggio->id }}" readonly="readonly"/>
 			{{ Form::close() }}
+		@elseif (!is_null($messaggio->data_conferma_opzione))
+			<a href="{{route('chat.contract',[$messaggio->id_alloggio, $messaggio->id_mittente])}}">Vedi contratto</a>
 		@endif
                 </div>   
 	</div>

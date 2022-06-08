@@ -20,7 +20,7 @@ class Catalog extends Model
     } 
 
     public function getOpzioniAlloggio($alloggioId, $userId){
-	    $opzioni = Messaggio::whereRaw('id_alloggio = ? AND (id_mittente=? OR id_destinatario=?)', [$alloggioId, $userId, $userId])->orderBy('data_conferma_opzione');
+	    $opzioni = Messaggio::whereRaw('id_alloggio = ? AND (id_mittente=? OR id_destinatario=?)', [$alloggioId, $userId, $userId])->orderBy('data_conferma_opzione', 'desc');
 	    return $opzioni->get();
     }
 

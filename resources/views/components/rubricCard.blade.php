@@ -12,7 +12,7 @@
 <div class="card-footer text-center p-0">
 @if (auth()->user()->hasRole('locatario'))
     <a class="btn btn-primary btn-block w-100" href="{{ route('chat', [$user->id]) }}">Vedi chat</a>
-@elseif(auth()->user()->hasRole('locatore'))
+@elseif (auth()->user()->hasRole('locatore'))
     <a class="btn btn-primary btn-block w-100" href="{{ route('chat', [$user->id]) }}">Vedi chat</a>
 @endif
 </div>
