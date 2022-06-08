@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
 	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
 	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
 
-	for ($i = 0; $i < 300; $i++) { 
+	for ($i = 0; $i < 1000; $i++) { 
             try {    
 		echo "Inserting alloggio " . $i ."\n";
 		$date_start = $faker->dateTimeBetween('2022-01-01','2022-12-31');
@@ -137,9 +137,8 @@ class DatabaseSeeder extends Seeder
 	$alloggi = Alloggio::all()->pluck('id')->toArray();
 	$servizi = Servizio::all()->pluck('id')->toArray();
 	
-	for ($i = 0; $i < 100; $i++) { 
+	for ($i = 0; $i < 5000; $i++) { 
             try {    
-
 		
 		echo "Inserting inclusion " . $i ."\n";
                 DB::table('inclusioni')->insert(
