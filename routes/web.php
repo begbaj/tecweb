@@ -106,6 +106,8 @@ Route::post('/locatore/accom/edit/confirm', "LocatoreController@confirmEdit")
 Route::get('/locatario', 'LocatarioController@index')
         ->name('lario');
 
+Route::get('/locatario/search', 'LocatarioController@search')
+        ->name('lario.search');
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
