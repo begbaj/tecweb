@@ -3,11 +3,25 @@
 @section('title', 'Area Profilo Personale')
 
 @section('scripts')
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 <script>
     function editForm(){
         $('#editButtons, #passForm').toggleClass('visually-hidden');
+        $('#birthday').toggleClass('text-muted');
         $('#firstname, #lastname, #birthday, #gender,  #username').prop('disabled', false);
     }
+    
+$(function (){
+    $('#datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        clearBtn: true,
+        orientation: 'bottom',
+        autoclose: true,
+        todayHighlight: true,
+        datesDisabled: ['06/06/2022', '06/21/2022']
+    });
+}); 
 </script>
 @endsection
 
@@ -113,7 +127,9 @@
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Data di Nascita:</h5>
-                    {{ Form::date('data_nascita', Auth::user()->data_nascita, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'birthday', 'disabled']) }}
+                    <div class="input-daterange col-sm-7 ps-1" id="datepicker">
+                    {{ Form::text('data_nascita', substr(Auth::user()->data_nascita, 0, -8), ['class' => 'input-sm form-control ps-1 text-muted d-flex align-items-center', 'id' => 'birthday', 'disabled']) }} 
+                    </div>
                 </div>
                 
                 <div class="d-flex align-items-center ps-5 pt-4">

@@ -2,6 +2,23 @@
 
 @section('title', 'Registrati')
 
+@section('scripts')
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script>
+$(function (){
+    $('#datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        clearBtn: true,
+        orientation: 'bottom',
+        autoclose: true,
+        todayHighlight: true,
+        datesDisabled: ['06/06/2022', '06/21/2022']
+    });
+});    
+</script>
+@endsection
+
 @section('content')
 <div class="container-fluid bg-light">
     <div class="jumbotron bg-cover rounded ml-5 mr-5" style="background-image: linear-gradient(to bottom, rgba(3,169,244,0.7) 0%, rgba(0,0,0,0.6) 100%), url(https://placeimg.com/1000/480/nature); background-size: cover">    
@@ -49,23 +66,23 @@
                     </div>
                 </div>
 
-                <div class= "d-flex  justify-content-center pe-5">
+                <div class="d-flex justify-content-center pe-5">
                     <div class="form-outline d-flex row mb-2 mt-1 w-50 align-items-center">
-                        {{ Form::label('birthday', 'Data di nascita', ['class' => 'col-sm-2 col-form-label', 'for'=>'birthday' ] ) }}
-                        <div class=" col-sm-7 ps-3">
-                        {{ Form::date('birthday', \Carbon\Carbon::now() , ['value' => old("birthday"), 'class' => 'form-control ms-5']) }}
-                        </div> 
+                        {{ Form::label('birthday', 'Data di nascita', ['class' => 'col-sm-2 col-form-label',  'for'=>'birthday']) }}
+                        <div class="input-daterange col-sm-7 ms-5 ps-3" id="datepicker">
+                        {{ Form::text('birthday', '', ['class' => 'input-sm form-control', 'placeholder' => 'Data di Nascita']) }} 
+                        </div>
                     @if ($errors->first('birthday'))
                     <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                        <div class="errors alert alert-danger d-flex  justify-content-center mt-3 ms-5 pt-0 pb-0">
                         @foreach ($errors->get('birthday') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
+                        <div class="justify-content-center">{{ $message }}</div>
                         @endforeach
-                          </div>
+                        </div>
                     </div> 
                     @endif
                     </div>
-                </div>
+                </div>    
 
                 <div class= "d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-3 w-50 align-items-center">
