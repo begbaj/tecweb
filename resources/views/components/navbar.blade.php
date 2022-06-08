@@ -37,6 +37,9 @@
                     <a class="nav-link" href="{{ route('lario') }}">Ricerca</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('lario.opzioni') }}">Opzioni</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('who') }}">About us</a>
                 </li>
                 <li class="nav-item">

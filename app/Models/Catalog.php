@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Resources\Alloggio;
 use App\Models\Resources\AlloggioServiziView as AlloggioServiziView;
 use App\Models\Resources\Servizio;
 use DateTime;
