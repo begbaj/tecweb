@@ -3,11 +3,25 @@
 @section('title', 'Area Profilo Personale')
 
 @section('scripts')
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 <script>
     function editForm(){
         $('#editButtons, #passForm').toggleClass('visually-hidden');
-        $('#firstname, #lastname, #username').prop('disabled', false);
+        $('#birthday').toggleClass('text-muted');
+        $('#firstname, #lastname, #birthday, #gender,  #username').prop('disabled', false);
     }
+    
+$(function (){
+    $('#datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        clearBtn: true,
+        orientation: 'bottom',
+        autoclose: true,
+        todayHighlight: true,
+        datesDisabled: ['06/06/2022', '06/21/2022']
+    });
+}); 
 </script>
 @endsection
 
@@ -73,7 +87,10 @@
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Genere:</h5>
                     <div class=" col lead ms-3 mb-1">
-                        {{ ucwords($user->genere) }}
+                        @if ($user->genere == 'm') Maschio
+                        @elseif ($user->genere == 'f') Femmina
+                        @else Non Binario
+                        @endif
                     </div>
                 </div>   
                 
@@ -110,7 +127,9 @@
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Data di Nascita:</h5>
-                    {{ Form::date('data_nascita', Auth::user()->data_nascita, ['class' => 'ps-1 lead d-flex align-items-center ms-2','disabled']) }}
+                    <div class="input-daterange col-sm-7 ps-1" id="datepicker">
+                    {{ Form::text('data_nascita', substr(Auth::user()->data_nascita, 0, -8), ['class' => 'input-sm form-control ps-1 text-muted d-flex align-items-center', 'id' => 'birthday', 'disabled']) }} 
+                    </div>
                 </div>
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
@@ -125,7 +144,7 @@
                 
                 <div class="d-flex align-items-center justify-content-start ps-5 pt-4 pb-2">
                     <h5>Ruolo:</h5>
-                    <div class="ms-3 mb-1 lead border border-dark ps-1 pe-5">
+                    <div class="ms-3 mb-1 lead text-muted border border-dark ps-1 pe-5">
                     {{ ucwords(Auth::user()->ruolo) }}
                     </div>
                 </div>

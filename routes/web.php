@@ -32,6 +32,10 @@ Route::get('/who', 'PublicController@who')
 Route::get('/privacy', 'PublicController@priv')
     ->name('priv');
 
+Route::get('/where', 'PublicController@where')
+    ->name('where');
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +70,9 @@ Route::get('/chat/{chatId?}', 'ChatController@getChat')
 
 Route::post('/chat/{chatId}/send', 'ChatController@sendMessage')
 	->name('chat.send');
+
+Route::get('chat/send/contract/{alloggioId}/{destinatarioId}', 'ChatController@generate_pdf')
+        ->name('chat.contract');
 
 /*
 |--------------------------------------------------------------------------

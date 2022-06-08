@@ -31,4 +31,15 @@ class Rented
             Log::debug('query = '. $_rented);
             return $_rented;
 	}
+        
+        
+        public function select_fields($id_alloggio)
+        {
+            Log::debug("sono qui ");
+
+            $fields = Alloggio::select('titolo', 'id_locatore', 'prezzo', 'superficie', 'data_min', 'data_max', 'tipo', 'provincia', 'citta', 'indirizzo', 'posti_letto', 'camere')
+                    ->join('messaggi','alloggi.id' ,'=', 'messaggi.id_alloggio')->where('alloggi.id', '=', $id_alloggio)->get();
+            Log::debug("fields = ". $fields);
+            return $fields;
+        }    
 }
