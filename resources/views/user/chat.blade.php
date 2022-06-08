@@ -38,7 +38,7 @@ $(function (){
 <div class="d-flex overflow-hidden" style="max-height:70%;">
 	<div class="deck-columns overflow-auto" style="width:20%; height:43rem">
 		@foreach ($rubrica as $user)
-			@include ('components.rubricCard', [ '$user' => $user] )
+			@include ('components.rubricCard', [ 'user' => $user] )
 		@endforeach 
 	</div>
 	<div class="vr"></div>
@@ -54,12 +54,12 @@ $(function (){
 		<hr/>
 		<div id="chat-container" class="container overflow-auto" style="height:37rem">
 			@foreach ($messaggi as $messaggio)
-				@include ('components.messageCard', [ '$messaggio' => $messaggio])
+				@include ('components.messageCard', [ 'messaggio' => $messaggio])
 			@endforeach 
 		</div>
 		<div>
-			{{ Form::open(array('route' => array(auth()->user()->hasRole('locatario') ? 'chat.send' : 'chat.send', 
-				$chatId ?? $rubrica->first()->id), 'id' => 'sendMessage', 'id_destinatario' => $chatId,'files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
+			{{ Form::open(array('route' => array('chat.send', 
+				$chatId ?? $rubrica->first()->id), 'id' => 'sendMessage','files' => false, 'class'=> 'form-inline d-flex mt-2')) }}
 				{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1']) }}
 				{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
 			{{ Form::close() }}

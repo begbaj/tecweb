@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
                         'prezzo' => $faker->randomFloat(2, 100, 600),
                         'sesso' => $faker->randomelement(['m','f','b']),
                         'superficie' => $faker->numberBetween(10,1000),
-                        'opzionato' => $faker->boolean,
+                        'confermato' => $faker->boolean,
                         'data_min' => $faker->date,
                         'data_max' => $faker->date,
                         'tipo' => $faker->randomElement(['appartamento','posto_letto']),
@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
             }
         }
  	
-	$alloggi_opzionati=Alloggio::where('opzionato', '=', true)->pluck('id')->toArray();
+	$alloggi_opzionati=Alloggio::where('confermato', '=', true)->pluck('id')->toArray();
 
 	echo "Inserting options for relational constraint purposes";
 	foreach($alloggi_opzionati as $alloggio) { 

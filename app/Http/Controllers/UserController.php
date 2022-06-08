@@ -7,6 +7,7 @@ use App\Models\Resources\Alloggio;
 use App\Models\Catalog;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,7 +31,8 @@ class UserController extends Controller
         $catalog = new Catalog;
 	$alloggio = Alloggio::where('id', $accomId)->get();
 	$servizi = $catalog->getServiziAlloggio($accomId);     
-        return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
+	$opzioni = $catalog->getOpzioniAlloggio($accomId, Auth::user()->id);
+        return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi)->with('opzioni', $opzioni);
     }
     
     public function editProfile(Request $request){

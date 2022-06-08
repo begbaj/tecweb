@@ -97,6 +97,9 @@ Route::get('/locatore/accom/edit/{id}', "LocatoreController@editAccom")
 
 Route::post('/locatore/accom/edit/confirm', "LocatoreController@confirmEdit")
         ->name('lore.accom.edit.confirm');
+
+Route::post('/locatore/accom/options/confirm', "LocatoreController@confirmOption")
+	->name('lore.accom.option.confirm');
 /*
 |--------------------------------------------------------------------------
 | Level 3 Routes
