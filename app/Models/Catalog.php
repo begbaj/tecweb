@@ -18,4 +18,9 @@ class Catalog extends Model
 	    $alloggio = Servizio::select('servizi.id')->join('inclusioni', 'servizi.id', '=', 'id_servizio')->where('id_alloggio', $id_alloggio);
 	    return $alloggio->pluck('id')->toArray();
     } 
+
+    public function deleteServiziAlloggio($id_alloggio){
+	    Servizio::select('inclusioni')->join('inclusioni', 'servizi.id_alloggio', '=', 'alloggi.id')->where('servizi.id_alloggio', $id_alloggio)->delete();
+    }
+
 }
