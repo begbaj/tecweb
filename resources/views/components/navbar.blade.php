@@ -10,6 +10,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.faq') }}">Gestione FAQ</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
+                </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo Pubblico</a>
@@ -17,9 +23,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('lore.accom.new') }}">Inserisci Alloggio</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
+                </li>                 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
+                </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatario'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('lario') }}">Ricerca</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
+                </li>                 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
                 </li>
             @else
                 <li class="nav-item">
