@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\Resources\Alloggio;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
@@ -27,5 +28,17 @@ class LocatarioController extends Controller
         $accomodations = $this->_accomodations->search($filters);
         return view('locatario')
             ->with('accomodations', $accomodations);
+    }
+
+
+    public function opzioni() {
+	$catalog = new Catalog;
+	$alloggiOpzionati = $catalog->getAlloggiOpzionati(Auth::user()->id);
+	$alloggiOttenuti = $catalog->getAlloggiOttenuti(Auth::user()->id);
+	$alloggiNonOttenuti = $catalog->getAlloggiNonOttenuti(Auth::user()->id);
+        return view('locatario/opzioni')
+            ->with('alloggiOpzionati', $alloggiOpzionati)
+            ->with('alloggiOttenuti', $alloggiOttenuti)
+            ->with('alloggiNonOttenuti', $alloggiNonOttenuti);
     }
 }

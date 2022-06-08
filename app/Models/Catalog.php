@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Resources\Servizio;
 use DateTime;
+use App\Models\Resources\Alloggio;
 use App\Models\Resources\Messaggio;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,21 @@ class Catalog extends Model
     public function getOpzioniAlloggio($alloggioId, $userId){
 	    $opzioni = Messaggio::whereRaw('id_alloggio = ? AND (id_mittente=? OR id_destinatario=?)', [$alloggioId, $userId, $userId])->orderBy('data_conferma_opzione', 'desc');
 	    return $opzioni->get();
+    }
+
+    public function getAlloggiOpzionati($userId){
+	    $alloggi = Alloggio::join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=false AND messaggi.data_conferma_opzione=null AND messaggi.id_mittente=$userId")->get();
+	    return $alloggi;
+    }
+
+    public function getAlloggiOttenuti($userId){
+	    $alloggi = Alloggio::join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=true AND messaggi.data_conferma_opzione!=null AND messaggi.id_mittente=$userId")->get();
+	    return $alloggi;
+    }
+
+    public function getAlloggiNonOttenuti($userId){
+	    $alloggi = Alloggio::join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=true AND messaggi.data_conferma_opzione!=null AND messaggi.id_mittente=$userId")->get();
+	    return $alloggi;
     }
 
     public function deleteServiziAlloggio($id_alloggio){

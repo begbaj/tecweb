@@ -109,6 +109,9 @@ Route::post('/locatore/accom/options/confirm', "LocatoreController@confirmOption
 Route::get('/locatario', 'LocatarioController@index')
         ->name('lario');
 
+Route::get('/locatario/opzioni', 'LocatarioController@opzioni')
+	->name('lario.opzioni');
+
 Route::get('/locatario/search', 'LocatarioController@search')
         ->name('lario.search');
 /*
