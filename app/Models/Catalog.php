@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Resources\Alloggio;
 use App\Models\Resources\Servizio;
 use DateTime;
 use App\Models\Resources\Messaggio;
@@ -41,10 +42,10 @@ class Catalog extends Model
             "" != $filters->prezzo_max and
             "" != $filters->data_min and
             "" != $filters->data_max and
-            "" != $filters->servs) {
+            "" != $filters->servizi) {
             
             return Alloggio::query()
-                ->select('alloggi.id', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')->selectRaw('GROUP_CONCAT(DISTINCT servizi.id) servs')
+                ->select('alloggi.id', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')->selectRaw('GROUP_CONCAT(DISTINCT servizi.id) servizi')
                 ->join('inclusioni', 'alloggi.id', '=', 'inclusioni.id_alloggio')  
                 ->join('servizi', 'servizi.id', '=', 'inclusioni.id_servizio') 
                 ->groupBy('alloggi.id' ,'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')->paginate(15);
@@ -54,8 +55,7 @@ class Catalog extends Model
         $data_min = date("Y-m-d",strtotime(str_replace('/', '-',$filters->data_min)));
         $data_max = date("Y-m-d",strtotime(str_replace('/', '-',$filters->data_max)));
 
-        $thenFirst = "WHEN ".
-            "CONCAT(alloggi.citta, ' ' , alloggi.provincia, ' ', alloggi.indirizzo, ' ', alloggi.cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+        $thenFirst = "alloggi.citta LIKE '" . ("" != $filters->luogo ? $filters->luogo . " %" : "%") . "' " .
             (("" != $filters->tipo) ? "AND alloggi.tipo = '" . $filters->tipo ."' " : "") .
             (("" != $filters->eta_min) ? "AND alloggi.eta_min = '" . $filters->eta_min ."' " : "") .
             (("" != $filters->eta_max) ? "AND alloggi.eta_max = '" . $filters->eta_max ."' " : "") .
@@ -65,12 +65,17 @@ class Catalog extends Model
             (("" != $filters->data_min) ? "AND alloggi.data_min = '" . $data_min . "' "   : "") .
             (("" != $filters->data_max) ? "AND alloggi.data_max = '" . $data_max . "' "  : "") .
             (("" != $filters->camere) ? "AND alloggi.camere = '" . $filters->camere."' "  : "") .
-            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto = '" . $filters->posti_letto."' "  : "") .
-            (("" != $filters->servs) ? "AND " . $filters->servs . " IN servs " : "").
-            "THEN 1";
+            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto = '" . $filters->posti_letto."' "  : "");
+        
+        $thenFirst .= " AND ( ";
+        $first = true;
+        foreach ($filters->servizi as $value) { 
+            $thenFirst .= (!$first? " AND " : "") . $value . " IN servs ";
+            $first = false;
+        }
+        $thenFirst .= ") ";
 
-        $thenSecond = "WHEN ".
-            "CONCAT(alloggi.citta, ' ' , alloggi.provincia, ' ', alloggi.indirizzo, ' ', alloggi.cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+        $thenSecond = "alloggi.citta LIKE '" . ("" != $filters->luogo ? $filters->luogo . "%" : "%") . "' " .
             (("" != $filters->tipo) ? "AND alloggi.tipo = '" . $filters->tipo ."' " : "") .
             (("" != $filters->eta_min) ? "AND alloggi.eta_min >= '" . $filters->eta_min ."' " : "") .
             (("" != $filters->eta_max) ? "AND alloggi.eta_max <= '" . $filters->eta_max ."' " : "") .
@@ -80,12 +85,17 @@ class Catalog extends Model
             (("" != $filters->data_min) ? "AND alloggi.data_min >= '" . $data_min ."' "   : "") .
             (("" != $filters->data_max) ? "AND alloggi.data_max <= '" . $data_max ."' "  : "") .
             (("" != $filters->camere) ? "AND alloggi.camere >= '" . $filters->camere."' "  : "") .
-            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "") .
-            (("" != $filters->servs) ? "AND " . $filters->servs . " ANY servs " : "").
-            "THEN 2";
+            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "");
 
-        $thenThird = "WHEN ".
-            "CONCAT(alloggi.citta, ' ' , alloggi.provincia, ' ', alloggi.indirizzo, ' ', alloggi.cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+        $thenSecond .= " AND ( ";
+        $first = true;
+        foreach ($filters->servizi as $value) { 
+            $thenSecond .= (!$first? " OR " : "") . $value . " IN servs ";
+            $first = false;
+        }
+        $thenSecond .= ") ";
+
+        $thenThird = "alloggi.citta LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
             (("" != $filters->eta_min) ? "AND alloggi.eta_min >= '" . $filters->eta_min ."' " : "") .
             (("" != $filters->eta_max) ? "AND alloggi.eta_max <= '" . $filters->eta_max ."' " : "") .
             (("" != $filters->sesso) ? "AND alloggi.sesso = '" . $filters->sesso ."' "  : "") .
@@ -94,47 +104,70 @@ class Catalog extends Model
             (("" != $filters->data_min) ? "AND alloggi.data_min >= '" . $data_min ."' "   : "") .
             (("" != $filters->data_max) ? "AND alloggi.data_max <= '" . $data_max ."' "  : "") .
             (("" != $filters->camere) ? "AND alloggi.camere >= '" . $filters->camere."' "  : "") .
-            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "") .
-            (("" != $filters->servs) ? "AND " . $filters->servs . " ANY servs " : "").
-            "THEN 3";
+            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "");
 
+        $thenThird .= " AND ( ";
+        $first = true;
+        foreach ($filters->servizi as $value) { 
+            $thenThird .= (!$first? " OR " : "") . $value . " IN servs ";
+            $first = false;
+        }
+        $thenThird .= ") ";
 
-        $thenFourth = "WHEN ".
-            "CONCAT(alloggi.citta, ' ' , alloggi.provincia, ' ', alloggi.indirizzo, ' ', alloggi.cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+        $thenFourth =" ( alloggi.citta LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+            " OR alloggi.provincia LIKE '" . ("" != $filters->luogo ? $filters->luogo  : "%") . "') " .
             (("" != $filters->eta_min) ? "AND alloggi.eta_min >= '" . $filters->eta_min ."' " : "") .
             (("" != $filters->eta_max) ? "AND alloggi.eta_max <= '" . $filters->eta_max ."' " : "") .
             (("" != $filters->sesso) ? "AND alloggi.sesso = '" . $filters->sesso ."' "  : "") .
             (("" != $filters->prezzo_max) ? "AND alloggi.prezzo <= '" . $filters->prezzo_max."' "  : "") .
             (("" != $filters->prezzo_min) ? "AND alloggi.prezzo >= '" . $filters->prezzo_min."' "  : "") .
             (("" != $filters->camere) ? "AND alloggi.camere >= '" . $filters->camere."' "  : "") .
-            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "") .
-            (("" != $filters->servs) ? "AND " . $filters->servs . " ANY servs " : "").
-            "THEN 4";
+            (("" != $filters->posti_letto) ? "AND alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "");
 
-        $thenFifth = "WHEN ".
-            "CONCAT(alloggi.citta, ' ' , alloggi.provincia, ' ', alloggi.indirizzo, ' ', alloggi.cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+        $thenFourth .= " AND ( ";
+        $first = true;
+        foreach ($filters->servizi as $value) { 
+            $thenFourth .= (!$first? " OR " : "") . $value . " IN servs ";
+            $first = false;
+        }
+        $thenFourth .= ") ";
+
+        $thenFifth = " CONCAT(alloggi.citta, ' ' , alloggi.provincia, ' ', alloggi.indirizzo, ' ', alloggi.cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
             (("" != $filters->eta_min) ? "OR alloggi.eta_min >= '" . $filters->eta_min ."' " : "") .
             (("" != $filters->eta_max) ? "OR alloggi.eta_max <= '" . $filters->eta_max ."' " : "") .
             (("" != $filters->sesso) ? "OR alloggi.sesso = '" . $filters->sesso ."' "  : "") .
             (("" != $filters->prezzo_max) ? "OR alloggi.prezzo <= '" . $filters->prezzo_max."' "  : "") .
             (("" != $filters->prezzo_min) ? "OR alloggi.prezzo >= '" . $filters->prezzo_min."' "  : "") .
             (("" != $filters->camere) ? "OR alloggi.camere >= '" . $filters->camere."' "  : "") .
-            (("" != $filters->posti_letto) ? "OR alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "") .
-            (("" != $filters->servs) ? "OR " . $filters->servs . " ANY servs " : "").
-            "THEN 5";
+            (("" != $filters->posti_letto) ? "OR alloggi.posti_letto >= '" . $filters->posti_letto."' "  : "");
 
-        Log::debug('LOCATARIO FIRST: ' . $thenFirst);
+
+        Log::debug('LOCATARIO FIRST: '  . $thenFirst);
         Log::debug('LOCATARIO SECOND: ' . $thenSecond);
-        Log::debug('LOCATARIO THIRD: ' . $thenThird);
+        Log::debug('LOCATARIO THIRD: '  . $thenThird);
         Log::debug('LOCATARIO FOURTH: ' . $thenFourth);
-        Log::debug('LOCATARIO FIFTH: ' . $thenFifth);
+        Log::debug('LOCATARIO FIFTH: '  . $thenFifth);
 
-        return Alloggio::query()
-            ->select('alloggi.id', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')->selectRaw('GROUP_CONCAT(DISTINCT servizi.id) servs')
+        Log::debug(Alloggio::query()
+            ->select('alloggi.id', 'alloggi.titolo', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')->selectRaw('GROUP_CONCAT(DISTINCT servizi.id) servs')
             ->join('inclusioni', 'alloggi.id', '=', 'inclusioni.id_alloggio')  
             ->join('servizi', 'servizi.id', '=', 'inclusioni.id_servizio') 
-            ->groupBy('alloggi.id' ,'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')
-            ->orderByRaw("CASE " . $thenFirst . " " .$thenSecond . " " . $thenThird . " " . $thenFourth . " " . $thenFifth . " ELSE 100 END")->orderby('alloggi.created_at', "DESC")->paginate(15);
+            ->groupBy('alloggi.id' , 'alloggi.titolo', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')
+            ->whereRaw($thenFirst)->orderby('alloggi.created_at', "DESC")->toSql());
+
+        return Alloggio::query()
+            ->select('alloggi.id', 'alloggi.titolo', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')->selectRaw('GROUP_CONCAT(DISTINCT servizi.id) servs')
+            ->join('inclusioni', 'alloggi.id', '=', 'inclusioni.id_alloggio')  
+            ->join('servizi', 'servizi.id', '=', 'inclusioni.id_servizio') 
+            ->groupBy('alloggi.id' , 'alloggi.titolo', 'alloggi.citta', 'alloggi.descrizione', 'alloggi.created_at', 'alloggi.tipo')
+            ->whereRaw($thenFirst)->orderby('alloggi.created_at', "DESC")->paginate(15);
+            // ->orderByRaw("CASE " .
+            //     " WHEN " . $thenFirst . " THEN 1" .
+            //     " WHEN " . $thenSecond . " THEN 2" .
+            //     " WHEN " . $thenThird . " THEN 3" .
+            //     " WHEN " . $thenFourth . " THEN 4" .
+            //     " WHEN " . $thenFifth . " THEN 5" .
+            //     " ELSE 100 END")
     }
 
 }
