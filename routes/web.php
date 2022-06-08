@@ -32,6 +32,10 @@ Route::get('/who', 'PublicController@who')
 Route::get('/privacy', 'PublicController@priv')
     ->name('priv');
 
+Route::get('/where', 'PublicController@where')
+    ->name('where');
+
+
 
 /*
 |--------------------------------------------------------------------------
