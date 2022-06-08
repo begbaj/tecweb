@@ -80,7 +80,8 @@ class ChatController extends Controller
             'alloggio_citta' => $info_alloggio->pluck('citta'),
             'alloggio_superficie' => $info_alloggio->pluck('superficie'),
             'alloggio_tipo' => $info_alloggio->pluck('tipo'),
-            'alloggio_posti_letto' => $info_alloggio->pluck('posti_letto')
+            'alloggio_posti_letto' => $info_alloggio->pluck('posti_letto'),
+            'alloggio_camere' => $info_alloggio->pluck('camere'),
          ];
        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('user.pdf_form',$data);
        return $pdf->download('contratto di locazione per alloggio '.$id_alloggio .'.pdf');

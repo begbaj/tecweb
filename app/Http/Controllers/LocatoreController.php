@@ -7,7 +7,7 @@ use App\Models\Resources\Alloggio;
 use App\Models\Resources\Inclusione;
 use App\Models\Catalog;
 use App\Models\AlloggiServizi;
-use App\Models\Resources\Servizio;
+use App\Models\Resources\Messaggio;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +41,7 @@ class LocatoreController extends Controller
 
         $accom = new Alloggio;
         $accom->id_locatore = Auth::user()->id;
-        $accom->opzionato = false;
+        $accom->confermato = false;
         $accom->created_at = Carbon::now()->toDateTimeString();
         $accom->fill($request->validated());
 
@@ -149,4 +149,17 @@ class LocatoreController extends Controller
         }
         return redirect()->route('homepage', [$accom->title]);
     } 
+
+    public function confirmOption(Request $request){;
+	$option = Messaggio::where('id', $request->id_opzione)->first();
+	$accom = Alloggio::where('id', $option->id_alloggio)->first();
+    	if(!($accom->confermato)){
+		$option = Messaggio::where('id', $request->id_opzione)->first();
+		$option->data_conferma_opzione=Carbon::now();
+		$option->update();
+		$accom->confermato=true;
+		$accom->update();
+	}
+	return redirect()->route('catalog.accom.details', [$option->id_alloggio]);
+    }
 }

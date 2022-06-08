@@ -7,20 +7,6 @@
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
-$.ajax({
-   type:'GET',
-   url: "{{ route('api.opzione', ['id_alloggio' => $alloggio->id, 'id_locatario' => auth()->user()->id])}}",
-   data:'_token = <?php echo csrf_token(); ?>',
-   success:isOptioned
-});
-
-function isOptioned(opzione){
-	if(Object.keys(opzione).length>0){
-		$('#button-opzione').prop("disabled", true)
-		$('#button-opzione').html("Già opzionato")
-	}
-}
-
 $(document).ready(function () {
 	var buttonMessaggio = $('#button-messaggio')
 	var buttonAnnullaMessaggio = $('#annulla-messaggio')
@@ -213,27 +199,59 @@ $(document).ready(function () {
         </div>
     </div>        
     @if (auth()->user()->hasRole('locatario'))
-    <div class="container d-flex justify-content-end mt-3">
-        <button id='button-messaggio' class="btn btn-primary me-2">Invia Messaggio</button>
-        <button id='button-opzione' class="btn btn-success me-2 ms-3">Opziona l'Alloggio</button>
-    </div>
-    <div id="messaggioContainer" class="container d-flex align-items-center mt-3 visually-hidden">
-	{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore), 
-			'id' => 'sendMessage', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
-		{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100']) }}
-		{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
-        {{ Form::close() }}
-	<button id="annulla-messaggio" type="button" class="btn btn-danger mt-2">Annulla</button>
-    </div>
-    <div id="opzione-container" class="container d-flex align-items-center mt-3 visually-hidden">
-	{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
-		'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
-		{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e sono interessato a questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
-		{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
-		<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
-        {{ Form::close() }}
-	<button id="annulla-opzione" type="button" class="btn btn-danger mt-2">Annulla</button>
-    </div>
+	    <div class="container d-flex justify-content-end mt-3">
+		<button id='button-messaggio' class="btn btn-primary me-2">Invia Messaggio</button>
+	    	@if ($alloggio->confermato==false)
+			@if (count($opzioni)==0)
+			<button id='button-opzione' class="btn btn-success me-2 ms-3">Opziona l'Alloggio</button>
+			@else
+			<button id='button-opzione' class="btn btn-success me-2 ms-3" disabled="disabled">Alloggio opzionato</button>
+			@endif
+		@else
+			<button id='button-opzione' class="btn btn-success me-2 ms-3" disabled="disabled">Alloggio assegnato</button>
+		@endif
+	    </div>
+	    <div id="messaggioContainer" class="container d-flex align-items-center mt-3 visually-hidden">
+		{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore), 
+				'id' => 'sendMessage', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
+			{{ Form::text('testo','', ['placeholder'=> 'Messaggio', 'class' => 'form-control m-1 w-100']) }}
+			{{ Form::submit('Invia', ['class' => 'btn btn-primary m-1']) }}
+		{{ Form::close() }}
+		<button id="annulla-messaggio" type="button" class="btn btn-danger mt-2">Annulla</button>
+	    </div>
+		    <div id="opzione-container" class="container d-flex align-items-center mt-3 visually-hidden">
+			{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
+				'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
+				{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e sono interessato a questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
+				{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
+				<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
+			{{ Form::close() }}
+			<button id="annulla-opzione" type="button" class="btn btn-danger mt-2">Annulla</button>
+		    </div>
+    @endif
+    
+    @if (auth()->user()->hasRole('locatore'))
+	<div class="container mt-2 pt-3">
+    	@if ($alloggio->confermato==false)
+		<h3><center><strong>Opzioni ricevute</strong><center></h5>
+		<div class="card-columns">
+		@foreach ($opzioni as $messaggio)
+			@include ('components.optionCard', ['messaggio' => $messaggio])
+		@endforeach
+		<div>
+	@else
+		<h3><center><strong>Opzione Confermata</strong><center></h5>
+		<div class="card-columns">
+		@include ('components.optionCard', ['messaggio' => $opzioni->first()])
+		<div>
+		<h3><center><strong>Altre opzioni</strong><center></h5>
+		<div class="card-columns">
+		@foreach ($opzioni->splice(1) as $messaggio)
+			@include ('components.optionCard', ['messaggio' => $messaggio])
+		@endforeach
+		<div>
+	@endif
+	</div>
     @endif
 </div>
 @endsection
