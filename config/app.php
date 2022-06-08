@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\DomPDF\ServiceProvider::class,
+        
 
         /*
          * Application Service Providers...
@@ -179,9 +179,7 @@ return [
 	/*
 	* PDF
 	*/
-
-	Barryvdh\DomPDf\ServiceProvider:class,
-
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
