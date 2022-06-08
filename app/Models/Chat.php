@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Resources\Messaggio;
 use App\User;
+use Illuminate\Support\Facades\Log;
 
 class Chat
 {
@@ -30,4 +31,10 @@ class Chat
 
 		return $utenti2->get();
 	}
+        
+        public function get_locatario_info ($id_locatario){
+            $info = User::select('users.id', 'users.nome','users.cognome', 'users.data_nascita', 'users.genere')->join('messaggi', 'users.id', '=', 'messaggi.id_mittente')->where('users.id', '=', $id_locatario)->first();
+            Log::debug("info = ". $info);
+            return $info;
+        }
 }

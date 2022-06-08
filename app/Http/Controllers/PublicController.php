@@ -24,6 +24,10 @@ class PublicController extends Controller {
     public function who() {
         return view('public.who');
     }
+    
+    public function where() {
+        return view('public.where');
+    }    
 
     public function catalog() {
         $this->_accomodations = new Alloggio;

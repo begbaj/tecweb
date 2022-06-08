@@ -3,8 +3,13 @@
 @section('title', 'Gestione FAQs')
 
 @section('scripts')
-<script>
+<script>    
 $(function(){
+    $("#domanda").prop('maxlength','200');            
+    $("#risposta").prop('maxlength','500');            
+    $("#editeddomanda").prop('maxlength','200');            
+    $("#editedrisposta").prop('maxlength','500');            
+
     $("#domanda").on('input', function (event){
         if ($("#domanda").val() == '' || $("#risposta").val() == ''){
             $("#save-btn").prop('disabled', true);
@@ -37,6 +42,8 @@ $(function(){
             $("#modify-btn").prop('disabled', false);
         }
     });
+    
+    
     $("#editedrisposta").trigger('input');
     $("#editeddomanda").trigger('input');
     
@@ -57,7 +64,6 @@ $(function(){
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Aggiungi FAQ</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 <div class="modal-body">
@@ -94,7 +100,7 @@ $(function(){
 </div>       
       <div class="modal-footer">
         {{ Form::submit("Salva", ["id"=> 'save-btn','class' => 'btn btn-primary']) }}
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulla</button>
+        <a type="button" class="btn btn-danger" href='{{route('admin.faq')}}'>Annulla</a>
       </div>
     </div>
   </div>
@@ -114,7 +120,6 @@ $(function(){
     <div class="modal-content">
 <div class="modal-header">
     <h5 class="modal-title" id="EditModal">Modifica FAQ</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
  <div class="modal-body">
 {{  Form::open(array('route' => ['admin.faq.edit', $fq->id])) }}
@@ -151,7 +156,7 @@ $(function(){
                 
 <div class="modal-footer">
         {{ Form::submit("Salva", ["id"=> 'modify-btn','class' => 'btn btn-primary']) }}
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulla</button>
+        <a type="button" class="btn btn-danger" href='{{route('admin.faq')}}'>Annulla</a>
         </div>
     </div>
 </div>

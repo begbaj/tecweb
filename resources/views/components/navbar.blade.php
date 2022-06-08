@@ -29,6 +29,9 @@
                     <a class="nav-link" href="{{ route('who') }}">About us</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
+                </li>                 
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
                 </li>
             @endif    

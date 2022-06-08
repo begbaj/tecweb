@@ -23,4 +23,9 @@ class Catalog extends Model
 	    $opzioni = Messaggio::whereRaw('id_alloggio = ? AND (id_mittente=? OR id_destinatario=?)', [$alloggioId, $userId, $userId])->orderBy('data_conferma_opzione');
 	    return $opzioni->get();
     }
+
+    public function deleteServiziAlloggio($id_alloggio){
+	    Servizio::select('inclusioni')->join('inclusioni', 'servizi.id_alloggio', '=', 'alloggi.id')->where('servizi.id_alloggio', $id_alloggio)->delete();
+    }
+
 }

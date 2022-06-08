@@ -15,8 +15,9 @@
   <ul class="nav flex-column">
     <li class="nav-item mb-2"><a href="{{route('homepage')}}" class="nav-link p-0 text-muted">Home</a></li>
     <li class="nav-item mb-2"><a href="{{route('priv')}}" class="nav-link p-0 text-muted">Privacy and Terms</a></li>
-    <li class="nav-item mb-2"><a href="{{route('faq')}}" class="nav-link p-0 text-muted">FAQs</a></li>
-    <li class="nav-item mb-2"><a href="{{route('who')}}" class="nav-link p-0 text-muted">About</a></li>
+    <li class="nav-item mb-2"><a href="{{route('who')}}" class="nav-link p-0 text-muted">Chi siamo</a></li>
+    <li class="nav-item mb-2"><a href="{{route('where')}}" class="nav-link p-0 text-muted">Dove Siamo</a></li>
+    <li class="nav-item mb-2"><a href="{{route('faq')}}" class="nav-link p-0 text-muted">FAQs</a></li>    
   </ul>
 </div>
 
