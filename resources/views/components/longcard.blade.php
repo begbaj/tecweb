@@ -21,6 +21,9 @@
         </div>
         <div class="col-5">
             <a class=" btn btn-secondary mx-2" href="{{ Route('lore.accom.edit', [$accomodation->id])}}">Modifica</a>
+            @if ($accomodation->confermato == true)
+            <button type="button" class="btn btn-danger mx-2 disabled">Già confermato</button>
+            @else
             <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#delete-{{$accomodation->id}}">Elimina</button>
             <div class=" modal fade" id="delete-{{$accomodation->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog">
@@ -37,6 +40,7 @@
                   </div>
                </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
