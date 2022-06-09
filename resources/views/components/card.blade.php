@@ -16,6 +16,10 @@
             <div class="btn-group">
                 <a class="btn btn-primary" href="{{ route('catalog.accom.details', [$accomodation->id]) }}"> Vedi dettagli</a>
             </div>
+        @elseif (Auth::check() && (auth()->user()->hasRole('admin')))
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{{ route('admin.catalog.details', [$accomodation->id]) }}"> Vedi dettagli</a>
+            </div>
         @else    
             <div class="btn-group">
                 <a class="btn btn-primary" href="{{ route('login') }}"> Vedi dettagli </a>
