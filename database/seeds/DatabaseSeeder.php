@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
              'Alloggio Spazioso', 'Alloggio Areato', 'Alloggio Colorato', 'Letto Morbido', 'Lenzuola Profumate','Cuscino che sprofonda','Materasso in memory'];
         $faker = Faker::create('it_IT');
 	
-	try {
+	/*try {
 		for ($i = 0; $i < 100; $i++) { 
 
 			echo "Inserting user " . $i ."\n";
@@ -42,22 +42,43 @@ class DatabaseSeeder extends Seeder
 			    ]]
 		    );
 		}
-        	
-		echo "Inserting default users";
-		DB::table('users')->insert([
-		    ['nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
-			'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatore','created_at' => date("Y-m-d H:i:s"),
-			'updated_at' => date("Y-m-d H:i:s")],
-		    ['nome' => 'Locatario', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'f', 'username' => 'lariolario',
-			'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
-			'updated_at' => date("Y-m-d H:i:s")],
-		    ['nome' => 'Admin', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'adminadmin',
-			'password' => Hash::make('Niphwpog'), 'ruolo' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
-			'updated_at' => date("Y-m-d H:i:s")]
-		]);
-   	} catch (Exception $e) {
+    */	
+            echo "Inserting users";
+            DB::table('users')->insert([
+                ['id' => '1', 'nome' => 'Locatore', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'lorelore', 
+                    'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatore','created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '2','nome' => 'Locatario', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'f', 'username' => 'lariolario',
+                    'password' => Hash::make('Niphwpog'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '3','nome' => 'Admin', 'cognome' => 'Di Prova', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'adminadmin',
+                    'password' => Hash::make('Niphwpog'), 'ruolo' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '4', 'nome' => 'Rahmi', 'cognome' => 'El Mechri', 'data_nascita' => $faker->date, 'genere'=>'m', 'username' => 'elmechri', 
+                    'password' => Hash::make('rahmi00elmechri'), 'ruolo' => 'locatario','created_at' => date("2022-06-06"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '5','nome' => 'Began', 'cognome' => 'Bajrami', 'data_nascita' => $faker->date, 'genere' => 'm', 'username' => 'begbaj00',
+                    'password' => Hash::make('begbajbegan'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '6','nome' => 'Chiara', 'cognome' => 'Gobbi', 'data_nascita' => date("2001/01/18"), 'genere' => 'f', 'username' => 'chiaragobbi01',
+                    'password' => Hash::make('chiaragobbi01'), 'ruolo' => 'locatore', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '7','nome' => 'Alessio', 'cognome' => 'Giacconi', 'data_nascita' => $faker->date, 'genere' => 'm', 'username' => 'gimmifallo',
+                    'password' => Hash::make('alegiacconi'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '8','nome' => 'Mario', 'cognome' => 'Rossi', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'mariomario',
+                    'password' => Hash::make('ciaociaociao'), 'ruolo' => 'locatore', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '9','nome' => 'Edoardo', 'cognome' => 'Verdi', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'verdiverdi',
+                    'password' => Hash::make('prova12345'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")],
+                ['id' => '10','nome' => 'Luca', 'cognome' => 'Azzurri', 'data_nascita' => $faker->date, 'genere' => 'b', 'username' => 'lucaluca00',
+                    'password' => Hash::make('lucalucaluca'), 'ruolo' => 'locatore', 'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")]                
+		]);            
+   	/*} catch (Exception $e) {
 	    echo 'Message: ' .$e->getMessage();
-    	}
+    	}*/
 
         // $this->call(UsersTableSeeder::class);
 
@@ -86,20 +107,20 @@ class DatabaseSeeder extends Seeder
         }
 
 
-                DB::table('faq')->insert([
-		    ['domanda' => 'Dove posso trovare i contatti del Kumuuzag master?', 'risposta' => 'Nella navbar della HomePage.', 'created_at' => $faker->date],
-		    ['domanda' => 'Come faccio ad inserire un alloggio?', 'risposta' => 'Diventa Locatore.', 'created_at' => $faker->date],
-		    ['domanda' => 'Posso opzionare un alloggio se non sono loggato?', 'risposta' => 'No, prova a registrarti come locatario.', 'created_at' => $faker->date],
-		    ['domanda' => 'Posso contattare un locatore?', 'risposta' => 'Sì, tramite la messaggistica interna al sito.', 'created_at' => $faker->date],
-		    ['domanda' => 'Cosa significa Kumuuzag?', 'risposta' => 'Vendilo in Swahili.', 'created_at' => $faker->date],		
-		    ['domanda' => 'E perchè questo nome?', 'risposta' => 'Suona esotico!', 'created_at' => $faker->date],		
-                    ]);
+        DB::table('faq')->insert([
+            ['domanda' => 'Dove posso trovare i contatti del Kumuuzag master?', 'risposta' => 'Nella navbar della HomePage.', 'created_at' => $faker->date],
+            ['domanda' => 'Come faccio ad inserire un alloggio?', 'risposta' => 'Diventa Locatore.', 'created_at' => $faker->date],
+            ['domanda' => 'Posso opzionare un alloggio se non sono loggato?', 'risposta' => 'No, prova a registrarti come locatario.', 'created_at' => $faker->date],
+            ['domanda' => 'Posso contattare un locatore?', 'risposta' => 'Sì, tramite la messaggistica interna al sito.', 'created_at' => $faker->date],
+            ['domanda' => 'Cosa significa Kumuuzag?', 'risposta' => 'Vendilo in Swahili.', 'created_at' => $faker->date],		
+            ['domanda' => 'E perchè questo nome?', 'risposta' => 'Suona esotico!', 'created_at' => $faker->date],		
+            ]);
 
 
 	$locatori = User::where('ruolo','=', 'locatore')->pluck('id')->toArray();
 	$locatari = User::where('ruolo','=', 'locatario')->pluck('id')->toArray();
 
-	for ($i = 0; $i < 1000; $i++) { 
+	/*for ($i = 0; $i < 1000; $i++) { 
             try {    
 		echo "Inserting alloggio " . $i ."\n";
 		$date_start = $faker->dateTimeBetween('2022-01-01','2022-12-31');
@@ -131,9 +152,61 @@ class DatabaseSeeder extends Seeder
             } catch (Exception $e) {
 		    echo 'Message: ' .$e->getMessage();
             }
-        }
+        }*/
+        
+        DB::table('alloggi')->insert([
+            ['id' => '1', 'titolo' => 'Alloggio Incredibile', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 140.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2022-05-05"), 'data_max' => date("2023-05-05"), 
+                'tipo' => 'appartamento', 'provincia' => 'Ancona', 'citta' => 'Ancona', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 60130, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 6,
+                'created_at' => date("2020-05-06")],
+            ['id' => '2','titolo' => 'Alloggio Fantastico', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 200.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 1, 'data_min' => date("2021-05-05"), 'data_max' => date("2026-05-05"), 
+                'tipo' => 'appartamento', 'provincia' => 'Ancona', 'citta' => 'Ancona', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 60130, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 1,
+                'created_at' => date("2022-05-07")],            
+            ['id' => '3','titolo' => 'Alloggio Rosa', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 300.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2020-05-05"), 'data_max' => date("2024-05-05"), 
+                'tipo' => 'appartamento', 'provincia' => 'Torino', 'citta' => 'Torino', 'indirizzo' => 'via Rossa, 56', 'CAP' => 49393, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 5,
+                'created_at' => date("2021-05-08")],
+            ['id' => '4','titolo' => 'Alloggio Spazioso', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 50.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 1, 'data_min' => date("2022-05-07"), 'data_max' => date("2022-05-09"), 
+                'tipo' => 'posto_letto', 'provincia' => 'Torino', 'citta' => 'Milano', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 70492, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 6,
+                'created_at' => date("2022-05-05")],
+            ['id' => '5','titolo' => 'Alloggio Stupendo', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 667.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 1, 'data_min' => date("2022-05-09"), 'data_max' => date("2023-05-05"), 
+                'tipo' => 'posto_letto', 'provincia' => 'Roma', 'citta' => 'Roma', 'indirizzo' => 'via Flavia, 22', 'CAP' => 50330, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 1,
+                'created_at' => date("2022-05-05")],            
+            ]);    
+        
+        DB::table('inclusioni')->insert([
+            ['id_alloggio'=>'1', 'id_servizi'=>'1', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'1', 'id_servizi'=>'2', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'1', 'id_servizi'=>'3', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'1', 'id_servizi'=>'8', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'1', 'id_servizi'=>'9', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'1', 'id_servizi'=>'11', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'2', 'id_servizi'=>'1', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'2', 'id_servizi'=>'2', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'2', 'id_servizi'=>'17', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'2', 'id_servizi'=>'19', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'3', 'id_servizi'=>'23', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'3', 'id_servizi'=>'22', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'4', 'id_servizi'=>'5', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'4', 'id_servizi'=>'7', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'4', 'id_servizi'=>'5', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'5', 'id_servizi'=>'12', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'5', 'id_servizi'=>'14', 'created_at' => date("2022-05-05")],
+            
+        ]);
 	
-
+         
+        DB::table('messaggi')->insert([
+            ['id_mittente'=>'1', 'id_destinatario'=>'2', 'testo' => 'Il tuo alloggio è stato confermato.', 'id_alloggio' => 2 , 'data_conferma_opzione' => date("2022-05-05"),'created_at' => date("2022-05-05")],
+            ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => 'Salve, mi può fare uno sconto?', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
+            ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Salve, no', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-06")],
+            ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Vorrei opzionare', 'id_alloggio' => 3, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
+            ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => 'Opzione approvata', 'id_alloggio' => 3, 'data_conferma_opzione' => date("2022-05-05"),'created_at' => date("2022-05-05")],
+        ]);       
+/*
 	$alloggi = Alloggio::all()->pluck('id')->toArray();
 	$servizi = Servizio::all()->pluck('id')->toArray();
 	
@@ -184,5 +257,6 @@ class DatabaseSeeder extends Seeder
 		    echo 'Message: ' .$e->getMessage();
             }
         }
+ */
     }
 }
