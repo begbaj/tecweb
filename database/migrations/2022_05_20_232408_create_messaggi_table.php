@@ -26,7 +26,7 @@ class CreateMessaggiTable extends Migration
 
 	    $table->foreign('id_destinatario')->references('id')->on('users');
 	    $table->foreign('id_mittente')->references('id')->on('users');
-	    $table->foreign('id_alloggio')->references('id')->on('alloggi');
+	    $table->foreign('id_alloggio')->references('id')->on('alloggi')->onDelete('set null');
         });
     }
 

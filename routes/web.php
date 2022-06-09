@@ -141,6 +141,9 @@ Route::get('/admin/faq/remove/{id}', 'AdminController@deletefaq')
 Route::post('/admin/faq/edit/{id}', 'AdminController@updateFaq')
         ->name('admin.faq.edit');
 
+Route::get('/admin/catalog/{id}', 'AdminController@accomDetails')
+        ->name('admin.catalog.details');
+
 //Route::post('/admin/faq/edit', 'AdminController@editfaq')
 //        ->name('admin.faq.edit');
 

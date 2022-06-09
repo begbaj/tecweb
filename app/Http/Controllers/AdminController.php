@@ -7,6 +7,7 @@ use App\Models\Resources\Faq;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use App\Models\Rented;
+use App\Models\Catalog;
 
 class AdminController extends Controller
 {       
@@ -25,6 +26,13 @@ class AdminController extends Controller
         $accomodations = $this->_accomodations->getAlloggiByDate();
         return view('public.catalog')
             ->with('accomodations', $accomodations);
+    }
+    
+    public function accomDetails($accomId){
+        $catalog = new Catalog;
+	$alloggio = Alloggio::where('id', $accomId)->get();
+	$servizi = $catalog->getServiziAlloggio($accomId);     
+        return view('details')->with('alloggio', $alloggio->first())->with('servizi', $servizi);
     }
     
     public function catalog(){

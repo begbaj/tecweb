@@ -100,10 +100,20 @@ class LocatoreController extends Controller
     }
 
     public function removeAccom($accomId){
-        $acc = new Alloggio;
-        $inc = new Inclusione;
-        $seracc = new AlloggiServizi;
-        $inc->delete_inclusione($accomId);
+		$acc = new Alloggio;
+		$inc = new Inclusione;
+		$catalog = new Catalog;
+		$seracc = new AlloggiServizi;
+		$inc->delete_inclusione($accomId);
+		$accomOptions = $catalog->getOpzioniAlloggio($accomId, Auth::user()->id);
+		foreach($accomOptions as $option){
+		$messaggio = new Messaggio;
+		$messaggio->id_mittente=$option->id_destinatario;
+		$messaggio->id_destinatario=$option->id_mittente;
+		$messaggio->testo="L'annuncio per l'alloggio $accomId, da lei opzionato, è stato cancellato.";
+		$messaggio->freshTimestamp();
+		$messaggio->save();
+	}
         $acc->delete_alloggio($accomId);
         $this->deleteDirectory(public_path('assets/' . $accomId));
         //$seracc->delete_service_alloggio($accomId);
