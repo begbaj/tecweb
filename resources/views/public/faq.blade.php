@@ -9,8 +9,8 @@
 @foreach ($faq as $faq)
 <hr/>
 <div class="container">
-<p class= "text-dark"> @php echo ++$count; @endphp {{ $faq->domanda }} </p>
-<p class="text-secondary">{{ $faq->risposta }} </p>
+<p class= "text-dark text-break"> @php echo ++$count; @endphp {{ $faq->domanda }} </p>
+<p class="text-secondary text-break">{{ $faq->risposta }} </p>
 </div>
 @endforeach
 @endisset()
