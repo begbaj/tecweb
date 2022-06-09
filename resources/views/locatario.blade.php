@@ -48,7 +48,7 @@ $(function(){
             <div class="col-sm-1 mx-2">
                 {{ Form::submit('Cerca', ['class' => 'btn btn-primary']) }}
             </div>
-            <div class="col-sm-1 mx-2"><div class="btn btn-secondary" onclick="showFields()">+</div></div>
+            <div id="open_fields_btn" class="col-sm-1 mx-2"><img onclick="showFields()" src="{{ asset('img/svg/chevron-down.svg') }}" ></img></div>
         </div>
 
         <div class="fields-container more-fields row closed">
