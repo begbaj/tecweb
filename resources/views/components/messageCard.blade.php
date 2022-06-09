@@ -19,7 +19,7 @@
 			<div class="card-body">
 				<p class="card-text"><small>{{ $messaggio->testo }}</small></p>
 				@if (!is_null($messaggio->data_conferma_opzione))
-				<p><strong>Opzione confermata, <a href="{{route('chat.contract',[$messaggio->id_alloggio, $messaggio->id_mittente])}}">Vedi contratto</a></strong></p>
+				<p><strong>Opzione confermata <a class="text-warning" href="{{route('chat.contract',[$messaggio->id_alloggio, $messaggio->id_mittente])}}">Vedi contratto</a></strong></p>
 				@endif
 			</div>
 			<div class="card-footer text-right">
