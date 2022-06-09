@@ -14,6 +14,10 @@ $(document).ready(function () {
 	var buttonAnnullaOpzione = $('#annulla-opzione')
 	var containerMessaggio = $('#messaggioContainer')
 	var containerOpzione = $('#opzione-container')
+	var disabled=false
+	if(buttonOpzione.prop('disabled')==true){
+		var disabled=true;
+	}
 
 	buttonMessaggio.click(function () {	
 		containerMessaggio.removeClass("visually-hidden")
@@ -24,8 +28,9 @@ $(document).ready(function () {
 	buttonAnnullaMessaggio.click(function(){
 		containerMessaggio.addClass("visually-hidden")
 		buttonMessaggio.prop("disabled", false)
-		buttonOpzione.prop("disabled", false)
-		
+		if(!disabled){
+			buttonOpzione.prop("disabled", false)	
+		}
 	});
 
 	buttonOpzione.click(function () {
@@ -37,7 +42,9 @@ $(document).ready(function () {
 	buttonAnnullaOpzione.click(function(){
 		containerOpzione.addClass("visually-hidden")
 		buttonMessaggio.prop("disabled", false)
-		buttonOpzione.prop("disabled", false)
+		if(!disabled){
+			buttonOpzione.prop("disabled", false)
+		}
 	});
 });
 </script>
@@ -51,7 +58,9 @@ $(document).ready(function () {
                 <h2><strong>{{$alloggio->titolo}}</strong></h2>
 			
 		@if (auth()->user()->hasRole('locatario'))
-			@if ($alloggio->confermato==true AND count($opzioni)>0)
+			@if ($alloggio->confermato==false AND count($opzioni)==0)
+				<h3 class="text-success"><strong>Alloggio disponibile.</strong></h3>
+			@elseif ($alloggio->confermato==true AND count($opzioni)>0)
 				<h3 class="text-success"><strong>La tua richiesta è stata accettata. 
 				<a href="{{route('chat.contract',[$opzioni->first()->id_alloggio, $opzioni->first()->id_mittente])}}">Vedi contratto</a></strong></h3>
 			@elseif ($alloggio->confermato==true AND count($opzioni)==0)
@@ -66,6 +75,10 @@ $(document).ready(function () {
 			@elseif ($alloggio->confermato==false AND count($opzioni)>0)
 				<h3>Il tuo alloggio e' stato opzionato, <a href="#opzioni">controlla ora!</a>
 			@endif
+		@elseif ($alloggio->confermato)
+				<h3 class="text-danger"><strong>Questo alloggio è già stato assegnato.</strong></h3>
+		@else
+				<h3 class="text-success"><strong>Alloggio disponibile.</strong></h3>
 		@endif
             </div>
             @auth
@@ -237,15 +250,17 @@ $(document).ready(function () {
 		{{ Form::close() }}
 		<button id="annulla-messaggio" type="button" class="btn btn-danger mt-2">Annulla</button>
 	    </div>
-		    <div id="opzione-container" class="container d-flex align-items-center mt-3 visually-hidden">
-			{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
-				'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
-				{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e mi piacerebbe affittare questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
-				{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
-				<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
-			{{ Form::close() }}
-			<button id="annulla-opzione" type="button" class="btn btn-danger mt-2">Annulla</button>
-		    </div>
+	    @if ($alloggio->confermato==false AND count($opzioni)==0)
+	    <div id="opzione-container" class="container d-flex align-items-center mt-3 visually-hidden">
+		{{ Form::open(array('route' => array('chat.send', $alloggio->id_locatore),
+			'id' => 'sendOpzione', 'files' => false, 'class'=> 'form-inline d-flex mt-2 w-100')) }}
+			{{ Form::text('testo','Salve, sono '.ucwords(auth()->user()->nome.' '.auth()->user()->cognome).' e mi piacerebbe affittare questo alloggio, può trovare i miei dati sul mio profilo!', ['placeholder'=> 'Messaggio di opzione', 'class' => 'form-control m-1 w-100']) }}
+			{{ Form::submit('Opziona', ['class' => 'btn btn-success m-1']) }}
+			<input type="hidden" name="id_alloggio" value="{{ $alloggio->id }}" readonly="readonly"/>
+		{{ Form::close() }}
+		<button id="annulla-opzione" type="button" class="btn btn-danger mt-2">Annulla</button>
+	    </div>
+	    @endif
     @endif
     
     @if (auth()->user()->id == $alloggio->id_locatore)

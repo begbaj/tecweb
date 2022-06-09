@@ -17,7 +17,8 @@
     <li class="nav-item mb-2"><a href="{{route('priv')}}" class="nav-link p-0 text-muted">Privacy and Terms</a></li>
     <li class="nav-item mb-2"><a href="{{route('who')}}" class="nav-link p-0 text-muted">Chi siamo</a></li>
     <li class="nav-item mb-2"><a href="{{route('where')}}" class="nav-link p-0 text-muted">Dove Siamo</a></li>
-    <li class="nav-item mb-2"><a href="{{route('faq')}}" class="nav-link p-0 text-muted">FAQs</a></li>    
+    <li class="nav-item mb-2"><a href="{{route('faq')}}" class="nav-link p-0 text-muted">FAQs</a></li>
+    <li class="nav-item mb-2"><a href="doc/tesitecweb.pdf" class="nav-link p-0 text-muted">Documentazione</a></li>    
   </ul>
 </div>
 
