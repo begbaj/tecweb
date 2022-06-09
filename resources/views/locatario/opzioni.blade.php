@@ -4,7 +4,8 @@
 
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/lario-opzioni.js') }}"></script>
-@endsectii
+@endsection
+
 @section('content')
 <div class="container my-2" style="min-height: 800px;">
     <h1><center>Alloggi opzionati</center></h1>
