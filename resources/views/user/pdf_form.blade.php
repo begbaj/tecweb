@@ -1,11 +1,12 @@
 
 
 <center>
+{{--
 <div>
     <img src="{{asset('img/brand/logo-colored_1.jpg')}}"  alt= "" width="80" height="80"> 
 </div>
 </center>
-
+--}}
 <br>
 <br>
 <br>
