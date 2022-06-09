@@ -1,33 +1,36 @@
 @extends('layouts.base')
 
-@section('title', 'Area Locatore')
+@section('title', 'Opzioni')
 
 @section('scripts')
 @endsection
 @section('content')
 <h1><center>Alloggi opzionati</center></h1>
-<h3>In attesa di risposta<h3>
+<h3>In attesa di risposta - {{count($alloggiOpzionati)}}</h3>
+	@if (count($alloggiOpzionati)>0)
 	<div class=container>
 		<div class="card-columns">
-		@foreach ($alloggiOpzionati as $alloggio)
-			@include('components.longcard', ['accomodation' => $alloggio])
-		@endforeach
+		@include('components.miniCatalog', ['accoms' => $alloggiOpzionati])
 		</div>
 	</div>
-<h3>Ottenuti<h3>
+	@endif
+<hr/>
+<h3>Ottenuti - {{count($alloggiOttenuti)}}</h3>
+	@if (count($alloggiOttenuti)>0)
 	<div class=container>
 		<div class="card-columns">
-		@foreach ($alloggiOttenuti as $alloggio)
-			@include('components.longcard', ['accomodation' => $alloggio])
-		@endforeach
+		@include('components.miniCatalog', ['accoms' => $alloggiOttenuti])
 		</div>
 	</div>
-<h3>Passati<h3>
+	@endif
+<hr/>
+<h3>Non Ottenuti - {{count($alloggiNonOttenuti)}}</h3>
+	@if (count($alloggiNonOttenuti)>0)
 	<div class=container>
 		<div class="card-columns">
-		@foreach ($alloggiNonOttenuti as $alloggio)
-			@include('components.longcard', ['accomodation' => $alloggio])
-		@endforeach
+		@include('components.miniCatalog', ['accoms' => $alloggiNonOttenuti])
 		</div>
 	</div>
+	@endif
+<hr/>
 @endsection

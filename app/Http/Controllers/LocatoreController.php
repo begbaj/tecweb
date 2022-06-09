@@ -26,8 +26,10 @@ class LocatoreController extends Controller
      * Redirection to locatore homepage
      */
     public function index() {
-        $accoms = Alloggio::where('id_locatore', Auth::user()->id)->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->get();
-        return view('locatore')->with('accoms', $accoms);
+	$catalog = new Catalog;
+	$accomsAssegnati = $catalog->getAlloggiAssegnatiInseriti(Auth::user()->id);
+	$accomsAttivi = $catalog->getAlloggiAttiviInseriti(Auth::user()->id);
+        return view('locatore')->with('accomsAttivi', $accomsAttivi)->with('accomsAssegnati', $accomsAssegnati);
     }
 
     public function viewMakeAccom() {

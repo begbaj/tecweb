@@ -30,22 +30,33 @@ class Catalog extends Model
     }
 
     public function getAlloggiOpzionati($userId){
-	    $alloggi = Alloggio::join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=false AND messaggi.data_conferma_opzione=null AND messaggi.id_mittente=$userId")->get();
-	    return $alloggi;
+	    $alloggi = Alloggio::select('alloggi.*')->join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=false AND messaggi.data_conferma_opzione is null AND messaggi.id_mittente=$userId");
+	    return $alloggi->get();
     }
 
     public function getAlloggiOttenuti($userId){
-	    $alloggi = Alloggio::join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=true AND messaggi.data_conferma_opzione!=null AND messaggi.id_mittente=$userId")->get();
-	    return $alloggi;
+	    $alloggi = Alloggio::select('alloggi.*')->join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=true AND messaggi.data_conferma_opzione is not null AND messaggi.id_mittente=$userId")->orderBy('messaggi.created_at', 'desc');
+	    return $alloggi->get();
     }
 
     public function getAlloggiNonOttenuti($userId){
-	    $alloggi = Alloggio::join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=true AND messaggi.data_conferma_opzione!=null AND messaggi.id_mittente=$userId")->get();
-	    return $alloggi;
+	    $alloggi = Alloggio::select('alloggi.*')->join('messaggi', 'alloggi.id', '=', 'messaggi.id_alloggio')->whereRaw("alloggi.confermato=true AND messaggi.data_conferma_opzione is null AND messaggi.id_mittente=$userId")->orderBy('messaggi.created_at', 'desc');;
+	    return $alloggi->get();
     }
 
     public function deleteServiziAlloggio($id_alloggio){
 	    Servizio::select('inclusioni')->join('inclusioni', 'servizi.id_alloggio', '=', 'alloggi.id')->where('servizi.id_alloggio', $id_alloggio)->delete();
+    }
+
+    public function getAlloggiAttiviInseriti($userId){
+	    $alloggi = Alloggio::whereRaw("confermato=false AND id_locatore=$userId")->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc');
+	    return $alloggi->get();
+    }
+
+
+    public function getAlloggiAssegnatiInseriti($userId){
+	    $alloggi = Alloggio::whereRaw("confermato=true AND id_locatore=$userId")->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc');
+	    return $alloggi->get();
     }
 
     public function search($filters){

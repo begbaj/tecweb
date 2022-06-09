@@ -10,7 +10,9 @@
              <p class="card-text"> {{ substr($accomodation->descrizione, 0, 150) }} </p>
              <p class="card-text"> Creato il: {{ $accomodation->created_at}} </p>
              <p class="card-text">
+		@if (auth()->user()->hasRole('locatore'))
                 <small class='text-muted'> @if ($accomodation->updated_at != null) Ultimo aggiornamento: {{ $accomodation->updated_at}} @else Alloggio mai aggiornato @endif </small>
+		@endif
              </p>
           </div>
        </div>
@@ -19,6 +21,7 @@
         <div class="col-4">
             <a class="d-flex btn btn-primary me-2" href="{{ route('catalog.accom.details', [$accomodation->id]) }}">Visualizza</a>
         </div>
+	@if (auth()->user()->hasRole('locatore'))
         <div class="col-5">
             @if ($accomodation->confermato == true)
             <a class=" btn btn-secondary mx-2 disabled">Modifica</a>
@@ -43,5 +46,6 @@
             </div>
             @endif
         </div>
+	@endif
     </div>
 </div>

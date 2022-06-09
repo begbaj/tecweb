@@ -4,14 +4,28 @@
 
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/card-truncator.js') }}"> </script>
+<script>
+$(function(){
+	
+});	
+</script>
 @endsection
 @section('content')
 <h1> I tuoi annunci </h1>
-<div class="card-columns">
-    @if (!isset($accoms) || count($accoms) < 1)
+    @if ((!isset($accomsAttivi) AND !isset($accomsAssegnati)) || count($accomsAttivi)+count($accomsAssegnati) < 1)
         <p> Non hai ancora creato nessun annuncio! Fallo ora <a href="{{ route('lore.accom.new') }}"> + </a> </p>
     @else
-        @include('components.miniCatalog', ['accoms' => $accoms])
+	@if (count($accomsAssegnati)>0)
+		<h3>Attivi <img src="{{asset('img/svg/chevron-down.svg')}}"  alt= "" width="40px" height="40px"></h3> 
+		<div class="card-columns">
+		@include('components.miniCatalog', ['accoms' => $accomsAttivi])
+	@endif
+	@if (count($accomsAssegnati)>0)
+		<h3>Assegnati <img src="{{asset('img/svg/chevron-down.svg')}}"  alt= "" width="40px" height="40px"></h3>
+		<div class="card-columns">
+		@include('components.miniCatalog', ['accoms' => $accomsAssegnati])
+	@endif
+	
     @endif
 </div>
 @endsection
