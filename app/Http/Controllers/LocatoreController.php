@@ -70,7 +70,7 @@ class LocatoreController extends Controller
             $image = $request->file('image');
             $image->move($_dir_, 'thumbnail');
         } else {
-            link(public_path('img/app/default.png'), $_dir_ . "/thumbnail");
+            copy(public_path('img/app/default.png'), $_dir_ . "/thumbnail");
         }
 
         return redirect()->route('homepage', [$accom->title]);

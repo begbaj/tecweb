@@ -25,6 +25,10 @@ $(function (){
 </script>
 @endsection
 
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.standalone.css') }}">
+@endsection
+
 @section('content')
 
 <div class="container-fluid bd-light">
@@ -145,7 +149,7 @@ $(function (){
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Data di Nascita:</h5>
-                    <div class="input-daterange col-sm-7 ps-1" id="datepicker">
+                    <div class="input-daterange col ps-1" id="datepicker">
                     {{ Form::text('data_nascita', date("d/m/Y",strtotime(str_replace('/', '-',Auth::user()->data_nascita))), ['class' => 'input-sm form-control ps-1 text-muted d-flex align-items-center', 'id' => 'birthday', 'disabled']) }} 
                     </div>
                 @if ($errors->first('data_nascita'))

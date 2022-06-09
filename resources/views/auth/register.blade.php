@@ -18,6 +18,10 @@ $(function (){
 </script>
 @endsection
 
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.standalone.css') }}">
+@endsection
+
 @section('content')
 <div class="container-fluid bg-light">
     <div class="jumbotron bg-cover rounded ml-5 mr-5" style="background-image: linear-gradient(to bottom, rgba(3,169,244,0.7) 0%, rgba(0,0,0,0.6) 100%), url(https://placeimg.com/1000/480/nature); background-size: cover">    
@@ -30,7 +34,8 @@ $(function (){
             <h2 class="lead">Registrati!</h2>
             {{ Form::open(array('route' => 'register', 'id' => 'signin-form', 'files' => false)) }}
             {{ Form::token() }}
-                <div class= "d-flex justify-content-center pe-5 align-items-center">
+            <div class="col row-cols-1">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-3 mt-3 w-50">
                         {{ Form::label('firstname', 'Nome', ['class' => 'col-sm-2 col-form-label', 'for'=>'firstname' ] ) }}
                         <div class=" col-sm-7 ps-3">
@@ -47,7 +52,7 @@ $(function (){
                     @endif    
                     </div>  
                 </div>
-                <div class= "d-flex justify-content-center pe-5 align-items-center">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-3 mt-3 w-50">
                         {{ Form::label('lastname', 'Cognome', ['class' => 'col-sm-2 col-form-label ', 'for'=>'lastname' ] ) }}
                         <div class=" col-sm-7 ps-3">
@@ -65,11 +70,11 @@ $(function (){
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-center pe-5">
-                    <div class="form-outline d-flex row mb-2 mt-1 w-50 align-items-center">
+                <div class="col d-flex justify-content-center pe-5">
+                    <div class="form-outline row mb-3 mt-3 w-50">
                         {{ Form::label('birthday', 'Data di nascita', ['class' => 'col-sm-2 col-form-label',  'for'=>'birthday']) }}
-                        <div class="input-daterange col-sm-7 ms-5 ps-3" id="datepicker">
-                        {{ Form::text('birthday', '', ['class' => 'input-sm form-control', 'placeholder' => 'Data di Nascita']) }} 
+                        <div class="input-daterange col ms-5" id="datepicker" style="max-width: 22em;">
+                        {{ Form::text('birthday', '', ['class' => 'form-control', 'placeholder' => 'Data di Nascita']) }} 
                         </div>
                     @if ($errors->first('birthday'))
                     <div class="d-flex justify-content-center">
@@ -83,7 +88,7 @@ $(function (){
                     </div>
                 </div>    
 
-                <div class= "d-flex justify-content-center pe-5">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-3 w-50 align-items-center">
                         {{ Form::label('gender', 'Genere', ['class' => 'col-sm-2 col-form-label ', 'for'=>'gender' ] ) }}
                         <div class="d-flex col-7 flex-column ps-3">
@@ -101,7 +106,7 @@ $(function (){
                        </div>
                 </div>
 
-                <div class= "d-flex justify-content-center pe-5">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-3 w-50 align-items-center">
                         {{ Form::label('username', 'Nome Utente*', ['class' => 'col-sm-2 col-form-label', 'for'=>'username' ] ) }}
                         <div class=" col-sm-7 ps-3">
@@ -119,7 +124,7 @@ $(function (){
                      </div>
                 </div>
 
-                <div class= "d-flex justify-content-center pe-5">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-3 w-50 align-items-center">
                         {{ Form::label('password', 'Password*', ['class' => 'col-sm-2 col-form-label', 'for'=>'password' ] ) }}
                         <div class=" col-sm-7 ps-3">
@@ -137,7 +142,7 @@ $(function (){
                     </div>
                 </div>
             
-                <div class= "d-flex justify-content-center pe-5">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-3 w-50 align-items-center">
                         {{ Form::label('password_confirmation', 'Conferma Password*', ['class' => 'col-sm-2 col-form-label', 'for'=>'password' ] ) }}
                         <div class=" col-sm-7 ps-3">
@@ -155,7 +160,7 @@ $(function (){
                     </div>
                 </div>
 
-                <div class= "d-flex justify-content-center pe-5">
+                <div class= "col d-flex justify-content-center pe-5">
                     <div class="form-outline row mb-2 mt-3 w-50 align-items-center">
                         {{ Form::label('role', 'Ruolo', ['class' => 'col-sm-2 col-form-label', 'for'=>'role' ] ) }}
                         <div class="d-flex col-7 flex-column">
@@ -176,8 +181,9 @@ $(function (){
                         </div>
                     </div>
                 </div>
-            <div class="text-center">
-                {{ Form::submit('Registrati', ['class' => 'btn btn-primary mb-3 mt-2']) }}
+                <div class="text-center">
+                    {{ Form::submit('Registrati', ['class' => 'btn btn-primary mb-3 mt-2']) }}
+                </div>
             </div>
             {{ Form::close() }}
             <div class="text-center mt-3 pb-3">
