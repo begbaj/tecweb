@@ -152,8 +152,6 @@ $(function () {
     
     
     
-    
-    
     $("#tipo").on('change', function(event) {
        $.ajax({
            type:'GET',
@@ -161,15 +159,7 @@ $(function () {
            data:'_token = <?php echo csrf_token(); ?>',
            success:updateServs
         });
-       if ( $("#tipo").val() == "posto_letto" ){
-            $("#camere").prop('readonly', true);
-            $("#camere").val(1);
-            $("#posti_letto").prop('readonly', true);
-            $("#posti_letto").val(1);
-       }
-       else{
-            $("#camere").prop('readonly', false);
-       }
+       showPerFields();
     });
     $('#tipo').change();
 
@@ -192,6 +182,27 @@ $(function () {
         todayHighlight: true
     });
 });
+
+
+function showPerFields(){;
+    var tipo = $("#tipo");
+    var allApp = $(".appartamento");
+    var allLet = $(".letto");
+
+    if ( tipo.val() == "posto_letto" ){
+        allApp.prop('disabled', true);
+        allApp.hide();
+        allLet.prop('disabled', false);
+        allLet.show();
+    }
+    else{
+        allLet.prop('disabled', true);
+        allLet.hide();
+        allApp.prop('disabled', false);
+        allApp.show();
+    }
+}
+
 
 function updateServs(data){
     $('#servizi').find('*').remove();
@@ -235,7 +246,7 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('tipo', 'Tipo', ['class' => ' col-form-label',  'for'=>'tipo']) }}
-        {{ Form::select('tipo', ['appartamento' => "Appartamento", 'posto_letto' => "Posto Letto"], $alloggio->tipo, ['class' => 'form-control'] )}}
+        {{ Form::select('tipo', ['appartamento' => "Appartamento", 'posto_letto' => "Posto Letto"], $alloggio->tipo, ['class' => 'form-control', 'id'=>'tipo'] )}}
         @if ($errors->first('tipo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -418,7 +429,14 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('posti_letto', 'Posti Letto', ['class' => ' col-form-label',  'for'=>'bedrooms']) }}
-        {{ Form::text('posti_letto', $alloggio->posti_letto, ['id' =>'beds', 'class' => 'form-control'] ) }}
+        <div class="more-fields appartamento col-1 input-group form-outline">
+            <span class="input-group-text"> N. Letti </span>
+            {{ Form::text('posti_letto', '1', ['class' => 'form-control', 'id' => 'beds'] ) }}
+        </div>
+        <div class="more-fields letto col-1 input-group form-outline">
+            <span class="input-group-text"> N. Letti </span>
+            {{ Form::select('posti_letto', ['1' => 'Camera Singola', '2'=> 'Camera Doppia'],'' ,['class' => 'form-control']) }}   
+        </div>
         @if ($errors->first('posti_letto'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">

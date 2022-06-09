@@ -43,12 +43,11 @@ class UserController extends Controller
             'cognome' => 'sometimes|string|min:1|max:30',
             'data_nascita' => 'sometimes|date_format:d/m/Y|before_or_equal:today',
             'genere' => 'sometimes|string|min:1|max:10',
-            'username' => 'sometimes|string|min:5|max:30',
         ]);
+
         $v->sometimes('password', 'required|min:8|max:128|confirmed', function ($request){
             return $request->password != '';
         });
-        
         
         if ($user != null){
             $data = $v->validated();
