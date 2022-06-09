@@ -3,18 +3,30 @@
 @section('title', 'Homepage')
 
 @section('content')
+
+@php
+
+ $files = glob('img/stock-images' . '/*.jpg');
+ $rand_keys = array_rand($files, 3);
+
+ $file_1 = $files[$rand_keys[0]];
+ $file_2= $files[$rand_keys[1]];
+ $file_3 = $files[$rand_keys[2]];
+
+@endphp
+
 <!-- Carousel (slideshow) -->
 <div class="container" >
     <div id="slideshow" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner rounded" style="height: 520px;">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="img/test-hiQ.jpg" alt="First slide">
+                <img class="d-block w-100" src="{{$file_1}}" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img/test-loQ.jpg" alt="Second slide">
+                <img class="d-block w-100" src="{{$file_2}}" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img/test-hiQ.jpg" alt="Third slide">
+                <img class="d-block w-100" src="{{$file_3}}" alt="Third slide">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">

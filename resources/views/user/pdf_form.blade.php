@@ -1,5 +1,5 @@
 
-
+<!-- 
 <center>
 {{--
 <div>
@@ -10,10 +10,12 @@
 <br>
 <br>
 <br>
+-->
 
 <strong>Oggetto: conferma di opzione per l'alloggio {{$alloggio_id}}.</strong>
 <br>
 <br>
+
 Gentile {{$nome_locatario}} {{$cognome_locatario}} nato il {{substr($eta_locatario, 0, -9)}},
 
 
