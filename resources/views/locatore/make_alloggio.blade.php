@@ -6,7 +6,10 @@
 <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 <script>
 $(function () {
-    $("#capp").prop('maxlength','5');            
+    $("#capp").prop('maxlength','5');
+    $("#beds").prop('maxlength','5');
+    $("#bedrooms").prop('maxlength','5');
+    
 
     $('#titolo').on('input', function() {
     var c = this.selectionStart,
@@ -150,10 +153,7 @@ $(function () {
            success:updateServs
         });
        if ( $("#tipo").val() == "posto_letto" ){
-            $("#camere").prop('readonly', true);
-            $("#camere").val(1);
-            $("#posti_letto").prop('readonly', true);
-            $("#posti_letto").val(1);
+            $("#beds").prop('maxlength',1);            
        }
        else{
             $("#camere").prop('readonly', false);
@@ -171,12 +171,6 @@ $(function () {
         }
     });
     $("#eta_min").change();
-    
-    
-
-    
-    
-        
 
     $('#datepicker').datepicker({
         format: "dd/mm/yyyy",

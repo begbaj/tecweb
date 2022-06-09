@@ -185,8 +185,8 @@ $(function(){
 
 <br>
 <div class="container text-center">
-    <p class="text-dark"> @php echo ++$count; @endphp {{ $fq->domanda }} </p>
-    <p class="text-secondary">{{ $fq->risposta }} </p>
+    <p class="text-dark text-break"> @php echo ++$count; @endphp {{ $fq->domanda }} </p>
+    <p class="text-secondary text-break">{{ $fq->risposta }} </p>
 </div>
 <hr>
 @endforeach
