@@ -5,18 +5,24 @@
             <ul class="navbar-nav me-auto">
             @if (Auth::check() && auth()->user()->hasRole('admin'))
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin') }}">Catalogo</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.stats') }}">Statistiche</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.faq') }}">Gestione FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                    <a class="nav-link" href="{{ route('who') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
                 </li>
             @elseif (Auth::check() && auth()->user()->hasRole('locatore'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('lore') }}">I Tuoi Annunci</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo Pubblico</a>
                 </li>
@@ -24,7 +30,7 @@
                     <a class="nav-link" href="{{ route('lore.accom.new') }}">Inserisci Alloggio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                    <a class="nav-link" href="{{ route('who') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
@@ -40,7 +46,7 @@
                     <a class="nav-link" href="{{ route('lario.opzioni') }}">Opzioni</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                    <a class="nav-link" href="{{ route('who') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>
@@ -53,7 +59,7 @@
                     <a class="nav-link" href="{{ route('catalog') }}">Catalogo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('who') }}">About us</a>
+                    <a class="nav-link" href="{{ route('who') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('where') }}">Dove Siamo</a>

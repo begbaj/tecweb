@@ -5,7 +5,7 @@
         @if($accomodation->confermato == 1)
             <h5 class="card-text text-truncate text-danger">AFFITTATO</h5>    
         @endif
-        <h5 class="card-title text-truncate">{{ $accomodation->titolo }}</h5>
+        <h5 class="card-title text-truncate pb-3">{{ $accomodation->titolo }}</h5>
         <p class="card-text">{{substr($accomodation->descrizione,0 , 150) }}</p>
 	<p class="card-text text-muted float-start mw-50">{{ucwords(str_replace('_', ' ', $accomodation->tipo))}}</p>
 	<p class="card-text text-muted float-end">{{$accomodation->citta}}</p>

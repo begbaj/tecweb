@@ -6,6 +6,19 @@
 .closed {
     height: 0px;
 }
+.page-item.active .page-link{
+    color: white;
+    background-color: #0F726F;
+    border-color: #0F726F;
+}
+
+.page-link{
+    color: #0F726F;
+}
+
+.page-link:hover{
+    color: #0F726F;
+}
 
 .rotate-180 {
     transform: rotateX(180deg);
