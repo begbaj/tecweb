@@ -1,6 +1,6 @@
 {{-- CARD: basic accomodation card --}}
-<div class="card m-2 shadow-sm"  style="max-width:32%">
-    <img class="card-img-top overflow-hidden" style="height: 300px" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
+<div class="card hoverable m-2 shadow-sm"  style="max-width:32%">
+    <img class="card-crop card-img-top overflow-hidden" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}} ">
     <div class="card-body">
         @if($accomodation->confermato == 1)
             <h5 class="card-text text-truncate text-danger">AFFITTATO</h5>    

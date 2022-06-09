@@ -16,6 +16,103 @@
     transition: .5s ease;
 }
 
+
+.carousel-crop{
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    object-position: 100% 0;
+
+    filter: blur(8px) brightness(30%);
+    -webkit-filter: blur(8px) brightness(30%);
+}
+
+.btn-primary{
+    color: white;
+    background-color: #0F726F;
+    border: #0F726F;
+}
+
+.btn-primary:hover{
+    color: white;
+    background-color: #2F829F;
+    border: #0F726F;
+}
+
+.btn-secondary{
+    color: white;
+    background-color: #E492BB;
+    border: #E492BB;
+}
+
+.btn-danger{
+    color: white;
+    background-color: #E492BB;
+    border: #E492BB;
+}
+
+.btn-danger:disabled{
+    color: white;
+    background-color: #E492BB;
+    border: #E492BB;
+}
+
+.btn-secondary:hover{
+    color: white;
+    background-color: #C4629B;
+    border: #E492BB;
+}
+
+.card-img-top.card-crop{
+    width: 100%;
+    height: 20em;
+    object-fit: cover;
+    object-position: 100% 0;
+}
+
+.card-img.card-crop{
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+    object-position: 100% 0;
+}
+
+.card.bg-primary{
+    background-color: #0F726F !important;
+}
+
+.card.bg-success{
+    background-color: #8EAC6C !important;
+}
+
+a{
+    color: #0F726F;
+    transition-duration: 500ms;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #C4629B;
+    transition-duration: 500ms;
+    text-decoration: none;
+}
+
+.card{
+    transition-duration: 150ms;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card.hoverable:hover{
+    background: #E1F9F8;
+    transform: scale(1.02);
+    transition-duration: 150ms;
+}
+
+.carousel-great-text{
+    font-size: x-large;
+    color: white;
+}
+
 .cloud-btn-lg:hover{
     background-color: lightcyan;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

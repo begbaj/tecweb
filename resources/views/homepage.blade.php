@@ -23,15 +23,27 @@
 <!-- Carousel (slideshow) -->
 <div class="container" >
     <div id="slideshow" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner rounded" style="height: 800px;">
+        <div class="carousel-inner rounded" style="max-height: 500px;">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="{{$file_1}}" alt="First slide">
+                <img class="d-block w-100 carousel-crop" src="{{$file_1}}" alt="First slide">
+                <div class="carousel-caption carousel-great-text d-none d-md-block">
+                    <h1>Cerca gli alloggi pi&ugrave; vicini alla tua facolt&aacute;</h1>
+                    <p>Con il nostro sistema di ricerca puoi trovare gli alloggi e i posti letto nella citt&aacute; che ti interessa </p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="{{$file_2}}" alt="Second slide">
+                <img class="d-block w-100 carousel-crop " src="{{$file_2}}" alt="Second slide">
+                <div class="carousel-caption carousel-great-text d-none d-md-block">
+                    <h1>Metti in affitto un posto letto o un appartamento!</h1>
+                    <p>Hai una casa o un letto da mettere in affitto? Con Kumuuzag puoi!</p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="{{$file_3}}" alt="Third slide">
+                <img class="d-block w-100 carousel-crop" src="{{$file_3}}" alt="Third slide">
+                <div class="carousel-caption carousel-great-text d-none d-md-block">
+                    <h1>Cerca gli alloggi pi&ugrave; vicini alla tua facolt&aacute;</h1>
+                    <p>Con il nostro sistema di ricerca puoi trovare gli alloggi e i posti letto nella citt&aacute; che ti interessa </p>
+                </div>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
