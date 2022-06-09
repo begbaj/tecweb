@@ -42,5 +42,6 @@ class LocatarioController extends Controller
             ->with('alloggiOpzionati', $alloggiOpzionati)
             ->with('alloggiOttenuti', $alloggiOttenuti)
             ->with('alloggiNonOttenuti', $alloggiNonOttenuti);
+
     }
 }
