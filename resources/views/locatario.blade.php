@@ -8,6 +8,93 @@
 <script type="text/javascript" src="{{ asset('js/lario-search.js') }}"></script>
 <script>
 $(function(){
+    $("#luogo").prop('maxlength','150');      
+    $("#prezzomin").prop('maxlength','5');
+    $("#prezzomax").prop('maxlength','5');
+    $("#dim").prop('maxlength','6');
+    $("#camere").prop('maxlength','3');
+    $("#postiletto").prop('maxlength','3'); 
+    
+    
+    
+
+    $('#luogo').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^a-z0-9_ ]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#prezzomin').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9.]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#prezzomax').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9.]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#prezzomax').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9.]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });  
+    
+    $('#dim').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9.]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });     
+    
+    $('#camere').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });     
+    
+    $('#postiletto').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    }); 
+        
     var tipo = $("#tipo");
     tipo.on('change', function(event) {
         $.ajax({
@@ -31,14 +118,14 @@ $(function(){
     <div class='container'> <!-- FORM -->
         <div class="d-flex justify-content-center align-items-center row cloud-container p-3">
             <div class="col-sm-3 mx-2">
-                {{ Form::text('luogo', '', ['value' => old("luogo"), 'placeholder'=> 'Luogo(Citta, Provincia, ...)', 'class' => 'form-control ms-4']) }}
+                {{ Form::text('luogo', '', ['value' => old("luogo"), 'placeholder'=> 'Luogo(Citta, Provincia, ...)', 'class' => 'form-control ms-4', 'id' => 'luogo']) }}
             </div>
             <div class="col-sm-4 mx-2">
                 <div class="input-group input-daterange" id="datepicker">
                     <span class="input-group-text"> dal </span>
-                    {{ Form::text('data_min', '', ['placeholder' => 'inizio soggiorno', 'class' => 'form-control input-lg']) }}
+                    {{ Form::text('data_min', '', ['placeholder' => 'inizio soggiorno', 'class' => 'form-control input-lg', 'id' => 'datamin']) }}
                     <span class="input-group-text"> al </span>
-                    {{ Form::text('data_max', '', ['placeholder' => 'fine soggiorno', 'class' => 'form-control input-lg']) }}
+                    {{ Form::text('data_max', '', ['placeholder' => 'fine soggiorno', 'class' => 'form-control input-lg', 'id' => 'datamax']) }}
                 </div>
             </div>
             <div class="col-sm-2 mx-2 ">
@@ -54,21 +141,21 @@ $(function(){
             <div class="more-fields col row cloud-container-lg p-2 m-2 ">
                 <div class="more-fields col-1 input-group form-outline">
                     <span class="input-group-text"> da </span>
-                    {{ Form::text('prezzo_min', '', ['placeholder' => 'prezzo minimo', 'class' => 'form-control form-control-sm']) }}
+                    {{ Form::text('prezzo_min', '', ['placeholder' => 'prezzo minimo', 'class' => 'form-control form-control-sm', 'id' =>'prezzomin']) }}
                     <span class="input-group-text"> a </span>
-                    {{ Form::text('prezzo_max', '', ['placeholder' => 'prezzo massimo', 'class' => 'form-control form-control-sm']) }}
+                    {{ Form::text('prezzo_max', '', ['placeholder' => 'prezzo massimo', 'class' => 'form-control form-control-sm', 'id' => 'prezzomax']) }}
                     <span class="input-group-text"> € </span>
                 </div>
                 <div class="more-fields col-1 input-group form-outline">
-                    {{ Form::text('dimensione', '', ['placeholder' => 'dimensione/dimensione camera', 'class' => 'form-control input-sm']) }}
+                    {{ Form::text('dimensione', '', ['placeholder' => 'dimensione/dimensione camera', 'class' => 'form-control input-sm', 'id' => 'dim']) }}
                 </div>
                 <div class="more-fields col-1 input-group form-outline">
                     <span class="input-group-text"> N. Camere </span>
-                    {{ Form::number('camere', '', ['placeholder'=> "totale camere nell'allggio", 'class' => 'form-control']) }}   
+                    {{ Form::text('camere', '', ['placeholder'=> "totale camere nell'allggio", 'class' => 'form-control', 'id' => 'camere']) }}   
                 </div>
                 <div class="more-fields appartamento col-1 input-group form-outline">
                     <span class="input-group-text"> N. Letti </span>
-                    {{ Form::number('posti_letto', '1', ['class' => 'form-control']) }}   
+                    {{ Form::text('posti_letto', '1', ['class' => 'form-control', 'id' => 'postiletto']) }}   
                 </div>
                 <div class="more-fields letto col-1 input-group form-outline">
                     <span class="input-group-text"> N. Letti </span>
