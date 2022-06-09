@@ -5,6 +5,6 @@
         <p class="card-text"> {{ $accomodation->created_at }} </p>
     </div>
     <div class="card-footer">
-        <a href="{{ route('catalog') }}" class="btn btn-primary">Vedi dettagli</a>
+        <a href="{{ route('login') }}" class="btn btn-primary">Vedi dettagli</a>
     </div>
 </div>
