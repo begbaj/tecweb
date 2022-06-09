@@ -76,13 +76,13 @@
 		    </a>
                 @endif
 
-            {{ Form::open(array('route' => 'logout', 'id' => 'navbar-logout', 'files' => false, 'class'=> 'form-inline d-flex mt-3')) }}
+            {{ Form::open(array('route' => 'logout', 'id' => 'navbar-logout', 'files' => false, 'class'=> 'form-inline d-flex my-3')) }}
                 {{ Form::submit('Logout', ['class' => 'btn btn-primary me-2']) }}
             {{ Form::close() }}
 
             @elseif (!isset($hideLoginForm))
 
-            {{ Form::open(array('route' => 'login', 'id' => 'navbar-login', 'files' => false, 'class'=> 'form-inline d-flex mt-3')) }}
+            {{ Form::open(array('route' => 'login', 'id' => 'navbar-login', 'files' => false, 'class'=> 'form-inline d-flex my-3')) }}
                 {{ Form::text('username','', ['placeholder'=> 'username', 'class' => 'form-control me-2']) }}
                 {{ Form::password('password', ['placeholder' => 'password', 'class' => 'form-control me-2']) }}
                 @if ($errors->first('password') or $errors->first('username'))
