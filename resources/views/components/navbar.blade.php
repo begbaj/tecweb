@@ -1,4 +1,4 @@
-<nav class="navbar @if (!isset($hideLoginForm)) fixed-top @endif navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('homepage') }}"> <img src="{{ asset('img/brand/logo-colored.png') }}" height="50"></a>
         <div class="collapse navbar-collapse" id="mynavbar">
