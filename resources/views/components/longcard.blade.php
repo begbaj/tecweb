@@ -1,8 +1,8 @@
 {{-- Long Card: long card used to show a list of accomodations--}}
 <div class="card m-5">
     <div class="row g-0">
-       <div class="col-md-4 overflow-hidden" style="height: 15em;" >
-          <img class="card-img" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}}">
+       <div class="col-md-4 overflow-hidden">
+          <img class="card-img card-crop" src="{{ asset('assets/'. $accomodation->id . '/thumbnail')}}">
        </div>
        <div class="col-md-8">
           <div class="card-body">

@@ -37,7 +37,6 @@ $(function (){
                     @foreach ($rubrica as $user)
                             @include ('components.rubricCard', [ 'user' => $user] )
                     @endforeach 
-            </div>
             <div class="vr"></div>
             <div class="col row row-cols-1 overflow-auto" style="height: 800px;"> 
                     <div class="col bg-light d-flex justify-content-center align-items-center">
