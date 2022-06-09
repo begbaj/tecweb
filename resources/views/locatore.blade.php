@@ -15,7 +15,7 @@ $(function(){
     @if ((!isset($accomsAttivi) AND !isset($accomsAssegnati)) || count($accomsAttivi)+count($accomsAssegnati) < 1)
         <p> Non hai ancora creato nessun annuncio! Fallo ora <a href="{{ route('lore.accom.new') }}"> + </a> </p>
     @else
-	@if (count($accomsAssegnati)>0)
+	@if (count($accomsAttivi)>0)
 		<h3>Attivi <img src="{{asset('img/svg/chevron-down.svg')}}"  alt= "" width="40px" height="40px"></h3> 
 		<div class="card-columns">
 		@include('components.miniCatalog', ['accoms' => $accomsAttivi])
