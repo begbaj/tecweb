@@ -109,7 +109,7 @@ class LocatoreController extends Controller
 		$messaggio = new Messaggio;
 		$messaggio->id_mittente=$option->id_destinatario;
 		$messaggio->id_destinatario=$option->id_mittente;
-		$messaggio->testo="L'annuncio per l'alloggio $accom->id, da lei opzionato, è stato cancellato.";
+		$messaggio->testo="L'annuncio per l'alloggio $accomId, da lei opzionato, è stato cancellato.";
 		$messaggio->freshTimestamp();
 		$messaggio->save();
 	}
