@@ -6,6 +6,7 @@
         <p class="card-text">{{substr($accomodation->descrizione,0 , 150) }}</p>
 	<p class="card-text text-muted float-start mw-50">{{ucwords(str_replace('_', ' ', $accomodation->tipo))}}</p>
 	<p class="card-text text-muted float-end">{{$accomodation->citta}}</p>
+	<p class="card-text text-muted float-end"></p>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
         @if (Auth::check() && (auth()->user()->hasRole('locatario') or auth()->user()->hasRole('locatore')))
