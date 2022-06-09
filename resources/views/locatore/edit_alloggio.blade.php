@@ -6,12 +6,21 @@
 <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 <script>
 $(function () {
+    $("#titolo").prop('maxlength','100');      
+    $("#capp").prop('maxlength','5');  
+    $("#beds").prop('maxlength','5');
+    $("#bedrooms").prop('maxlength','5');
+    $("#price").prop('maxlength','8');
+    $("#sup").prop('maxlength','4');
+    $("#beds").prop('maxlength','3');
+    $("#bedrooms").prop('maxlength','3');
+    $("#desc").prop('maxlength','5000');  
+
     
-    $("#capp").prop('maxlength','5');            
 
     $('#titolo').on('input', function() {
     var c = this.selectionStart,
-      r = /[^a-z0-9]/gi,
+      r = /[^a-z0-9_ ]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
@@ -44,7 +53,7 @@ $(function () {
     
     $('#price').on('input', function() {
     var c = this.selectionStart,
-      r = /[^0-9]/gi,
+      r = /[^0-9.]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
@@ -55,7 +64,7 @@ $(function () {
     
     $('#sup').on('input', function() {
     var c = this.selectionStart,
-      r = /[^0-9]/gi,
+      r = /[^0-9.]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
@@ -66,7 +75,7 @@ $(function () {
     
     $('#prov').on('input', function() {
     var c = this.selectionStart,
-      r = /[^a-z]/gi,
+      r = /[^a-z_ ]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
@@ -77,7 +86,7 @@ $(function () {
     
     $('#cit').on('input', function() {
     var c = this.selectionStart,
-      r = /[^a-z]/gi,
+      r = /[^a-z_ ]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
@@ -88,7 +97,7 @@ $(function () {
 
     $('#addr').on('input', function() {
     var c = this.selectionStart,
-      r = /[^a-z0-9]/gi,
+      r = /[^a-z0-9_ ]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
@@ -132,7 +141,7 @@ $(function () {
     
     $('#desc').on('input', function() {
     var c = this.selectionStart,
-      r = /[^a-z0-9]/gi,
+      r = /[^a-z0-9_ ]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
