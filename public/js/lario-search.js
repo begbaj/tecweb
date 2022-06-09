@@ -61,7 +61,6 @@ function showFields(){
             fields_container.addClass('closed');
             fields.hide();
         });
-
     }
 }
 
@@ -86,7 +85,6 @@ function showPerFields(){;
 
 $('#filter-form').submit(function() {
     $('#filter-form').find('input').each(function(elem){
-
           if (elem.val() === undefined || elem.val() === "") {
             elem.prop('name', 'empty_' + elem.attr('name'));
           } else {

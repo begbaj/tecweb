@@ -24,7 +24,6 @@ $(function(){
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 @endsection
 
 @section('content')

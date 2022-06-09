@@ -2,6 +2,11 @@
 
 @section('title', 'Homepage')
 
+
+@section('scripts')
+<script>
+</script>
+@endsection
 @section('content')
 
 @php
@@ -18,7 +23,7 @@
 <!-- Carousel (slideshow) -->
 <div class="container" >
     <div id="slideshow" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner rounded" style="height: 520px;">
+        <div class="carousel-inner rounded" style="height: 800px;">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="{{$file_1}}" alt="First slide">
             </div>
@@ -40,7 +45,7 @@
     </div>
 </div>
 <!-- Text Cloud -->
-<section class="jumbotron text-center rounded border mt-5 mb-5 pt-5 pb-5 ps-5 pe-5">
+<section class="jumbotron text-center cloud-container-lg my-5 p-5">
     <div class="container">
         <h1 class="jumbotron-heading">Kumuuzag é fatto per gli studenti</h1>
         <p class="lead text-muted">Con Kumuuzag la tua vita sarà finalmente semplice:
@@ -48,8 +53,9 @@
         nelle vicinanze della tua Università!</p>
     </div>
 </section>
+
 <!-- Array -->
-<div class="container py-2 bg-light">
+<div class="container my-5 py-2">
     <div class="d-flex flex-nowrap overflow-hidden">
     @isset($accomodations)
         @foreach ($accomodations as $accomodation)
@@ -60,10 +66,10 @@
     <a href="{{ route('catalog') }}" style="text-decoration: none;"> <p class="text-center mt-2 fs-2">Vai al catalogo</p></a>
 </div>
 <!-- Registrati -->
-<div class="container">
+<div class="container my-5">
     <p class="fs-1 text-center"> Registrati! </p>
     <div class="row align-items-start">    
-        <a href="{{ route('register', ['type' => 'locatore']) }}" class="col btn btn-secondary mt-2 me-2">
+        <a href="{{ route('register', ['type' => 'locatore']) }}" class="col cloud-btn-lg btn mt-2 me-2">
             <p class="fs-2">Locatore </p> 
             <ul>
                 <li>Metti in affito il tuo alloggio</li>
@@ -72,7 +78,7 @@
             </ul>
         </a>
    
-        <a href="{{ route('register',['type' => 'locatario']) }}" class="col btn btn-secondary mt-2 me-2">
+        <a href="{{ route('register',['type' => 'locatario']) }}" class="col cloud-btn-lg btn mt-2 me-2">
             <p class="fs-2">Locatario</p>
             <ul>
                 <li>Trova l'alloggio che fa al caso tuo</li>
@@ -83,19 +89,21 @@
     </div>
 </div>
 <!-- Aiuto -->
-<div class="container border rounded mt-5">
+<div class="container cloud-container-lg p-5 mt-5">
     <div class="row">
-        <div class="col">
-            <div class="row" >
+        <div class="col row-cols-1">
+            <div class="col" >
                 <p class="fs-1">Hai delle domande?</p>
             </div>
-            <div class="row" style="margin-top: 10em;">
-                <a href="{{ route('faq') }}" class="col align-self-end btn btn-primary mt-1 me-2 ms-2">Vai alle FAQs</a>
-                <a href="mailto:kumuuzag@gmail.com?Subject=Help%20request" target="_top" class="col mt-1 align-self-end btn btn-primary me-2 ms-2">Contattaci</a>
+            <div class="col row" style="margin-top: 10em;">
+                <a href="{{ route('faq') }}" class="col align-self-end btn btn-secondary mt-1 me-2 ms-2">Vai alle FAQs</a>
+                <a href="mailto:kumuuzag@gmail.com?Subject=Help%20request" target="_top" class="col mt-1 align-self-end btn btn-secondary me-2 ms-2">Contattaci</a>
             </div>
         </div>
-        <div class="col w-50 align-self-center">
-                <img src="img/brand/logo.png" class="ms-5 img-fluid p-5" width="350">
+        <div class="col">
+            <center>
+                <img src="img/brand/logo.png" class="img-fluid" style="height: 300px;">
+            </center>
         </div>
     </div>
 </div>

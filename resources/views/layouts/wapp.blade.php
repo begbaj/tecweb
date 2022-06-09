@@ -19,12 +19,10 @@
 </head>
 <body>
     <!-- HEADER -->
-    @include('components/navbar')
+    @include('components/navbar', ['nofix' => true])
 
     <!-- CONTENT -->
-    <div class="container bg-light mt-5 mb-5 pb-5 pt-5">
-        @yield('content')
-    </div>
+    @yield('content')
 
     <!-- FOOTER -->
     <div class="container">
