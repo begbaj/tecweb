@@ -6,6 +6,154 @@
 <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 <script>
 $(function () {
+    $("#titolo").prop('maxlength','100');      
+    $("#capp").prop('maxlength','5');  
+    $("#beds").prop('maxlength','5');
+    $("#bedrooms").prop('maxlength','5');
+    $("#price").prop('maxlength','8');
+    $("#sup").prop('maxlength','4');
+    $("#beds").prop('maxlength','3');
+    $("#bedrooms").prop('maxlength','3');
+    $("#desc").prop('maxlength','5000');  
+
+    
+
+    $('#titolo').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^a-z0-9_ ]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#etaminim').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#etamaxim').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });    
+    
+    $('#price').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9.]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#sup').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9.]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#prov').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^a-z_ ]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#cit').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^a-z_ ]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+
+    $('#addr').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^a-z0-9_ ]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#capp').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#beds').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });    
+    
+    $('#bedrooms').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^0-9]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    $('#desc').on('input', function() {
+    var c = this.selectionStart,
+      r = /[^a-z0-9_ ]/gi,
+      v = $(this).val();
+    if(r.test(v)) {
+        $(this).val(v.replace(r, ''));
+        c--;
+    }
+    this.setSelectionRange(c, c);
+    });
+    
+    
+    
+    
+    
     $("#tipo").on('change', function(event) {
        $.ajax({
            type:'GET',
@@ -72,7 +220,7 @@ function updateServs(data){
 <div class='row'>
     <div class="col mb-3">
         {{ Form::label('titolo', 'Titolo', ['class' => ' col-form-label',  'for'=>'titolo']) }}
-        {{ Form::text('titolo', $alloggio->titolo, ['class' => 'form-control'] )}}
+        {{ Form::text('titolo', $alloggio->titolo, ['id' =>'titolo', 'class' => 'form-control'] )}}
         @if ($errors->first('titolo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -101,7 +249,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('eta_min', 'Età minima', ['class' => ' col-form-label',  'for'=>'etamin']) }}
-        {{ Form::number('eta_min', $alloggio->eta_min, ['class' => 'form-control']) }}
+        {{ Form::text('eta_min', $alloggio->eta_min, ['id' =>'etaminim', 'class' => 'form-control']) }}
         @if ($errors->first('eta_min'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -114,7 +262,7 @@ function updateServs(data){
     </div>
     <div class="col mb-3">
         {{ Form::label('eta_max', 'Età massima', ['class' => ' col-form-label',  'for'=>'etamax']) }}
-        {{ Form::number('eta_max', $alloggio->eta_max,['class' => 'form-control'] ) }}
+        {{ Form::text('eta_max', $alloggio->eta_max,['id' =>'etamaxim', 'class' => 'form-control'] ) }}
         @if ($errors->first('eta_max'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -149,7 +297,7 @@ function updateServs(data){
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            {{ Form::number('prezzo', $alloggio->prezzo, ['class' => 'form-control']) }}
+            {{ Form::text('prezzo', $alloggio->prezzo, ['id' =>'price', 'class' => 'form-control']) }}
         </div>
         @if ($errors->first('prezzo'))
         <div class="d-flex justify-content-center">
@@ -163,7 +311,7 @@ function updateServs(data){
     </div>
     <div class="col mb-3">
         {{ Form::label('superficie', 'Superficie (mq)', ['class' => ' col-form-label',  'for'=>'surface']) }}
-        {{ Form::number('superficie', $alloggio->superficie, ['class' => 'form-control']) }}
+        {{ Form::text('superficie', $alloggio->superficie, ['id' =>'sup', 'class' => 'form-control']) }}
         @if ($errors->first('superficie'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -213,7 +361,7 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('provincia', 'Provincia', ['class' => ' col-form-label',  'for'=>'province']) }}
-        {{ Form::text('provincia', $alloggio->provincia, ['class' => 'form-control'] )}}
+        {{ Form::text('provincia', $alloggio->provincia, ['id' =>'prov','class' => 'form-control'] )}}
         @if ($errors->first('provincia'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -227,7 +375,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('citta', 'Città', ['class' => ' col-form-label',  'for'=>'city']) }}
-        {{ Form::text('citta', $alloggio->citta, ['class' => 'form-control'] )}}
+        {{ Form::text('citta', $alloggio->citta, ['id' =>'cit', 'class' => 'form-control'] )}}
         @if ($errors->first('citta'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -240,7 +388,7 @@ function updateServs(data){
     </div>
     <div class="col mb-3">
         {{ Form::label('indirizzo', 'Indirizzo', ['class' => ' col-form-label',  'for'=>'address']) }}
-        {{ Form::text('indirizzo', $alloggio->indirizzo, ['class' => 'form-control'] )}}
+        {{ Form::text('indirizzo', $alloggio->indirizzo, ['id' =>'addr', 'class' => 'form-control'] )}}
         @if ($errors->first('indirizzo'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -254,7 +402,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('cap', 'CAP', ['class' => ' col-form-label',  'for'=>'cap']) }}
-        {{ Form::text('cap', $alloggio->cap, ['class' => 'form-control'] )}}
+        {{ Form::text('cap', $alloggio->cap, ['id' =>'capp', 'class' => 'form-control'] )}}
         @if ($errors->first('cap'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -270,7 +418,7 @@ function updateServs(data){
 <div class="row">
     <div class="col mb-3">
         {{ Form::label('posti_letto', 'Posti Letto', ['class' => ' col-form-label',  'for'=>'bedrooms']) }}
-        {{ Form::number('posti_letto', $alloggio->posti_letto, ['class' => 'form-control'] ) }}
+        {{ Form::text('posti_letto', $alloggio->posti_letto, ['id' =>'beds', 'class' => 'form-control'] ) }}
         @if ($errors->first('posti_letto'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -284,7 +432,7 @@ function updateServs(data){
 
     <div class="col mb-3">
         {{ Form::label('camere', 'Camere', ['class' => ' col-form-label',  'for'=>'bedrooms']) }}
-        {{ Form::number('camere', $alloggio->camere, ['class' => 'form-control'] ) }}
+        {{ Form::text('camere', $alloggio->camere, ['id' =>'bedrooms', 'class' => 'form-control'] ) }}
         @if ($errors->first('camere'))
         <div class="d-flex justify-content-center">
             <div class="errors alert alert-danger d-flex  justify-content-center mt-3 pt-0 pb-0">
@@ -331,7 +479,7 @@ function updateServs(data){
     <div class="col mb-3">
         <div class="m-2">
         {{ Form::label('descrizione', 'Descrizione', ['class' => ' col-form-label',  'for'=>'desc']) }}
-        {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'form-control mt-2'] )}}
+        {{ Form::textarea('descrizione', $alloggio->descrizione, ['id' =>'desc', 'class' => 'form-control mt-2'] )}}
         </div>
         @if ($errors->first('descrizione'))
         <div class="d-flex justify-content-center">
