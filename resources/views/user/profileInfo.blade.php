@@ -118,20 +118,49 @@ $(function (){
                 <div class="d-flex align-items-center ps-5">
                     <h5>Nome:</h5>
                     {{ Form::text('nome', Auth::user()->nome, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'firstname', 'disabled']) }}
+                @if ($errors->first('nome'))
+                    <div class="d-flex justify-content-center">
+                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                        @foreach ($errors->get('nome') as $message)
+                        <div class="d-flex justify-content-center">{{ $message }}</div>
+                        @endforeach
+                          </div>
+                    </div> 
+                @endif                  
                 </div>
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Cognome:</h5>
                     {{ Form::text('cognome', Auth::user()->cognome, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'lastname', 'disabled']) }}
+                @if ($errors->first('cognome'))
+                    <div class="d-flex justify-content-center">
+                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                        @foreach ($errors->get('cognome') as $message)
+                        <div class="d-flex justify-content-center">{{ $message }}</div>
+                        @endforeach
+                          </div>
+                    </div> 
+                @endif                   
                 </div>
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Data di Nascita:</h5>
                     <div class="input-daterange col-sm-7 ps-1" id="datepicker">
-                    {{ Form::text('data_nascita', substr(Auth::user()->data_nascita, 0, -8), ['class' => 'input-sm form-control ps-1 text-muted d-flex align-items-center', 'id' => 'birthday', 'disabled']) }} 
+                    {{ Form::text('data_nascita', date("d/m/Y",strtotime(str_replace('/', '-',Auth::user()->data_nascita))), ['class' => 'input-sm form-control ps-1 text-muted d-flex align-items-center', 'id' => 'birthday', 'disabled']) }} 
                     </div>
+                @if ($errors->first('data_nascita'))
+                    <div class="d-flex justify-content-center">
+                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                        @foreach ($errors->get('data_nascita') as $message)
+                        <div class="d-flex justify-content-center">{{ $message }}</div>
+                        @endforeach
+                          </div>
+                    </div> 
+                @endif    
                 </div>
                 
+                
+                               
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Genere:</h5>
                     {{ Form::select('genere', ['m' => "Maschio", 'f' => "Femmina", 'b' => "Non Binario"], Auth::user()->genere, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'gender', 'disabled']) }}
@@ -165,7 +194,7 @@ $(function (){
                 
                 <div id="passForm" class="d-flex align-items-center ps-5 pt-4 visually-hidden">
                     <h5>Conferma Password:</h5>
-                    {{ Form::text('password_confirmation', ' ', ['class' => 'ps-1 lead d-flex align-items-center ms-2 ']) }}
+                    {{ Form::text('password_confirmation', '', ['class' => 'ps-1 lead d-flex align-items-center ms-2 ']) }}
                 @if ($errors->first('password'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-2 pt-0 pb-0">

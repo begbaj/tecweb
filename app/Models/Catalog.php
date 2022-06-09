@@ -183,7 +183,7 @@ class Catalog extends Model
                      " WHEN " . $thenFourth .   " THEN 4" .
                      " WHEN " . $thenFifth .    " THEN 5" .
                      " ELSE 10 END")
-                ->paginate(15);
+                ->paginate(15)->appends(request()->query());
     }
 
 }
