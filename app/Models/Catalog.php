@@ -95,7 +95,7 @@ class Catalog extends Model
             $thenFirst .= " AND ( ";
             $first = true;
             foreach ($filters->servizi as $value) { 
-                $thenFirst .= (!$first? " AND " : "") . "id_servizi LIKE '%" . $value . "%'";
+                $thenFirst .= (!$first? " AND " : "") . "id_servizi LIKE '".$value.",%' OR id_servizi LIKE '%,".$value.",%' OR id_servizi LIKE '%,".$value."' OR id_servizi LIKE '".$value."'";
                 $first = false;
             }
             $thenFirst .= ") ";
@@ -119,7 +119,7 @@ class Catalog extends Model
             $thenSecond .= " AND ( ";
             $first = true;
             foreach ($filters->servizi as $value) { 
-                $thenSecond .= (!$first? " AND " : "") . "id_servizi LIKE '%" . $value . "%'";
+                $thenSecond .= (!$first? " AND " : "") . "id_servizi LIKE '".$value.",%' OR id_servizi LIKE '%,".$value.",%' OR id_servizi LIKE '%,".$value."' OR id_servizi LIKE '".$value."'";
                 $first = false;
             }
             $thenSecond .= ") ";
@@ -141,7 +141,7 @@ class Catalog extends Model
             $thenThird .= " AND ( ";
             $first = true;
             foreach ($filters->servizi as $value) { 
-                $thenThird .= (!$first? " AND " : "") . "id_servizi LIKE '%" . $value . "%'";
+                $thenThird .= (!$first? " AND " : "") . "id_servizi LIKE '".$value.",%' OR id_servizi LIKE '%,".$value.",%' OR id_servizi LIKE '%,".$value."' OR id_servizi LIKE '".$value."'";
                 $first = false;
             }
             $thenThird .= ") ";
@@ -160,7 +160,7 @@ class Catalog extends Model
             $thenFourth .= " AND ( ";
             $first = true;
             foreach ($filters->servizi as $value) { 
-                $thenFourth .= (!$first? " AND " : "") . "id_servizi LIKE '%" . $value . "%'";
+                $thenFourth .= (!$first? " AND " : "") . "id_servizi LIKE '".$value.",%' OR id_servizi LIKE '%,".$value.",%' OR id_servizi LIKE '%,".$value."' OR id_servizi LIKE '".$value."'";
                 $first = false;
             }
             $thenFourth .= ") ";
