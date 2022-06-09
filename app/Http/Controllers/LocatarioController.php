@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\Servizio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -25,7 +26,9 @@ class LocatarioController extends Controller
         Log::debug('LOCATARIO CIAO');
 
         $this->_accomodations = new Catalog;
+        $this->_servizi = new Servizio;
         $accomodations = $this->_accomodations->search($filters);
+
         return view('locatario')
             ->with('accomodations', $accomodations);
     }
