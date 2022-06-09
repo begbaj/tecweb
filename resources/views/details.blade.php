@@ -66,6 +66,10 @@ $(document).ready(function () {
 			@elseif ($alloggio->confermato==false AND count($opzioni)>0)
 				<h3>Il tuo alloggio e' stato opzionato, <a href="#opzioni">controlla ora!</a>
 			@endif
+		@elseif ($alloggio->confermato)
+				<h3 class="text-danger"><strong>Questo alloggio è già stato assegnato.</strong></h3>
+		@else
+				<h3 class="text-success"><strong>Alloggio disponibile.</strong></h3>
 		@endif
             </div>
             @auth

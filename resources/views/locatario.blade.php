@@ -23,7 +23,7 @@ $(function(){
 @endsection
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 @endsection
 
 @section('content')
@@ -50,7 +50,7 @@ $(function(){
             <div id="open_fields_btn" class="col-sm-1 mx-2"><img onclick="showFields()" src="{{ asset('img/svg/chevron-down.svg') }}" ></img></div>
         </div>
 
-        <div class="fields-container more-fields row closed">
+        <div class="fields-container more-fields row closed" style="height: 0px;">
             <div class="more-fields col row cloud-container-lg p-2 m-2 ">
                 <div class="more-fields col-1 input-group form-outline">
                     <span class="input-group-text"> da </span>
