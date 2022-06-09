@@ -14,14 +14,17 @@
                 <small class='text-muted'> @if ($accomodation->updated_at != null) Ultimo aggiornamento: {{ $accomodation->updated_at}} @else Alloggio mai aggiornato @endif </small>
 		@endif
              </p>
+		@if (auth()->user()->hasRole('locatario'))
+            	<a class="btn btn-primary me-2" href="{{ route('catalog.accom.details', [$accomodation->id]) }}">Visualizza dettagli</a>
+		@endif
           </div>
        </div>
     </div>
+    @if (auth()->user()->hasRole('locatore'))
     <div class="row g-0 bg-light rounded border py-3 px-2 justify-content-start"> 
         <div class="col-4">
             <a class="d-flex btn btn-primary me-2" href="{{ route('catalog.accom.details', [$accomodation->id]) }}">Visualizza</a>
         </div>
-	@if (auth()->user()->hasRole('locatore'))
         <div class="col-5">
             @if ($accomodation->confermato == true)
             <a class=" btn btn-secondary mx-2 disabled">Modifica</a>

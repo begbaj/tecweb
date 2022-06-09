@@ -52,16 +52,16 @@ $(document).ready(function () {
 			
 		@if (auth()->user()->hasRole('locatario'))
 			@if ($alloggio->confermato==true AND count($opzioni)>0)
-				<h3 class="text-success"><strong>La tua richiesta e' stata accettata. 
+				<h3 class="text-success"><strong>La tua richiesta è stata accettata. 
 				<a href="{{route('chat.contract',[$opzioni->first()->id_alloggio, $opzioni->first()->id_mittente])}}">Vedi contratto</a></strong></h3>
 			@elseif ($alloggio->confermato==true AND count($opzioni)==0)
-				<h3 class="text-danger"><strong>Questo alloggio e' gia stato assegnato.</strong></h3>
+				<h3 class="text-danger"><strong>Questo alloggio è già stato assegnato.</strong></h3>
 			@elseif ($alloggio->confermato==false AND count($opzioni)>0)
-				<h3 class="text-success"><strong>Hai gia opzionato questo alloggio.</strong></h3>
+				<h3 class="text-success"><strong>Hai già opzionato questo alloggio.</strong></h3>
 			@endif
 		@elseif ($alloggio->id_locatore==auth()->user()->id)
 			@if ($alloggio->confermato==true AND count($opzioni)>0)
-				<h3 class="text-success"><strong>Hai gia' assegnato questo alloggio. 
+				<h3 class="text-success"><strong>Hai già assegnato questo alloggio. 
 				<a href="{{route('chat.contract',[$opzioni->first()->id_alloggio, $opzioni->first()->id_mittente])}}">Vedi contratto</a></strong></h3>
 			@elseif ($alloggio->confermato==false AND count($opzioni)>0)
 				<h3>Il tuo alloggio e' stato opzionato, <a href="#opzioni">controlla ora!</a>
@@ -251,7 +251,10 @@ $(document).ready(function () {
     @if (auth()->user()->id == $alloggio->id_locatore)
 	<div id="opzioni" class="container mt-2 pt-3">
     	@if ($alloggio->confermato==false)
-		<h3><center><strong>Opzioni ricevute</strong><center></h5>
+		<h3><center><strong>Opzioni ricevute</strong><center></h3>
+		@if(count($opzioni)==0)
+		<h5><center>Nessuna opzione ricevuta, torna più tardi!<center></h5>
+		@endif
 		<div class="card-columns">
 		@foreach ($opzioni as $messaggio)
 			@include ('components.optionCard', ['messaggio' => $messaggio])
