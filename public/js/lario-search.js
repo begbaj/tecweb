@@ -48,6 +48,7 @@ function showFields(){
     
     if( fields_container.hasClass('closed')){
         $('#open_fields_btn>img').addClass('rotate-180');
+        $('#open_fields_btn>img').removeClass('rotate-0');
         fields.show();
         showPerFields();
         fields_container.removeClass('closed');
@@ -55,6 +56,7 @@ function showFields(){
         });
     }else{
         $('#open_fields_btn>img').removeClass('rotate-180');
+        $('#open_fields_btn>img').addClass('rotate-0');
         fields_container.animate({height: '0px'}, 'slow', function (){
             fields_container.addClass('closed');
             fields.hide();

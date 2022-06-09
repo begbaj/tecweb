@@ -51,7 +51,8 @@ class LocatoreController extends Controller
         $accom->data_max = date("Y-m-d",strtotime(str_replace('/', '-',$request->data_max)));
         $accom->save();
 
-        $accomid = Alloggio::latest()->get()->first()->id; // TODO: MOLTO RISCHIOSA, BISGONA TROVARE UN'ALTRA SOLUZIONE
+        $accomid = Alloggio::where('created_at', $accom->created_at)->get()->first()->id; // TODO: MOLTO RISCHIOSA, BISGONA TROVARE UN'ALTRA SOLUZIONE
+
         if (isset($request->servizi))
             foreach($request->servizi as $serv){
                 $servs = new Inclusione;
