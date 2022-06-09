@@ -81,9 +81,9 @@ $(document).ready(function () {
 		@endif
             </div>
             @auth
-                @if(Auth::user()->id == $alloggio->id_locatore && $alloggio->confermato == false)
+                @if(auth()->user()->hasRole('locatore') && $alloggio->confermato == false)
                     <a href="{{ route('lore.accom.edit', ['id'=>$alloggio->id]) }}"> <button id = "modifybutton" class="btn btn-secondary"> Modifica annuncio</button> </a>
-                @else
+                @elseif (auth()->user()->hasRole('locatore'))
                     <button id = "modifybutton" class="btn btn-secondary disabled"> Modifica annuncio</button> </a>
                 @endif
             @endauth
@@ -115,6 +115,10 @@ $(document).ready(function () {
                     <div class="col-sm-auto p-2 m-2 lead">
                         Tipologia Alloggio:
                         @if ($alloggio->tipo == 'posto_letto') Posto Letto
+                        <br>
+                        N° Camere: {{$alloggio->camere}}
+                        <br>
+                        In camera @if($alloggio->posti_letto==1) singola. @else doppia. @endif                       
                         @else 
                         Appartamento 
                         <br>
