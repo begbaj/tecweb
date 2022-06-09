@@ -51,19 +51,17 @@ class Catalog extends Model
         Log::debug('LOCATARIO DATAMIN: ' . $filters->data_min);
         $data_min = date("Y-m-d",strtotime(str_replace('/', '-',$filters->data_min)));
         $data_max = date("Y-m-d",strtotime(str_replace('/', '-',$filters->data_max)));
-        
-
 
         $thenFirst = "citta LIKE '" . ("" != $filters->luogo ? $filters->luogo . " %" : "%") . "' " .
-            (("" != $filters->tipo) ?       "AND tipo = '" . $filters->tipo ."' " : "") .
-            (("" != $filters->eta_min) ?    "AND eta_min = '" . $filters->eta_min ."' " : "") .
-            (("" != $filters->eta_max) ?    "AND eta_max = '" . $filters->eta_max ."' " : "") .
-            (("" != $filters->sesso) ?      "AND sesso = '" . $filters->sesso ."' "  : "") .
-            (("" != $filters->prezzo_max) ? "AND prezzo <= '" . $filters->prezzo_max."' "  : "") .
-            (("" != $filters->prezzo_min) ? "AND prezzo >= '" . $filters->prezzo_min."' "  : "") .
-            (("" != $filters->data_min) ?   "AND data_min = '" . $data_min . "' "   : "") .
-            (("" != $filters->data_max) ?   "AND data_max = '" . $data_max . "' "  : "") .
-            (("" != $filters->camere) ?     "AND camere = '" . $filters->camere."' "  : "") .
+            (("" != $filters->tipo) ?        "AND tipo = '"     . $filters->tipo ."' " : "") .
+            (("" != $filters->eta_min) ?     "AND eta_min = '"  . $filters->eta_min ."' " : "") .
+            (("" != $filters->eta_max) ?     "AND eta_max = '"  . $filters->eta_max ."' " : "") .
+            (("" != $filters->sesso) ?       "AND sesso = '"    . $filters->sesso ."' "  : "") .
+            (("" != $filters->prezzo_max) ?  "AND prezzo <= '"  . $filters->prezzo_max."' "  : "") .
+            (("" != $filters->prezzo_min) ?  "AND prezzo >= '"  . $filters->prezzo_min."' "  : "") .
+            (("" != $filters->data_min) ?    "AND data_min = '" . $data_min . "' "   : "") .
+            (("" != $filters->data_max) ?    "AND data_max = '" . $data_max . "' "  : "") .
+            (("" != $filters->camere) ?      "AND camere = '"   . $filters->camere."' "  : "") .
             (("" != $filters->posti_letto) ? "AND posti_letto = '" . $filters->posti_letto."' "  : "");
 
         if(isset($filters->servizi))
@@ -100,6 +98,7 @@ class Catalog extends Model
             }
             $thenSecond .= ") ";
         }
+
         $thenThird = "citta LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
             (("" != $filters->eta_min) ? "AND eta_min >= '" . $filters->eta_min ."' " : "") .
             (("" != $filters->eta_max) ? "AND eta_max <= '" . $filters->eta_max ."' " : "") .
@@ -140,30 +139,24 @@ class Catalog extends Model
             }
             $thenFourth .= ") ";
         }
-        $thenFifth = " CONCAT(citta, ' ' , provincia, ' ', indirizzo, ' ', cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
-            (("" != $filters->eta_min) ? "OR eta_min >= '" . $filters->eta_min ."' " : "") .
-            (("" != $filters->eta_max) ? "OR eta_max <= '" . $filters->eta_max ."' " : "") .
-            (("" != $filters->sesso) ? "OR sesso = '" . $filters->sesso ."' "  : "") .
-            (("" != $filters->prezzo_max) ? "OR prezzo <= '" . $filters->prezzo_max."' "  : "") .
-            (("" != $filters->prezzo_min) ? "OR prezzo >= '" . $filters->prezzo_min."' "  : "") .
-            (("" != $filters->camere) ? "OR camere >= '" . $filters->camere."' "  : "") .
-            (("" != $filters->posti_letto) ? "OR posti_letto >= '" . $filters->posti_letto."' "  : "");
-
-
-        Log::debug('LOCATARIO FIRST: '  . $thenFirst);
-        Log::debug('LOCATARIO SECOND: ' . $thenSecond);
-        Log::debug('LOCATARIO THIRD: '  . $thenThird);
-        Log::debug('LOCATARIO FOURTH: ' . $thenFourth);
-        Log::debug('LOCATARIO FIFTH: '  . $thenFifth);
+        $thenFifth = " (CONCAT(citta, ' ' , provincia, ' ', indirizzo, ' ', cap) LIKE '" . ("" != $filters->luogo ? "%" . $filters->luogo . "%" : "%") . "' " .
+            (("" != $filters->eta_min) ?    " OR eta_min >= '" . $filters->eta_min ."' " : "") .
+            (("" != $filters->eta_max) ?    " OR eta_max <= '" . $filters->eta_max ."' " : "") .
+            (("" != $filters->sesso) ?      " OR sesso = '" . $filters->sesso ."' "  : "") .
+            (("" != $filters->prezzo_max) ? " OR prezzo <= '" . $filters->prezzo_max."' "  : "") .
+            (("" != $filters->prezzo_min) ? " OR prezzo >= '" . $filters->prezzo_min."' "  : "") .
+            (("" != $filters->camere) ?     " OR camere >= '" . $filters->camere."' "  : "") .
+            (("" != $filters->posti_letto) ? " OR posti_letto >= '" . $filters->posti_letto."' "  : "") . ") ".
+            (("" != $filters->tipo) ?        " AND tipo = '"     . $filters->tipo ."' " : "");
 
         return AlloggioServiziView::select('*')
                  ->orderByRaw("CASE " .
-                     " WHEN " . $thenFirst . " THEN 1" .
-                     " WHEN " . $thenSecond . " THEN 2" .
-                     " WHEN " . $thenThird . " THEN 3" .
-                     " WHEN " . $thenFourth . " THEN 4" .
-                     " WHEN " . $thenFifth . " THEN 5" .
-                     " ELSE 10 END ASC")
+                     " WHEN " . $thenFirst .    " THEN 1" .
+                     " WHEN " . $thenSecond .   " THEN 2" .
+                     " WHEN " . $thenThird .    " THEN 3" .
+                     " WHEN " . $thenFourth .   " THEN 4" .
+                     " WHEN " . $thenFifth .    " THEN 5" .
+                     " ELSE 10 END")
                 ->paginate(15);
     }
 
