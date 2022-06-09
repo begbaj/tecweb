@@ -68,7 +68,8 @@
 
 <!-- Array -->
 <div class="container my-5 py-2">
-    <div class="d-flex flex-nowrap overflow-hidden">
+    <center><h1>Gli annunci pi&ugrave; recenti</h1></center>
+    <div class="d-flex flex-nowrap overflow-hidden pb-5 mt-4 m-2">
     @isset($accomodations)
         @foreach ($accomodations as $accomodation)
             @include('components/accomodationCard', [ 'accomodations' => $accomodation ] )
@@ -108,6 +109,7 @@
                 <p class="fs-1">Hai delle domande?</p>
             </div>
             <div class="col row" style="margin-top: 10em;">
+                <a href="doc/tesitecweb.pdf" target="_blank" class="col align-self-end btn btn-secondary mt-1 me-2 ms-2">Documentazione</a>
                 <a href="{{ route('faq') }}" class="col align-self-end btn btn-secondary mt-1 me-2 ms-2">Vai alle FAQs</a>
                 <a href="mailto:kumuuzag@gmail.com?Subject=Help%20request" target="_top" class="col mt-1 align-self-end btn btn-secondary me-2 ms-2">Contattaci</a>
             </div>

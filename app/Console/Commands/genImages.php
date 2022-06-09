@@ -55,7 +55,7 @@ class genImages extends Command
                 }
              */
 
-            echo 'moving images for ' . $alldir . "\n";
+            echo 'copying images for ' . $alldir . "\n";
 
             $stocks = public_path('img/stock-images/*'); // the '*' at the end is used by the glob function below to pattern match
             $file = glob($stocks); //returns all the files in img/stock-images
