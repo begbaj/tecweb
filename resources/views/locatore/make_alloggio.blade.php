@@ -131,7 +131,7 @@ $(function () {
     
     $('#desc').on('input', function() {
     var c = this.selectionStart,
-      r = /[^0-9]/gi,
+      r = /[^a-z0-9]/gi,
       v = $(this).val();
     if(r.test(v)) {
         $(this).val(v.replace(r, ''));
