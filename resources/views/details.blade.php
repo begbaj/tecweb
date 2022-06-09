@@ -267,12 +267,14 @@ $(document).ready(function () {
 			@include ('components.optionCard', ['messaggio' => $opzioni->first()])
 		@endif
 		<div>
-		<h3><center><strong>Altre opzioni</strong><center></h5>
-		<div class="card-columns">
-		@foreach ($opzioni->splice(1) as $messaggio)
-			@include ('components.optionCard', ['messaggio' => $messaggio])
-		@endforeach
-		<div>
+		@if(count($opzioni)>1){
+			<h3><center><strong>Altre opzioni</strong><center></h5>
+			<div class="card-columns">
+			@foreach ($opzioni->splice(1) as $messaggio)
+				@include ('components.optionCard', ['messaggio' => $messaggio])
+			@endforeach
+			<div>
+		@endif
 	@endif
 	</div>
     @endif
