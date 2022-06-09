@@ -18,7 +18,7 @@ $(document).ready(function () {
 	if(buttonOpzione.prop('disabled')==true){
 		var disabled=true;
 	}
-
+        
 	buttonMessaggio.click(function () {	
 		containerMessaggio.removeClass("visually-hidden")
 		buttonMessaggio.prop("disabled", true)
@@ -49,7 +49,6 @@ $(document).ready(function () {
 });
 </script>
 @endsection
-
 @section('content')
 <div class="container-fluid bd-light">
     <div class="container row">
@@ -82,8 +81,10 @@ $(document).ready(function () {
 		@endif
             </div>
             @auth
-                @if(Auth::user()->id == $alloggio->id_locatore )
-                    <a href="{{ route('lore.accom.edit', ['id'=>$alloggio->id]) }}"> <button class="btn btn-secondary"> Modifica annuncio</button> </a>
+                @if(Auth::user()->id == $alloggio->id_locatore && $alloggio->confermato == false)
+                    <a href="{{ route('lore.accom.edit', ['id'=>$alloggio->id]) }}"> <button id = "modifybutton" class="btn btn-secondary"> Modifica annuncio</button> </a>
+                @else
+                    <button id = "modifybutton" class="btn btn-secondary disabled"> Modifica annuncio</button> </a>
                 @endif
             @endauth
         </div>
