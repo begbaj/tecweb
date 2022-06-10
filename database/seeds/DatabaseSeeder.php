@@ -164,15 +164,15 @@ class DatabaseSeeder extends Seeder
                 'tipo' => 'appartamento', 'provincia' => 'Ancona', 'citta' => 'Ancona', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 60130, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 1,
                 'created_at' => date("2022-05-07")],            
             ['id' => '3','titolo' => 'Alloggio Rosa', 'descrizione' => 'Questo alloggio ha delle stanze veramente spaziose e confortevoli',
-                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 300.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2020-05-05"), 'data_max' => date("2024-05-05"), 
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 300.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 1, 'data_min' => date("2020-05-05"), 'data_max' => date("2024-05-05"), 
                 'tipo' => 'appartamento', 'provincia' => 'Torino', 'citta' => 'Torino', 'indirizzo' => 'via Rossa, 56', 'CAP' => 49393, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 5,
                 'created_at' => date("2021-05-08")],
             ['id' => '4','titolo' => 'Alloggio Spazioso', 'descrizione' => 'Questo alloggio è un paradiso per gli studenti, devi assolutamente opzionarlo!',
-                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 50.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 1, 'data_min' => date("2022-05-07"), 'data_max' => date("2022-05-09"), 
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 50.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2022-05-07"), 'data_max' => date("2022-05-09"), 
                 'tipo' => 'posto_letto', 'provincia' => 'Torino', 'citta' => 'Milano', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 70492, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 6,
                 'created_at' => date("2022-05-05")],
             ['id' => '5','titolo' => 'Alloggio Stupendo', 'descrizione' => 'Questo alloggio rispetta proprio la vita di uno studente, è veramente incantevole',
-                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 667.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 1, 'data_min' => date("2022-05-09"), 'data_max' => date("2023-05-05"), 
+                'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 667.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2022-05-09"), 'data_max' => date("2023-05-05"), 
                 'tipo' => 'posto_letto', 'provincia' => 'Roma', 'citta' => 'Roma', 'indirizzo' => 'via Flavia, 22', 'CAP' => 50330, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 1,
                 'created_at' => date("2022-05-05")],            
             ['id' => '6', 'titolo' => 'Alloggio Incredibile', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
@@ -280,7 +280,7 @@ class DatabaseSeeder extends Seeder
 	
          
         DB::table('messaggi')->insert([
-            ['id_mittente'=>'2', 'id_destinatario'=>'1', 'testo' => 'Salve, sono Locatario Di Prova e vorrei affittare il tuo alloggio.', 'id_alloggio' => 2 , 'data_conferma_opzione' => date("2022-05-05 19:00:00"),'created_at' => date("2022-05-05 14:00:00")],
+            ['id_mittente'=>'2', 'id_destinatario'=>'1', 'testo' => 'Salve, sono Locatario Di Prova e vorrei affittare il suo alloggio.', 'id_alloggio' => 2 , 'data_conferma_opzione' => date("2022-05-05 19:00:00"),'created_at' => date("2022-05-05 14:00:00")],
             ['id_mittente'=>'1', 'id_destinatario'=>'2', 'testo' => "La tua richiesta per l'alloggio 2 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.", 'id_alloggio' => NULL , 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05 19:00:00")],
             ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => 'Salve, mi può fare uno sconto?', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
             ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Salve, no', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-06")],
