@@ -59,6 +59,10 @@ class Catalog extends Model
 	    return $alloggi->get();
     }
 
+    public function getLocatore($id_alloggio){
+        return Alloggio::where('alloggi.id', $id_alloggio)->join('users','alloggi.id_locatore', '=', 'users.id')->select('users.*')->get()->first();
+    }
+
     public function search($filters){
         if(
             "" != $filters->luogo and

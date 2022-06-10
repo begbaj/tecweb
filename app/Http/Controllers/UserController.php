@@ -36,6 +36,9 @@ class UserController extends Controller
     }
     
     public function editProfile(Request $request){
+        if(Auth::user()->id != $request->id){
+            return abort(403);
+        }
         $user = User::find($request->id);
 
         $v = Validator::make($request->all(), [

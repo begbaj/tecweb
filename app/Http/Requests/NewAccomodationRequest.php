@@ -33,7 +33,7 @@ class NewAccomodationRequest extends FormRequest
             'prezzo' => 'required|numeric|min:0',
             'superficie' => 'required|numeric|min:0',
             'data_min' => 'required|date_format:d/m/Y',
-            'data_max' => 'required|date_format:d/m/Y|after:start-date',
+            'data_max' => 'required|date_format:d/m/Y|after:data_min',
             'provincia' => 'required|string|max:50',
             'citta' => 'required|string|max:50',
             'indirizzo' => 'required|string|max:100',
