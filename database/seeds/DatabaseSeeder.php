@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
                     'password' => Hash::make('rahmi00elmechri'), 'ruolo' => 'locatario','created_at' => date("2022-06-06"),
                     'updated_at' => date("Y-m-d H:i:s")],
                 ['id' => '5','nome' => 'Began', 'cognome' => 'Bajrami', 'data_nascita' => $faker->dateTimeBetween('-50 years', '-18 years'), 'genere' => 'm', 'username' => 'begbaj00',
-                    'password' => Hash::make('begbajbegan'), 'ruolo' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
+                    'password' => Hash::make('begbajbegan'), 'ruolo' => 'locatore', 'created_at' => date("Y-m-d H:i:s"),
                     'updated_at' => date("Y-m-d H:i:s")],
                 ['id' => '6','nome' => 'Chiara', 'cognome' => 'Gobbi', 'data_nascita' => date("2001/01/18"), 'genere' => 'f', 'username' => 'chiaragobbi01',
                     'password' => Hash::make('chiaragobbi01'), 'ruolo' => 'locatore', 'created_at' => date("Y-m-d H:i:s"),
@@ -199,7 +199,7 @@ class DatabaseSeeder extends Seeder
                 'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 667.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2022-05-09"), 'data_max' => date("2023-05-05"), 
                 'tipo' => 'posto_letto', 'provincia' => 'Roma', 'citta' => 'Roma', 'indirizzo' => 'via Flavia, 22', 'CAP' => 50330, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 1,
                 'created_at' => date("2022-05-05")],            
-            ['id' => '12', 'titolo' => 'Alloggio Incredibile', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, è inoltre presente area fumatori',
+            ['id' => '12', 'titolo' => 'Alloggio Incredibile', 'descrizione' => 'Questo alloggio contiene delle stanze molto spazionse e letti molto confortevoli, La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.è inoltre presente area fumatori',
                 'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 140.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2022-05-05"), 'data_max' => date("2023-05-05"), 
                 'tipo' => 'appartamento', 'provincia' => 'Ancona', 'citta' => 'Ancona', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 60130, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 6,
                 'created_at' => date("2020-05-06")],
@@ -210,7 +210,7 @@ class DatabaseSeeder extends Seeder
             ['id' => '14','titolo' => 'Alloggio Rosa', 'descrizione' => 'Questo alloggio ha delle stanze veramente spaziose e confortevoli',
                 'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 300.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2020-05-05"), 'data_max' => date("2024-05-05"), 
                 'tipo' => 'appartamento', 'provincia' => 'Torino', 'citta' => 'Torino', 'indirizzo' => 'via Rossa, 56', 'CAP' => 49393, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 5,
-                'created_at' => date("2021-05-08")],
+                'created_at' => date("2021-05-08")],La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.
             ['id' => '15','titolo' => 'Alloggio Spazioso', 'descrizione' => 'Questo alloggio è un paradiso per gli studenti, devi assolutamente opzionarlo!',
                 'eta_min' => 18, 'eta_max' => 25, 'prezzo' => 50.50, 'sesso' => 'm', 'superficie' => 100, 'confermato' => 0, 'data_min' => date("2022-05-07"), 'data_max' => date("2022-05-09"), 
                 'tipo' => 'posto_letto', 'provincia' => 'Torino', 'citta' => 'Milano', 'indirizzo' => 'via Breccie Bianche, 22', 'CAP' => 70492, 'posti_letto' => 5, 'camere' => 4, 'id_locatore' => 6,
@@ -235,17 +235,17 @@ class DatabaseSeeder extends Seeder
             ['id_alloggio'=>'3', 'id_servizio'=>'23', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'3', 'id_servizio'=>'22', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'4', 'id_servizio'=>'8', 'created_at' => date("2022-05-05")],
-            ['id_alloggio'=>'4', 'id_servizio'=>'7', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'4', 'id_servizio'=>'7', 'created_at' => date("2022-05-05")],La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.
             ['id_alloggio'=>'4', 'id_servizio'=>'5', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'5', 'id_servizio'=>'12', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'5', 'id_servizio'=>'14', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'6', 'id_servizio'=>'1', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'6', 'id_servizio'=>'2', 'created_at' => date("2022-05-05")],
-            ['id_alloggio'=>'6', 'id_servizio'=>'3', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'6', 'id_servizio'=>'3', 'created_at' => date("2022-05-05")],La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.
             ['id_alloggio'=>'6', 'id_servizio'=>'8', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'6', 'id_servizio'=>'9', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'6', 'id_servizio'=>'11', 'created_at' => date("2022-05-05")],
-            ['id_alloggio'=>'7', 'id_servizio'=>'1', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'7', 'id_servizio'=>'1', 'created_at' => date("2022-05-05")],La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.
             ['id_alloggio'=>'7', 'id_servizio'=>'2', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'7', 'id_servizio'=>'17', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'7', 'id_servizio'=>'19', 'created_at' => date("2022-05-05")],
@@ -265,7 +265,7 @@ class DatabaseSeeder extends Seeder
             ['id_alloggio'=>'12', 'id_servizio'=>'9', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'12', 'id_servizio'=>'11', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'13', 'id_servizio'=>'1', 'created_at' => date("2022-05-05")],
-            ['id_alloggio'=>'13', 'id_servizio'=>'2', 'created_at' => date("2022-05-05")],
+            ['id_alloggio'=>'13', 'iLa tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.d_servizio'=>'2', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'13', 'id_servizio'=>'17', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'13', 'id_servizio'=>'19', 'created_at' => date("2022-05-05")],
             ['id_alloggio'=>'14', 'id_servizio'=>'23', 'created_at' => date("2022-05-05")],
@@ -282,10 +282,10 @@ class DatabaseSeeder extends Seeder
         DB::table('messaggi')->insert([
             ['id_mittente'=>'2', 'id_destinatario'=>'1', 'testo' => 'Salve, sono Locatario Di Prova e vorrei affittare il suo alloggio.', 'id_alloggio' => 2 , 'data_conferma_opzione' => date("2022-05-05 19:00:00"),'created_at' => date("2022-05-05 14:00:00")],
             ['id_mittente'=>'1', 'id_destinatario'=>'2', 'testo' => "La tua richiesta per l'alloggio 2 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.", 'id_alloggio' => NULL , 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05 19:00:00")],
-            ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => 'Salve, mi può fare uno sconto?', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
-            ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Salve, no', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-06")],
-            ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Vorrei affittare questo alloggio, buona giornata', 'id_alloggio' => 3, 'data_conferma_opzione' => date("2022-05-05 18:14:22"),'created_at' => date("2022-05-05 9:30:30")],
-            ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => "La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.", 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05 18:14:22")],
+            ['id_mittente'=>'7', 'id_destinatario'=>'5', 'testo' => 'Salve, mi può fare uno sconto?', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
+            ['id_mittente'=>'5', 'id_destinatario'=>'7', 'testo' => 'Salve, no', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-06")],
+            ['id_mittente'=>'7', 'id_destinatario'=>'5', 'testo' => 'Vorrei affittare questo alloggio, buona giornata', 'id_alloggio' => 3, 'data_conferma_opzione' => date("2022-05-05 18:14:22"),'created_at' => date("2022-05-05 9:30:30")],
+            ['id_mittente'=>'5', 'id_destinatario'=>'7', 'testo' => "La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.", 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05 18:14:22")],
         ]);       
 /*
 	$alloggi = Alloggio::all()->pluck('id')->toArray();
