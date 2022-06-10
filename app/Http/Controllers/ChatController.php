@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Resources\Messaggio;
 use App\Models\Chat;
 use App\Http\Requests\NewMessageRequest;
+use App\Models\Catalog;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rented;
+use App\Models\Resources\Alloggio;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Foundation\Auth\User;
 
 class ChatController extends Controller
 {
@@ -58,13 +61,15 @@ class ChatController extends Controller
     {
         $chat = new Chat;
         $rented = new Rented;
+        $catalog = new Catalog;
         $info_alloggio = $rented->select_fields($id_alloggio);
         $locatario_info = $chat->get_locatario_info($id_locatario);
+        $locatore = $catalog->getLocatore($id_alloggio);
          $data = 
          [
-            'id_locatore' => Auth::user()->id,
-            'nome_locatore' => Auth::user()->nome,
-            'cognome_locatore' => Auth::user()->cognome,
+            'id_locatore' => $locatore->id,
+            'nome_locatore' => $locatore->nome,
+            'cognome_locatore' => $locatore->cognome,
             'id_locatario' => $locatario_info->id,
             'nome_locatario' => $locatario_info->nome,
             'cognome_locatario' => $locatario_info->cognome,

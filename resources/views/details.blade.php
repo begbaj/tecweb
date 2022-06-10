@@ -81,9 +81,9 @@ $(document).ready(function () {
 		@endif
             </div>
             @auth
-                @if(auth()->user()->hasRole('locatore') && $alloggio->confermato == false)
+                @if(auth()->user()->hasRole('locatore') && $alloggio->confermato == false  && $alloggio->id_locatore == auth()->user()->id)
                     <a href="{{ route('lore.accom.edit', ['id'=>$alloggio->id]) }}"> <button id = "modifybutton" class="btn btn-secondary"> Modifica annuncio</button> </a>
-                @elseif (auth()->user()->hasRole('locatore'))
+                @elseif (auth()->user()->hasRole('locatore') && $alloggio->id_locatore == auth()->user()->id)
                     <button id = "modifybutton" class="btn btn-secondary disabled"> Modifica annuncio</button> </a>
                 @endif
             @endauth

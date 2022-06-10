@@ -121,8 +121,11 @@ class LocatoreController extends Controller
     }
 
     public function editAccom($accomId){
-        $catalog = new Catalog;
         $alloggio = Alloggio::where('id', $accomId)->get()->first();
+        if(Auth::user()->id != $alloggio->id_locatore){
+            return abort(403);
+        }
+        $catalog = new Catalog;
         $date = DateTime::createFromFormat('Y-m-d', substr($alloggio->data_min, 0,-9));
         $alloggio->data_min = $date->format('d-m-Y');
         $date = DateTime::createFromFormat('Y-m-d', substr($alloggio->data_max, 0,-9));
@@ -134,6 +137,9 @@ class LocatoreController extends Controller
     }
     
     public function confirmEdit(NewAccomodationRequest $request){
+        if(Auth::user()->id != $request->id){
+            return abort(403);
+        }
         $accom = Alloggio::find($request->id);
         $accom->fill($request->validated());
 
