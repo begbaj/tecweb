@@ -4,206 +4,19 @@
 
 @section('scripts')
 <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/insert-edit-alloggio-validatio.js') }}"></script>
 <script>
-$(function () {
-    $("#titolo").prop('maxlength','100');      
-    $("#capp").prop('maxlength','5');  
-    $("#beds").prop('maxlength','5');
-    $("#bedrooms").prop('maxlength','5');
-    $("#price").prop('maxlength','8');
-    $("#sup").prop('maxlength','4');
-    $("#beds").prop('maxlength','3');
-    $("#bedrooms").prop('maxlength','3');
-    $("#desc").prop('maxlength','5000');  
-
-    
-
-    $('#titolo').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^a-z0-9_ ]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#etaminim').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#etamaxim').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });    
-    
-    $('#price').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9.]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#sup').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9.]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#prov').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^a-z_ ]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#cit').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^a-z_ ]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-
-    $('#addr').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^a-z0-9_ ]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#capp').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#beds').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });    
-    
-    $('#bedrooms').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^0-9]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    $('#desc').on('input', function() {
-    var c = this.selectionStart,
-      r = /[^a-z0-9_ ]/gi,
-      v = $(this).val();
-    if(r.test(v)) {
-        $(this).val(v.replace(r, ''));
-        c--;
-    }
-    this.setSelectionRange(c, c);
-    });
-    
-    
-    
+$(function(){
     $("#tipo").on('change', function(event) {
        $.ajax({
            type:'GET',
            url: '{{ route("api.servs") }}/' + $("#tipo").val(),
-           data:'_token = <?php echo csrf_token(); ?>',
            success:updateServs
         });
        showPerFields();
     });
-    $('#tipo').change();
-
-
-    $("#eta_min").on("change", function(event) {
-        if ($("#eta_min").val() >= 18){
-            $("#eta_max").prop("disabled", false);
-        }else{
-            $("#eta_max").prop("disabled", true);
-        }
-    });
-    $("#eta_min").change();
-
-    $('#datepicker').datepicker({
-        format: "dd/mm/yyyy",
-        todayBtn: "linked",
-        clearBtn: true,
-        orientation: 'bottom',
-        autoclose: true,
-        todayHighlight: true
-    });
+    $("#tipo").trigger('change');
 });
-
-
-function showPerFields(){;
-    var tipo = $("#tipo");
-    var allApp = $(".appartamento");
-    var allLet = $(".letto");
-
-    if ( tipo.val() == "posto_letto" ){
-        allApp.prop('disabled', true);
-        allApp.hide();
-        allLet.prop('disabled', false);
-        allLet.show();
-    }
-    else{
-        allLet.prop('disabled', true);
-        allLet.hide();
-        allApp.prop('disabled', false);
-        allApp.show();
-    }
-}
-
-
 function updateServs(data){
     $('#servizi').find('*').remove();
     $('#vicino').find('*').remove();
@@ -221,6 +34,7 @@ function updateServs(data){
 }
 </script>
 @endsection
+
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
 @endsection

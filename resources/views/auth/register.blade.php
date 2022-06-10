@@ -14,6 +14,14 @@ $(function (){
         autoclose: true,
         todayHighlight: true,
     });
+    var actionUrl= "{{ route('register') }}";
+    var formId = 'edit-form'; 
+    $(":input").on('blur', function (event){
+            var formElementId = $(this).attr('id');
+            console.log(formElementId);
+            console.log(formId);
+            doElemValidation(formElementId, actionUrl, formId);
+    });
 });    
 </script>
 @endsection
@@ -41,15 +49,15 @@ $(function (){
                         <div class=" col-sm-7 ps-3">
                         {{ Form::text('firstname','', ['value' => old("firstname"), 'placeholder'=> 'Nome', 'class' => 'form-control ms-5']) }}
                         </div>
-                    @if ($errors->first('firstname'))
-                    <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('firstname') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                        </div>
-                    </div>    
-                    @endif    
+                        @if ($errors->first('firstname'))
+                            <div class="d-flex justify-content-center">
+                                <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                                    @foreach ($errors->get('firstname') as $message)
+                                        <div class="d-flex justify-content-center">{{ $message }}</div>
+                                    @endforeach
+                                </div>
+                            </div>    
+                        @endif    
                     </div>  
                 </div>
                 <div class= "col d-flex justify-content-center pe-5">
@@ -58,15 +66,15 @@ $(function (){
                         <div class=" col-sm-7 ps-3">
                         {{ Form::text('lastname','', ['value' => old("lastname"), 'placeholder'=> 'Cognome', 'class' => 'form-control ms-5']) }}
                         </div>
-                    @if ($errors->first('lastname'))
-                    <div class="d-flex justify-content-center">
-                        <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('lastname') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                          </div>
-                    </div> 
-                    @endif
+                        @if ($errors->first('lastname'))
+                            <div class="d-flex justify-content-center">
+                                <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
+                                    @foreach ($errors->get('lastname') as $message)
+                                        <div class="d-flex justify-content-center">{{ $message }}</div>
+                                    @endforeach
+                              </div>
+                            </div> 
+                        @endif
                     </div>
                 </div>
 

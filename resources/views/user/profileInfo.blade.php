@@ -155,10 +155,10 @@ $(function (){
                 @if ($errors->first('data_nascita'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
-                        @foreach ($errors->get('data_nascita') as $message)
-                        <div class="d-flex justify-content-center">{{ $message }}</div>
-                        @endforeach
-                          </div>
+                            @foreach ($errors->get('data_nascita') as $message)
+                                <div class="d-flex justify-content-center">{{ $message }}</div>
+                            @endforeach
+                        </div>
                     </div> 
                 @endif    
                 </div>
@@ -172,7 +172,9 @@ $(function (){
                 
                 <div class="d-flex align-items-center ps-5 pt-4">
                     <h5>Username:</h5>
-                    {{ Form::text('username', Auth::user()->username, ['class' => 'ps-1 lead d-flex align-items-center ms-2', 'id' => 'username', 'disabled']) }}
+                    <div class="ms-3 mb-1 lead text-muted border border-dark ps-1 pe-5">
+                    {{ ucwords(Auth::user()->username) }}
+                    </div>
                 </div>
                 
                 <div class="d-flex align-items-center justify-content-start ps-5 pt-4 pb-2">
