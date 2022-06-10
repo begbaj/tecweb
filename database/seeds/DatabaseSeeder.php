@@ -280,11 +280,12 @@ class DatabaseSeeder extends Seeder
 	
          
         DB::table('messaggi')->insert([
-            ['id_mittente'=>'1', 'id_destinatario'=>'2', 'testo' => 'Il tuo alloggio è stato confermato.', 'id_alloggio' => 2 , 'data_conferma_opzione' => date("2022-05-05"),'created_at' => date("2022-05-05")],
+            ['id_mittente'=>'2', 'id_destinatario'=>'1', 'testo' => 'Salve, sono Locatario Di Prova e vorrei affittare il tuo alloggio.', 'id_alloggio' => 2 , 'data_conferma_opzione' => date("2022-05-05 19:00:00"),'created_at' => date("2022-05-05 14:00:00")],
+            ['id_mittente'=>'1', 'id_destinatario'=>'2', 'testo' => "La tua richiesta per l'alloggio 2 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.", 'id_alloggio' => NULL , 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05 19:00:00")],
             ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => 'Salve, mi può fare uno sconto?', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
             ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Salve, no', 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-06")],
-            ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Vorrei opzionare', 'id_alloggio' => 3, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05")],
-            ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => 'Opzione approvata', 'id_alloggio' => 3, 'data_conferma_opzione' => date("2022-05-05"),'created_at' => date("2022-05-05")],
+            ['id_mittente'=>'6', 'id_destinatario'=>'5', 'testo' => 'Vorrei affittare questo alloggio, buona giornata', 'id_alloggio' => 3, 'data_conferma_opzione' => date("2022-05-05 18:14:22"),'created_at' => date("2022-05-05 9:30:30")],
+            ['id_mittente'=>'5', 'id_destinatario'=>'6', 'testo' => "La tua richiesta per l'alloggio 3 e' stata accettata, vai sulla pagina dei dettagli per scaricare il contratto.", 'id_alloggio' => NULL, 'data_conferma_opzione' => NULL,'created_at' => date("2022-05-05 18:14:22")],
         ]);       
 /*
 	$alloggi = Alloggio::all()->pluck('id')->toArray();
@@ -316,10 +317,7 @@ class DatabaseSeeder extends Seeder
 		    echo 'Message: ' .$e->getMessage();
             }
         }
- 	
-	$alloggi_opzionati=Alloggio::where('confermato', '=', true)->pluck('id')->toArray();
-
-	echo "Inserting options for relational constraint purposes";
+ 	$alloggi_opzionati=Alloggio::where('confermato', '=', true)->pluck('id')->toArray(); echo "Inserting options for relational constraint purposes";
 	foreach($alloggi_opzionati as $alloggio) { 
             try {    
 		DB::table('messaggi')->insert(
